@@ -1,0 +1,161 @@
+{
+  "name": "Fraksi Utusan Daerah",
+  "short": "U. Daerah",
+  "seats": 135,
+  "affinity": 35,
+  "image": "photo/usdar.png",
+  "coverImage": "photo/faction/usdar.png",
+  "summary": "<font color=\"#555555\"><b>Fraksi Utusan Daerah</b></font> menyatukan 135 perwakilan provinsi—lima utusan yang dipilih oleh masing-masing dari ke-27 DPRD Tingkat I berdasarkan UU No. 4/1999. Lebih mirip sebagai kongres longgar para penguasa daerah ketimbang partai parlemen yang disiplin, kaukus ini tidak tunduk pada satu ketua nasional mana pun. Tanpa adanya penggalang suara pusat di Senayan untuk menegakkan keseragaman, delegasi dari Sumatera, Kalimantan, Sulawesi, dan Indonesia Timur melakukan tawar-menawar provinsi demi provinsi, mempertaruhkan suara mereka kepada kubu mana pun yang menawarkan syarat terbaik bagi ibu kota daerah asal mereka.<p></p>Selama tiga dekade di bawah Orde Baru, Jakarta memperlakukan kawasan luar Jawa sebagai koloni sumber daya, mengeruk minyak dari Riau, gas alam cair dari Aceh dan Kalimantan Timur, serta tembaga dan emas dari Irian Jaya, namun hanya mengembalikan sebagian kecil hasilnya melalui dana proyek <i>Inpres</i> pusat. Kini setelah cengkeraman besi Soeharto patah, para gubernur, bupati, dan para pemuka adat menuntut pemulihan fiskal dan hak mengurus diri sendiri. Keberhasilan menghadirkan pemulihan makroekonomi serta merawat ketertiban sipil di seluruh provinsi memberikan Istana posisi tawar yang menentukan atas para utusan daerah ini, yang sangat mendambakan anggaran pembangunan yang sehat serta perlindungan dari gejolak separatisme di atas segala macam kampanye ideologis.",
+  "biography": "Di seluruh pelosok nusantara di luar lingkar jalan tol Jakarta, kejatuhan Soeharto memantik timbunan kekecewaan regional selama tiga puluh tahun terhadap kekuasaan yang sentralistik di Jawa. Di bawah sistem UU No. 5/1974, Departemen Dalam Negeri (Depdagri) memperlakukan para gubernur layaknya vasal utusan Jakarta sementara konglomerat Jalan Cendana mengeruk konsesi kayu, pertambangan, dan perkebunan di luar Jawa.<p></p>Dipilih oleh DPRD provinsi hasil pemilu 1999 alih-alih ditunjuk langsung oleh kementerian dalam negeri era Soeharto, kelompok <font color=\"#555555\"><b>Utusan Daerah</b></font> ini memadukan para gubernur yang sedang menjabat, para bos kamar dagang regional seperti Oesman Sapta Odang dari Kalimantan Barat dan Irman Gusman dari Sumatera Barat, para rektor universitas, serta para tokoh bangsawan tradisional. Meskipun pemerintahan Anda menuai pujian di luar Jawa karena menugaskan tim Ryaas Rasyid merancang undang-undang Otonomi Daerah 1999 yang bersejarah, titik-titik api separatisme di Aceh, Timor Timur, dan Irian Jaya serta pertumpahan darah komunal di Maluku dan Kalimantan Barat terus membuat para utusan ini berada dalam kecemasan. Dalam sidang bulan Oktober nanti, 135 suara mereka merepresentasikan hadiah terbesar yang belum berpihak ke blok manapun di lantai sidang.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Terkunci",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Puas",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Terbelah",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Gelisah",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Menuntut Dana",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Mencari Patron Baru",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Habibie Harus Turun",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "daerah_revenue_formula",
+      "text": "Revisi formula pembagian hasil minyak, gas, dan kehutanan agar berpihak kepada provinsi penghasil sumber daya",
+      "cost": 26,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Provinsi-provinsi kaya sumber daya—Riau, Kalimantan Timur, Aceh, dan Irian Jaya—selama tiga dekade telah menyaksikan Pertamina dan kementerian-kementerian di Jakarta mengantongi bagian terbesar dari royalti minyak, gas, kayu, dan mineral mereka, yang memicu seruan pembentukan Riau Merdeka di Pekanbaru serta tuntutan federalisme di Samarinda. Instruksikan Departemen Keuangan untuk memperluas alokasi Dana Bagi Hasil (DBH) bagi provinsi penghasil lebih cepat dari jadwal perundang-undangan. Mengikat delegasi luar Jawa pada Istana dengan hutang budi politik yang besar, meski cadangan anggaran pusat serta kalangan nasionalis kesatuan PDI Perjuangan akan memikul dampaknya.",
+      "effects": {
+        "utusan_daerah": [14, 26],
+        "utusan_daerah_favor": 1,
+        "econ": [-10, -6],
+        "pdip": [-7, -3],
+        "stab": 2,
+        "intl": 2,
+        "ref": 2
+      },
+      "alertMsg": "Para gubernur dan pimpinan DPRD dari Riau, Kalimantan Timur, dan Irian Jaya menyambut revisi pembagian royalti tersebut sebagai koreksi sejarah atas penjarahan fiskal Orde Baru. Delegasi mereka di Senayan bergeser ke barisan pendukung Istana, bahkan ketika para pejabat perbendaharaan pusat dan legislator PDI Perjuangan memprotes terkurasnya pundi-pundi keuangan Jakarta."
+    },
+    {
+      "id": "daerah_infra",
+      "text": "Cairkan Dana Alokasi Umum (DAU) darurat untuk pembangunan jalan, pelabuhan, dan irigasi provinsi",
+      "cost": 20,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Kehancuran moneter 1997–1998 membekukan berbagai proyek pekerjaan umum mulai dari jalan raya trans-Sumatera hingga terminal feri antar-pulau di Maluku dan Nusa Tenggara. Sahkan kucuran dana hibah blok seketika melalui Badan Perencanaan Pembangunan Nasional (Bappenas) agar para gubernur provinsi dapat melanjutkan kembali proyek jembatan, pelabuhan, dan irigasi yang terbengkalai sebelum MPR bersidang.",
+      "effects": {
+        "utusan_daerah": [7, 13],
+        "econ": [-5, -3],
+        "pop": [2, 4],
+        "stab": 2
+      },
+      "alertMsg": "Alat-alat berat buldoser dan para pekerja jalan kembali beroperasi di belasan provinsi dalam beberapa minggu setelah pencairan dana. Merasa terbantu dengan proyek-proyek nyata yang bisa mereka pamerkan di daerah asal, para gubernur regional menginstruksikan delegasi MPR mereka untuk mendukung Bina Graha."
+    },
+    {
+      "id": "daerah_sultan",
+      "text": "Lakukan kunjungan kenegaraan ke Kraton Ngayogyakarta dan berkonsultasilah dengan Sultan Hamengkubuwono X",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Sri Sultan Hamengkubuwono X—yang berdiri di hadapan jutaan warga pada <i>Pisowanan Agung</i> Mei 1998 di Yogyakarta untuk mendukung reformasi damai serta bergabung dengan kuartet Ciganjur bersama Megawati, Gus Dur, dan Amien Rais—memegang otoritas moral yang tak tertandingi di kalangan para gubernur dan penguasa tradisional Indonesia. Pergilah berkunjung ke Kraton Yogyakarta untuk mengukuhkan konfirmasinya secara resmi sebagai Gubernur sekaligus meminta petunjuknya dalam merajut kembali keutuhan Republik.",
+      "effects": {
+        "utusan_daerah": [8, 16],
+        "pop": [3, 7],
+        "ref": [3, 7],
+        "stab": [2, 4],
+        "intl": 1
+      },
+      "alertMsg": "Sultan Hamengkubuwono X menyambut Anda di dalam paviliun Kraton dengan keanggunan khas Jawa. Tayangan televisi mengenai audiensi hangat tersebut meyakinkan para utusan daerah yang masih bimbang di Jawa dan luar Jawa bahwa Istana menghormati martabat daerah."
+    },
+    {
+      "id": "daerah_otonomi_law",
+      "text": "Percepat peraturan pelaksana Ryaas Rasyid untuk UU No. 22 dan No. 25 tentang Otonomi Daerah",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Meskipun parlemen telah mengesahkan UU No. 22/1999 tentang Pemerintahan Daerah dan UU No. 25/1999 tentang Perimbangan Keuangan Pusat dan Daerah pada bulan Mei lalu, para birokrat karier di kementerian Jakarta memperlambat penerbitan peraturan pemerintah (PP) pelaksana yang diperlukan untuk melimpahkan kewenangan kepada pemerintah provinsi dan kabupaten/kota. Berikan dukungan penuh kepada Direktur Jenderal Ryaas Rasyid dan tandatangani dekrit-dekrit pelaksana tersebut sebelum batas waktu undang-undang berakhir. Mengamankan hutang budi politik dari Fraksi Utusan Daerah.",
+      "effects": {
+        "utusan_daerah": [11, 21],
+        "utusan_daerah_favor": 1,
+        "ref": [6, 10],
+        "stab": 2,
+        "pop": 2,
+        "intl": 2
+      },
+      "alertMsg": "Dengan melangkahi birokrasi pusat dan langsung menandatangani peraturan pelaksana di tempat, Anda meyakinkan para pemimpin daerah yang skeptis bahwa Otonomi Daerah benar-benar berlaku dalam praktik, bukan sekadar hiasan di atas kertas."
+    },
+    {
+      "id": "daerah_aceh_papua",
+      "text": "Tawarkan piagam Otonomi Khusus asimetris kepada delegasi dari Aceh dan Irian Jaya",
+      "cost": 24,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 2,
+      "description": "Di ujung-ujung terjauh kepulauan nusantara, Aceh dan Irian Jaya berada di ambang jurang separatisme setelah puluhan tahun operasi penumpasan pemberontakan <font color=\"#3E5022\"><b>ABRI</b></font> serta pengerukan sumber daya alam. Sodorkan kerangka kerja Otonomi Khusus formal di atas meja bagi kedua provinsi tersebut—dengan memberikan kewenangan kepada Banda Aceh atas urusan keagamaan, pendidikan, dan adat, sekaligus mengembalikan royalti mineral serta pengakuan kultural kepada Jayapura.",
+      "effects": {
+        "utusan_daerah": [10, 18],
+        "ref": [4, 8],
+        "intl": [4, 8],
+        "stab": [-5, -3],
+        "pdip": [-6, -3],
+        "abri": [-3, -2],
+        "pop": 2
+      },
+      "alertMsg": "Para utusan sipil dan daerah dari Banda Aceh dan Jayapura menyambut kerangka Otonomi Khusus tersebut sebagai alternatif serius pertama terhadap konflik bersenjata dalam satu generasi, meskipun para perwira Cilangkap dan kaum nasionalis PDI Perjuangan memperingatkan bahwa konsesi asimetris mengundang disintegrasi negara kesatuan."
+    },
+    {
+      "id": "daerah_final_appeal",
+      "text": "Hubungi lewat telepon seluruh dua puluh tujuh ibu kota provinsi menjelang pemungutan suara",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Tersebar di dalam 27 delegasi provinsi dari Sabang hingga Merauke, 135 kursi <font color=\"#555555\"><b>Fraksi Utusan Daerah</b></font> membentuk blok suara terbesar ketiga di dalam MPR. Habiskan malam terakhir sebelum kotak suara dibuka dengan menelepon para gubernur dan ketua delegasi di ketiga zona waktu Indonesia guna mengingatkan mereka bahwa Anda—seorang putra Parepare, Sulawesi Selatan, sekaligus arsitek <i>Otonomi Daerah</i>—adalah pejuang bagi kawasan luar Jawa di Jakarta. Menagih setiap janji desentralisasi dan hutang budi politik yang dimiliki delegasi regional terhadap Istana.",
+      "effects": {
+        "utusan_daerah": [13, 23],
+        "pop": 2,
+        "ref": 1,
+        "stab": 2
+      },
+      "alertMsg": "Papan sambungan telepon di Bina Graha tetap menyala hingga fajar menyingsing saat para gubernur dari Makassar, Pekanbaru, Samarinda, and Padang menyatakan dukungan delegasi lima orang mereka bagi Presiden non-Jawa pertama Republik ini."
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "name": "Fraksi TNI/POLRI",
+  "short": "Wiranto",
+  "seats": 38,
+  "affinity": 50,
+  "image": "photo/wiranto.png",
+  "coverImage": "photo/faction/ABRI.png",
+  "summary": "Under the command of General Wiranto, <font color=\"#3E5022\"><b>Fraksi ABRI (TNI/Polri)</b></font> controls 38 unelected seats in the MPR—cut in half from the 75 seats the military held prior to the January 1999 political laws, yet still voting with iron barrack discipline whenever Mabes Cilangkap issues an order. In April 1999, Inpres No. 2 Tahun 1999 formally separated the National Police (Polri) from the armed forces chain of command, and the high command unveiled its <i>Paradigma Baru</i> ('New Paradigm'): a calculated institutional retreat from front-line <font color=\"#7D6000\"><b>Golkar</b></font> party politics designed to preserve the Army's Kodam territorial network, protect its off-budget foundations, and shield senior generals from human rights tribunals.<p></p>For now, General Wiranto's accommodation with Bina Graha is the pragmatic shield keeping your government standing amidst the daily tempests of <i>Reformasi</i>. So long as General Wiranto's patience with Cilangkap lasts, the officer corps will not openly desert the Palace: Kostrad and Brimob battalions will clear riot-torn boulevards in an afternoon, territorial trucks will move Bulog rice when civilian ports jam, and BAIS intelligence operatives will quietly roll up Cendana-financed provocateurs before they strike.<p></p>That protection is a conditional loan, not a blank check. Push too aggressively against the generals' legal immunity, their sprawling commercial empire, or their counter-insurgency campaigns in East Timor and Aceh, and the generals' patience will run out and turn to anger—and an angry Cilangkap is slow to forgive, drags down every deal you strike with the other factions, and leaves all 38 military and police delegates free to abandon you on the Assembly floor.",
+  "biography": "Born in Yogyakarta in 1947 and commissioned from the National Military Academy (AMN) in Magelang in 1968, General Wiranto rose steadily through the Army's territorial and strategic commands after serving four pivotal years as President Suharto's personal adjutant (1989–1993). Appointed Commander of Kodam Jaya, Commander of Kostrad, Army Chief of Staff, and finally Commander of the Armed Forces (Pangab) in February 1998, he stood at the fulcrum of state power when Jakarta burned in May 1998. Rather than seizing power at the head of a junta or ordering a bloodbath on the steps of the occupied parliament complex, Wiranto nudged Suharto into stepping aside, guaranteed the physical safety and dignity of the Cendana household, and underwrote your constitutional succession—before promptly stripping his fiery rival, Lt. Gen. Prabowo Subianto, of command over Kostrad barely twenty-four hours later.<p></p>Serving concurrently as Armed Forces Commander and Minister of Defense and Security (Menhankam) in your Development Reform Cabinet, Wiranto views himself as the custodian of the Republic's survival rather than your personal subordinate. Besieged by student fury over the Trisakti and Semanggi shootings, the Tim Mawar kidnappings, and international condemnation over army-backed militias in East Timor, his overriding loyalty belongs to the cohesion and honor of the <font color=\"#3E5022\"><b>TNI officer corps</b></font>. Polished, Javanese, and fond of crooning ballads at officer receptions while keeping his political cards close to his chest, he will hold the barracks behind your government only for as long as you respect Cilangkap's institutional red lines.",
+  "moods": [
+    {
+      "min": 75,
+      "text": "Supporting Habibie",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 50,
+      "text": "Accommodating",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Guarded",
+      "color": "#FF8C00",
+      "overlay": "rgba(255, 140, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Alienated",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "tni_riot_control",
+      "text": "Deploy Kostrad and Brimob battalions to secure the capital's thoroughfares",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 50,
+      "description": "When street demonstrations and sectarian flashpoints threaten to paralyze Jakarta, authorize General Wiranto and Kodam Jaya to position Kostrad mechanized infantry and Brimob riot police around key ministries, Glodok commercial hubs, and the Senayan parliamentary complex. Restores calm to the streets of the capital, though student activists will denounce the show of force as a return to New Order repression.",
+      "effects": {
+        "stab": [6, 12],
+        "pop": -2,
+        "ref": -2
+      },
+      "alertMsg": "Panser armored carriers and razor-wire barricades take up positions along Jalan Sudirman, Medan Merdeka, and the Semanggi cloverleaf, dispersing unruly crowds before nightfall. Commuters and shopkeepers breathe a sigh of relief at the return of order, even as campus senates condemn the deployment."
+    },
+    {
+      "id": "tni_logistics",
+      "text": "Mobilize ABRI's territorial command trucks for emergency Sembako distribution",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 50,
+      "description": "With private distribution networks crippled by credit freezes, ethnic pogroms, and panic hoarding, task the Army's Kodam and Korem logistics battalions with trucking Bulog rice, cooking oil, sugar, and kerosene (<i>Sembako</i>) directly from Tanjung Priok and Tanjung Perak into provincial markets. Relieves acute shortages and steadies working-class neighborhoods across the archipelago.",
+      "effects": {
+        "econ": [4, 8],
+        "pop": [3, 5],
+        "stab": 2
+      },
+      "alertMsg": "Convoys of olive-drab Reo military trucks bypass bottlenecked wholesalers and unload subsidized Bulog rice and cooking oil directly at district markets, easing food inflation and winning grateful praise from working families."
+    },
+    {
+      "id": "tni_intel",
+      "text": "Direct BAIS military intelligence to roll up Cendana-financed provocateur rings",
+      "cost": 18,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 50,
+      "description": "Shadowy networks of paid agitators (<i>preman bayaran</i>) and Jalan Cendana fixers have been busing in provocateurs to turn peaceful rallies and neighborhood disputes into arson attacks. Order the Strategic Intelligence Agency (BAIS) to intercept their couriers and raid their safe houses before the next riot can be staged. Blunts Cendana's street-level sabotage and steadies public order.",
+      "effects": {
+        "stab": [6, 10],
+        "cendana": [-5, -3],
+        "pop": 2
+      },
+      "alertMsg": "Working from wiretaps and informant tips, BAIS operatives quietly detain several key paymasters and seize caches of envelopes and incendiary materials in Jakarta's outskirts, disrupting Cendana's latest attempt to set the capital alight."
+    },
+    {
+      "id": "tni_imf_funds",
+      "text": "Fold ABRI's commercial banks and welfare foundations into the state recapitalization umbrella",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "reqDecree": "economic_bailout",
+      "description": "The Army's sprawling network of command foundations—led by Yayasan Kartika Eka Paksi, Bank Artha Graha, and regional Kodam ventures—suffered heavy losses during the banking collapse. Quietly fold their distressed commercial arms into the government's recapitalization bond scheme alongside civilian banks. Secures a major institutional obligation from Cilangkap's generals, at a heavy cost to the state balance sheet and your reformist reputation.",
+      "effects": {
+        "abri": [8, 16],
+        "abri_favor": 1,
+        "econ": [-10, -6],
+        "ref": [-7, -3],
+        "cendana": [3, 5]
+      },
+      "alertMsg": "Cilangkap's financial managers quietly receive their allocation of state recapitalization bonds. Regional Kodam commanders express rare warmth toward Bina Graha for rescuing the officer welfare funds, though Ministry of Finance auditors wince at the balance-sheet cost."
+    },
+    {
+      "id": "tni_new_paradigm",
+      "text": "Co-sponsor Cilangkap's 'Paradigma Baru' doctrine and ICRC crowd-control protocols",
+      "cost": 12,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 40,
+      "description": "Publicly champion the intellectual architects of military reform at <font color=\"#3E5022\"><b>Mabes TNI</b></font>—Lt. Gen. Susilo Bambang Yudhoyono, Lt. Gen. Agus Widjojo, and General Wiranto—by endorsing their <i>Paradigma Baru</i> ('New Paradigm') doctrine alongside ICRC rules of engagement. Allowing Cilangkap to reform itself at its own pace earns a lasting debt of gratitude from the high command without threatening the territorial structure.",
+      "effects": {
+        "ref": [7, 13],
+        "intl": [3, 5],
+        "stab": [3, 5],
+        "abri": [3, 7],
+        "abri_favor": 1
+      },
+      "alertMsg": "Unveiled with full ceremonial honors on Armed Forces Day, the 'New Paradigm' wins praise from moderate civilian reformers and foreign defense attachés alike, while reassuring Cilangkap that institutional reform will remain securely in military hands."
+    },
+    {
+      "id": "tni_civilian_posts_withdrawal",
+      "text": "Enforce the end of active-duty military secondments to the civilian bureaucracy (Kekaryaan)",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 3,
+      "minAffinity": 40,
+      "description": "Under the New Order's <i>Dwifungsi</i> ('Dual Function') doctrine, roughly 6,800 active-duty officers sit in lucrative civilian posts as provincial governors, district regents (<i>bupati</i>), and ministry secretaries-general. Instruct General Wiranto to enforce a strict ultimatum starting April 1999: retire from active military commission (<i>pensiun dini</i>) or vacate civilian office immediately. Wears down the generals' patience with Cilangkap's territorial colonels.",
+      "effects": {
+        "ref": [7, 13],
+        "pop": [3, 5],
+        "abri": [-6, -3],
+        "stab": -2
+      },
+      "alertMsg": "Thousands of seconded officers across the archipelago are forced to choose between their military stars and their civilian desks. Civil-society groups hail the dismantling of Kekaryaan as a milestone for civilian supremacy, though middle-ranking colonels grumble bitterly over the lost sinecures."
+    },
+    {
+      "id": "tni_golkar_withdrawal",
+      "text": "Press Wiranto to sever ABRI's thirty-year institutional alliance with Golkar",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 20,
+      "minTurn": 0,
+      "minAffinity": 40,
+      "description": "For three decades, the armed forces formed the 'Jalur A' pillar of the <font color=\"#3E5022\"><b>ABG (ABRI–Birokrasi–Golkar)</b></font> triad that guaranteed <font color=\"#7D6000\"><b>Golkar's</b></font> electoral hegemony from the capital down to the village Koramil post. Urge General Wiranto to formally sever <font color=\"#3E5022\"><b>ABRI's</b></font> ties to <font color=\"#7D6000\"><b>DPP Slipi</b></font> and pledge strict military neutrality across all forty-eight contesting parties. Angers Akbar Tandjung's regional Golkar apparatus.",
+      "effects": {
+        "ref": [6, 12],
+        "stab": [3, 5],
+        "golkar_akbar": [-7, -3]
+      },
+      "alertMsg": "Cilangkap formally declares that ABRI now stands 'at an equal distance from all political parties.' Opposition leaders and election monitors applaud the announcement, while Akbar Tandjung's provincial chairmen complain that the Banyan Tree has been left to fend for itself."
+    },
+    {
+      "id": "tni_east_timor_security",
+      "text": "Entrust Kodam IX/Udayana with exclusive security authority over the East Timor ballot",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 10,
+      "minTurn": 2,
+      "minAffinity": 30,
+      "description": "Reject United Nations and Western appeals for an armed international peacekeeping deployment ahead of the August 30 popular consultation in East Timor, leaving security under the May 5 New York Agreement entirely in the hands of General Wiranto and Maj. Gen. Adam Damiri's Kodam IX/Udayana. Places the high command deeply in your debt for defending national sovereignty, while alarming human rights advocates and foreign chancelleries.",
+      "effects": {
+        "stab": [3, 7],
+        "ref": [-10, -6],
+        "intl": [-8, -4],
+        "abri": [7, 13],
+        "abri_favor": 1
+      },
+      "alertMsg": "The brass in Cilangkap welcomes your defense of Indonesian military honor over the twenty-seventh province. In Dili, Liquiça, and Suai, however, UNAMET observers immediately warn that army-backed Aitarak and Besi Merah Putih militias are intimidating voters with total impunity."
+    },
+    {
+      "id": "tni_parliamentary_reduction",
+      "text": "Press Cilangkap to commit to a complete phase-out of ABRI's unelected MPR seats",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 6,
+      "minAffinity": 30,
+      "description": "Although <font color=\"#3E5022\"><b>Fraksi ABRI's</b></font> legislative bloc was already halved from 75 to 38 seats under the January election laws, student coalitions and <font color=\"#555555\"><b>Utusan Golongan</b></font> reformers are demanding an explicit timetable to abolish unelected military representation in parliament altogether. Press Wiranto to accept a binding phase-out schedule. Severely wears down General Wiranto's patience.",
+      "effects": {
+        "ref": [7, 13],
+        "pop": [4, 8],
+        "utusan_golongan": [4, 8],
+        "abri": [-8, -5],
+        "stab": [-4, -2]
+      },
+      "alertMsg": "After icy negotiations in Bina Graha, the high command agrees in principle to a timetable phasing out reserved legislative seats. Wiranto privately warns you that the officer corps feels increasingly cornered and humiliated by civilian politicians."
+    },
+    {
+      "id": "tni_business_interests",
+      "text": "Order BPK auditors to open the books on ABRI's off-budget foundations and timber concessions",
+      "cost": 22,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 8,
+      "minAffinity": 25,
+      "description": "Less than a third of Indonesian defense spending comes from the official state budget; the rest flows through an opaque empire of military foundations (yayasan), Kalimantan logging concessions, and regional protection rackets. Authorizing Supreme Audit Agency (BPK) investigators to inspect those books will electrify Reformasi advocates and the IMF—but strikes directly at Cilangkap's financial lifeblood and pushes the generals' patience toward the breaking point.",
+      "effects": {
+        "ref": [8, 14],
+        "econ": [4, 8],
+        "intl": [3, 7],
+        "abri": [-12, -7],
+        "stab": [-7, -3]
+      },
+      "alertMsg": "Word of the audit triggers immediate fury across the regional Kodam commands. Wiranto stonewalls the BPK auditors at every turn, delivering a blunt warning to the Palace that threatening the military's off-budget autonomy crosses a dangerous red line."
+    },
+    {
+      "id": "tni_final_appeal",
+      "text": "Hold a midnight consultation with General Wiranto on the eve of the MPR roll call",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Unlike the fractious civilian parties trading envelopes in hotel suites around Senayan, <font color=\"#3E5022\"><b>Fraksi TNI/Polri's 38 delegates</b></font> march into the Plenary chamber under direct military orders. Sit down with General Wiranto one final time before the ballot boxes open to call in every institutional guarantee you have extended to the armed forces. Redeems every political obligation and institutional favor Cilangkap owes the Palace.",
+      "effects": {
+        "abri": [11, 19],
+        "stab": [3, 5]
+      },
+      "alertMsg": "General Wiranto listens in measured silence, salutes crisply, and assures you that Fraksi TNI/Polri will cast its ballots in the highest interest of national stability when the roll is called."
+    }
+  ]
+}

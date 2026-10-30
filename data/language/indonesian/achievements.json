@@ -1,0 +1,297 @@
+[
+  {
+    "id": "complete_run",
+    "title": "Hari ke-512",
+    "desc": "Selesaikan satu permainan penuh hingga Sidang Umum MPR berakhir, apa pun hasilnya."
+  },
+  {
+    "id": "win_any",
+    "title": "Bukan Lagi Presiden Transisi",
+    "desc": "Menangkan Sidang Umum MPR dan pertahankan kursi kepresidenan pada tingkat kesulitan apa pun."
+  },
+  {
+    "id": "win_historical",
+    "title": "Mandat Penuh Terkunci",
+    "desc": "Lawankan arus sejarah dan menangkan Sidang Umum MPR pada tingkat kesulitan Historis."
+  },
+  {
+    "id": "khatam",
+    "title": "Khatam!",
+    "desc": "Menangkan Sidang Umum MPR pada seluruh tingkat kesulitan standar: Mudah, Sedang, Sulit, dan Historis. Ibarat menamatkan seluruh isi buku dari sampul ke sampul."
+  },
+  {
+    "id": "pop_max",
+    "title": "Suara Hati Nurani Rakyat",
+    "desc": "Capai puncak Popularitas ('$tier.pop.tolerated$') pada tingkat kesulitan Sedang atau lebih tinggi."
+  },
+  {
+    "id": "cendana_zero",
+    "title": "Cendana Delenda Est",
+    "desc": "Berantas habis Pengaruh Cendana sepenuhnya pada tingkat kesulitan Sedang atau lebih tinggi."
+  },
+  {
+    "id": "pdip_max",
+    "title": "Kompromi Tak Terduga",
+    "desc": "Rebut hati PDI-P pimpinan Megawati sepenuhnya pada tingkat kesulitan Sedang atau lebih tinggi."
+  },
+  {
+    "id": "always_more_austerity",
+    "title": "Tanggapan Presiden Habibie, seperti biasa, adalah pengetatan anggaran lagi.",
+    "desc": "Puaskan hati <font color=\"#004C97\"><b>IMF</b></font> dengan mencabut subsidi BBM dan listrik, membongkar monopoli BULOG, dan melikuidasi bank-bank bangkrut sembari mencapai Posisi Internasional tertinggi saat Kesehatan Ekonomi dan Popularitas hancur lebur (Sedang+)."
+  },
+  {
+    "id": "bruning_impressed",
+    "title": "Brüning Terkesan.",
+    "desc": "Selamat melewati Sidang Umum MPR setelah memberlakukan ketiga mandat IMF, mencapai Posisi Internasional tertinggi, serta menghancurkan Kesehatan Ekonomi dan Popularitas. (Kesulitan Apa Pun)"
+  },
+  {
+    "id": "win_overwhelming",
+    "title": "Mandat Baru",
+    "desc": "Menangkan Sidang Umum MPR dengan selisih suara mutlak (450+ suara)."
+  },
+  {
+    "id": "win_comfortable",
+    "title": "Mayoritas Nyaman",
+    "desc": "Menangkan Sidang Umum MPR dengan mayoritas suara yang aman (380+ suara)."
+  },
+  {
+    "id": "win_narrow",
+    "title": "Lolos dari Lubang Jarum",
+    "desc": "Selamat melewati Sidang Umum MPR dengan kemenangan tipis yang mengejutkan."
+  },
+  {
+    "id": "lose_narrow",
+    "title": "Perjuangan yang Gagah Berani",
+    "desc": "Kehilangan kursi kepresidenan dengan selisih suara setipis silet."
+  },
+  {
+    "id": "lose_decisive",
+    "title": "Akhir Sebuah Era",
+    "desc": "Telan kekalahan telak dalam Sidang Umum MPR."
+  },
+  {
+    "id": "lose_overwhelming",
+    "title": "Penolakan Total",
+    "desc": "Kalah dalam Sidang Umum MPR dengan selisih suara mutlak yang menolak Anda (Di bawah 200 suara)."
+  },
+  {
+    "id": "mr_crack",
+    "title": "Mr. Crack Tak Pernah Retak",
+    "desc": "Biarkan Stabilitas Pemerintahan secara keseluruhan jatuh ke tingkat GOYAH atau RUNTUH, lalu rancang pemulihan struktural dan menangkan Sidang Umum MPR."
+  },
+  {
+    "id": "aman_terkendali",
+    "title": "Aman Terkendali™",
+    "desc": "Capai tingkat Stabilitas Nasional tertinggi ('$tier.stab.uneasy_calm$') pada tingkat kesulitan Sedang atau lebih tinggi. Semuanya aman dan terkendali, seperti kata pepatah lama. Mohon jangan mengintip ke bawah karpet."
+  },
+  {
+    "id": "cleared_for_takeoff",
+    "title": "Siap Lepas Landas, Gatotkaca",
+    "desc": "Lindungi pendanaan riset BPPT/IPTN DAN perjuangkan pos anggaran pesawat turboprop N-250 Gatotkaca, lalu menangkan Sidang Umum MPR."
+  },
+  {
+    "id": "halo_andi",
+    "title": "\"Halo, Andi? Apa Kabar?\"",
+    "desc": "Pertahankan surat perintah SP3 11 Oktober yang menghentikan penyidikan korupsi Soeharto saat Pengaruh Cendana masih berada pada tingkat $tier.cendana.entrenched$ atau $tier.cendana.untouchable$."
+  },
+  {
+    "id": "et_tu_akbar",
+    "title": "Et Tu, Akbar?",
+    "desc": "Kalah dalam Sidang Umum MPR meskipun memegang loyalitas '$mood.golkar_habibie.ride_or_die$' dari kubu Golkar Loyalis Anda akibat ditinggalkan oleh faksi Golkar pimpinan Akbar Tandjung."
+  },
+  {
+    "id": "dipecat_dengan_hormat",
+    "title": "Diberhentikan dengan Hormat",
+    "desc": "Kalah dalam Sidang Umum MPR saat Stabilitas Pemerintahan secara keseluruhan berada pada tingkat $gov.stable$ atau $gov.secure$."
+  },
+  {
+    "id": "baligate_clean",
+    "title": "546 Miliar Alasan",
+    "desc": "Bongkar tuntas skandal Bank Bali. Bekukan rekening EGP, berikan PwC akses tanpa batas, serahkan berkas tanpa sensor kepada Pansus PDI-P, dan buka status rahasia laporan audit lengkapnya."
+  },
+  {
+    "id": "camdessus_arms",
+    "title": "Siapa yang Lipat Tangan Sekarang, Michel?",
+    "desc": "Hidupkan kembali Skema Dewan Mata Uang (CBS) Steve Hanke, lawan ultimatum Bank Bali dari IMF, dan tetap selesaikan permainan dengan Kesehatan Ekonomi setidaknya pada tingkat '$tier.econ.stagnant$'."
+  },
+  {
+    "id": "utang_nanti_dulu",
+    "title": "Utang Bisa Nanti Dulu",
+    "desc": "Menangkan Sidang Umum MPR saat Kesehatan Ekonomi berada pada tingkat '$tier.econ.bankruptcy$'."
+  },
+  {
+    "id": "persona_non_grata",
+    "title": "Persona Non Grata, Bapak Presiden",
+    "desc": "Menangkan Sidang Umum MPR saat Posisi Internasional berada pada tingkat '$tier.intl.pariah_state$'."
+  },
+  {
+    "id": "sinetron_villain",
+    "title": "Antagonis Sinetron Menang",
+    "desc": "Menangkan Sidang Umum MPR saat Popularitas berada pada tingkat '$tier.pop.universally_hated$'."
+  },
+  {
+    "id": "dwifungsi_kaput",
+    "title": "Selamat Tinggal Dwifungsi",
+    "desc": "Pisahkan POLRI dari ABRI, perluas wewenang Komnas HAM atas militer, dan tetap menangkan pemungutan suara MPR."
+  },
+  {
+    "id": "thankless_burden",
+    "title": "Peraih Nobel dalam Semangat",
+    "desc": "Hormati hasil jajak pendapat Timor Timur 30 Agustus di setiap langkah, undang pasukan penjaga perdamaian PBB pada 12 September, dan tetap menangkan Sidang Umum MPR."
+  },
+  {
+    "id": "deja_vu_322",
+    "title": "355 Lawan 322: Déjà Vu Sejarah",
+    "desc": "Kalah dalam Sidang Umum MPR dengan perolehan suara yang nyaris persis sama dengan penolakan 322–355 yang dialami Habibie di dunia nyata pada malam 19–20 Oktober 1999."
+  },
+  {
+    "id": "those_who_stayed_silent",
+    "title": "Mereka yang Memilih Diam",
+    "desc": "Kalah dalam Sidang Umum MPR dengan perolehan 330 hingga 350 suara menerima, di mana surat suara abstain dan utusan yang tidak hadirlah—bukan suara 'menolak'—yang menjauhkan Anda dari ambang 351 suara."
+  },
+  {
+    "id": "gus_dur_twist",
+    "title": "Lho! Tunggu, Itu Musiknya Gus Dur!",
+    "desc": "Bantu Amien Rais menjadi Ketua MPR, bangun sikap '$mood.poros_tengah_merged.leaning_toward_habibie$' (atau lebih baik) dengan Poros Tengah, namun tetap kalah dalam Pemungutan Suara Pertanggungjawaban."
+  },
+  {
+    "id": "enak_jamanku",
+    "title": "\"Piye Kabare? Enak Jamanku Toh?\"",
+    "desc": "Menangkan Sidang Umum MPR dengan Pengaruh Cendana mendekati $tier.cendana.untouchable$ dan Kredibilitas Reformasi merosot ke tingkat '$tier.ref.authoritarian$' atau '$tier.ref.new_order_crony$'."
+  },
+  {
+    "id": "fumes_in_the_tank",
+    "title": "Melayang Tanpa Bahan Bakar",
+    "desc": "Masuki Sidang Umum MPR dengan nol Modal Politik tersisa dan tetap menangkan kursi kepresidenan."
+  },
+  {
+    "id": "presiden_rebahan",
+    "title": "Presiden Rebahan",
+    "desc": "Menangkan Sidang Umum MPR tanpa memberlakukan satu pun Dekrit Luar Biasa. Mengurus negara itu melelahkan; terkadang, kebijakan terbaik adalah rebahan."
+  },
+  {
+    "id": "sedia_payung",
+    "title": "Sedia Payung Sebelum Hujan",
+    "desc": "Capai Sidang Umum MPR dengan Modal Politik pada batas maksimal (100)."
+  },
+  {
+    "id": "habibi_ya_habibi",
+    "title": "Habibi, Ya Habibi!",
+    "desc": "Menangkan Sidang Umum MPR dengan dukungan melimpah dari Poros Tengah, Utusan Golongan, dan Partai-Partai Kecil."
+  },
+  {
+    "id": "total_reformasi",
+    "title": "Reformasi Total, Bung!",
+    "desc": "Berlakukan ketujuh pilar reformasi: undang-undang antikorupsi, netralitas pegawai negeri sipil, pemilihan presiden langsung, mahkamah penyitaan aset Soeharto, pembebasan tahanan politik, wewenang baru Komnas HAM, dan pembubaran Departemen Penerangan."
+  },
+  {
+    "id": "the_center_holds",
+    "title": "Poros Utama Bertahan",
+    "desc": "Menangkan Sidang Umum MPR dengan mayoritas utusan mendukung Anda di kedua sayap Golkar, Utusan Daerah, Utusan Golongan, Partai-Partai Kecil, dan TNI."
+  },
+  {
+    "id": "singa_reformasi",
+    "title": "SINGA Reformasi",
+    "desc": "Menangkan Sidang Umum MPR dengan Kredibilitas Reformasi pada tingkat tertinggi dan Pengaruh Cendana ditekan ke tingkat $tier.cendana.weakened$ atau $tier.cendana.dormant$."
+  },
+  {
+    "id": "orba_jilid_dua",
+    "title": "Orde Baru Jilid II",
+    "desc": "Berlakukan 'Supersemar II' sekaligus Pakta Pemulihan Jalan Cendana, dan selamat melewati Sidang Umum MPR."
+  },
+  {
+    "id": "empire_strikes_beringin",
+    "title": "Kembalinya Sang Beringin",
+    "desc": "Sahkan RUU milisi Kamra, berlakukan kembali sensor pers SIUPP, bersihkan Utusan Golongan, dan mobilisasi Pam Swakarsa. Dahulu kala, di sebuah rezim yang tak begitu jauh..."
+  },
+  {
+    "id": "siupp_is_back",
+    "title": "SIUPP Kembali Lagi, Bung",
+    "desc": "Berlakukan kembali perizinan pers SIUPP."
+  },
+  {
+    "id": "kudatuli_redux",
+    "title": "27 Juli Terulang Kembali",
+    "desc": "Bubarkan PDI-P pimpinan Megawati melalui dekrit darurat dan bagikan 153 kursinya ke seluruh Majelis."
+  },
+  {
+    "id": "beringin_tumbang",
+    "title": "Memangkas Pohon Beringin",
+    "desc": "Diskualifikasi kaukus barisan tua Golkar pimpinan Akbar Tandjung atas hasil audit kecurangan dana pemilu Bank Bali."
+  },
+  {
+    "id": "back_to_the_barracks",
+    "title": "Kembali ke Barak",
+    "desc": "Hapus 38 kursi MPR tanpa pemilihan milik ABRI dan bongkar struktur komando teritorial Kodam dalam satu kampanye yang sama."
+  },
+  {
+    "id": "finis_dwifungsi",
+    "title": "Tombol Hapus Dwifungsi",
+    "desc": "Bentuk kementerian pertahanan sipil, pisahkan POLRI dari ABRI, bongkar struktur komando Kodam, dan hapus kursi MPR milik ABRI. Cilangkap telah membaca pesan Anda dan sedang menyusun balasannya."
+  },
+  {
+    "id": "nkri_terms",
+    "title": "NKRI Harga Mati (Syarat dan Ketentuan Berlaku)",
+    "desc": "Berlakukan otonomi daerah, undang-undang keistimewaan Aceh, serta pemekaran Maluku dan Irian Jaya. Negara kesatuan memang harga mati, kecuali untuk bagian-bagian yang sudah telanjur dinegosiasikan."
+  },
+  {
+    "id": "tolak_lupa",
+    "title": "Menolak Lupa",
+    "desc": "Peringati pahlawan Trisakti dan Semanggi, lakukan kunjungan rekonsiliasi ke Glodok, dukung Komnas Perempuan, cabut aturan SBKRI, buka arsip 1965, dan cabut larangan budaya Tionghoa."
+  },
+  {
+    "id": "cendana_cashback",
+    "title": "Cashback Cendana",
+    "desc": "Sita jalan tol Cendana, audit yayasan Kodam, dan bentuk mahkamah penyitaan aset Soeharto. Tolong siapkan kuitansinya."
+  },
+  {
+    "id": "odd_bedfellows",
+    "title": "Koalisi Tak Lazim",
+    "desc": "Menangkan Sidang Umum MPR saat PDI-P dan Poros Tengah, yang selama ini berkoordinasi melawan Anda, sama-sama memiliki loyalitas 70 atau lebih tinggi."
+  },
+  {
+    "id": "halo_halo_senayan",
+    "title": "Halo, Halo Senayan",
+    "desc": "Hubungi lewat telepon setiap malam menjelang penentuan: gunakan Seruan Terakhir pada masing-masing dari tiga fase tindakan terakhir."
+  },
+  {
+    "id": "utang_budi",
+    "title": "Hutang Budi Dibawa Mati",
+    "desc": "Miliki setidaknya satu tabungan Budi Politik pada enam fraksi berbeda di saat yang bersamaan."
+  },
+  {
+    "id": "kaos_merah",
+    "title": "Baju Merah Saja Tak Cukup",
+    "desc": "Menangkan Sidang Umum MPR meskipun Mobilisasi Massa Jalanan PDI-P mencapai 100% dan blok tersebut memilih menolak hingga utusan terakhir."
+  },
+  {
+    "id": "ngopi_dulu",
+    "title": "Ngopi Dulu, Jenderal?",
+    "desc": "Menangkan Sidang Umum MPR tanpa membuat para jenderal marah ataupun terasing. Ngopi dulu, Jenderal."
+  },
+  {
+    "id": "asas_tunggal_restored",
+    "title": "Pancasila Abadi!",
+    "desc": "Berlakukan kembali UU Asas Tunggal 1985 di bawah keadaan darurat dan bubarkan blok partai-partai keagamaan di dalam MPR."
+  },
+  {
+    "id": "unify_golkar",
+    "title": "Satukan Golkar",
+    "desc": "Rekonsiliasikan kedua sayap Golkar."
+  },
+  {
+    "id": "rainbow_coalition",
+    "title": "Koalisi Pelangi",
+    "desc": "Deklarasikan pemerintahan persatuan nasional bersama PDI-P, Golkar, Poros Tengah, dan ABRI."
+  },
+  {
+    "id": "bhinneka_coalition",
+    "title": "Bhinneka Tunggal Ika",
+    "desc": "Selesaikan Sidang Umum MPR dengan PDI-P, Poros Tengah, Golkar (DPP Slipi), dan TNI semuanya berada pada tingkat loyalitas 60 atau lebih tinggi."
+  },
+  {
+  "id": "ucn_6am",
+  "title": "Hak Pamer",
+  "desc": "Pertahankan Pidato Pertanggungjawaban Anda pada mode Situasi Siaga Satu (SSS) dengan seluruh kartu situasi diatur ke Tingkat III."
+  }
+]

@@ -1,0 +1,297 @@
+[
+  {
+    "id": "complete_run",
+    "title": "The 512th Day",
+    "desc": "Complete a full run of the MPR General Session, regardless of the outcome."
+  },
+  {
+    "id": "win_any",
+    "title": "The Caretaker No More",
+    "desc": "Win the MPR General Session and retain the presidency on any difficulty."
+  },
+  {
+    "id": "win_historical",
+    "title": "A Full Term Secured",
+    "desc": "Defy history and win the MPR General Session on Historical difficulty."
+  },
+  {
+    "id": "khatam",
+    "title": "Khatam!",
+    "desc": "Win the MPR General Session on every standard difficulty: Easy, Medium, High and Historical. Like finishing the whole book cover to cover."
+  },
+  {
+    "id": "pop_max",
+    "title": "Voice of the People",
+    "desc": "Reach the peak of Popularity ('$tier.pop.tolerated$') on Medium difficulty or above."
+  },
+  {
+    "id": "cendana_zero",
+    "title": "Cendana Delenda Est",
+    "desc": "Completely eradicate Cendana Influence on Medium difficulty or above."
+  },
+  {
+    "id": "pdip_max",
+    "title": "The Unholy Compromise",
+    "desc": "Win over Megawati's PDI-P completely on Medium difficulty or above."
+  },
+  {
+    "id": "always_more_austerity",
+    "title": "President Habibie's response is, as always, more austerity.",
+    "desc": "Please the <font color=\"#004C97\"><b>IMF</b></font> by eliminating fuel and power subsidies, dismantling BULOG, and liquidating insolvent banks while reaching maximum International Standing with Economic Health and Popularity in ruins (Medium+)."
+  },
+  {
+    "id": "bruning_impressed",
+    "title": "Brüning Impressed.",
+    "desc": "Survive the MPR General Session having enacted all three IMF mandates, reached maximum International Standing, and tanked Economic Health and Popularity. (Any Difficulty)"
+  },
+  {
+    "id": "win_overwhelming",
+    "title": "A New Mandate",
+    "desc": "Win the MPR General Session with an overwhelming landslide (450+ votes)."
+  },
+  {
+    "id": "win_comfortable",
+    "title": "Comfortable Majority",
+    "desc": "Win the MPR General Session with a comfortable majority (380+ votes)."
+  },
+  {
+    "id": "win_narrow",
+    "title": "By the Skin of Your Teeth",
+    "desc": "Survive the MPR General Session in a narrow upset."
+  },
+  {
+    "id": "lose_narrow",
+    "title": "A Valiant Effort",
+    "desc": "Lose the presidency by a razor-thin margin."
+  },
+  {
+    "id": "lose_decisive",
+    "title": "The End of an Era",
+    "desc": "Suffer a decisive defeat in the MPR General Session."
+  },
+  {
+    "id": "lose_overwhelming",
+    "title": "Total Repudiation",
+    "desc": "Lose the MPR General Session in an overwhelming landslide against you (Under 200 votes)."
+  },
+  {
+    "id": "mr_crack",
+    "title": "Mr. Crack Never Cracks",
+    "desc": "Let overall Government Stability fall into UNSTABLE or COLLAPSING, then engineer a structural recovery and win the MPR General Session."
+  },
+  {
+    "id": "aman_terkendali",
+    "title": "Aman Terkendali™",
+    "desc": "Reach the top National Stability tier ('$tier.stab.uneasy_calm$') on Medium difficulty or above. Everything is secure and under control, as the saying went. Please do not look under the carpet."
+  },
+  {
+    "id": "cleared_for_takeoff",
+    "title": "Cleared for Takeoff, Gatotkaca",
+    "desc": "Protect BPPT/IPTN research funding AND champion the N-250 Gatotkaca turboprop budget line, then win the MPR General Session."
+  },
+  {
+    "id": "halo_andi",
+    "title": "\"Halo, Andi? Apa Kabar?\"",
+    "desc": "Uphold the October 11 SP3 order terminating the Suharto corruption investigation while Cendana Influence remains deeply $tier.cendana.entrenched$ or $tier.cendana.untouchable$."
+  },
+  {
+    "id": "et_tu_akbar",
+    "title": "Et Tu, Akbar?",
+    "desc": "Lose the MPR General Session despite holding '$mood.golkar_habibie.ride_or_die$' loyalty with your Golkar Loyalists because Akbar Tandjung's Golkar faction abandoned you."
+  },
+  {
+    "id": "dipecat_dengan_hormat",
+    "title": "Honorably Discharged",
+    "desc": "Lose the MPR General Session while overall Government Stability is $gov.stable$ or $gov.secure$."
+  },
+  {
+    "id": "baligate_clean",
+    "title": "546 Billion Reasons Why",
+    "desc": "Blow the lid off Bank Bali. Freeze EGP's accounts, grant PwC unrestricted access, hand the unredacted files to PDI-P's Pansus, and declassify the full audit."
+  },
+  {
+    "id": "camdessus_arms",
+    "title": "Who's Folding Their Arms Now, Michel?",
+    "desc": "Resurrect Steve Hanke's Currency Board Scheme, defy the IMF's Bank Bali ultimatum, and still finish the game with Economic Health at '$tier.econ.stagnant$' or better."
+  },
+  {
+    "id": "utang_nanti_dulu",
+    "title": "Debts can wait",
+    "desc": "Win the MPR General Session with Economic Health in '$tier.econ.bankruptcy$'."
+  },
+  {
+    "id": "persona_non_grata",
+    "title": "Persona Non Grata, Mr. President",
+    "desc": "Win the MPR General Session with International Standing in '$tier.intl.pariah_state$'."
+  },
+  {
+    "id": "sinetron_villain",
+    "title": "The Soap Opera Villain Wins",
+    "desc": "Win the MPR General Session with Popularity in '$tier.pop.universally_hated$'."
+  },
+  {
+    "id": "dwifungsi_kaput",
+    "title": "A Farewell to Dwifungsi",
+    "desc": "Separate POLRI from ABRI, expand Komnas HAM's authority over the military, and still win the MPR vote."
+  },
+  {
+    "id": "thankless_burden",
+    "title": "Nobel Laureate in Spirit",
+    "desc": "Honor the August 30 East Timor referendum at every turn, invite UN peacekeepers on September 12, and still win the MPR General Session."
+  },
+  {
+    "id": "deja_vu_322",
+    "title": "355 to 322: Historical Déjà Vu",
+    "desc": "Lose the MPR General Session with almost the exact tally of Habibie's real-life 322–355 rejection on the night of October 19–20, 1999."
+  },
+  {
+    "id": "those_who_stayed_silent",
+    "title": "Those Who Stayed Silent",
+    "desc": "Lose the MPR General Session with 330 to 350 votes in favor, where blank ballots and absent delegates, not the 'no' votes, kept you from the 351 you needed."
+  },
+  {
+    "id": "gus_dur_twist",
+    "title": "Bah! Wait, That's Gus Dur's Music!",
+    "desc": "Help Amien Rais become MPR Speaker, cultivate a '$mood.poros_tengah_merged.leaning_toward_habibie$' stance (or better) with the Central Axis, and still lose the Accountability Vote."
+  },
+  {
+    "id": "enak_jamanku",
+    "title": "\"Piye Kabare? Enak Jamanku Toh?\"",
+    "desc": "Win the MPR General Session with Cendana Influence nearly $tier.cendana.untouchable$ and Reformasi Credibility reduced to '$tier.ref.authoritarian$' or '$tier.ref.new_order_crony$'."
+  },
+  {
+    "id": "fumes_in_the_tank",
+    "title": "Gliding on Empty",
+    "desc": "Enter the MPR General Session with zero Political Capital remaining and win the presidency anyway."
+  },
+  {
+    "id": "presiden_rebahan",
+    "title": "The Couch Potato President",
+    "desc": "Win the MPR General Session without enacting a single Extraordinary Decree. Governing is tiring, sometimes, the best policy is to lie down."
+  },
+  {
+    "id": "sedia_payung",
+    "title": "Umbrella Before the Rain",
+    "desc": "Reach the MPR General Session with Political Capital at the maximum (100)."
+  },
+  {
+    "id": "habibi_ya_habibi",
+    "title": "Habibi, Ya Habibi!",
+    "desc": "Win the MPR General Session with overwhelming support across the Central Axis, Utusan Golongan, and the Minor Parties."
+  },
+  {
+    "id": "total_reformasi",
+    "title": "Reformasi Total, Bung!",
+    "desc": "Enact all seven pillars of reform. The anti-corruption law, civil service neutrality, direct presidential elections, the Suharto asset tribunal, the political prisoner release, Komnas HAM's new powers and broadcast liberalization."
+  },
+  {
+    "id": "the_center_holds",
+    "title": "The Center Holds",
+    "desc": "Win the MPR General Session with a majority of delegates backing you in both Golkar wings, Utusan Daerah, Utusan Golongan, the Minor Parties and TNI."
+  },
+  {
+    "id": "singa_reformasi",
+    "title": "LION of reformasi",
+    "desc": "Win the MPR General Session with Reformasi Credibility at its highest tier and Cendana Influence reduced to $tier.cendana.weakened$ or $tier.cendana.dormant$."
+  },
+  {
+    "id": "orba_jilid_dua",
+    "title": "Orde Baru Jilid II",
+    "desc": "Enact both 'Supersemar II' and the Jalan Cendana Restoration Pact, and survive the MPR General Session."
+  },
+  {
+    "id": "empire_strikes_beringin",
+    "title": "The Empire Strikes Beringin",
+    "desc": "Pass the Kamra militia bill, reinstate SIUPP press censorship, purge Utusan Golongan and mobilize the Pam Swakarsa. A long time ago, in a regime not so far away..."
+  },
+  {
+    "id": "siupp_is_back",
+    "title": "SIUPP Is Back, Baby",
+    "desc": "Reinstate SIUPP press licensing."
+  },
+  {
+    "id": "kudatuli_redux",
+    "title": "July 27 All Over Again",
+    "desc": "Outlaw Megawati's PDI-P by emergency decree and redistribute its 153 seats across the Assembly."
+  },
+  {
+    "id": "beringin_tumbang",
+    "title": "Pruning the Banyan Tree",
+    "desc": "Disqualify Akbar Tandjung's old-guard Golkar caucus over the Bank Bali election-fraud audit."
+  },
+  {
+    "id": "back_to_the_barracks",
+    "title": "Back to the Barracks",
+    "desc": "Abolish ABRI's 38 unelected MPR seats and dismantle the Kodam territorial command structure in a single campaign."
+  },
+  {
+    "id": "finis_dwifungsi",
+    "title": "End Dwifunsi button",
+    "desc": "Create a civilian defense ministry, separate POLRI from ABRI, dismantle the Kodam command structure and abolish ABRI's MPR seats. Cilangkap has seen your message and is composing a reply."
+  },
+  {
+    "id": "nkri_terms",
+    "title": "Non-Negotiable Unity (Terms and Conditions Apply)",
+    "desc": "Enact regional autonomy, the Aceh special status law and the Maluku–Irian Jaya division. The unitary state is non-negotiable, except for the parts that were negotiated."
+  },
+  {
+    "id": "tolak_lupa",
+    "title": "Menolak Rupa",
+    "desc": "Commemorate Trisakti and Semanggi, reconcile with Chinatown, found the Women's Commission, review the SBKRI rules, declassify the 1965 files and repeal the Chinese cultural ban."
+  },
+  {
+    "id": "cendana_cashback",
+    "title": "Cendana Cashback",
+    "desc": "Seize the Cendana toll roads, audit the Kodam foundations and convene the Suharto asset seizure tribunal. Receipts, please."
+  },
+  {
+    "id": "odd_bedfellows",
+    "title": "Odd Bedfellows",
+    "desc": "Win the MPR General Session while PDI-P and Poros Tengah, who have been coordinating against you, both hold 70 or higher loyalty."
+  },
+  {
+    "id": "halo_halo_senayan",
+    "title": "Halo, Halo Senayan",
+    "desc": "Work the telephones every night of the finale: use a Final Appeal in each of the last three action phases."
+  },
+  {
+    "id": "utang_budi",
+    "title": "A Debt of Honor, Carried to the Grave",
+    "desc": "Hold at least one banked Favor with six different factions at the same time."
+  },
+  {
+    "id": "kaos_merah",
+    "title": "Red Shirts Aren't Enough",
+    "desc": "Win the MPR General Session even though PDI-P's Street Mobilization hit 100% and the bloc voted to reject to the last delegate."
+  },
+  {
+    "id": "ngopi_dulu",
+    "title": "Coffee First, General?",
+    "desc": "Win the MPR General Session with the generals neither angry nor alienated. Have some coffee first, General."
+  },
+  {
+    "id": "asas_tunggal_restored",
+    "title": "Pancasila Forever!",
+    "desc": "Re-impose the 1985 Asas Tunggal law under emergency rule and dissolve the religious party blocs in the MPR."
+  },
+  {
+    "id": "unify_golkar",
+    "title": "Unify Golkar",
+    "desc": "Reconcile the two wings of Golkar."
+  },
+  {
+    "id": "rainbow_coalition",
+    "title": "The Rainbow Coalition",
+    "desc": "Proclaim a government of national unity with PDI-P, Golkar, Central Axis, and ABRI."
+  },
+  {
+    "id": "bhinneka_coalition",
+    "title": "Bhinneka Tunggal Ika",
+    "desc": "Complete the MPR General Session with PDI-P, Poros Tengah, Golkar (DPP Slipi) and TNI all at 60 or higher loyalty."
+  },
+  {
+  "id": "ucn_6am",
+  "title": "Bragging Rights",
+  "desc": "Defend your Accountability Speech in Severe State Situations (SSS) with every situation card set to Level III."
+  }
+]

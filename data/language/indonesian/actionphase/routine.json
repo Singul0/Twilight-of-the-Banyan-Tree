@@ -1,0 +1,1554 @@
+[
+  {
+    "id": "taipans",
+    "category": "Economy",
+    "text": "\"Menyelenggarakan Resepsi Tertutup dengan Daftar Tamu yang Tidak Dirinci bagi Kalangan Dunia Usaha Terpilih yang Kerja Sama Berkelanjutannya Dapat Memberikan Keuntungan ke Depan\"",
+    "short_name": "Jamuan Para Taipan",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Menggelar malam perbincangan tertutup bersama segelintir pemilik konglomerasi terbesar di Jakarta, yang diatur tanpa agenda tetap selain mengingatkan semua yang hadir tentang siapa yang masih menduduki Istana. Langkah ini merupakan cara yang dapat diandalkan untuk menghasilkan <font color=\"#0000FF\"><b>Modal Politik</b></font> dalam jumlah sedang, disertai sedikit dorongan pada <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> seiring mengalirnya jaminan informal kembali ke pasar. Dengan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> yang terhormat, jamuan makan malam ini dianggap sebagai tata kelola negara biasa; namun jika jatuh di bawah garis tersebut, jamuan yang sama akan dibaca sebagai pembenaran atas kecurigaan terburuk semua orang.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "econ": [3, 8],
+          "ref": [-8, -4],
+          "pop": [-5, -3],
+          "cendana": [3, 5]
+        },
+        "alertMsg": "Jamuan makan malam tertutup bersama para taipan Jakarta menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> dan jaminan ekonomi secara diam-diam. Reputasi Anda sebagai seorang reformis meredam sebagian besar guncangannya, meskipun jaringan lama Cendana tetap memanfaatkan akses tersebut untuk menjalin kembali koneksi mereka."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "econ": [2, 6],
+          "ref": [-13, -7],
+          "pop": [-10, -6],
+          "cendana": [6, 10]
+        },
+        "alertMsg": "Jamuan makan malam tertutup bersama para taipan Jakarta menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> dan jaminan ekonomi secara diam-diam. Dengan kredibilitas Anda yang sudah tipis, pers reformis memperlakukannya sebagai bukti nyata dari apa yang selama ini mereka curigai, dan para kroni Cendana memperluas jaringan mereka nyaris tanpa hambatan."
+      }
+    ],
+    "dynamicPC": {
+      "base": 17,
+      "min": 8
+    }
+  },
+  {
+    "id": "privatization",
+    "category": "Economy",
+    "text": "\"Memandatkan Percepatan Divestasi Kepemilikan Saham Minoritas Negara pada Badan Usaha Terpilih, Menunggu Penilaian Akhir oleh Konsultan Internasional\"",
+    "short_name": "Percepatan Privatisasi BUMN",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Menginstruksikan Menteri Pendayagunaan BUMN Tanri Abeng untuk mempercepat penjualan saham minoritas di PT Telkom, Indosat, dan operator pelabuhan kepada mitra strategis asing, yang dirancang untuk meraup dana segar secara cepat alih-alih mendapatkan harga terbaik. Menghasilkan <font color=\"#0000FF\"><b>Modal Politik</b></font> dalam jumlah besar. Ketika <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> sedang tampak terseok-seok, penjualan ini diterima dengan berat hati sebagai langkah darurat yang terpaksa diambil; namun ketika ekonomi terlihat lebih sehat, divestasi yang sama akan dikecam sebagai obral murah harta pusaka negara.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "econ": [3, 5],
+          "intl": [2, 4],
+          "pop": [-7, -3],
+          "ref": [-7, -3],
+          "pdip": [-7, -3]
+        },
+        "alertMsg": "Hasil divestasi tersebut mengisi pundi-pundi kas politik Anda, menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>. Dengan kondisi ekonomi yang masih terseok-seok, sebagian besar pengamat memaklumi privatisasi itu sebagai keharusan fiskal yang pahit."
+      },
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "intl": [2, 4],
+          "pop": [-13, -7],
+          "ref": [-13, -7],
+          "pdip": [-10, -6]
+        },
+        "alertMsg": "Hasil divestasi tersebut mengisi pundi-pundi kas politik Anda, menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>, namun karena kondisi ekonomi sedang cukup membaik, pers nasionalis memprotes keras obral murah aset-aset mahkota Republik ini."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "bureaucratic_squeeze",
+    "category": "Economy",
+    "text": "\"Menginstruksikan Departemen Keuangan untuk Memberlakukan Penahanan Administratif Seketika atas Sisa Anggaran Pembangunan Departemen yang Belum Terpakai\"",
+    "short_name": "Penarikan Anggaran Departemen",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Membekukan dan menarik kembali dana pembangunan yang belum terpakai di beberapa kementerian teknis, lalu mengalihkannya untuk prioritas politik mendesak Istana sebelum ada pihak di Senayan yang menyadari pemindahan tersebut. Secara pasti memeras <font color=\"#0000FF\"><b>Modal Politik</b></font> dari mesin birokrasi. Dengan <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> yang terjaga, kementerian-kementerian dapat menyerap kekurangan dana tersebut dengan sedikit gerutuan; namun di bawah garis itu, memangkas anggaran kementerian yang sudah kembang kempis akan menghentikan layanan-layanan dasar.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "stab": [-5, -3],
+          "econ": [-5, -3],
+          "golkar_akbar": [-5, -3]
+        },
+        "alertMsg": "Rekening-rekening kementerian dikuras secara diam-diam demi kepentingan Istana, memberi Anda <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>. Karena kondisi negara cukup terkendali, para pegawai negeri hanya menggerutu kecil sementara proyek-proyek daerah sebagian besar tetap berjalan."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "stab": [-10, -6],
+          "econ": [-9, -5],
+          "golkar_akbar": [-9, -5]
+        },
+        "alertMsg": "Rekening-rekening kementerian dikuras secara diam-diam demi kepentingan Istana, memberi Anda <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>. Karena kondisi negara sudah berada di ujung tanduk, para pegawai negeri mengeluh dengan getir seiring terhentinya proyek-proyek lokal di berbagai provinsi."
+      }
+    ],
+    "dynamicPC": {
+      "base": 17,
+      "min": 8
+    }
+  },
+  {
+    "id": "economy",
+    "category": "Economy",
+    "text": "\"Menginstruksikan Kementerian Terkait untuk Melaksanakan Peninjauan Administratif Terkoordinasi atas Instrumen Fiskal yang Tersedia demi Ketahanan Makroekonomi\"",
+    "short_name": "Tinjauan Fiskal Darurat",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Menginstruksikan Departemen Keuangan dan Menko Ekuin Ginandjar Kartasasmita untuk mendorong paket perbaikan administratif: pelonggaran tenggat kantor pajak, pembukaan kembali jalur kredit ekspor yang macet, dan pembebasan bea masuk bahan baku industri. Berfungsi sebagai stimulus terarah yang memberikan kelegaan besar saat <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> melemah, serta peningkatan bertahap yang stabil begitu pemulihan mulai berjalan.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "econ": [7, 13],
+          "pop": [3, 5]
+        },
+        "alertMsg": "Dengan kondisi ekonomi yang masih terseok-seok, pasar keuangan merespons perbaikan administratif tersebut dengan kelegaan seketika. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "econ": [3, 5],
+          "pop": 2
+        },
+        "alertMsg": "Dengan kondisi ekonomi yang sudah berada di pijakan yang lebih kokoh, perbaikan administratif tersebut memberikan peningkatan bertahap yang stabil. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 15,
+      "min": 7
+    }
+  },
+  {
+    "id": "urban_relief_program",
+    "category": "Economy",
+    "text": "\"Menginstruksikan Departemen Sosial untuk Memperluas Program Distribusi Bahan Pokok Bersubsidi di Lingkungan yang Paling Terdampak Kerusuhan\"",
+    "short_name": "Operasi Pasar Khusus Sembako",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Memperluas gerai <i>Operasi Pasar Khusus</i> (OPK) yang menjaga agar beras, minyak goreng, dan gula bersubsidi tetap mengalir ke lingkungan-lingkungan termiskin di Jakarta, Surabaya, dan Medan. Mengangkat <font color=\"#D81B60\"><b>Popularitas</b></font>, <font color=\"#37474F\"><b>Stabilitas Nasional</b></font>, dan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dengan beban biaya fiskal pada <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "pop": [8, 16],
+          "ref": [3, 5],
+          "stab": [2, 4],
+          "econ": [-7, -3]
+        },
+        "alertMsg": "Antrean di gerai-gerai pasar khusus memanjang seiring menyebarnya kabar perluasan program tersebut. Karena kas negara berada dalam kondisi yang cukup baik, tambahan tagihan subsidi itu dapat diserap tanpa banyak kendala. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "pop": [4, 8],
+          "ref": [2, 4],
+          "stab": 2,
+          "econ": [-9, -5]
+        },
+        "alertMsg": "Antrean di gerai-gerai pasar khusus memanjang seiring menyebarnya kabar perluasan program tersebut. Karena kas negara sudah terkuras tipis, para penasihat ekonomi memperingatkan bahwa pos subsidi ini kian sulit dipertahankan. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 12,
+      "min": 5
+    }
+  },
+  {
+    "id": "foreign_roadshow",
+    "category": "Economy",
+    "text": "\"Mengutus Delegasi Menteri Ekonomi dan Pejabat Bank Sentral dalam Lawatan Kepercayaan Investor ke Pusat-Pusat Keuangan\"",
+    "short_name": "Lawatan Kepercayaan Investor",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengirim para menteri ekonomi senior Anda dalam rangkaian paparan di hadapan para manajer investasi di Singapura, Hong Kong, dan Tokyo. Berhasil dengan meyakinkan apabila <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> cukup terjaga, memberikan peningkatan kuat pada <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> dan <font color=\"#00838F\"><b>Posisi Internasional</b></font>; namun jika jalanan di dalam negeri tampak terbakar di layar televisi lobi hotel, lawatan ini justru menjadi bumerang.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 40
+        },
+        "effects": {
+          "econ": [7, 13],
+          "intl": [7, 13]
+        },
+        "alertMsg": "Pertemuan delegasi di Singapura dan Hong Kong berjalan sebaik yang diharapkan. Para manajer investasi menggambarkan paparan tersebut, untuk pertama kalinya dalam beberapa bulan, terasa menenangkan. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 40
+        },
+        "effects": {
+          "econ": [-7, -3],
+          "intl": [-5, -3]
+        },
+        "alertMsg": "Para wartawan membuntuti delegasi ke setiap pertemuan sembari tayangan kerusuhan dalam negeri diputar di layar televisi lobi hotel di belakang mereka. Para manajer investasi pulang tanpa rasa yakin. Meski begitu, langkah ini tetap menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "diaspora_outreach",
+    "category": "Economy",
+    "text": "\"Mengutus Delegasi Kecil untuk Bertemu Secara Tertutup dengan Tokoh-Tokoh Bisnis dan Pemuka Masyarakat yang Saat Ini Bermukim di Luar Negeri\"",
+    "short_name": "Konsultasi Ekonomi Diaspora",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengirim utusan ekonomi terpercaya untuk bertemu secara diam-diam dengan para pemilik usaha dan profesional etnis Tionghoa-Indonesia yang membawa lari modal mereka ke Singapura, Hong Kong, dan Perth pascakerusuhan Mei 1998. Memberikan peningkatan kuat pada <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> dan <font color=\"#00838F\"><b>Posisi Internasional</b></font> saat reputasi internasional Anda mulai pulih.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "intl",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "econ": [7, 13],
+          "intl": [7, 13],
+          "pop": [3, 5]
+        },
+        "alertMsg": "Tidak ada komitmen pasti yang diumumkan ke publik, namun seiring pulihnya posisi negara di mata dunia, pendekatan tersebut disambut hangat dan modal yang sempat parkir di luar negeri mulai mengalir kembali sedikit demi sedikit ke bank-bank di Jakarta. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "intl",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "econ": [3, 7],
+          "intl": [3, 5],
+          "pop": 2
+        },
+        "alertMsg": "Tidak ada komitmen pasti yang diumumkan, dan karena posisi negara masih goyah di mata luar negeri, pendekatan tersebut dihargai namun disikapi dengan penuh kehati-hatian. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "jps_expansion",
+    "category": "Economy",
+    "text": "\"Memberi Wewenang kepada Departemen Koperasi dan Pengusaha Kecil untuk Mempercepat Pencairan Kredit Mikro Jaring Pengaman Sosial Melalui Koperasi Unit Desa\"",
+    "short_name": "Kredit Mikro Jaring Pengaman Sosial (JPS)",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Memberi wewenang kepada Menteri Koperasi Adi Sasono untuk menyalurkan jalur kredit <i>Jaring Pengaman Sosial</i> (JPS) secara langsung kepada Koperasi Unit Desa (<i>KUD</i>), pedagang kecil, dan petani di luar sektor perbankan tradisional. Ketika <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> berada pada tingkat yang terhormat, dana tersebut sampai ke akar rumput dan mengangkat <font color=\"#D81B60\"><b>Popularitas</b></font> serta iktikad baik <font color=\"#1E6840\"><b>PPP</b></font>, <font color=\"#005500\"><b>PKB</b></font>, dan <font color=\"#004488\"><b>PAN</b></font>; namun ketika kredibilitas rendah, para pengkritik menuduh kementerian menggunakan uang JPS sebagai dana taktis kampanye.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "pop": [6, 10],
+          "econ": [3, 5],
+          "poros_tengah": [3, 7],
+          "ppp": [3, 7],
+          "pkb": [3, 5],
+          "golkar_akbar": [-4, -2]
+        },
+        "alertMsg": "Kredit murah mengalir ke ribuan koperasi pedesaan di seluruh Jawa dan Sumatera, meraih rasa syukur yang tulus dari akar rumput serta pujian dari faksi-faksi Islam dan populis. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "pop": [3, 5],
+          "econ": [-4, -2],
+          "ref": [-5, -3],
+          "poros_tengah": [2, 4],
+          "ppp": [2, 4]
+        },
+        "alertMsg": "Pencairan kredit mikro tersebut bergerak cepat, meskipun para pemantau Bank Dunia dan surat-surat kabar Jakarta mengeluhkan dengan lantang bahwa 'koperasi-koperasi' dadakan menyunat dana tersebut demi patronase politik. Meski begitu, langkah ini tetap menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> bagi Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 15,
+      "min": 7
+    }
+  },
+  {
+    "id": "batam_technopark",
+    "category": "Economy",
+    "text": "\"Melakukan Kunjungan Kerja Inspeksi ke Otorita Pengembangan Daerah Industri Pulau Batam dan Jembatan Antarpulau Barelang Bersama Utusan Dagang Regional\"",
+    "short_name": "Kunjungan Kawasan Ekspor Batam & Barelang",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Kembali ke kawah candradimuka lama Anda di <i>Otorita Batam</i>—tempat Anda menghabiskan dua dekade mengubah pulau sarang malaria di seberang Singapura menjadi pusat ekspor elektronik yang dihubungkan oleh enam Jembatan Barelang. Menjamu para produsen Singapura dan Jepang secara langsung di lokasi akan secara pasti mendongkrak <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>, <font color=\"#00838F\"><b>Posisi Internasional</b></font>, dan semangat barisan Teknokrat Loyalis Anda.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": ">=",
+          "value": 40
+        },
+        "effects": {
+          "econ": [6, 10],
+          "intl": [4, 8],
+          "golkar_habibie": [4, 8],
+          "utusan_daerah": [2, 4]
+        },
+        "alertMsg": "Berdiri di atas jembatan kabel pancang Barelang yang ikut Anda rancang, Anda mengamankan komitmen perakitan semikonduktor baru dari para eksportir yang berbasis di Singapura, membakar semangat lingkaran dalam teknokratis Anda dan menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": "<",
+          "value": 40
+        },
+        "effects": {
+          "econ": [3, 7],
+          "intl": [3, 5],
+          "golkar_habibie": [3, 5]
+        },
+        "alertMsg": "Pabrik-pabrik ekspor kawasan berikat Batam tetap menjadi salah satu dari sedikit titik terang di tengah perekonomian nasional yang babak belur. Para eksekutif asing yang berkunjung menyampaikan dorongan semangat secara hati-hati, menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> bagi Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "seize_cendana_tolls",
+    "category": "Economy",
+    "text": "\"Menginstruksikan Departemen Pekerjaan Umum dan Jasa Marga untuk Mengakhiri Konsesi Bagi Hasil yang Dipegang oleh Operator Jalan Tol Keluarga Swasta\"",
+    "short_name": "Batalkan Monopoli Tol & Cengkeh Cendana",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Melucuti anak-anak Soeharto—khususnya pungutan jalan tol PT Citra Marga Nusaphala Persada milik Tutut dan rekening penyangga cengkeh BPPC yang tersisa milik Tommy—dari aliran pendapatan mereka yang dijamin negara. Memberikan dorongan kuat pada <font color=\"#D81B60\"><b>Popularitas</b></font>, <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, dan <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> sekaligus memangkas tajam <font color=\"#704d00\"><b>Pengaruh Cendana</b></font>. Memancing kemarahan kubu <font color=\"#7D6000\"><b>Golkar</b></font> pimpinan Akbar.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "pop": [7, 13],
+          "ref": [7, 13],
+          "econ": [4, 8],
+          "cendana": [-18, -10],
+          "golkar_akbar": [-13, -7]
+        },
+        "alertMsg": "Para pengguna jalan di seluruh Jakarta membunyikan klakson merayakan pengambilalihan gerbang-gerbang tol swasta keluarga Cendana oleh Jasa Marga. Masyarakat mengelu-elukan keberanian Anda, dan pengalihan pendapatan tol tersebut menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "pop": [4, 8],
+          "ref": [5, 9],
+          "econ": [3, 5],
+          "cendana": [-13, -7],
+          "golkar_akbar": [-10, -6]
+        },
+        "alertMsg": "Konsesi jalan tol dan tata niaga cengkeh resmi dibatalkan. Bahkan para mahasiswa yang sinis pun mengakui bahwa pukulan terhadap dompet Jalan Cendana ini benar-benar nyata, menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "dakab_supersemar_bailout",
+    "category": "Economy",
+    "text": "\"Memberi Wewenang kepada Bank-Bank Pemerintah dan BULOG untuk Kembali Menyalurkan Kontrak Distribusi Komoditas Melalui Yayasan Dakab dan Supersemar\"",
+    "short_name": "Pulihkan Monopoli Yayasan Cendana",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Secara diam-diam membalikkan surat edaran antimonopoli tahun lalu dan menyerahkan kembali kontrak distribusi gula, tepung terigu, dan minyak goreng BULOG yang menggiurkan kepada <i>Yayasan Dakab</i> dan <i>Supersemar</i> milik keluarga Soeharto dengan imbalan komisi langsung ke dalam pundi-pundi kampanye MPR Anda. Menghasilkan suntikan besar <font color=\"#0000FF\"><b>Modal Politik</b></font> dan menyenangkan hati <font color=\"#7D6000\"><b>Golkar kubu Akbar</b></font>. Memperkuat <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> serta mengorbankan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan <font color=\"#D81B60\"><b>Popularitas</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "cendana",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "golkar_akbar": [7, 13],
+          "cendana": [10, 18],
+          "ref": [-18, -10],
+          "pop": [-13, -7],
+          "intl": [-10, -6],
+          "econ": [-7, -3]
+        },
+        "alertMsg": "Gerbang-gerbang pungutan Jalan Cendana kembali dibuka. Sebagai imbalan atas pemulihan monopoli komoditas yayasan-yayasan tersebut, para penyandang dana Cendana membanjiri kas kampanye MPR Anda dengan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "cendana",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "golkar_akbar": [4, 8],
+          "cendana": [8, 16],
+          "ref": [-18, -10],
+          "pop": [-16, -8],
+          "intl": [-10, -6],
+          "econ": [-5, -3]
+        },
+        "alertMsg": "Menghidupkan kembali monopoli Cendana mengejutkan kalangan reformis yang mengira Anda telah pecah kongsi dengan keluarga Soeharto, namun komisi balas jasanya segera mempertebal kas politik Anda sebesar <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 15,
+      "min": 7
+    }
+  },
+  {
+    "id": "clerics",
+    "category": "Civil Society",
+    "text": "\"Memberi Wewenang kepada Departemen Agama untuk Mengoordinasikan Serangkaian Konsultasi Silaturahmi dengan Tokoh-Tokoh Ulama Terpandang di Provinsi Terpilih\"",
+    "short_name": "Silaturahmi Ulama & Tokoh Agama",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengirim utusan terpercaya ke jaringan ulama dan masjid di daerah-daerah. Dengan <font color=\"#D81B60\"><b>Popularitas</b></font> yang terhormat, jaringan tersebut senang dikaitkan secara terbuka dengan Istana, memberikan dorongan kuat pada kubu Amien Rais, <font color=\"#1E6840\"><b>PPP</b></font>, dan <font color=\"#005500\"><b>PKB</b></font>; namun di bawah garis tersebut, perolehannya menjadi lebih terbatas.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "pop": [3, 5],
+          "poros_tengah": [6, 10],
+          "ppp": [6, 10],
+          "pkb": [6, 10]
+        },
+        "alertMsg": "Para utusan kembali dengan anggukan persetujuan yang hangat. Karena posisi Anda sudah kuat, jaringan keagamaan di daerah senang terlihat dekat dengan Istana. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "pop": [2, 4],
+          "poros_tengah": [3, 7],
+          "ppp": [3, 7],
+          "pkb": [3, 7]
+        },
+        "alertMsg": "Para utusan kembali dengan anggukan sopan namun penuh kehati-hatian. Karena posisi Anda sedang goyah, jaringan keagamaan di daerah berhati-hati agar tidak terlihat terlalu dekat dengan Istana. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "student_dialogue",
+    "category": "Civil Society",
+    "text": "\"Menginstruksikan agar Delegasi dari Sekretariat Negara Mengadakan Pertukaran Pandangan Informal dan Tertutup dengan Perwakilan Berbagai Koalisi Kampus\"",
+    "short_name": "Pendekatan Koalisi Kampus",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Membuka jalur tidak resmi ke senat-senat mahasiswa dan koalisi kampus yang mengorganisasi aksi unjuk rasa di seluruh ibu kota. Memberikan dorongan kuat pada <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan <font color=\"#D81B60\"><b>Popularitas</b></font> saat kredibilitas masih dalam tahap pembangunan, dengan sedikit pengorbanan pada <font color=\"#556B2F\"><b>Dukungan Militer</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "ref": [6, 12],
+          "pop": [3, 7],
+          "mil": [-4, -2]
+        },
+        "alertMsg": "Para mahasiswa bersikap konfrontatif, namun karena kredibilitas Anda masih goyah, fakta bahwa Anda bersedia mengirim utusan saja sudah mencetak poin nyata. Para jenderal menggerutu bahwa Anda bernegosiasi dengan penghasut jalanan. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "ref": [3, 7],
+          "pop": [2, 4],
+          "mil": [-3, -2]
+        },
+        "alertMsg": "Para mahasiswa bersikap konfrontatif, dan karena rekam jejak reformis Anda sudah terbangun cukup baik, pertemuan tersebut memberikan dorongan yang stabil meski tidak terlalu besar. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "trisakti_semanggi_commemoration",
+    "category": "Civil Society",
+    "text": "\"Mengizinkan Upacara Kenegaraan sebagai Pengakuan atas Nama-Nama yang Selalu Dibacakan dengan Lantang oleh Kelompok Mahasiswa di Awal Hampir Setiap Aksi Unjuk Rasa Tahun Ini\"",
+    "short_name": "Peringatan Pahlawan Reformasi Kampus",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Mengizinkan upacara peringatan kenegaraan bagi para mahasiswa yang gugur di Trisakti dan Semanggi, dengan mengundang keluarga mereka ke Istana Merdeka. Memberikan dorongan kuat pada <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan <font color=\"#D81B60\"><b>Popularitas</b></font>, sekaligus menegangkan <font color=\"#556B2F\"><b>Dukungan Militer</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "mil",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "ref": [7, 13],
+          "pop": [7, 13],
+          "mil": [-7, -5]
+        },
+        "alertMsg": "Upacara tersebut berlangsung sangat mengharukan, diwarnai tangis pecah para keluarga saat nama anak-anak mereka dibacakan dengan lantang. Korps perwira menelan tudingan tersirat itu dengan berat hati, menegangkan <font color=\"#556B2F\"><b>Dukungan Militer</b></font>. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "mil",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "ref": [4, 8],
+          "pop": [4, 8],
+          "mil": [-5, -2]
+        },
+        "alertMsg": "Upacara tersebut berlangsung sangat mengharukan, diwarnai tangis pecah para keluarga saat nama anak-anak mereka dibacakan dengan lantang. Karena kepercayaan militer sudah terbatas, para perwira menggerutu secara tertutup. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 12,
+      "min": 5
+    }
+  },
+  {
+    "id": "chinatown_reconciliation",
+    "category": "Civil Society",
+    "text": "\"Melakukan Kunjungan Pribadi yang Sebagian Besar Tidak Terjadwal ke Suatu Kawasan Ibu Kota Tempat Peristiwa Tertentu dari Tahun Lalu Masih Dibicarakan Secara Diam-Diam\"",
+    "short_name": "Kunjungan Rekonsiliasi Glodok",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Berjalan kaki secara langsung menyusuri Glodok dan kawasan perniagaan Pecinan tua Jakarta, yang masih menyisakan luka bakar nyata lebih dari setahun pasca-Mei 1998. Memberikan peningkatan pada <font color=\"#D81B60\"><b>Popularitas</b></font>, <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, <font color=\"#00838F\"><b>Posisi Internasional</b></font>, dan <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>, dengan sedikit mengurangi dukungan barisan tua <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "pop": [3, 7],
+          "ref": [4, 8],
+          "intl": [4, 8],
+          "econ": [3, 5],
+          "golkar_akbar": [-7, -3]
+        },
+        "alertMsg": "Anda disambut di Glodok dengan rasa terima kasih dan duka yang masih membekas. Karena posisi Anda cukup terhormat, kunjungan tersebut mendominasi berita petang sebagai momen rekonsiliasi yang sejati. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "pop": [2, 4],
+          "ref": [3, 5],
+          "intl": [3, 5],
+          "econ": [2, 4],
+          "golkar_akbar": [-4, -2]
+        },
+        "alertMsg": "Anda disambut di Glodok dengan sopan, meskipun masih tampak raut kewaspadaan. Kendati demikian, kepercayaan dunia usaha merangkak naik sedikit. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "sbkri_review",
+    "category": "Civil Society",
+    "text": "\"Menginstruksikan Departemen Dalam Negeri untuk Melakukan Peninjauan Administratif Secara Tenang atas Persyaratan Dokumen yang Telah Berlangsung Lama\"",
+    "short_name": "Instruksi Penghapusan SBKRI (Inpres No. 4/1999)",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Menegakkan Instruksi Presiden No. 4/1999 yang menghapuskan kewajiban bagi warga negara Indonesia keturunan Tionghoa untuk menunjukkan Surat Bukti Kewarganegaraan Republik Indonesia (SBKRI) yang diskriminatif di kantor catatan sipil dan imigrasi. Memberikan dorongan kuat pada <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, <font color=\"#D81B60\"><b>Popularitas</b></font>, dan <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>, dengan mengorbankan dukungan barisan birokrat tua <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "ref": [7, 13],
+          "pop": [5, 9],
+          "econ": [3, 5],
+          "golkar_akbar": [-9, -5]
+        },
+        "alertMsg": "Instruksi presiden tersebut dikirimkan ke kantor-kantor catatan sipil provinsi. Karena rekam jejak reformis Anda masih dalam tahap pembuktian, organisasi-organisasi kemasyarakatan Tionghoa-Indonesia menyambutnya sebagai tonggak sejarah yang nyata. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "ref": [3, 7],
+          "pop": [2, 4],
+          "econ": [2, 4],
+          "golkar_akbar": [-5, -3]
+        },
+        "alertMsg": "Instruksi presiden tersebut dikirimkan ke kantor-kantor catatan sipil provinsi. Karena rekam jejak reformis Anda sudah mapan, perubahan tersebut disambut baik sebagai kemajuan yang berkelanjutan. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "ciganjur_dialogue",
+    "category": "Civil Society",
+    "text": "\"Menyampaikan Undangan Resmi kepada Empat Penandatangan Deklarasi Ciganjur untuk Mengikuti Pertemuan Meja Bundar Konstitusional di Wisma Negara\"",
+    "short_name": "Dialog Meja Bundar Tokoh Ciganjur",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Merangkul secara bersamaan 'Empat Tokoh Ciganjur'—Megawati Soekarnoputri, Abdurrahman Wahid, Amien Rais, dan Sultan Hamengkubuwono X—yang bertemu di Jakarta Selatan pada November lalu untuk merumuskan visi transisi mereka sendiri. Ketika <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> cukup terhormat, menjamu mereka bersama-sama akan menenangkan suasana bangsa dan menghangatkan hubungan dengan <font color=\"#9E1F14\"><b>PDI-P</b></font>, <font color=\"#005500\"><b>PKB</b></font>, <font color=\"#004488\"><b>PAN</b></font>, serta <font color=\"#555555\"><b>Utusan Daerah</b></font>; namun jika kredibilitas rendah, mereka akan memboikot undangan tersebut dan mempermalukan Istana.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "stab": [6, 10],
+          "ref": [3, 7],
+          "pdip": [3, 7],
+          "poros_tengah": [3, 7],
+          "pkb": [3, 7],
+          "utusan_daerah": [3, 7],
+          "golkar_akbar": [-5, -3]
+        },
+        "alertMsg": "Foto-foto Anda duduk berhadapan dengan para tokoh Ciganjur di Wisma Negara mendominasi halaman depan setiap surat kabar, menurunkan suhu politik di Jakarta dan menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "pop": [-5, -3],
+          "stab": [-4, -2],
+          "ref": 2,
+          "utusan_daerah": [2, 4]
+        },
+        "alertMsg": "Hanya Sultan Hamengkubuwono X yang hadir secara langsung sementara para pemimpin partai lainnya hanya mengirim utusan yunior, menyisakan kursi-kursi kosong di Wisma Negara yang menjadi bahan olok-olok pers. Meski demikian, upaya tersebut tetap menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "womens_commission",
+    "category": "Civil Society",
+    "text": "\"Memperluas Pendanaan Negara dan Akses Arsip bagi Komisi Nasional Anti Kekerasan terhadap Perempuan yang Dibentuk Berdasarkan Keppres No. 181/1998\"",
+    "short_name": "Dukungan Pencarian Fakta Komnas Perempuan",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Memperkuat mandat dan anggaran <i>Komnas Perempuan</i>, yang diketuai oleh Prof. Saparinah Sadli, yang Anda bentuk melalui keputusan presiden pada Oktober lalu menyusul penyelidikan Tim Gabungan Pencari Fakta (TGPF) atas kerusuhan Mei 1998. Secara pasti mendongkrak <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, <font color=\"#00838F\"><b>Posisi Internasional</b></font>, dan dukungan <font color=\"#555555\"><b>Utusan Golongan</b></font>, sekaligus membuat kesal para komandan militer.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "ref": [5, 9],
+          "intl": [5, 9],
+          "utusan_golongan": [6, 10],
+          "pop": [2, 4],
+          "mil": [-5, -2]
+        },
+        "alertMsg": "Prof. Saparinah Sadli dan koalisi masyarakat sipil perempuan menyambut baik perluasan sumber daya tersebut sebagai bukti bahwa negara tidak akan mengubur kebenaran peristiwa Mei 1998. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "ref": [3, 7],
+          "intl": [3, 7],
+          "utusan_golongan": [3, 7],
+          "mil": [-4, -2]
+        },
+        "alertMsg": "Para pegiat hak asasi manusia menyambut baik dukungan bagi Komnas Perempuan tersebut, meskipun para aktivis terus mendesak Jaksa Agung untuk melakukan penuntutan hukum yang nyata. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "declassify_1965_files",
+    "category": "Civil Society",
+    "text": "\"Memberi Wewenang kepada Sekretariat Negara dan Komnas HAM untuk Membuka Arsip Terbatas yang Berkaitan dengan Kamp Tahanan Pulau Buru dan Peristiwa 1965\"",
+    "short_name": "Rehabilitasi Eks-Tapol & Pulau Buru",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Mendobrak tabu terdalam Orde Baru dengan memulihkan hak-hak sipil sepenuhnya—serta menghapus cap 'ET' (<i>Eks-Tapol</i>) dari Kartu Tanda Penduduk—bagi ratusan ribu warga negara yang dipenjarakan tanpa pengadilan di Pulau Buru dan di seluruh nusantara pasca-1965. Meningkatkan secara drastis <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, <font color=\"#00838F\"><b>Posisi Internasional</b></font>, dan dukungan <font color=\"#555555\"><b>Utusan Golongan</b></font>. Memancing kemarahan <font color=\"#3E5022\"><b>ABRI</b></font> dan kelompok-kelompok Islam konservatif.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 55
+        },
+        "effects": {
+          "ref": [10, 18],
+          "intl": [7, 13],
+          "utusan_golongan": [8, 16],
+          "pdip": [4, 8],
+          "mil": [-10, -6],
+          "abri": [-10, -6],
+          "ppp": [-10, -6],
+          "poros_tengah": [-8, -4]
+        },
+        "alertMsg": "Sastrawan besar Pramoedya Ananta Toer dan para pegiat hak asasi manusia menyambut penghapusan stigma KTP 'ET' tersebut sebagai kemenangan hati nurani yang bersejarah. Para jenderal di Cilangkap dan para penceramah konservatif mengecam langkah itu dengan penuh kemarahan. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 55
+        },
+        "effects": {
+          "ref": [6, 12],
+          "intl": [4, 8],
+          "utusan_golongan": [6, 10],
+          "mil": [-9, -5],
+          "abri": [-9, -5],
+          "ppp": [-10, -6],
+          "stab": [-7, -3]
+        },
+        "alertMsg": "Penghapusan stigma 'Eks-Tapol' memicu protes keras dari front pemuda antikomunis dan para purnawirawan ABRI, meskipun para pengamat internasional memuji langkah kemanusiaan tersebut. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 12,
+      "min": 5
+    }
+  },
+  {
+    "id": "leak",
+    "category": "Security",
+    "text": "\"Memfasilitasi Penyebaran Tertutup Materi Latar Belakang Tertentu Melalui Jalur-Jalur Informal yang Dipahami Bersimpati kepada Pemerintahan\"",
+    "short_name": "Pembocoran Intelijen Terarah",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Membidik para kaki tangan Cendana melalui pers, dengan menyuplai berkas-berkas keuangan dan intelijen pilihan kepada para jurnalis investigasi yang siap mengangkatnya. Menghadapi jaringan <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> yang masih mengakar kuat, operasi ini memberikan dorongan mantap pada <font color=\"#D81B60\"><b>Popularitas</b></font> dan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> serta memangkas tajam <font color=\"#704d00\"><b>Pengaruh Cendana</b></font>, dengan sedikit mengorbankan <font color=\"#37474F\"><b>Stabilitas Nasional</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "cendana",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "pop": [4, 8],
+          "ref": [4, 8],
+          "stab": [-7, -3],
+          "intl": -2,
+          "cendana": [-16, -8]
+        },
+        "alertMsg": "Bocoran intelijen terarah menyapu para operator Cendana yang mengakar dan mendominasi tajuk tabloid-tabloid pagi. Masyarakat menikmati aksi pembersihan tersebut, meskipun para diplomat asing mencatat polanya secara diam-diam. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "cendana",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "pop": [2, 4],
+          "ref": [2, 4],
+          "stab": -2,
+          "intl": -2,
+          "cendana": [-8, -4]
+        },
+        "alertMsg": "Bocoran intelijen terarah menjaring segelintir sisa-sisa kaki tangan Cendana kelas teri. Beritanya tetap dimuat, namun karena jaringannya memang sudah menipis, hal itu nyaris tidak menggoyang siklus berita pagi. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 15,
+      "min": 7
+    }
+  },
+  {
+    "id": "military",
+    "category": "Security",
+    "text": "\"Meminta Kementerian Koordinator Bidang Politik dan Keamanan untuk Memfasilitasi Konsultasi Antarlembaga bersama Para Pemangku Kepentingan Angkatan Bersenjata\"",
+    "short_name": "Konsultasi Antarlembaga ABRI",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengutus Menko Polkam Jenderal (Purn.) Feisal Tanjung ke Cilangkap untuk duduk bersama jajaran staf senior Wiranto jauh dari sorotan kamera. Dengan <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> yang lebih tinggi, korps perwira memberikan iktikad baik yang nyata pada <font color=\"#556B2F\"><b>Dukungan Militer</b></font>, <font color=\"#37474F\"><b>Stabilitas Nasional</b></font>, dan <font color=\"#3E5022\"><b>fraksi ABRI</b></font>, sekaligus menahan ketidaksabaran para jenderal dan meredakan kemarahan mereka.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "mil": [5, 9],
+          "stab": [3, 7],
+          "abri": [5, 9]
+        },
+        "alertMsg": "Anda berhasil meyakinkan para jenderal puncak di balik pintu tertutup. Karena kondisi negara terasa cukup aman, jajaran <font color=\"#3E5022\"><b>ABRI</b></font> menjadi jauh lebih kooperatif. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "mil": [3, 5],
+          "stab": [2, 4],
+          "abri": [3, 5]
+        },
+        "alertMsg": "Anda bertemu dengan para jenderal puncak di balik pintu tertutup, namun karena kondisi negara sedang genting, mereka hanya memberikan jaminan yang penuh kehati-hatian. Sikap jajaran <font color=\"#3E5022\"><b>ABRI</b></font> bergeser sedikit. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "kamra_deployment",
+    "category": "Security",
+    "text": "\"Memberi Wewenang Pengerahan Detasemen Bantuan Keamanan Sipil (Kamra) untuk Membantu Unit Kepolisian dalam Mengamankan Koridor Perniagaan Perkotaan\"",
+    "short_name": "Kerahkan Personel Bantuan Polisi Kamra",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Memobilisasi 40.000 pemuda pengangguran yang direkrut dan dilatih tahun ini sebagai personel bantuan kepolisian sipil <i>Keamanan Rakyat</i> (Kamra) untuk menjaga pasar, terminal bus, dan persimpangan jalan. Ketika <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> sedang goyah, tambahan personel di jalanan memberikan dorongan kuat pada <font color=\"#37474F\"><b>Stabilitas</b></font> dan <font color=\"#556B2F\"><b>Dukungan Militer</b></font>, meskipun para pegiat Reformasi mengkhawatirkan keberadaan paramiliter yang kurang terlatih.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "stab": [7, 13],
+          "mil": [3, 6],
+          "abri": [3, 6],
+          "pop": 2,
+          "ref": [-5, -3],
+          "utusan_golongan": [-4, -2]
+        },
+        "alertMsg": "Ribuan personel Kamra berlengan baju kuning mengambil posisi jaga di pasar-pasar dan terminal bus di seluruh Jawa, secara nyata mencegah penjarahan jalanan dan meringankan beban unit kepolisian yang kewalahan. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "stab": [3, 7],
+          "mil": [2, 4],
+          "abri": [2, 4],
+          "ref": [-7, -3],
+          "pop": -2
+        },
+        "alertMsg": "Karena situasi jalanan sudah relatif tenang, pengerahan ribuan personel Kamra mengundang komentar skeptis dari kelompok-kelompok bantuan hukum yang menyamakan mereka dengan barisan Hansip era Orde Baru. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "kostrad_rotation",
+    "category": "Security",
+    "text": "\"Berkonsultasi dengan Kepala Staf Teritorial Angkatan Bersenjata untuk Mempercepat Rotasi Penugasan Rutin bagi Panglima Daerah Terpilih\"",
+    "short_name": "Rotasi Komando Kodam",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Bekerja melalui para perwira staf berjiwa reformis di Cilangkap—seperti Letjen Susilo Bambang Yudhoyono dan Mayjen Agus Widjojo—untuk secara diam-diam merotasi para kolonel warisan era Cendana keluar dari jabatan-jabatan <i>Kodam</i> daerah yang sensitif. Memangkas <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> serta mengangkat <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan kepercayaan kubu Loyalis.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "mil",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "cendana": [-10, -6],
+          "stab": [3, 7],
+          "ref": [3, 5],
+          "golkar_habibie": [3, 7]
+        },
+        "alertMsg": "Dengan kerja sama Cilangkap, beberapa perwira teritorial barisan lama yang memiliki hubungan dekat dengan Jalan Cendana dimutasi secara diam-diam ke meja staf non-komando, memperkuat disiplin komando profesional. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "mil",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "cendana": [-7, -3],
+          "ref": [3, 5],
+          "golkar_habibie": [2, 4],
+          "mil": [-3, -2]
+        },
+        "alertMsg": "Rotasi komando tersebut tetap terlaksana, meskipun karena posisi Anda di dalam Cilangkap sedang tegang, para jenderal konservatif menggerutu tentang campur tangan sipil dalam promosi internal angkatan darat. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "maluku_peace_envoy",
+    "category": "Security",
+    "text": "\"Mengutus Satuan Tugas Antarkementerian dan Delegasi Rekonsiliasi Lintas Agama ke Ambon dan Kepulauan Lease\"",
+    "short_name": "Misi Perdamaian Lintas Agama Maluku",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Menangani konflik komunal berdarah antara komunitas Kristen dan Muslim yang telah mengguncang Ambon dan kepulauan Maluku sejak bulan Januari. Mengirim para mediator lintas agama berdampingan dengan unit-unit Marinir yang netral akan mengangkat <font color=\"#37474F\"><b>Stabilitas Nasional</b></font>, dukungan <font color=\"#555555\"><b>Utusan Daerah</b></font>, dan <font color=\"#006068\"><b>Partai-Partai Kecil</b></font> baik di bangku Kristen maupun Islam.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 55
+        },
+        "effects": {
+          "stab": [6, 10],
+          "utusan_daerah": [4, 8],
+          "other_parties": [3, 7],
+          "poros_tengah": [2, 4],
+          "econ": -2
+        },
+        "alertMsg": "Para tokoh gabungan Kristen dan Muslim menyusuri lingkungan Ambon yang porak-poranda di bawah pengawalan Marinir, membuka koridor gencatan senjata yang rapuh dan meraih rasa terima kasih dari para utusan Indonesia Timur. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 55
+        },
+        "effects": {
+          "stab": [3, 5],
+          "utusan_daerah": [3, 5],
+          "other_parties": [3, 5],
+          "intl": [2, 4]
+        },
+        "alertMsg": "Misi rekonsiliasi tersebut memperkokoh garis perdamaian yang rapuh di Ambon serta menenangkan delegasi Kristen maupun Muslim di Senayan. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "audit_kodam_foundations",
+    "category": "Security",
+    "text": "\"Menginstruksikan Badan Pemeriksa Keuangan untuk Memeriksa Konsesi Kayu dan Pelayaran Nonbujeter yang Dioperasikan oleh Yayasan Militer Daerah\"",
+    "short_name": "Audit Yayasan Militer Teritorial",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Mengirim para auditor sipil ke dalam kerajaan ekonomi <i>Yayasan</i> angkatan darat yang selama ini tak tersentuh—mulai dari unit usaha maskapai penerbangan dan perbankan milik Kostrad hingga konsesi penebangan kayu daerah di Kalimantan dan Irian Jaya. Mendongkrak <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>, <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, dan <font color=\"#00838F\"><b>Posisi Internasional</b></font>. Mengorbankan loyalitas <font color=\"#3E5022\"><b>ABRI</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "ref": [7, 13],
+          "econ": [6, 10],
+          "intl": [6, 10],
+          "pop": [4, 8],
+          "cendana": [-10, -6],
+          "mil": [-10, -6],
+          "abri": [-10, -6]
+        },
+        "alertMsg": "Para auditor sipil membongkar ratusan miliar rupiah pendapatan kayu dan bea cukai nonbujeter. IMF dan kalangan mahasiswa reformis memuji pengawasan sipil yang belum pernah terjadi sebelumnya itu, sementara para jenderal Cilangkap mendidih karena marah. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "ref": [4, 8],
+          "econ": [3, 5],
+          "mil": [-9, -5],
+          "abri": [-9, -5],
+          "stab": [-5, -3]
+        },
+        "alertMsg": "Para panglima daerah menghambat langkah tim audit di gerbang-gerbang barak, namun pemeriksaan tersebut tetap berhasil menarik kembali sebagian pendapatan ke kas negara dan menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 15,
+      "min": 7
+    }
+  },
+  {
+    "id": "mobilize_pam_swakarsa",
+    "category": "Security",
+    "text": "\"Memberi Wewenang Mobilisasi Diam-Diam Kelompok Pengamanan Swakarsa Berbambu Runcing dan Organisasi Kepemudaan untuk Mengamankan Jalur Menuju Senayan\"",
+    "short_name": "Mobilisasi Milisi Jalanan Pam Swakarsa",
+    "baseCost": 0,
+    "cooldown": 4,
+    "description": "Mengulangi taktik kontroversial Sidang Istimewa MPR November 1998: mengangkut ribuan anggota kelompok <i>Pam Swakarsa</i> bersenjata bambu runcing, pemuda <i>Pemuda Pancasila</i>, dan barisan pengamanan jalanan bayaran dengan truk untuk menghadapi para demonstran mahasiswa secara fisik. Menghasilkan lonjakan besar <font color=\"#0000FF\"><b>Modal Politik</b></font> serta mendongkrak pengaruh Militer dan Cendana. Mengorbankan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan <font color=\"#D81B60\"><b>Popularitas</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "mil",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "stab": [3, 5],
+          "mil": [3, 5],
+          "abri": [3, 5],
+          "cendana": [6, 10],
+          "ref": [-19, -11],
+          "pop": [-16, -8],
+          "utusan_golongan": [-13, -7],
+          "intl": [-8, -4]
+        },
+        "alertMsg": "Truk-truk penuh anggota Pam Swakarsa bersenjata bambu runcing membubarkan barisan mahasiswa di Jalan Gatot Subroto sementara aparat keamanan menyaksikan dengan penuh persetujuan. Para penyokong Cendana dan militer mengganjar ketegasan Anda dengan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "mil",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "stab": [-5, -3],
+          "cendana": [6, 10],
+          "ref": [-19, -11],
+          "pop": [-18, -10],
+          "utusan_golongan": [-13, -7],
+          "intl": [-8, -4]
+        },
+        "alertMsg": "Tanpa koordinasi militer yang ketat, kelompok Pam Swakarsa bentrok dengan warga lokal Jakarta dalam tawuran jalanan yang berdarah. Meski demikian, para penyandang dana Cendana tetap mengisi ulang kas taktis Anda sebesar <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 18,
+      "min": 8
+    }
+  },
+  {
+    "id": "slushfund",
+    "category": "Politics",
+    "text": "\"Memberi Wewenang Realokasi Diskresioner atas Sumber Daya Organisasi Nonbujeter Tertentu untuk Tujuan yang Akan Dijelaskan di Kemudian Hari\"",
+    "short_name": "Realokasi Dana Nonbujeter",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Merogoh sebagian sisa dana taktis nonbujeter peninggalan rezim lama, tanpa perlu tanda tangan dan tanpa pencatatan pembukuan yang akan pernah dilihat oleh siapa pun di luar lingkaran yang sangat terbatas. Mencairkan cadangan tersembunyi ini akan menghasilkan <font color=\"#0000FF\"><b>Modal Politik</b></font> dalam jumlah besar. Dengan <font color=\"#D81B60\"><b>Popularitas</b></font> yang tinggi, bocoran yang tak terelakkan akan menghantam bagai pengkhianatan tajam; dengan popularitas rendah, publik sudah tidak kaget lagi dengan perilaku semacam ini, meskipun <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> tetap menguat.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "pop": [-13, -7],
+          "intl": [-7, -3],
+          "ref": [-13, -7],
+          "cendana": [6, 10]
+        },
+        "alertMsg": "Anda secara diam-diam mencairkan dana nonbujeter, mengamankan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>. Karena posisi Anda masih relatif tinggi, terungkapnya hal ini terasa bagai pengkhianatan, merusak parah <font color=\"#D81B60\"><b>Popularitas</b></font> Anda dan memperkuat klik Cendana."
+      },
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "pop": [-5, -3],
+          "intl": [-4, -2],
+          "ref": [-5, -3],
+          "cendana": [3, 7]
+        },
+        "alertMsg": "Anda secara diam-diam mencairkan dana nonbujeter, mengamankan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>. Masyarakat yang memang sudah skeptis terhadap Anda menganggap kabar itu bukan hal baru lagi, meskipun klik Cendana tetap menguat secara diam-diam."
+      }
+    ],
+    "dynamicPC": {
+      "base": 12,
+      "min": 5
+    }
+  },
+  {
+    "id": "campaign",
+    "category": "Politics",
+    "text": "\"Menginstruksikan Direktorat Jenderal Sosial Politik untuk Merumuskan dan Melaksanakan Prakarsa Kepercayaan Publik Lintas Daerah\"",
+    "short_name": "Prakarsa Kepercayaan Publik",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengirim staf lapangan Direktorat Jenderal Sosial Politik Depdagri ke provinsi-provinsi untuk menggelar forum warga guna memoles citra publik Anda. Memberikan peningkatan pasti pada <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, sementara dampaknya terhadap <font color=\"#D81B60\"><b>Popularitas</b></font> bergantung pada tingkat <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> saat ini.",
+    "effects": {
+      "ref": [4, 8]
+    },
+    "dynamicScaling": {
+      "target": "pop",
+      "base": 8,
+      "scaleFrom": "stab",
+      "scaleOffset": -45,
+      "scaleDivisor": 5,
+      "min": -3
+    },
+    "alertMsgs": {
+      "success": "Kampanye selesai tanpa membebani kas negara. Laporan intelijen menunjukkan sentimen publik telah bergeser memihak Anda seiring meningkatnya <font color=\"#D81B60\"><b>Popularitas</b></font>. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana.",
+      "failure": "Kampanye tersebut berjalan hambar. Karena <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> sudah rapuh, acara-acara panggung publik Anda terkesan menutup mata dari kenyataan. Meski begitu, langkah ini tetap menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+    },
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "address",
+    "category": "Politics",
+    "text": "\"Menginstruksikan Aparatur Penyiaran Negara untuk Menyediakan Waktu Siar bagi Penyampaian Pesan Mendatang dengan Cakupan dan Pokok Bahasan yang Belum Dirinci\"",
+    "short_name": "Siaran Pidato Kepresidenan",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Memesan jam tayang utama di TVRI dan RRI untuk pidato kenegaraan penuh. Jika <font color=\"#D81B60\"><b>Popularitas</b></font> cukup terhormat, pidato tersebut memancarkan wibawa yang tenang dan memperkuat mandat Anda; namun jika Anda sangat tidak populer, pidato itu berisiko terdengar seperti ceramah putus asa yang tidak peka keadaan.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "pop": [6, 12],
+          "stab": [6, 12]
+        },
+        "alertMsg": "Siaran tersebut diterima dengan baik. Penyampaian Anda yang tulus dan mengalir tanpa teks memancarkan stabilitas serta memperkuat mandat Anda. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "pop",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "pop": [-7, -3],
+          "stab": [-7, -3]
+        },
+        "alertMsg": "Siaran tersebut menjadi bumerang. Mengingat posisi Anda yang goyah, masyarakat mendengarnya sebagai ceramah putus asa yang jauh dari kenyataan, dan keresahan pun merangkak naik sebagai reaksinya. Meski begitu, langkah ini tetap menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  },
+  {
+    "id": "icmi_caucus",
+    "category": "Politics",
+    "text": "\"Memobilisasi Center for Information and Development Studies (CIDES) dan Media Cetak Terkait untuk Mengartikulasikan Arah Kebijakan Reformis Pemerintahan\"",
+    "short_name": "Ofensif Media CIDES & ICMI",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengerahkan jaringan intelektual yang Anda dirikan pada tahun 1990—Ikatan Cendekiawan Muslim se-Indonesia (ICMI), lembaga kajiannya CIDES, dan harian <i>Republika</i>—untuk menerbitkan naskah akademik kebijakan serta kolom opini yang membela rekam jejak Anda menjelang sidang MPR. Secara pasti mendongkrak dukungan <font color=\"#8A5A00\"><b>Golkar Loyalis</b></font>, <font color=\"#004488\"><b>PAN / Poros Tengah</b></font>, dan <font color=\"#006068\"><b>Partai-Partai Islam Kecil</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "golkar_habibie": [6, 10],
+          "poros_tengah": [4, 8],
+          "other_parties": [3, 7],
+          "ref": [3, 5],
+          "pdip": [-3, -2]
+        },
+        "alertMsg": "Simposium CIDES dan tajuk rencana Republika membingkai kepresidenan Anda sebagai sintesis bersejarah antara Islam, ilmu pengetahuan, dan demokrasi konstitusional, menggalang dukungan para utusan Muslim modernis serta menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "ref",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "golkar_habibie": [4, 8],
+          "poros_tengah": [2, 4],
+          "other_parties": [2, 4],
+          "pdip": [-4, -3]
+        },
+        "alertMsg": "Para loyalis Anda di dalam ICMI merapatkan barisan membela Anda di media massa, meskipun para komentator sekuler mencemooh tulisan-tulisan opini tersebut sebagai propaganda faksi semata. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 15,
+      "min": 7
+    }
+  },
+  {
+    "id": "wednesday_cabinet",
+    "category": "Politics",
+    "text": "\"Menggelar Sidang Paripurna Luar Biasa Kabinet Reformasi Pembangunan di Bina Graha untuk Menegakkan Disiplin Kebijakan Antarkementerian\"",
+    "short_name": "Sidang Disiplin Kabinet Bina Graha",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Mengunci seluruh tiga puluh enam menteri <i>Kabinet Reformasi Pembangunan</i> di dalam ruang sidang Bina Graha bersama tumpukan catatan tulisan tangan Anda yang terkenal itu hingga pertikaian terbuka di antara para teknokrat, politisi Golkar, dan menteri partai berhenti. Menghasilkan <font color=\"#0000FF\"><b>Modal Politik</b></font> yang mantap serta mengangkat dukungan <font color=\"#7D6000\"><b>Golkar</b></font> dan <font color=\"#37474F\"><b>Stabilitas Nasional</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "stab": [3, 7],
+          "econ": [3, 5],
+          "golkar_habibie": [4, 8],
+          "golkar_akbar": [3, 7]
+        },
+        "alertMsg": "Setelah pengarahan maraton selama lima jam di Bina Graha, para menteri yang tadinya berseteru keluar ruangan dengan satu suara yang seragam, memancarkan kekompakan eksekutif dan menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "stab": [2, 4],
+          "golkar_habibie": [3, 7],
+          "golkar_akbar": [2, 4],
+          "cendana": [-4, -2]
+        },
+        "alertMsg": "Anda menegur keras beberapa menteri yang dicurigai membocorkan perselisihan kabinet kepada pers, memulihkan kembali disiplin di dalam Bina Graha dan menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 16,
+      "min": 8
+    }
+  },
+  {
+    "id": "litsus_screening",
+    "category": "Politics",
+    "text": "\"Menginstruksikan Direktorat Jenderal Sosial Politik untuk Memberlakukan 'Penelitian Khusus' (Litsus) terhadap Para Utusan Parlemen yang Baru Dilantik\"",
+    "short_name": "Hidupkan Kembali Skrining Ideologi 'Litsus'",
+    "baseCost": 0,
+    "cooldown": 3,
+    "description": "Membuka kembali berkas-berkas berdebu <i>Penelitian Khusus</i> (Litsus) yang ditakuti di era Orde Baru—menggunakan arsip intelijen lama BAKORSTANAS untuk memeras para utusan MPR yang bimbang terkait hubungan keluarga mereka, baik nyata maupun rekayasa, dengan gerakan terlarang atau tunggakan kredit bank pemerintah. Memeras <font color=\"#0000FF\"><b>Modal Politik</b></font> dalam jumlah besar serta memaksa <font color=\"#7D6000\"><b>Golkar</b></font> dan <font color=\"#555555\"><b>Utusan Daerah</b></font> kembali ke dalam barisan. Mengorbankan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan dukungan masyarakat sipil.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "cendana",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "golkar_akbar": [6, 10],
+          "utusan_daerah": [6, 10],
+          "abri": [3, 6],
+          "cendana": [6, 10],
+          "ref": [-18, -10],
+          "pop": [-10, -6],
+          "utusan_golongan": [-13, -7]
+        },
+        "alertMsg": "Map-map coklat berisi berkas lama BAKORSTANAS mendarat secara diam-diam di meja kamar hotel para utusan di sekitar Senayan. Para utusan daerah dan Golkar yang tadinya bimbang mendadak menemukan kembali kesetiaan mereka kepada Istana, menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "cendana",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "golkar_akbar": [3, 5],
+          "utusan_daerah": [3, 5],
+          "cendana": [4, 8],
+          "ref": [-16, -8],
+          "pop": [-10, -6]
+        },
+        "alertMsg": "Beberapa anggota parlemen oposisi membocorkan upaya intimidasi Litsus tersebut kepada pers, memicu kemarahan atas dihidupkannya kembali taktik negara polisi Orde Baru, meskipun operasi itu tetap berhasil memeras <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 7
+    }
+  },
+  {
+    "id": "papua_dialogue",
+    "category": "Regional Affairs",
+    "text": "\"Menginstruksikan Sekretariat Negara untuk Melanjutkan Pembicaraan yang Saat Ini Difasilitasi oleh Organisasi Kemasyarakatan dan Keagamaan Tertentu di Irian Jaya\"",
+    "short_name": "Dialog Nasional Irian Jaya",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Melanjutkan kerangka dialog langsung yang Anda buka pada 26 Februari ketika Anda menjamu Tom Beanal dan 'Tim 100' tokoh Papua di Istana Negara. Secara pasti mengangkat <font color=\"#00838F\"><b>Posisi Internasional</b></font> dan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, meskipun reaksi penolakan di dalam negeri terhadap <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> dan kepercayaan <font color=\"#555555\"><b>Utusan Daerah</b></font> terasa lebih ringan saat stabilitas sudah cukup kokoh.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "intl": [6, 10],
+          "ref": [4, 8],
+          "stab": [-5, -3],
+          "utusan_daerah": [-5, -3]
+        },
+        "alertMsg": "Delegasi tersebut memanfaatkan panggung Istana untuk menyuarakan tuntutan mereka. Karena kondisi negara cukup tenang, korps diplomatik memuji keterbukaan Anda dan reaksi di dalam negeri tetap terkendali. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "intl": [4, 8],
+          "ref": [3, 5],
+          "stab": [-10, -6],
+          "utusan_daerah": [-9, -5]
+        },
+        "alertMsg": "Delegasi tersebut memanfaatkan panggung Istana untuk menyuarakan tuntutan mereka. Karena kondisi negara sudah berada di ujung tanduk, para politisi dalam negeri bereaksi dengan berang atas apa yang mereka sebut sebagai satu lagi tanda melemahnya kendali pemerintah pusat. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "sultan_outreach",
+    "category": "Regional Affairs",
+    "text": "\"Memberi Wewenang kepada Departemen Dalam Negeri untuk Melakukan Kunjungan Kehormatan Resmi kepada Otoritas Keraton dan Pemangku Adat di Provinsi Terpilih\"",
+    "short_name": "Kunjungan Kehormatan Pemangku Adat & Keraton",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Merangkul kesultanan, majelis <i>adat</i>, dan struktur kepemimpinan tradisional di Yogyakarta, Solo, Cirebon, Ternate, dan Sulawesi Selatan yang wibawa informalnya bertahan melampaui gubernur mana pun yang ditunjuk Jakarta. Ketika <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> sedang goyah, bersandar pada struktur otoritas tradisional akan memberikan dorongan besar pada loyalitas <font color=\"#555555\"><b>Utusan Daerah</b></font> dan <font color=\"#37474F\"><b>Stabilitas</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 50
+        },
+        "effects": {
+          "utusan_daerah": [7, 13],
+          "pop": [3, 5],
+          "stab": [3, 5]
+        },
+        "alertMsg": "Delegasi yang berkunjung diterima dengan tata krama penghormatan yang tinggi. Di tengah keresahan daerah, <font color=\"#555555\"><b>Utusan Daerah</b></font> benar-benar menghargai penghormatan yang ditunjukkan kepada institusi-institusi yang usianya lebih tua daripada Republik ini sendiri. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 50
+        },
+        "effects": {
+          "utusan_daerah": [3, 7],
+          "pop": [2, 4],
+          "stab": 2
+        },
+        "alertMsg": "Delegasi yang berkunjung disambut dengan hangat seperti biasa. Karena kondisi provinsi-provinsi sudah tenang, langkah tersebut memperkokoh iktikad baik <font color=\"#555555\"><b>Utusan Daerah</b></font>. Langkah ini juga menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font> untuk penggunaan taktis Istana."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "kalimantan_accord",
+    "category": "Regional Affairs",
+    "text": "\"Mengutus Tim Mediasi Departemen Dalam Negeri dan Paket Rekonstruksi Darurat ke Pontianak dan Sambas Menyusul Kerusuhan Komunal\"",
+    "short_name": "Rekonstruksi & Kesepakatan Damai Kalimantan Barat",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Menangani dampak kekerasan komunal di Sambas, Kalimantan Barat, tempat puluhan ribu warga perantau Madura mengungsi ke stadion-stadion di Pontianak menyusul bentrokan dengan komunitas Melayu dan Dayak setempat. Memfasilitasi pakta perdamaian adat dan bantuan pengungsi akan mendongkrak <font color=\"#37474F\"><b>Stabilitas Nasional</b></font>, dukungan <font color=\"#555555\"><b>Utusan Daerah</b></font>, dan <font color=\"#005500\"><b>PKB</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": ">=",
+          "value": 40
+        },
+        "effects": {
+          "stab": [5, 9],
+          "utusan_daerah": [5, 9],
+          "pkb": [4, 8],
+          "ppp": [3, 5],
+          "econ": [-4, -2]
+        },
+        "alertMsg": "Dana rekonstruksi dan bantuan perumahan segera tiba di Pontianak dan Sambas, meredakan ketegangan provinsi serta meraih ucapan terima kasih yang tulus baik dari para utusan Kalimantan maupun para kiai Madura di dalam PKB. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "econ",
+          "operator": "<",
+          "value": 40
+        },
+        "effects": {
+          "stab": [3, 5],
+          "utusan_daerah": [3, 7],
+          "pkb": [3, 5],
+          "econ": [-5, -3]
+        },
+        "alertMsg": "Meskipun dibatasi oleh anggaran yang ketat, tim mediasi berhasil menjembatani gencatan senjata lokal di Kalimantan Barat dan menyalurkan ransum darurat kepada keluarga-keluarga pengungsi. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 13,
+      "min": 6
+    }
+  },
+  {
+    "id": "riau_kaltim_summit",
+    "category": "Regional Affairs",
+    "text": "\"Menggelar Pertemuan Puncak Kerja di Istana Merdeka bersama Para Gubernur dan Ketua DPRD Provinsi Riau dan Kalimantan Timur\"",
+    "short_name": "Pertemuan Puncak Gubernur Penghasil Migas",
+    "baseCost": 0,
+    "cooldown": 2,
+    "description": "Membawa para gubernur, bupati, dan tokoh masyarakat Riau serta Kalimantan Timur ke Jakarta, sembari menjanjikan kepada mereka porsi pengembangan masyarakat secara langsung dalam operasional Pertamina dan Caltex. Mendongkrak dukungan <font color=\"#555555\"><b>Utusan Daerah</b></font> dan <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>.",
+    "conditionalEffects": [
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": ">=",
+          "value": 45
+        },
+        "effects": {
+          "utusan_daerah": [6, 12],
+          "econ": [3, 7],
+          "golkar_akbar": [3, 5],
+          "stab": [2, 4]
+        },
+        "alertMsg": "Para gubernur provinsi penghasil migas meninggalkan Istana Merdeka dengan membawa komitmen nyata terkait infrastruktur pesisir dan bagi hasil Pertamina, meredakan retorika separatis di Pekanbaru dan Samarinda. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      },
+      {
+        "condition": {
+          "stat": "stab",
+          "operator": "<",
+          "value": 45
+        },
+        "effects": {
+          "utusan_daerah": [4, 8],
+          "econ": [2, 4],
+          "stab": 2
+        },
+        "alertMsg": "Meskipun ketegangan masih memuncak di kawasan luar Jawa, kesediaan Anda untuk mendengarkan keluh kesah fiskal Riau dan Kalimantan Timur menjaga delegasi MPR mereka tetap terhubung dengan Istana. Menghasilkan <font color=\"#0000FF\"><b>+{pcGained} MP</b></font>."
+      }
+    ],
+    "dynamicPC": {
+      "base": 14,
+      "min": 6
+    }
+  }
+]

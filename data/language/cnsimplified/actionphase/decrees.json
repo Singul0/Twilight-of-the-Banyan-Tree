@@ -1,0 +1,1137 @@
+[
+  {
+    "id": "anti_corruption",
+    "category": "政治",
+    "text": "推动《反腐败综合法案》（1999年第28号和第31号法律）",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "cendana_restoration_pact"
+    ],
+    "description": "一揽子立法正以<i>透明与问责</i>（<i>transparansi dan akuntabilitas</i>）之名在参议院大厦（Senayan）推进，其起草背景是悬而未决的<font color=\"#FF0000\"><b>巴厘银行丑闻（Bank Bali）</b></font>以及三十年来积累的<font color=\"#FF0000\"><b>KKN（贪污、勾结、裙带关系）</b></font>。该法案规定国家官员必须接受财产审计（<b>KPKPN</b>），并为设立独立的反腐败委员会奠定法定依据。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#4682B4\"><b>模棱两可</b></font>或更高，并将<font color=\"#704d00\"><b>钦达纳势力</b></font>强制封顶在<font color=\"#2F4F4F\"><b>顽固</b></font>。<font color=\"#B22222\"><b>这将冲击戈尔卡党（Golkar）内部的建制派庇护网络，并永久封死与钦达纳街（Jalan Cendana）和解协议的可能。</b></font>",
+    "alertMsg": "《综合法案》获得通过。改革信誉被锁定在<font color=\"#4682B4\"><b>模棱两可</b></font>及以上，钦达纳势力被强制封顶在<font color=\"#2F4F4F\"><b>顽固</b></font>。戈尔卡党内的建制派政客因庇护网络被打乱而怒不可遏，而改革派代表则团结到你身边。",
+    "locks": {
+      "minStats": {
+        "ref": 60
+      },
+      "maxCendana": 50,
+      "statPenalties": {
+        "pop": 10
+      },
+      "factionPenalties": {
+        "pdip": -5,
+        "golkar_akbar": -15,
+        "golkar_habibie": 10,
+        "utusan_golongan": 10
+      }
+    }
+  },
+  {
+    "id": "civil_service_neutrality",
+    "category": "政治",
+    "text": "强制推行公务员政治中立（1999年第5号和第12号政府条例）",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "enforce_asas_tunggal_ban"
+    ],
+    "description": "严格执行1999年第5号和第12号政府条例，终结新秩序时期强制性的<i>单一忠诚</i>（<i>monoloyalitas</i>）教条——该教条迫使<b>KORPRI</b>中的四百万公务员为<font color=\"#CC9900\"><b>戈尔卡党</b></font>助选、筹款并只投该党的票。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>之上，并将<font color=\"#808080\"><b>其他政党</b></font>锁定在<font color=\"#4682B4\"><b>分散</b></font>或更好的立场。<font color=\"#B22222\"><b>这将严重激怒阿克巴·丹绒（Akbar Tandjung）那些依赖公务员体系的省级党魁。</b></font>",
+    "alertMsg": "KORPRI与戈尔卡党长达三十年的脐带，在实践中和纸面上都被剪断了。人民协商会议（MPR）中的反对党对公平竞争环境表示欢迎，改革信誉被锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>之上，小党的支持度也得到提升，但戈尔卡党的省级机器头目们怒火中烧。",
+    "locks": {
+      "minStats": {
+        "ref": 55
+      },
+      "minFactions": {
+        "other_parties": 55
+      },
+      "statPenalties": {
+        "pop": 8,
+        "cendana": -10
+      },
+      "factionPenalties": {
+        "golkar_akbar": -18,
+        "pdip": 8,
+        "poros_tengah": 8,
+        "ppp": 6,
+        "pkb": 6
+      }
+    }
+  },
+  {
+    "id": "direct_presidential_amendment",
+    "category": "政治",
+    "text": "支持关于总统直选的宪法协议",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "cendana_restoration_pact"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 60
+      }
+    ],
+    "description": "总统府全力支持人民协商会议工作委员会（<b>BP MPR</b>）起草1945年宪法第一修正案——限制未来总统最多任两届、约束行政命令权力，并承诺在本过渡任期之后实行总统直选。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#009000\"><b>锐意改革</b></font>，并提升<font color=\"#C0392B\"><b>斗争民主党（PDI-P）</b></font>、<font color=\"#0055A4\"><b>中轴派（Poros Tengah）</b></font>和<font color=\"#2E8B57\"><b>职能团体代表（Utusan Golongan）</b></font>的支持度。<font color=\"#B22222\"><b>这将疏远戈尔卡党和ABRI中的新秩序制度派，并永久排除任何紧急威权统治的可能。</b></font>",
+    "alertMsg": "宪法协议在全体大会表决前签署。你主动削减苏哈托一手打造的帝王式总统权力，并支持未来的直接选举，从而将改革信誉锁定在<font color=\"#009000\"><b>锐意改革</b></font>，让最尖锐的民主批评者无话可说——不过戈尔卡党和ABRI中的老派制度派对宪法改革心怀怨恨。",
+    "locks": {
+      "minStats": {
+        "ref": 75
+      },
+      "statPenalties": {
+        "pop": 12,
+        "intl": 8
+      },
+      "factionPenalties": {
+        "pdip": 10,
+        "poros_tengah": 10,
+        "utusan_golongan": 12,
+        "golkar_habibie": 6,
+        "golkar_akbar": -12,
+        "abri": -8
+      }
+    }
+  },
+  {
+    "id": "suharto_asset_seizure_tribunal",
+    "category": "政治",
+    "text": "设立KKN特别法庭并没收钦达纳家族企业集团",
+    "baseCost": 65,
+    "mutexDecrees": [
+      "cendana_restoration_pact",
+      "economic_bailout"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 60
+      },
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 45
+      }
+    ],
+    "description": "完全绕开已被腐蚀的总检察长办公室，依据1998年第XI号人民协商会议决议设立KKN特别法庭，授权其将苏哈托家族的Bimantara、Humpuss和Citra Lamtoro Gung帝国国有化，并让这位前总统接受电视直播的公开审判。将<font color=\"#704d00\"><b>钦达纳势力</b></font>永久压垮至<font color=\"#006400\"><b>休眠</b></font>，并将<font color=\"#D81B60\"><b>民意支持度</b></font>锁定在<font color=\"#009000\"><b>勉强接受</b></font>或更高。<font color=\"#B22222\"><b>这将立即引发阿克巴·丹绒的戈尔卡党派系和效忠旧政权的ABRI保守派将领的反叛。</b></font>",
+    "alertMsg": "在海军陆战队的护送下，国家检察官查封了Bimantara和Humpuss的总部，并向钦达纳街8号送达正式起诉书。数百万印尼人涌上街头欢呼，钦达纳势力被永久压垮至<font color=\"#006400\"><b>休眠</b></font>，民意支持度被锁定在<font color=\"#009000\"><b>勉强接受</b></font>——不过阿克巴在戈尔卡党内的新秩序守旧派发动了反叛。",
+    "locks": {
+      "minStats": {
+        "pop": 75,
+        "ref": 75
+      },
+      "maxCendana": 10,
+      "statPenalties": {
+        "econ": 12,
+        "intl": 10
+      },
+      "factionPenalties": {
+        "pdip": 15,
+        "poros_tengah": 12,
+        "utusan_golongan": 15,
+        "golkar_habibie": 10,
+        "golkar_akbar": -25,
+        "abri": -12
+      }
+    }
+  },
+  {
+    "id": "abolish_abri_mpr_seats",
+    "category": "政治",
+    "text": "以紧急法令废除ABRI在人民协商会议中的38个非选举席位",
+    "baseCost": 70,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "ratify_kamra_militia_bill"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      }
+    ],
+    "banFactions": [
+      "abri"
+    ],
+    "seatRecipients": {
+      "utusan_golongan": 38
+    },
+    "description": "为何要等到2004年或2009年才终结立法机构中的非选举军方代表？立即颁布宪法性法令，在十月点名表决之前撤销ABRI的38个任命席位，并将这些席位转交给民间社会和民选小党代表。<font color=\"#B22222\"><b>这将永久解散人民协商会议中的ABRI派系，使维兰托（Wiranto）将军的代表团变灰，并导致与奇兰卡普（Cilangkap）彻底决裂。</b></font>",
+    "alertMsg": "通过紧急宪法法令，军方在人民协商会议中的38个非选举席位即刻废除，其议员资格转交给职能团体代表和小党代表！维兰托将军的议会集团被解散并从棋盘上移除，而全印尼的学生运动则为“双重功能”（Dwifungsi）的死亡欢呼。",
+    "locks": {
+      "minStats": {
+        "ref": 75
+      },
+      "statPenalties": {
+        "pop": 15,
+        "intl": 10,
+        "stab": -12
+      },
+      "factionPenalties": {
+        "abri": -50,
+        "utusan_golongan": 20,
+        "other_parties": 20,
+        "pdip": 12,
+        "poros_tengah": 10
+      }
+    }
+  },
+  {
+    "id": "dissolve_golkar_old_guard",
+    "category": "政治",
+    "text": "以巴厘银行选举舞弊为由取消戈尔卡党老派议员团的资格",
+    "baseCost": 75,
+    "mutexDecrees": [
+      "cendana_restoration_pact",
+      "economic_bailout",
+      "unify_golkar_slipi"
+    ],
+    "reqDecree": "anti_corruption",
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "golkar_akbar"
+    ],
+    "seatRecipients": {
+      "golkar_habibie": 80
+    },
+    "description": "依据未经删改的巴厘银行法证审计报告，以及1999年《选举法》（1999年第3号法律）的竞选资金条款——该条款明确授权最高法院取消使用非法国家资金的政党名单——下令解散阿克巴·丹绒涉案的新秩序党委员会，并将其80个人民协商会议席位转交给经审查的改革派干部、地区代表和清白的小党。<font color=\"#B22222\"><b>这将永久取缔并解散阿克巴·丹绒在人民协商会议中的戈尔卡派系，同时引发建制派的严重冲击波。</b></font>",
+    "alertMsg": "凭借巴厘银行竞选资金审计和最高法院的认证命令，你解散了阿克巴·丹绒的戈尔卡党老派委员会！其80个人民协商会议席位被重新分配给你的忠诚改革派、地区代表和清白小党——实现了学生运动1998年拆除新秩序选举机器的诉求。",
+    "locks": {
+      "minStats": {
+        "ref": 80
+      },
+      "maxCendana": 20,
+      "statPenalties": {
+        "pop": 15,
+        "intl": 8,
+        "stab": -12
+      },
+      "factionPenalties": {
+        "golkar_habibie": 20,
+        "pdip": 12,
+        "poros_tengah": 10,
+        "utusan_golongan": 15,
+        "utusan_daerah": 10,
+        "abri": -10
+      }
+    }
+  },
+  {
+    "id": "cendana_restoration_pact",
+    "category": "政治",
+    "text": "签署钦达纳街复位与特赦协议",
+    "baseCost": 30,
+    "mutexDecrees": [
+      "anti_corruption",
+      "suharto_asset_seizure_tribunal",
+      "dissolve_golkar_old_guard",
+      "direct_presidential_amendment"
+    ],
+    "reqStats": [
+      {
+        "key": "cendana",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 40
+      }
+    ],
+    "description": "午夜过后驱车前往钦达纳街8号，无条件地与你昔日的恩师和解。作为对苏哈托、其子女及亲信获得永久总统特赦的交换，钦达纳集团开放其新加坡境外金库，全面资助你的人民协商会议竞选。<font color=\"#0000FF\"><b>立即注入大笔政治资本</b></font>，并将<font color=\"#CC9900\"><b>戈尔卡党（阿克巴派）</b></font>锁定在<font color=\"#009000\"><b>支持哈比比</b></font>的立场，同时将<font color=\"#704d00\"><b>钦达纳势力</b></font>锁定在<font color=\"#8B0000\"><b>不可触碰</b></font>。<font color=\"#B22222\"><b>这将永久摧毁你的改革信誉，并点燃全国学生的怒火。</b></font>",
+    "alertMsg": "浪子回到了钦达纳街。苏哈托家族在一纸全面特赦的庇护下，其垄断业务得以恢复，钦达纳的钱袋子们向参议院大厦倾注政治资本，并将戈尔卡党的机器牢牢锁定在支持你连任的阵营——你的总统任期就此变成了“新秩序第二卷”。",
+    "locks": {
+      "minStats": {
+        "cendana": 90
+      },
+      "minFactions": {
+        "golkar_akbar": 75
+      },
+      "statPenalties": {
+        "PC": 45,
+        "ref": -30,
+        "pop": -20,
+        "intl": -15
+      },
+      "factionPenalties": {
+        "abri": 12,
+        "utusan_daerah": 12,
+        "pdip": -20,
+        "utusan_golongan": -20,
+        "poros_tengah": -12
+      }
+    }
+  },
+  {
+    "id": "ban_pdip_subversion",
+    "category": "政治",
+    "text": "以紧急法令取缔斗争民主党（PDI-P）并重新扶植1996年苏尔雅迪（Suryadi）的“PDI”委员会",
+    "baseCost": 85,
+    "reqDecree": "invoke_supersemar_ii",
+    "reqStats": [
+      {
+        "key": "mil",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 25
+      }
+    ],
+    "banFactions": [
+      "pdip"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 53,
+      "utusan_daerah": 50,
+      "utusan_golongan": 50
+    },
+    "description": "在全国范围内重演1996年7月27日（*Kudatuli*事件）的残酷剧本：在紧急军事权力之下，指控梅加瓦蒂·苏加诺普特丽（Megawati Sukarnoputri）的斗争民主党窝藏被取缔的左翼运动（PRD）并煽动叛乱，撤销其选举委员会（KPU）资格，并将其153个人民协商会议席位转交给国家审查过的苏尔雅迪派忠诚者、地区省长和军方集团。<font color=\"#B22222\"><b>这将永久取缔并解散梅加瓦蒂在人民协商会议中的斗争民主党，招致国际制裁，并使国家陷入威权铁腕统治。</b></font>",
+    "alertMsg": "当装甲的陆军战略后备司令部（Kostrad）车辆封锁迪波内戈罗街（Jalan Diponegoro）时，梅加瓦蒂的斗争民主党依据紧急颠覆法规被宣布解散！其在参议院大厦的153个席位被移交给国家审查过的戈尔卡党、地区和军方任命人员。在各国首都惊恐地冻结关系之际，你最大的议会对手已被武力从棋盘上抹去。",
+    "locks": {
+      "minStats": {
+        "stab": 60
+      },
+      "statPenalties": {
+        "pop": -35,
+        "ref": -30,
+        "intl": -30,
+        "econ": -15,
+        "cendana": 15
+      },
+      "factionPenalties": {
+        "golkar_akbar": 15,
+        "abri": 15,
+        "utusan_daerah": 10,
+        "poros_tengah": -20,
+        "utusan_golongan": -25,
+        "golkar_habibie": -15
+      }
+    }
+  },
+  {
+    "id": "enforce_asas_tunggal_ban",
+    "category": "政治",
+    "text": "重新实施1985年《单一原则》（Asas Tunggal）法并解散宗教政党集团",
+    "baseCost": 75,
+    "mutexDecrees": [
+      "civil_service_neutrality"
+    ],
+    "reqDecree": "invoke_supersemar_ii",
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "poros_tengah",
+      "ppp",
+      "pkb",
+      "other_parties"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 65,
+      "golkar_habibie": 35,
+      "utusan_daerah": 38
+    },
+    "description": "重新启用苏哈托1985年的《政党法》，要求所有组织只能信奉国家定义的建国五基（Pancasila）（*Asas Tunggal*），取缔以宗教或意识形态标志为基础的政党，解散阿明·赖斯（Amien Rais）的中轴派、统一建设党（PPP）以及各小型伊斯兰政党——将它们的席位并回戈尔卡党和地区代表团。<font color=\"#B22222\"><b>这将永久取缔并解散人民协商会议中的国民使命党／中轴派、统一建设党和小党，同时引发强烈的宗教反弹。</b></font>",
+    "alertMsg": "通过紧急法令，1985年《单一原则》限制被重新实施！阿明·赖斯的中轴派、统一建设党以及各小型意识形态政党被剥夺在人民协商会议中的地位，它们的肖像变灰，席位被并入戈尔卡党和地区代表团。",
+    "locks": {
+      "statPenalties": {
+        "pop": -25,
+        "ref": -25,
+        "intl": -15,
+        "cendana": 10
+      },
+      "factionPenalties": {
+        "golkar_akbar": 15,
+        "abri": 10,
+        "pkb": -25,
+        "utusan_golongan": -20
+      }
+    }
+  },
+  {
+    "id": "regional_autonomy",
+    "category": "地区事务",
+    "text": "批准特别地区自治财政方案",
+    "baseCost": 55,
+    "description": "依据1999年第22号和第25号法律，从根本上重塑雅加达与各省之间的财政关系，将自然资源收益分成向外岛倾斜。将<font color=\"#A0522D\"><b>地区代表（Utusan Daerah）</b></font>锁定在<font color=\"#009000\"><b>满意</b></font>或更好的立场。<font color=\"#B22222\"><b>这将给中央国库带来沉重压力。</b></font>",
+    "alertMsg": "大量资金已依法下放。地区代表（Utusan Daerah）现在被锁定在<font color=\"#009000\"><b>高度有利的情绪</b></font>中，不过中央国库承受了沉重打击。",
+    "locks": {
+      "minFactions": {
+        "utusan_daerah": 70
+      },
+      "statPenalties": {
+        "econ": -18,
+        "stab": 8
+      }
+    }
+  },
+  {
+    "id": "aceh_special_status_law",
+    "category": "地区事务",
+    "text": "颁布1999年第44号法律——亚齐省特殊地位法",
+    "baseCost": 45,
+    "description": "将亚齐历史上的特殊地位（*Keistimewaan Aceh*）纳入成文法，赋予该省在宗教生活、习惯法（*Adat*）、教育方面的正式自治权，并让乌莱玛委员会（<b>MPU</b>）担任官方咨询角色。将<font color=\"#37474F\"><b>国家稳定</b></font>锁定在<font color=\"#2F4F4F\"><b>紧张</b></font>或更好，并同时争取<font color=\"#A0522D\"><b>地区代表</b></font>和<font color=\"#008000\"><b>伊斯兰派系</b></font>。<font color=\"#B22222\"><b>这将令斗争民主党中的世俗统一民族主义者不悦。</b></font>",
+    "alertMsg": "1999年第44号法律正式签署生效。亚齐的乌莱玛、省议员以及参议院大厦中的伊斯兰政党对亚齐宗教和文化自治的法定保障表示欢迎，国家稳定被锁定在<font color=\"#2F4F4F\"><b>紧张</b></font>及以上。",
+    "locks": {
+      "minStats": {
+        "stab": 45
+      },
+      "statPenalties": {
+        "pop": 5,
+        "ref": 5
+      },
+      "factionPenalties": {
+        "utusan_daerah": 12,
+        "ppp": 10,
+        "poros_tengah": 8,
+        "pdip": -5
+      }
+    }
+  },
+  {
+    "id": "maluku_irja_division",
+    "category": "地区事务",
+    "text": "颁布1999年第45号和第46号法律，设立北马鲁古省并分割伊里安查亚",
+    "baseCost": 50,
+    "description": "签署1999年第45号和第46号法律，划出独立的<b>北马鲁古</b>省（使特尔纳特和蒂多雷与饱受冲突的安汶分离），并将<b>伊里安查亚</b>分割为三个省份（西、中、东），同时新增数十个县、公务员职位和省级立法席位。将<font color=\"#A0522D\"><b>地区代表（Utusan Daerah）</b></font>锁定在<font color=\"#009000\"><b>满意</b></font>立场，并取悦<font color=\"#CC9900\"><b>戈尔卡党</b></font>的东印尼网络。<font color=\"#B22222\"><b>这将消耗预算资金，并在查亚普拉引发抗议。</b></font>",
+    "alertMsg": "1999年第45号和第46号法律已颁布。设立北马鲁古省立刻平息了北部香料群岛的局势，新增的大量省级职位使地区代表被锁定在<font color=\"#009000\"><b>满意</b></font>的情绪中——不过查亚普拉的巴布亚活动人士抗议分割，行政成本也加重了预算负担。",
+    "locks": {
+      "minFactions": {
+        "utusan_daerah": 62
+      },
+      "statPenalties": {
+        "econ": -8,
+        "stab": -4
+      },
+      "factionPenalties": {
+        "golkar_akbar": 10,
+        "golkar_habibie": 8,
+        "other_parties": 6
+      }
+    }
+  },
+  {
+    "id": "economic_bailout",
+    "category": "经济",
+    "text": "签署全面企业救助方案（BLBI MSAA和解协议）",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "imf_ibra_liquidation",
+      "suharto_asset_seizure_tribunal",
+      "dissolve_golkar_old_guard"
+    ],
+    "description": "将主要和解与收购协议（<b>MSAA</b>）及国家资本重组债券扩大适用于因危机而坏账累累的大型银行集团。将<font color=\"#1B7837\"><b>经济健康</b></font>锁定在<font color=\"#2F4F4F\"><b>艰难</b></font>之上。<font color=\"#B22222\"><b>这将大大壮大钦达纳寡头，激怒公众，并排除无情的银行清算。</b></font>",
+    "alertMsg": "企业资产负债表由国家担保。经济健康被锁定在<font color=\"#2F4F4F\"><b>艰难</b></font>之上，阿克巴的戈尔卡党商业派系为此叫好，而钦达纳的寡头们则借救助条款大肆敛财。",
+    "locks": {
+      "minStats": {
+        "econ": 50
+      },
+      "statPenalties": {
+        "cendana": 20,
+        "pop": -12
+      },
+      "factionPenalties": {
+        "golkar_akbar": 12
+      }
+    }
+  },
+  {
+    "id": "currency_board",
+    "category": "经济",
+    "text": "重启货币局制度方案（CBS）",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "central_bank_independence"
+    ],
+    "description": "重新启用美国经济学家史蒂夫·汉克（Steve Hanke）的激进货币提案，以法令将印尼盾对美元汇率固定。将<font color=\"#1B7837\"><b>经济健康</b></font>锁定在<font color=\"#2F4F4F\"><b>艰难</b></font>及以上，同时取悦国内的经济民族主义者。<font color=\"#B22222\"><b>这将招致华盛顿和国际货币基金组织的强烈反弹，并排除中央银行独立性。</b></font>",
+    "alertMsg": "你无视外国债权人的建议，重启了货币局提案。汇率因法令而稳定，经济健康被锁定在<font color=\"#2F4F4F\"><b>艰难</b></font>及以上，不过华盛顿和国际货币基金组织反应激烈。",
+    "locks": {
+      "minStats": {
+        "econ": 45
+      },
+      "statPenalties": {
+        "intl": -20,
+        "stab": -15,
+        "pop": 5
+      }
+    }
+  },
+  {
+    "id": "central_bank_independence",
+    "category": "经济",
+    "text": "颁布《中央银行独立法》（1999年第23号法律）",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "currency_board"
+    ],
+    "description": "终结新秩序时期印尼银行行长列席内阁并听命于总统府的安排，禁止中央银行为政府预算赤字或政治小金库融资。将<font color=\"#00838F\"><b>国际地位</b></font>锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>之上，并提升<font color=\"#1B7837\"><b>经济健康</b></font>。<font color=\"#B22222\"><b>这将消耗你可自由支配的政治资本，并激怒戈尔卡党的庇护机器。</b></font>",
+    "alertMsg": "《印尼银行法》（1999年第23号法律）已获通过。外国债权人称赞这是具有里程碑意义的制度改革，国际地位被锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>之上，经济健康得到提升，不过戈尔卡党的庇护机器对失去中央银行信贷的控制权深感不满。",
+    "locks": {
+      "minStats": {
+        "intl": 50
+      },
+      "statPenalties": {
+        "econ": 10,
+        "ref": 5,
+        "PC": -10
+      },
+      "factionPenalties": {
+        "golkar_akbar": -15,
+        "golkar_habibie": 8
+      }
+    }
+  },
+  {
+    "id": "ibra_extraordinary_powers",
+    "category": "经济",
+    "text": "扩大银行重组署的扣押权限（1999年第17号政府条例）",
+    "baseCost": 45,
+    "description": "颁布1999年第17号政府条例，授予印尼银行重组署（<b>IBRA / BPPN</b>）非凡的司法外权力（“PP 17权力”），可直接从拖欠BLBI流动性支持的企业集团手中扣押资产。将<font color=\"#704d00\"><b>钦达纳势力</b></font>强制封顶在<font color=\"#FF8C00\"><b>颠覆性</b></font>。<font color=\"#B22222\"><b>这将动摇国内商界信心，并激怒戈尔卡党的企业赞助人。</b></font>",
+    "alertMsg": "IBRA的PP 17扣押权限已签署生效。与旧秩序有关联的企业集团发现自己的资产受到限制，钦达纳势力被封顶在<font color=\"#FF8C00\"><b>颠覆性</b></font>。",
+    "locks": {
+      "maxCendana": 60,
+      "statPenalties": {
+        "econ": -10,
+        "ref": 5
+      },
+      "factionPenalties": {
+        "golkar_akbar": -12
+      }
+    }
+  },
+  {
+    "id": "imf_fuel_subsidy",
+    "category": "经济",
+    "text": "落实国际货币基金组织关于燃油和电力补贴的要求",
+    "baseCost": 50,
+    "description": "与<font color=\"#004C97\"><b>国际货币基金组织</b></font>签署的意向书没有留下任何谈判余地：政府必须取消燃油和电力的行政定价补贴以平衡预算。将<font color=\"#00838F\"><b>国际地位</b></font>锁定在<font color=\"#009000\"><b>可容忍的伙伴</b></font>及以上。<font color=\"#B22222\"><b>这将严重激怒所有人。</b></font>",
+    "alertMsg": "补贴被大幅削减。数十亿美元的<font color=\"#004C97\"><b>IMF</b></font>分期款项立即发放，国际地位被锁定在<font color=\"#009000\"><b>可容忍的伙伴</b></font>及以上。街头生活成本飙升，各政治派系纷纷争相与紧缩冲击划清界限。",
+    "locks": {
+      "minStats": {
+        "intl": 75,
+        "econ": 40
+      },
+      "statPenalties": {
+        "pop": -30,
+        "stab": -20
+      },
+      "factionPenalties": {
+        "pdip": -20,
+        "golkar_habibie": -15,
+        "poros_tengah": -15,
+        "utusan_daerah": -15,
+        "golkar_akbar": -15,
+        "abri": -15,
+        "other_parties": -15,
+        "pkb": -15,
+        "ppp": -15
+      }
+    }
+  },
+  {
+    "id": "imf_bulog_deregulation",
+    "category": "经济",
+    "text": "拆除BULOG的粮食垄断",
+    "baseCost": 45,
+    "description": "依据<font color=\"#004C97\"><b>IMF</b></font>结构调整条件，审计并拆除国家物流署（BULOG）的进口垄断，剥夺其除大米以外的所有商品经营权。将<font color=\"#00838F\"><b>国际地位</b></font>锁定在<font color=\"#4682B4\"><b>密切关注</b></font>，并将<font color=\"#704d00\"><b>钦达纳势力</b></font>强制封顶在<font color=\"#4682B4\"><b>受控</b></font>。<font color=\"#B22222\"><b>这将严重激怒所有人。</b></font>",
+    "alertMsg": "BULOG的垄断被拆除。IMF赞扬你对自由市场的承诺，钦达纳家族对粮食供应的控制被封顶在<font color=\"#4682B4\"><b>受控</b></font>，不过主食价格的剧烈波动激怒了公众和政党头目。",
+    "locks": {
+      "minStats": {
+        "intl": 65
+      },
+      "maxCendana": 35,
+      "statPenalties": {
+        "pop": -20,
+        "econ": 10,
+        "stab": -15
+      },
+      "factionPenalties": {
+        "pdip": -20,
+        "golkar_habibie": -15,
+        "poros_tengah": -15,
+        "utusan_daerah": -15,
+        "golkar_akbar": -15,
+        "abri": -15,
+        "other_parties": -15,
+        "pkb": -15,
+        "ppp": -15
+      }
+    }
+  },
+  {
+    "id": "imf_ibra_liquidation",
+    "category": "经济",
+    "text": "授权IBRA进行无情的清算行动",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "economic_bailout",
+      "peoples_economy_charter"
+    ],
+    "description": "在<font color=\"#004C97\"><b>IMF</b></font>监督下，授权IBRA一夜之间清算38家资不抵债的私营银行并冻结另外7家。将<font color=\"#00838F\"><b>国际地位</b></font>锁定在<font color=\"#009000\"><b>可容忍的伙伴</b></font>之上。<font color=\"#B22222\"><b>这将严重激怒所有人。</b></font>",
+    "alertMsg": "IBRA的清算人席卷雅加达金融区，国际地位被锁定在<font color=\"#009000\"><b>可容忍的伙伴</b></font>之上。然而，大规模的银行关闭冻结了整个议会中政治精英的信贷额度。",
+    "locks": {
+      "minStats": {
+        "intl": 80
+      },
+      "statPenalties": {
+        "stab": -10
+      },
+      "factionPenalties": {
+        "pdip": -20,
+        "golkar_habibie": -15,
+        "poros_tengah": -15,
+        "utusan_daerah": -15,
+        "golkar_akbar": -15,
+        "abri": -15,
+        "other_parties": -15,
+        "pkb": -15,
+        "ppp": -15
+      }
+    }
+  },
+  {
+    "id": "anti_monopoly_law",
+    "category": "经济",
+    "text": "签署《反垄断与不正当商业竞争法》（1999年第5号法律）",
+    "baseCost": 45,
+    "description": "依据1999年第5号法律设立独立的商业竞争监督委员会（<b>KPPU</b>），以瓦解新秩序时期的卡特尔、价格操纵和纵向垄断。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>，并将<font color=\"#704d00\"><b>钦达纳势力</b></font>强制封顶在<font color=\"#4682B4\"><b>受控</b></font>。<font color=\"#B22222\"><b>这将疏远戈尔卡党的企业集团赞助人。</b></font>",
+    "alertMsg": "《反垄断法》（1999年第5号法律）签署成为法律，KPPU开始遴选委员。将改革信誉锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>及以上，将钦达纳势力强制封顶在<font color=\"#4682B4\"><b>受控</b></font>，并提升经济健康，同时疏远了丹绒的戈尔卡党商业派系。",
+    "locks": {
+      "minStats": {
+        "ref": 45
+      },
+      "maxCendana": 40,
+      "statPenalties": {
+        "econ": 8,
+        "intl": 5
+      },
+      "factionPenalties": {
+        "golkar_akbar": -15,
+        "golkar_habibie": 8
+      }
+    }
+  },
+  {
+    "id": "peoples_economy_charter",
+    "category": "经济",
+    "text": "颁布阿迪·萨索诺（Adi Sasono）的“人民经济”（Ekonomi Kerakyatan）合作社宪章",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "imf_ibra_liquidation"
+    ],
+    "description": "全力执行1998年第XVI号人民协商会议决议《经济民主》：指示合作社部长阿迪·萨索诺将国家挽救的种植园、林业特许权和分销网络中最多20%的股权，直接转让给村级合作社（<b>KUD</b>）和本土小企业。将<font color=\"#D81B60\"><b>民意支持度</b></font>锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>或更好，并将<font color=\"#704d00\"><b>钦达纳势力</b></font>封顶在<font color=\"#2F4F4F\"><b>顽固</b></font>。<font color=\"#B22222\"><b>这将吓跑外国债券持有人，并激怒戈尔卡党中的大企业赞助人。</b></font>",
+    "alertMsg": "阿迪·萨索诺的“人民经济”宪章生效。基层合作社、印尼穆斯林知识分子协会（ICMI）活动人士和伊斯兰政党称赞这一再分配是宪法第33条的兑现，民意支持度被锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>及以上——尽管外国财经媒体警告民粹主义国有化的风险。",
+    "locks": {
+      "minStats": {
+        "pop": 45
+      },
+      "maxCendana": 50,
+      "statPenalties": {
+        "intl": -12,
+        "econ": -5,
+        "ref": 6
+      },
+      "factionPenalties": {
+        "poros_tengah": 10,
+        "ppp": 10,
+        "pkb": 8,
+        "golkar_habibie": 8,
+        "golkar_akbar": -14
+      }
+    }
+  },
+  {
+    "id": "timor_national_car_seizure",
+    "category": "经济",
+    "text": "查封汤米·苏哈托（Tommy Suharto）的“帝汶”国产车帝国",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "cendana_restoration_pact"
+    ],
+    "description": "在世界贸易组织裁定苏哈托1996年“国产车”法令（1996年第2号总统指令）违规之后，下令海关总署和IBRA查封停放在井里汶附近Cikampek的15,000辆未售出的起亚制“帝汶”轿车，并因拖欠3.7万亿印尼盾奢侈品税而对PT Timor Putra Nasional行使抵押品赎回权取消。将<font color=\"#704d00\"><b>钦达纳势力</b></font>强制封顶在<font color=\"#4682B4\"><b>受控</b></font>，并提升<font color=\"#1B7837\"><b>经济健康</b></font>、<font color=\"#8E24AA\"><b>改革信誉</b></font>和<font color=\"#D81B60\"><b>民意支持度</b></font>。<font color=\"#B22222\"><b>这将招致钦达纳街及其戈尔卡党内盟友的猛烈报复。</b></font>",
+    "alertMsg": "税务执达员给PT Timor Putra Nasional在Cikampek的停车场上了锁，查封了汤米·苏哈托的王牌垄断业务。公众为这一最令人憎恶的钦达纳裙带关系象征的垮台而欢呼，钦达纳势力被强制封顶在<font color=\"#4682B4\"><b>受控</b></font>。",
+    "locks": {
+      "maxCendana": 35,
+      "statPenalties": {
+        "pop": 10,
+        "ref": 10,
+        "econ": 8,
+        "intl": 6
+      },
+      "factionPenalties": {
+        "golkar_akbar": -14,
+        "pdip": 6,
+        "utusan_golongan": 8
+      }
+    }
+  },
+  {
+    "id": "political_prisoner_release",
+    "category": "公民社会",
+    "text": "下令无条件释放剩余政治犯",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "下令对所有仍依据新秩序《反颠覆法》（1963年第11号PNPS）被关押的政治犯——包括人民民主党（PRD）活动人士、工会组织者和地区异见人士——实行全面总统特赦，并提交彻底废除《反颠覆法》的法案。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>，并提升民意支持度和国际地位。<font color=\"#B22222\"><b>这将使与奇兰卡普内部安全机构的关系趋于紧张。</b></font>",
+    "alertMsg": "芝比农（Cipinang）及全群岛各地监狱的大门，向那些依据旧颠覆法被关押的在押人员敞开。将改革信誉锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>及以上，并提升民意支持度和国际地位，同时使与奇兰卡普的关系趋于紧张。",
+    "locks": {
+      "minStats": {
+        "ref": 45
+      },
+      "statPenalties": {
+        "pop": 8,
+        "intl": 8,
+        "mil": -10
+      },
+      "factionPenalties": {
+        "abri": -10,
+        "pdip": 6,
+        "utusan_golongan": 8
+      }
+    }
+  },
+  {
+    "id": "human_rights_commission_powers",
+    "category": "公民社会",
+    "text": "颁布《人权法》并授权设立人权法庭（1999年第39号法律）",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "签署关于人权的1999年第39号法律，并颁布设立人权法庭的政府代法令（Perppu），赋予其正式传唤权，以调查军方在<font color=\"#B22222\"><b>亚齐</b></font>、<font color=\"#B22222\"><b>东帝汶</b></font>、<font color=\"#B22222\"><b>特里萨克蒂（Trisakti）</b></font>和<font color=\"#B22222\"><b>森马基（Semanggi）</b></font>的暴行。将<font color=\"#8E24AA\"><b>改革信誉</b></font>和<font color=\"#00838F\"><b>国际地位</b></font>锁定在体面的下限。<font color=\"#B22222\"><b>这将永久打破与ABRI的中立协议。</b></font>",
+    "alertMsg": "1999年第39号法律生效，国家人权委员会（Komnas HAM）的调查人员开始直接向各地区司令部传唤记录。将改革信誉锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>之上，国际地位锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>之上，赢得改革派的强力支持，同时与ABRI发生尖锐决裂。",
+    "locks": {
+      "minStats": {
+        "ref": 55,
+        "intl": 50
+      },
+      "statPenalties": {
+        "pop": 10
+      },
+      "factionPenalties": {
+        "abri": -20,
+        "pdip": 8,
+        "golkar_habibie": 8,
+        "utusan_golongan": 10
+      }
+    }
+  },
+  {
+    "id": "chinese_cultural_ban_repeal",
+    "category": "公民社会",
+    "text": "废除1967年第14号指令并全面恢复华人文化权利",
+    "baseCost": 40,
+    "description": "继你发布的1998年第26号总统指令（该指令废除了官方的<i>原住民／非原住民</i>区分）之后，彻底废除苏哈托1967年的第14/1967号内阁指令——恢复华裔印尼人公开庆祝春节（Imlek）、表演舞狮（Barongsai）以及不受限制地出版华文媒体的权利。将<font color=\"#2E8B57\"><b>职能团体代表</b></font>锁定在<font color=\"#009000\"><b>有利</b></font>立场，并将<font color=\"#00838F\"><b>国际地位</b></font>锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>之上。<font color=\"#B22222\"><b>这将令戈尔卡党内的新秩序本土主义者不悦。</b></font>",
+    "alertMsg": "三十二年的国家强制文化抹杀，在你的一笔签署之下终结。公民社会代表、少数族裔政党和海外侨资投资者对这一解放法令表示欢迎，职能团体代表被锁定在<font color=\"#009000\"><b>有利</b></font>的情绪中，经济健康也得到提升。",
+    "locks": {
+      "minStats": {
+        "intl": 50
+      },
+      "minFactions": {
+        "utusan_golongan": 60
+      },
+      "statPenalties": {
+        "econ": 8,
+        "ref": 8,
+        "pop": 4
+      },
+      "factionPenalties": {
+        "other_parties": 8,
+        "pdip": 5,
+        "golkar_akbar": -8
+      }
+    }
+  },
+  {
+    "id": "broadcast_liberalization",
+    "category": "公民社会",
+    "text": "撤销新闻部（Departemen Penerangan）",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "reinstate_siupp_censorship"
+    ],
+    "description": "关闭令人生畏的<i>新闻部</i>（<i>Departemen Penerangan</i>）——新秩序时期总揽审查、新闻许可和国家宣传的部门——并将TVRI和RRI改制为自主的公共服务广播机构。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#4682B4\"><b>模棱两可</b></font>或更好，并将<font color=\"#D81B60\"><b>民意支持度</b></font>锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>或以上。<font color=\"#B22222\"><b>这将激怒戈尔卡党和ABRI强硬派，并永久封死国家新闻审查的路径。</b></font>",
+    "alertMsg": "新闻部被废除。记者和学生为哈尔莫科（Harmoko）旧宣传部门的瓦解而欢庆，改革信誉被锁定在<font color=\"#4682B4\"><b>模棱两可</b></font>及以上，不过戈尔卡党和ABRI强硬派为失去国家喉舌而哀叹。",
+    "locks": {
+      "minStats": {
+        "ref": 60,
+        "pop": 45
+      },
+      "statPenalties": {
+        "intl": 6
+      },
+      "factionPenalties": {
+        "utusan_golongan": 10,
+        "pdip": 8,
+        "poros_tengah": 6,
+        "golkar_akbar": -12,
+        "abri": -8
+      }
+    }
+  },
+  {
+    "id": "reinstate_siupp_censorship",
+    "category": "公民社会",
+    "text": "恢复SIUPP新闻许可制度并查封敌对小报",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "broadcast_liberalization"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 40
+      }
+    ],
+    "description": "逆转你1998年的新闻自由化，授权新闻部以“煽动对国家机构的仇恨”为由吊销出版许可证（<i>SIUPP</i>）并查封敌对报纸（*Rakyat Merdeka*、*Tempo*）。将<font color=\"#37474F\"><b>国家稳定</b></font>锁定在<font color=\"#4682B4\"><b>暗流涌动</b></font>或更好。<font color=\"#B22222\"><b>这将严重损害你的改革信誉、民意支持度和国际地位。</b></font>",
+    "alertMsg": "随着新闻部吊销自1994年以来的首批出版许可证，警方的封条重新贴上了帕尔马拉（Palmerah）和古宁安（Kuningan）各编辑部的大门。街头小报沉默无声，国家稳定被锁定在<font color=\"#4682B4\"><b>暗流涌动</b></font>，不过国内改革派和外国使馆谴责审查制度的回归。",
+    "locks": {
+      "minStats": {
+        "stab": 60
+      },
+      "statPenalties": {
+        "ref": -25,
+        "pop": -15,
+        "intl": -15,
+        "cendana": 10
+      },
+      "factionPenalties": {
+        "golkar_akbar": 10,
+        "abri": 10,
+        "pdip": -15,
+        "utusan_golongan": -20
+      }
+    }
+  },
+  {
+    "id": "purge_utusan_golongan",
+    "category": "公民社会",
+    "text": "解散独立的职能团体代表议员团并安插国家法团主义者",
+    "baseCost": 65,
+    "mutexDecrees": [
+      "chinese_cultural_ban_repeal",
+      "abolish_abri_mpr_seats"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "utusan_golongan"
+    ],
+    "seatRecipients": {
+      "golkar_habibie": 65
+    },
+    "description": "撤销<b>职能团体代表</b>集团中65名独立的公民社会、劳工和人权代表的资格，并将其65个人民协商会议席位直接并入<font color=\"#CC9900\"><b>戈尔卡党</b></font>旗下经国家审查的法团主义组织（SPSI、KORPRI、KNPI）。<font color=\"#B22222\"><b>这将永久解散独立的职能团体代表派系，将其65个席位转交戈尔卡党，并招致国内外的强烈谴责。</b></font>",
+    "alertMsg": "通过总统令，独立的职能团体代表团被解散，其65个人民协商会议席位被直接转交给戈尔卡党的法团主义附属组织！公民社会的席位陷入沉默，并在棋盘上变灰。",
+    "locks": {
+      "statPenalties": {
+        "ref": -25,
+        "pop": -15,
+        "intl": -15,
+        "cendana": 10
+      },
+      "factionPenalties": {
+        "golkar_akbar": 15,
+        "golkar_habibie": 10,
+        "pdip": -15,
+        "poros_tengah": -10
+      }
+    }
+  },
+  {
+    "id": "police_military_separation",
+    "category": "安全",
+    "text": "正式确立警察（POLRI）与ABRI的分离",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "将1999年第2号总统指令法典化，使国家警察（POLRI）脱离ABRI指挥体系，并将武装部队更名为<b>TNI</b>。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>之上，并提升公民社会的支持。<font color=\"#B22222\"><b>这将永久打破与ABRI的中立协议。</b></font>",
+    "alertMsg": "POLRI开始正式脱离军事指挥体系。将改革信誉锁定在<font color=\"#2F4F4F\"><b>存疑</b></font>之上，赢得改革派的赞誉，不过将领们对“双重功能”被削减感到不满。",
+    "locks": {
+      "minStats": {
+        "ref": 50
+      },
+      "statPenalties": {
+        "pop": 8,
+        "stab": -5
+      },
+      "factionPenalties": {
+        "abri": -18,
+        "golkar_habibie": 8,
+        "utusan_golongan": 8
+      }
+    }
+  },
+  {
+    "id": "civilian_defense_ministry",
+    "category": "安全",
+    "text": "分离武装部队司令一职并任命文职国防部长",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "终结苏哈托时代武装部队司令（<b>Pangab</b>）同时兼任国防安全部长（<b>Menhankam</b>）的双重任命，任命受尊敬的文职学者朱沃诺·苏达索诺（Juwono Sudarsono）教授为1959年以来印尼首位文职国防部长。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#4682B4\"><b>模棱两可</b></font>，并将<font color=\"#00838F\"><b>国际地位</b></font>锁定在<font color=\"#2F4F4F\"><b>不信任</b></font>之上。<font color=\"#B22222\"><b>这将永久打破与ABRI的中立协议。</b></font>",
+    "alertMsg": "四十年来第一次，一位文官坐上了独立广场西路（Jalan Medan Merdeka Barat）国防部的最高位置。民主改革派和各国首都为文官至上这一历史性主张而欢呼，改革信誉被锁定在<font color=\"#4682B4\"><b>模棱两可</b></font>及以上——不过奇兰卡普的将领们对被降级冷冷地愤怒。",
+    "locks": {
+      "minStats": {
+        "ref": 60,
+        "intl": 50
+      },
+      "statPenalties": {
+        "pop": 6,
+        "cendana": -8
+      },
+      "factionPenalties": {
+        "abri": -18,
+        "golkar_habibie": 10,
+        "utusan_golongan": 10,
+        "poros_tengah": 6
+      }
+    }
+  },
+  {
+    "id": "abolish_kodam_territorial",
+    "category": "安全",
+    "text": "瓦解ABRI的地区司令部体系（Kodam / Koramil）",
+    "baseCost": 65,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "ratify_kamra_militia_bill"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      }
+    ],
+    "description": "跨越了连军方自身的<i>新范式</i>改革派都不敢触碰的终极红线：颁布总统令，瓦解那套与印尼每个省、县、村并行的军事地区层级体系（<i>Kodam、Korem、Kodim、Koramil、Babinsa</i>），将武装部队严格限定于对外边防。将<font color=\"#8E24AA\"><b>改革信誉</b></font>锁定在<font color=\"#006400\"><b>谨慎可信</b></font>，并将<font color=\"#2E8B57\"><b>职能团体代表</b></font>和<font color=\"#A0522D\"><b>地区代表</b></font>锁定在较高下限。<font color=\"#B22222\"><b>这将引发与ABRI和奇兰卡普彻底的、不可逆转的决裂。</b></font>",
+    "alertMsg": "你以1950年以来最大胆的文官至上之举，下令瓦解军方从村到省的地区司令部网络。学生运动、地区省长和国际观察人士为军队双重功能的终结而欢呼——而奇兰卡普的将领们则与独立宫（Merdeka Palace）断绝了一切联系。",
+    "locks": {
+      "minStats": {
+        "ref": 85,
+        "intl": 65
+      },
+      "minFactions": {
+        "utusan_golongan": 75,
+        "utusan_daerah": 65
+      },
+      "statPenalties": {
+        "pop": 15,
+        "cendana": -15,
+        "stab": -10
+      },
+      "factionPenalties": {
+        "abri": -35,
+        "pdip": 12,
+        "poros_tengah": 10,
+        "golkar_habibie": 10
+      }
+    }
+  },
+  {
+    "id": "ratify_kamra_militia_bill",
+    "category": "安全",
+    "text": "将4万人规模的Kamra辅助部队制度化",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "abolish_kodam_territorial",
+      "abolish_abri_mpr_seats"
+    ],
+    "description": "将依据1982年第20号法律设立的临时性<i>人民安全</i>（<i>Keamanan Rakyat</i>，Kamra）平民警务辅助人员，改组为在内政部与ABRI联合监督下、由国家支付薪酬的常设辅助宪兵队，用于保障城市街道和省会安全。将<font color=\"#37474F\"><b>国家稳定</b></font>锁定在<font color=\"#2F4F4F\"><b>紧张</b></font>之上，并提升<font color=\"#556B2F\"><b>军方支持</b></font>。<font color=\"#B22222\"><b>这将严重损害你的改革信誉，并疏远公民社会代表。</b></font>",
+    "alertMsg": "四万名身着制服的Kamra辅助人员在印尼各城市被永久制度化。街头犯罪和暴乱明显减少，国家稳定被锁定在<font color=\"#2F4F4F\"><b>紧张</b></font>之上，ABRI为此满意，不过学生和人权团体谴责创建国家出资的准军事力量。",
+    "locks": {
+      "minStats": {
+        "stab": 50
+      },
+      "statPenalties": {
+        "ref": -12,
+        "econ": -5
+      },
+      "factionPenalties": {
+        "abri": 12,
+        "golkar_akbar": 8,
+        "utusan_golongan": -12,
+        "pdip": -8
+      }
+    }
+  },
+  {
+    "id": "invoke_supersemar_ii",
+    "category": "安全",
+    "text": "启用“Supersemar II”并宣布国家紧急状态",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "abolish_kodam_territorial",
+      "abolish_abri_mpr_seats",
+      "police_military_separation",
+      "civilian_defense_ministry",
+      "direct_presidential_amendment",
+      "political_prisoner_release",
+      "human_rights_commission_powers"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 35
+      }
+    ],
+    "description": "呼应苏哈托1966年3月11日的授权，依据1959年《危险状态法》启用紧急总统令权力，禁止街头示威，对大学校园实行军事宵禁，并设立总统府与奇兰卡普联合的国家稳定指挥部（<i>新Kopkamtib</i>）。将<font color=\"#37474F\"><b>国家稳定</b></font>锁定在<font color=\"#009000\"><b>脆弱和平</b></font>，并将<font color=\"#556B2F\"><b>ABRI</b></font>锁定在<font color=\"#006400\"><b>支持哈比比</b></font>，同时解锁取缔反对党的紧急法令。<font color=\"#B22222\"><b>这将彻底摧毁你的改革信誉、民意支持度和国际地位。</b></font>",
+    "alertMsg": "当“Supersemar II”通过国家电视台宣读时，装甲车在独立纪念碑（Monas）和参议院大厦周围就位。街道陷入死寂，国家稳定被锁定在<font color=\"#009000\"><b>脆弱和平</b></font>，ABRI集团被无条件拿下——你也获得了在人民协商会议中解散反对党的紧急权力。",
+    "locks": {
+      "minStats": {
+        "stab": 75,
+        "mil": 80
+      },
+      "minFactions": {
+        "abri": 85
+      },
+      "statPenalties": {
+        "ref": -35,
+        "pop": -25,
+        "intl": -25,
+        "cendana": 15
+      },
+      "factionPenalties": {
+        "golkar_akbar": 15,
+        "pdip": -25,
+        "utusan_golongan": -25,
+        "poros_tengah": -15
+      }
+    }
+  },
+  {
+    "id": "unify_golkar_slipi",
+    "category": "政治",
+    "text": "在斯利皮（Slipi）的中央领导委员会（DPP）之下重新统一戈尔卡党",
+    "baseCost": 60,
+    "unlockEvent": "ev_assembly_convenes",
+    "mutexDecrees": [
+      "dissolve_golkar_old_guard"
+    ],
+    "reqStats": [
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 74
+      }
+    ],
+    "reqFactions": [
+      {
+        "key": "golkar_akbar",
+        "op": ">=",
+        "val": 50
+      },
+      {
+        "key": "golkar_habibie",
+        "op": ">=",
+        "val": 60
+      }
+    ],
+    "banFactions": [
+      "golkar_habibie"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 1
+    },
+    "description": "一年多来，戈尔卡党一直是穿着同一件外套的两个政党。阿克巴·丹绒在斯利皮的委员会——于1998年7月的特别党代会上就任——掌控着党的机器、省级分部和大部分资金，而你自己的技术官僚、ICMI知识分子和IPTN校友圈则在党团中自成一个独立的议员团，听命于总统府而非斯利皮。如今人民协商会议已经开会，邀请阿克巴来到独立宫，把忠诚派议员团并入斯利皮领导层，让所有戈尔卡党席位处于单一指挥链之下。<font color=\"#0000FF\"><b>忠诚派议员团将作为独立集团被解散，其40个席位将转归阿克巴·丹绒的戈尔卡党，该党的代表随后将无保留地被约束在你身后。</b></font><font color=\"#B22222\"><b>这将让你失去最忠诚的派系，强化改革运动本想拆除的那台党机器，并且一旦议会听取了问责演说，便无法撤销。</b></font>",
+    "alertMsg": "在独立宫一场简短的仪式上，阿克巴·丹绒和你的核心圈子在同一页纸上签字：一个戈尔卡党，一条指挥链，一份代表名单。跟随你从IPTN走来的工程师和ICMI老将们走出各自的议员团会议室，在斯利皮的旗帜下就座，而此前一直在两个阵营之间悄悄观望的省级主席们，则在晚间新闻之前宣布了和解。自1998年7月党代会以来，戈尔卡党第一次发出同一个声音，这个声音说，当投票箱开启时，它将支持总统。党外的改革派带着几分不安指出：刚刚得到强化的，是谁的机器。",
+    "locks": {
+      "minFactions": {
+        "golkar_akbar": 50
+      },
+      "statPenalties": {
+        "ref": -4,
+        "cendana": 4
+      },
+      "factionPenalties": {
+        "golkar_akbar": 25,
+        "pdip": -8,
+        "utusan_golongan": -5
+      }
+    }
+  },
+  {
+    "id": "rainbow_coalition_accord",
+    "category": "政治",
+    "text": "宣布成立彩虹联盟：民族团结政府",
+    "baseCost": 65,
+    "unlockEvent": "ev_eve_of_vote",
+    "mutexDecrees": [
+      "ban_pdip_subversion",
+      "dissolve_golkar_old_guard",
+      "enforce_asas_tunggal_ban",
+      "abolish_abri_mpr_seats"
+    ],
+    "reqFactions": [
+      {
+        "key": "pdip",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "abri",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "golkar_akbar",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "golkar_habibie",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "poros_tengah",
+        "op": ">=",
+        "val": 80
+      }
+    ],
+    "description": "投票前夕，决定这场表决的五大集团——梅加瓦蒂的斗争民主党、奇兰卡普、戈尔卡党的两个派系以及中轴派——比1998年5月以来的任何时候都更靠近总统府。与其逐个向它们索要明天的选票，不如向它们所有人提供这个共和国中前所未有的东西：同桌共席的位置。今晚召集它们的领导人来到独立宫，宣布成立民族团结政府，即“彩虹联盟”，在这些使国家免于分崩离析的政党之间分配内阁职位、委员会主席职位和议会领导职位。<font color=\"#0000FF\"><b>这将把斗争民主党、ABRI、戈尔卡党两个派系和中轴派的支持锁定在最高水平。</b></font><font color=\"#B22222\"><b>公民社会代表、地区代表和小党会将此视为大集团对权力的瓜分，并且不会忘记。</b></font>",
+    "alertMsg": "过了午夜，议会中每个大集团的领导人都走进独立宫：梅加瓦蒂的助手们、来自奇兰卡普的将军们、阿克巴·丹绒的党主席们、你自己的忠诚派以及中轴派代表团。各部职位按字母顺序宣读，这样就没有人能声称自己被第一个点名。当公报发给媒体时，参议院大厦的算术已经改变：在场的每一个议员团都有一个部长职位、一个委员会或一个副议长职位可能因问责演说失败而丢失。在穆利亚酒店（Hotel Mulia）的大堂里，那些没有受到邀请的代表开始追问：他们究竟被留下了什么。",
+    "locks": {
+      "minFactions": {
+        "pdip": 100,
+        "abri": 100,
+        "golkar_akbar": 100,
+        "golkar_habibie": 100,
+        "poros_tengah": 100
+      },
+      "factionPenalties": {
+        "utusan_golongan": -8,
+        "other_parties": -8,
+        "utusan_daerah": -4
+      }
+    }
+  }
+]

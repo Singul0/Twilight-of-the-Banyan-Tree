@@ -1,0 +1,1154 @@
+[
+  {
+    "id": "anti_corruption",
+    "category": "Politics",
+    "text": "Dorong RUU Sapu Jagat Antikorupsi (UU No. 28 & 31/1999)",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "cendana_restoration_pact"
+    ],
+    "description": "Paket legislasi menyeluruh yang bergulir di Senayan di bawah panji <i>transparansi dan akuntabilitas</i>, dirancang di bawah bayang-bayang panjang skandal Bank Bali yang belum tuntas serta timbunan KKN (korupsi, kolusi, nepotisme) selama tiga dekade. Mewajibkan pemeriksaan kekayaan bagi penyelenggara negara (KPKPN) dan meletakkan mandat undang-undang bagi pembentukan Komisi Pemberantasan Korupsi yang independen. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> setidaknya pada tingkat <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> dan membatasi <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> maksimal pada tingkat <font color=\"#2F4F4F\"><b>$tier.cendana.persistent$</b></font>. Mengusik jaringan patronase <font color=\"#7D6000\"><b>Golkar</b></font> dan menutup kemungkinan pakta apa pun dengan Jalan Cendana.",
+    "alertMsg": "UU Sapu Jagat tersebut resmi disahkan. Kredibilitas Reformasi dijamin setidaknya berada pada tingkat <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font>, dan Pengaruh Cendana dibatasi maksimal pada tingkat <font color=\"#2F4F4F\"><b>$tier.cendana.persistent$</b></font>. Para politisi mapan di Golkar berang melihat terganggunya jaringan patronase mereka, meskipun para utusan reformis merapatkan barisan mendukung Anda.",
+    "locks": {
+      "minStats": {
+        "ref": 60
+      },
+      "maxCendana": 50,
+      "statPenalties": {
+        "pop": [8, 12]
+      },
+      "factionPenalties": {
+        "pdip": [-5, -3],
+        "golkar_akbar": [-18, -12],
+        "golkar_habibie": [8, 12],
+        "utusan_golongan": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "civil_service_neutrality",
+    "category": "Politics",
+    "text": "Tegakkan Netralitas Politik Pegawai Negeri Sipil (PP No. 5 & 12/1999)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "enforce_asas_tunggal_ban"
+    ],
+    "description": "Menegakkan secara ketat Peraturan Pemerintah No. 5 dan No. 12/1999, memutus doktrin <i>monoloyalitas</i> wajib warisan Orde Baru yang memaksa empat juta pegawai negeri sipil di dalam KORPRI untuk berkampanye, menggalang dana, dan memilih secara eksklusif untuk <font color=\"#7D6000\"><b>Golkar</b></font>. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> berada di atas <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> dan menjamin sikap <font color=\"#006068\"><b>Partai Lain</b></font> setidaknya pada tingkat <font color=\"#4682B4\"><b>$mood.other_parties.fragmented$</b></font>. Memancing kemarahan para penguasa daerah <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Tali pusar tiga puluh tahun yang mengikat KORPRI pada Golkar resmi diputus baik dalam praktik maupun di atas kertas. Partai-partai oposisi di seluruh MPR menyambut baik terciptanya gelanggang politik yang adil, menjamin Kredibilitas Reformasi di atas <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> serta mendongkrak dukungan partai-partai kecil, meskipun para bos mesin daerah Golkar murka.",
+    "locks": {
+      "minStats": {
+        "ref": 55
+      },
+      "minFactions": {
+        "other_parties": 55
+      },
+      "statPenalties": {
+        "pop": [6, 10],
+        "cendana": [-12, -8]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-22, -14],
+        "pdip": [6, 10],
+        "poros_tengah": [6, 10],
+        "ppp": [5, 7],
+        "pkb": [5, 7]
+      }
+    }
+  },
+  {
+    "id": "direct_presidential_amendment",
+    "category": "Politics",
+    "text": "Dukung Pakta Konstitusional untuk Pemilihan Presiden Langsung",
+    "baseCost": 55,
+    "militaryShock": 10,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "cendana_restoration_pact"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 60
+      }
+    ],
+    "description": "Mengerahkan kewibawaan penuh Kepresidenan di belakang Badan Pekerja MPR (BP MPR) saat menyusun Perubahan Pertama UUD 1945—membatasi masa jabatan presiden di masa depan maksimal dua periode, memangkas kekuasaan dekrit eksekutif, dan mengikat komitmen Republik pada pemilihan presiden secara langsung oleh rakyat setelah masa transisi ini berakhir. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> pada tingkat <font color=\"#009000\"><b>$tier.ref.reform_minded$</b></font> dan mendongkrak dukungan <font color=\"#9E1F14\"><b>PDI-P</b></font>, <font color=\"#004488\"><b>Poros Tengah</b></font>, serta <font color=\"#555555\"><b>Utusan Golongan</b></font>. Mengasingkan kalangan institusionalis <font color=\"#7D6000\"><b>Golkar</b></font> dan <font color=\"#3E5022\"><b>ABRI</b></font> serta menutup opsi pemberlakuan keadaan darurat.",
+    "alertMsg": "Pakta konstitusional ditandatangani menjelang pemungutan suara paripurna. Dengan secara sukarela memangkas kekuasaan kepresidenan imperial yang dibangun Soeharto dan mendukung pemilihan langsung di masa depan, Anda mengunci Kredibilitas Reformasi pada tingkat <font color=\"#009000\"><b>$tier.ref.reform_minded$</b></font> dan melucuti para pengkritik demokratis paling keras Anda—meskipun kalangan tua Golkar dan institusionalis ABRI membenci perombakan konstitusi tersebut.",
+    "locks": {
+      "minStats": {
+        "ref": 75
+      },
+      "statPenalties": {
+        "pop": [10, 14],
+        "intl": [6, 10]
+      },
+      "factionPenalties": {
+        "pdip": [8, 12],
+        "poros_tengah": [8, 12],
+        "utusan_golongan": [10, 14],
+        "golkar_habibie": [5, 7],
+        "golkar_akbar": [-14, -10],
+        "abri": [-8, -5]
+      }
+    }
+  },
+  {
+    "id": "suharto_asset_seizure_tribunal",
+    "category": "Politics",
+    "text": "Bentuk Mahkamah Luar Biasa KKN & Sita Konglomerasi Cendana",
+    "baseCost": 65,
+    "militaryShock": 12,
+    "mutexDecrees": [
+      "cendana_restoration_pact",
+      "economic_bailout"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 60
+      },
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 45
+      }
+    ],
+    "description": "Melangkahi Kejaksaan Agung yang telah terkompromi secara menyeluruh dengan membentuk Mahkamah Khusus Luar Biasa KKN berdasarkan TAP MPR No. XI/1998 yang berwenang menasionalisasi kerajaan bisnis Bimantara, Humpuss, dan Citra Lamtoro Gung milik keluarga Soeharto serta menyeret mantan Presiden tersebut ke pengadilan terbuka yang disiarkan televisi. Menghancurkan <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> secara permanen ke tingkat <font color=\"#006400\"><b>$tier.cendana.dormant$</b></font> dan menjamin <font color=\"#D81B60\"><b>Popularitas</b></font> setidaknya pada tingkat <font color=\"#009000\"><b>$tier.pop.grudging_acceptance$</b></font>. Memicu pemberontakan dari kubu <font color=\"#7D6000\"><b>Golkar</b></font> pimpinan Akbar dan para jenderal tua <font color=\"#3E5022\"><b>ABRI</b></font>.",
+    "alertMsg": "Jaksa penuntut negara dengan dikawal pasukan Marinir menyita kantor pusat Bimantara dan Humpuss bersamaan dengan diserahkannya surat dakwaan resmi di Jalan Cendana No. 8. Jutaan rakyat Indonesia bersorak-sorai di jalanan saat Pengaruh Cendana dihancurkan secara permanen ke tingkat <font color=\"#006400\"><b>$tier.cendana.dormant$</b></font> dan Popularitas dijamin pada tingkat <font color=\"#009000\"><b>$tier.pop.grudging_acceptance$</b></font>—meskipun loyalis lama Orde Baru di kubu Akbar di dalam Golkar memberontak.",
+    "locks": {
+      "minStats": {
+        "pop": 75,
+        "ref": 75
+      },
+      "maxCendana": 10,
+      "statPenalties": {
+        "econ": [10, 14],
+        "intl": [8, 12]
+      },
+      "factionPenalties": {
+        "pdip": [12, 18],
+        "poros_tengah": [10, 14],
+        "utusan_golongan": [12, 18],
+        "golkar_habibie": [8, 12],
+        "golkar_akbar": [-30, -20],
+        "abri": [-11, -8]
+      }
+    }
+  },
+  {
+    "id": "abolish_abri_mpr_seats",
+    "category": "Politics",
+    "text": "Hapus 38 Kursi MPR Tanpa Pemilihan Milik ABRI melalui Dekrit Darurat",
+    "baseCost": 70,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "ratify_kamra_militia_bill"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      }
+    ],
+    "banFactions": [
+      "abri"
+    ],
+    "seatRecipients": {
+      "utusan_golongan": 38
+    },
+    "description": "Mengapa harus menunggu hingga tahun 2004 atau 2009 untuk mengakhiri perwakilan militer tanpa pemilihan di lembaga legislatif? Keluarkan dekrit konstitusional seketika yang mencabut 38 mandat penunjukan MPR milik ABRI menjelang pemungutan suara Oktober dan mengalihkan kursi mereka kepada masyarakat sipil serta perwakilan partai-partai kecil terpilih. Membubarkan fraksi <font color=\"#3E5022\"><b>ABRI</b></font> di MPR secara permanen dan mengguncang Cilangkap.",
+    "alertMsg": "Melalui dekrit konstitusional darurat, 38 kursi militer tanpa pemilihan di MPR resmi dihapuskan saat ini juga, dan mandat mereka dialihkan kepada para utusan dari Utusan Golongan serta partai-partai kecil! Blok parlemen Jenderal Wiranto dibubarkan dan dihapus dari papan sidang seiring gerakan mahasiswa di seluruh Indonesia menyambut kematian Dwifungsi.",
+    "locks": {
+      "minStats": {
+        "ref": 75
+      },
+      "statPenalties": {
+        "pop": [12, 18],
+        "intl": [8, 12],
+        "stab": [-14, -10]
+      },
+      "factionPenalties": {
+        "abri": [-60, -40],
+        "utusan_golongan": [16, 24],
+        "other_parties": [16, 24],
+        "pdip": [10, 14],
+        "poros_tengah": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "dissolve_golkar_old_guard",
+    "category": "Politics",
+    "text": "Diskualifikasi Kaukus Barisan Tua Golkar atas Kecurangan Pemilu Bank Bali",
+    "baseCost": 80,
+    "militaryShock": 15,
+    "mutexDecrees": [
+      "cendana_restoration_pact",
+      "economic_bailout",
+      "unify_golkar_slipi"
+    ],
+    "reqDecree": "anti_corruption",
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "golkar_akbar"
+    ],
+    "seatRecipients": {
+      "golkar_habibie": 50
+    },
+    "description": "Menggunakan hasil audit forensik Bank Bali tanpa sensor dan ketentuan dana kampanye dalam Undang-Undang Pemilu 1999 (UU No. 3/1999)—yang secara tegas memberi wewenang kepada Mahkamah Agung untuk mendiskualifikasi daftar calon partai yang didanai oleh uang negara secara melawan hukum—perintahkan pembubaran pengurus pusat partai warisan Orde Baru pimpinan Akbar Tandjung yang terlibat skandal tersebut dan alihkan 50 dari 80 mandat MPR miliknya kepada kader-kader reformis yang telah diverifikasi, sementara 30 kursi sisanya dibiarkan kosong karena daftar penggantinya tidak dapat disahkan sebelum Majelis bersidang. Membubarkan kubu <font color=\"#7D6000\"><b>Golkar</b></font> pimpinan Akbar secara permanen.",
+    "alertMsg": "Berbekal hasil audit dana kampanye Bank Bali dan penetapan pengesahan Mahkamah Agung, Anda telah membubarkan jajaran pengurus tua Golkar pimpinan Akbar Tandjung! Lima puluh dari 80 kursi MPR miliknya beralih ke tangan Loyalis Reformis Anda sementara tiga puluh kursi dibiarkan kosong karena ketiadaan pengganti yang sah, dan Cilangkap menyaksikan preseden tersebut dengan kewaspadaan terbuka—memenuhi tuntutan gerakan mahasiswa 1998 untuk membongkar mesin elektoral Orde Baru.",
+    "locks": {
+      "minStats": {
+        "ref": 65
+      },
+      "maxCendana": 25,
+      "statPenalties": {
+        "pop": [6, 10],
+        "intl": [4, 6],
+        "stab": [-18, -12]
+      },
+      "factionPenalties": {
+        "golkar_habibie": [10, 14],
+        "pdip": [6, 8],
+        "poros_tengah": [5, 7],
+        "utusan_golongan": [7, 11],
+        "utusan_daerah": [5, 7],
+        "abri": [-16, -11]
+      }
+    },
+    "seatsVacated": 30
+  },
+  {
+    "id": "cendana_restoration_pact",
+    "category": "Politics",
+    "text": "Tandatangani Pakta Pemulihan & Amnesti Jalan Cendana",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "anti_corruption",
+      "suharto_asset_seizure_tribunal",
+      "dissolve_golkar_old_guard",
+      "direct_presidential_amendment"
+    ],
+    "reqStats": [
+      {
+        "key": "cendana",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 40
+      }
+    ],
+    "description": "Berkendaralah menuju Jalan Cendana No. 8 lewat tengah malam dan berdamailah tanpa syarat dengan mentor lama Anda. Sebagai imbalan atas pengampunan presiden secara permanen bagi Soeharto, anak-anaknya, dan para kroninya, sindikat Cendana membuka brankas luar negeri mereka di Singapura untuk membiayai kampanye MPR Anda secara besar-besaran. <font color=\"#0000FF\"><b>Menyuntikkan tambahan Modal Politik dalam jumlah besar</b></font> dan menarik <font color=\"#7D6000\"><b>Golkar (Akbar)</b></font> merapat tajam ke Istana, sekaligus mendorong <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> kembali menuju tingkat <font color=\"#8B0000\"><b>$tier.cendana.untouchable$</b></font>. Pemodal asing tidak akan memaafkan citra buruk ini. Menghancurkan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> Anda dan memicu kemurkaan mahasiswa.",
+    "alertMsg": "Sang anak hilang telah kembali ke Jalan Cendana. Dengan terlindunginya keluarga Soeharto oleh pengampunan menyeluruh dan pulihnya monopoli mereka, para kurir uang Cendana membanjiri Senayan dengan Modal Politik dan menggerakkan mesin Golkar di belakang pemilihan kembali Anda—mengubah kepresidenan Anda menjadi Orde Baru Jilid II.",
+    "locks": {
+      "statPenalties": {
+        "PC": [20, 30],
+        "cendana": [16, 24],
+        "ref": [-36, -24],
+        "pop": [-24, -16],
+        "intl": [-24, -16],
+        "econ": [-10, -6]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "abri": [10, 14],
+        "utusan_daerah": [10, 14],
+        "pdip": [-24, -16],
+        "utusan_golongan": [-24, -16],
+        "poros_tengah": [-14, -10]
+      }
+    }
+  },
+  {
+    "id": "ban_pdip_subversion",
+    "category": "Politics",
+    "text": "Bubarkan PDI-P & Lantik Kembali Pengurus 'PDI' Soerjadi 1996 melalui Dekrit Darurat",
+    "baseCost": 85,
+    "reqDecree": "invoke_supersemar_ii",
+    "reqStats": [
+      {
+        "key": "mil",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 25
+      }
+    ],
+    "banFactions": [
+      "pdip"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 53,
+      "utusan_daerah": 50,
+      "utusan_golongan": 50
+    },
+    "description": "Mengulangi skenario brutal 27 Juli 1996 (<i>Kudatuli</i>) dalam skala nasional: di bawah wewenang darurat militer, tuduh PDI-P pimpinan Megawati Soekarnoputri melindungi gerakan kiri terlarang (PRD) dan menghasut pemberontakan, cabut pengesahan KPU miliknya, serta alihkan 153 mandat MPR-nya kepada para loyalis Soerjadi binaan negara, gubernur daerah, dan blok militer. Membubarkan <font color=\"#9E1F14\"><b>PDI-P</b></font> secara permanen dan memicu sanksi internasional.",
+    "alertMsg": "Kendaraan lapis baja Kostrad menutup rapat kawasan Jalan Diponegoro saat PDI-P pimpinan Megawati dinyatakan bubar berdasarkan undang-undang subversi darurat! Ke-153 kursinya di Senayan diserahkan kepada para utusan Golkar binaan negara, utusan daerah, dan militer. Sementara negara-negara asing membekukan hubungan diplomatik dengan ngeri, pesaing parlemen terbesar Anda telah disapu bersih dari papan sidang dengan paksaan.",
+    "locks": {
+      "minStats": {
+        "stab": 60
+      },
+      "statPenalties": {
+        "pop": [-42, -28],
+        "ref": [-36, -24],
+        "intl": [-36, -24],
+        "econ": [-18, -12],
+        "cendana": [12, 18]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "abri": [12, 18],
+        "utusan_daerah": [8, 12],
+        "poros_tengah": [-24, -16],
+        "utusan_golongan": [-30, -20],
+        "golkar_habibie": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "enforce_asas_tunggal_ban",
+    "category": "Politics",
+    "text": "Berlakukan Kembali UU 'Asas Tunggal' 1985 & Bubarkan Blok Partai Keagamaan",
+    "baseCost": 75,
+    "mutexDecrees": [
+      "civil_service_neutrality"
+    ],
+    "reqDecree": "invoke_supersemar_ii",
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "poros_tengah",
+      "ppp",
+      "pkb",
+      "other_parties"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 65,
+      "golkar_habibie": 35,
+      "utusan_daerah": 38
+    },
+    "description": "Mengaktifkan kembali Undang-Undang Partai Politik tahun 1985 warisan Soeharto yang mewajibkan seluruh organisasi menganut Pancasila semata sebagaimana ditafsirkan negara (<i>Asas Tunggal</i>), melarang partai-partai yang berlandaskan simbol agama atau ideologi lain serta membubarkan Poros Tengah pimpinan Amien Rais, PPP, dan partai-partai Islam kecil—melebur kembali kursi-kursi mereka ke dalam Golkar dan utusan daerah. Membubarkan <font color=\"#004488\"><b>Poros Tengah</b></font>, <font color=\"#1E6840\"><b>PPP</b></font>, dan <font color=\"#006068\"><b>Partai-Partai Kecil</b></font> secara permanen.",
+    "alertMsg": "Melalui dekrit darurat, pembatasan Asas Tunggal 1985 resmi diberlakukan kembali! Poros Tengah pimpinan Amien Rais, PPP, dan partai-partai ideologis kecil dicabut kedudukannya di MPR, potret mereka menjadi abu-abu, dan kursi mereka dilebur ke dalam Golkar serta delegasi daerah.",
+    "locks": {
+      "statPenalties": {
+        "pop": [-30, -20],
+        "ref": [-30, -20],
+        "intl": [-18, -12],
+        "cendana": [8, 12]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "abri": [8, 12],
+        "pkb": [-30, -20],
+        "utusan_golongan": [-24, -16]
+      }
+    }
+  },
+  {
+    "id": "regional_autonomy",
+    "category": "Regional Affairs",
+    "text": "Sahkan Paket Fiskal Otonomi Daerah Khusus",
+    "baseCost": 55,
+    "description": "Menata ulang secara mendasar hubungan fiskal antara Jakarta dan provinsi-provinsi di bawah UU No. 22 dan 25/1999, mendesentralisasikan bagi hasil sumber daya alam ke daerah-daerah luar Jawa. Menjamin sikap <font color=\"#555555\"><b>Utusan Daerah</b></font> setidaknya berada pada tingkat <font color=\"#009000\"><b>$mood.utusan_daerah.content$</b></font>. Membebani kas negara.",
+    "alertMsg": "Dana dalam jumlah besar telah didesentralisasikan secara sah. Utusan Daerah kini dijamin memiliki sikap yang sangat bersahabat, meskipun kas pemerintah pusat harus menanggung beban berat.",
+    "locks": {
+      "minFactions": {
+        "utusan_daerah": 70
+      },
+      "statPenalties": {
+        "econ": [-22, -14],
+        "stab": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "aceh_special_status_law",
+    "category": "Regional Affairs",
+    "text": "Sahkan UU No. 44/1999 tentang Penyelenggaraan Keistimewaan Provinsi Daerah Istimewa Aceh",
+    "baseCost": 45,
+    "description": "Mengodifikasikan status khusus bersejarah Aceh (<i>Keistimewaan Aceh</i>) ke dalam undang-undang, memberikan provinsi tersebut otonomi resmi atas kehidupan beragama, hukum adat (<i>Adat</i>), pendidikan, serta peran penasihat resmi bagi Majelis Permusyawaratan Ulama (MPU). Menjamin <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> dan menggalang dukungan dari <font color=\"#555555\"><b>Utusan Daerah</b></font> maupun Fraksi-Fraksi Islam. Membuat kalangan nasionalis sekuler <font color=\"#9E1F14\"><b>PDI-P</b></font> tidak senang.",
+    "alertMsg": "UU No. 44/1999 resmi diberlakukan. Para <i>ulama</i> Aceh, legislator provinsi, dan partai-partai Islam di Senayan menyambut baik jaminan undang-undang atas otonomi agama dan budaya Aceh, menjamin Stabilitas Nasional setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font>.",
+    "locks": {
+      "minStats": {
+        "stab": 45
+      },
+      "statPenalties": {
+        "pop": [4, 6],
+        "ref": [4, 6]
+      },
+      "factionPenalties": {
+        "utusan_daerah": [10, 14],
+        "ppp": [8, 12],
+        "poros_tengah": [6, 10],
+        "pdip": [-5, -3]
+      }
+    }
+  },
+  {
+    "id": "maluku_irja_division",
+    "category": "Regional Affairs",
+    "text": "Sahkan UU No. 45 & 46/1999 tentang Pembentukan Maluku Utara dan Pemekaran Irian Jaya",
+    "baseCost": 50,
+    "description": "Menandatangani UU No. 45 dan 46/1999, membentuk provinsi tersendiri di Maluku Utara (memisahkan Ternate dan Tidore dari Ambon yang dilanda konflik) serta memekarkan Irian Jaya menjadi tiga provinsi (Barat, Tengah, dan Timur) lengkap dengan puluhan kabupaten baru, jabatan pegawai negeri, dan kursi DPRD provinsi. Menjamin sikap <font color=\"#555555\"><b>Utusan Daerah</b></font> pada tingkat <font color=\"#009000\"><b>$mood.utusan_daerah.content$</b></font> dan menyenangkan jaringan Indonesia Timur di dalam <font color=\"#7D6000\"><b>Golkar</b></font>. Menguras anggaran dan memancing kemarahan Jayapura.",
+    "alertMsg": "UU No. 45 dan 46/1999 resmi diberlakukan. Pembentukan Maluku Utara segera menenangkan kepulauan rempah-rempah bagian utara, dan bertambahnya jabatan-jabatan provinsi baru menjamin sikap Utusan Daerah berada pada tingkat <font color=\"#009000\"><b>$mood.utusan_daerah.content$</b></font>—meskipun para aktivis Papua di Jayapura memprotes pemekaran tersebut dan biaya administratifnya membebani anggaran.",
+    "locks": {
+      "minFactions": {
+        "utusan_daerah": 62
+      },
+      "statPenalties": {
+        "econ": [-10, -6],
+        "stab": [-5, -3]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [8, 12],
+        "golkar_habibie": [6, 10],
+        "other_parties": [5, 7]
+      }
+    }
+  },
+  {
+    "id": "economic_bailout",
+    "category": "Economy",
+    "text": "Tandatangani Dana Talangan Korporasi Menyeluruh (Penyelesaian MSAA BLBI)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "imf_ibra_liquidation",
+      "suharto_asset_seizure_tribunal",
+      "dissolve_golkar_old_guard"
+    ],
+    "description": "Memberikan Perjanjian Penyelesaian Pengambilalihan Saham (MSAA) dan obligasi rekapitalisasi negara kepada konglomerasi perbankan besar yang mengalami pendarahan kredit macet akibat krisis. Menjamin <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> berada di atas <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font>. Memperkuat oligarki <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> dan memancing kemarahan publik.",
+    "alertMsg": "Neraca keuangan korporasi dijamin oleh negara. Kesehatan Ekonomi dijamin berada di atas <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font>, dan sayap bisnis Golkar kubu Akbar menyambut baik langkah tersebut, meskipun para oligarki Cendana berpesta pora menikmati syarat-syarat dana talangan itu.",
+    "locks": {
+      "minStats": {
+        "econ": 50
+      },
+      "statPenalties": {
+        "cendana": [16, 24],
+        "pop": [-14, -10]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [10, 14]
+      }
+    }
+  },
+  {
+    "id": "currency_board",
+    "category": "Economy",
+    "text": "Hidupkan Kembali Skema Dewan Mata Uang (CBS)",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "central_bank_independence"
+    ],
+    "description": "Menghidupkan kembali proposal moneter radikal ekonom Amerika Steve Hanke untuk mematok nilai tukar rupiah terhadap dolar pada kurs tetap melalui dekrit. Menjamin <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font> setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font> sekaligus menyenangkan kalangan nasionalis ekonomi di dalam negeri. Memancing kemurkaan IMF dan Washington.",
+    "alertMsg": "Menentang saran para kreditur asing, Anda telah menghidupkan kembali proposal dewan mata uang. Nilai tukar rupiah distabilkan melalui dekrit, menjamin Kesehatan Ekonomi setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font>, meskipun Washington dan IMF bereaksi dengan penuh kemarahan.",
+    "locks": {
+      "minStats": {
+        "econ": 45
+      },
+      "statPenalties": {
+        "intl": [-24, -16],
+        "stab": [-18, -12],
+        "pop": [4, 6]
+      }
+    }
+  },
+  {
+    "id": "central_bank_independence",
+    "category": "Economy",
+    "text": "Sahkan Undang-Undang Independensi Bank Sentral (UU No. 23/1999)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "currency_board"
+    ],
+    "description": "Memutus tatanan Orde Baru yang mendudukkan Gubernur Bank Indonesia di dalam kabinet dan bertanggung jawab kepada Istana, serta melarang bank sentral membiayai defisit anggaran pemerintah atau dana taktis politik. Menjamin <font color=\"#00838F\"><b>Posisi Internasional</b></font> berada di atas <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font> dan mendongkrak <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>. Memancing kemarahan mesin patronase <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Undang-Undang Bank Indonesia (UU No. 23/1999) telah disahkan. Para kreditur asing memujinya sebagai tonggak reformasi institusional, menjamin Posisi Internasional berada di atas <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font> dan mendongkrak Kesehatan Ekonomi, meskipun mesin patronase Golkar berang karena kehilangan kendali atas kucuran kredit bank sentral.",
+    "locks": {
+      "minStats": {
+        "intl": 50
+      },
+      "statPenalties": {
+        "econ": [8, 12],
+        "ref": [4, 6],
+        "PC": [-12, -8]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-18, -12],
+        "golkar_habibie": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "ibra_extraordinary_powers",
+    "category": "Economy",
+    "text": "Perluas Wewenang Penyitaan Badan Penyehatan Perbankan Nasional (PP No. 17/1999)",
+    "baseCost": 45,
+    "description": "Memberlakukan Peraturan Pemerintah No. 17/1999 yang memberikan wewenang luar biasa tanpa lewat pengadilan ('kewenangan PP 17') kepada Badan Penyehatan Perbankan Nasional (BPPN) untuk menyita aset secara langsung dari para konglomerat yang gagal bayar atas dana talangan BLBI. Membatasi <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> maksimal pada tingkat <font color=\"#FF8C00\"><b>$tier.cendana.subversive$</b></font>. Mengguncang kalangan dunia usaha dan memancing kemarahan para patron <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Wewenang penyitaan PP 17 milik BPPN resmi diberlakukan. Para konglomerat yang terhubung dengan rezim lama mendapati aset-aset mereka terkekang, membatasi Pengaruh Cendana pada tingkat <font color=\"#FF8C00\"><b>$tier.cendana.subversive$</b></font>.",
+    "locks": {
+      "maxCendana": 60,
+      "statPenalties": {
+        "econ": [-12, -8],
+        "ref": [4, 6]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-14, -10]
+      }
+    }
+  },
+  {
+    "id": "imf_fuel_subsidy",
+    "category": "Economy",
+    "text": "Terapkan Mandat IMF terkait Pencabutan Subsidi BBM dan Listrik",
+    "baseCost": 50,
+    "description": "<i>Letter of Intent</i> yang ditandatangani bersama Dana Moneter Internasional (IMF) tidak menyisakan ruang negosiasi: pemerintah harus menghapus subsidi BBM dan tarif listrik demi menyeimbangkan anggaran. Menjamin <font color=\"#00838F\"><b>Posisi Internasional</b></font> setidaknya pada tingkat <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font>. Memancing kemarahan masyarakat dan para petinggi partai.",
+    "alertMsg": "Subsidi resmi dipangkas. Miliaran dolar pencairan dana IMF segera dikucurkan, menjamin Posisi Internasional setidaknya pada tingkat <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font>. Di jalanan, biaya hidup melonjak tajam dan faksi-faksi politik berlomba menjaga jarak dari guncangan pengetatan anggaran tersebut.",
+    "locks": {
+      "minStats": {
+        "intl": 75,
+        "econ": 40
+      },
+      "statPenalties": {
+        "pop": [-36, -24],
+        "stab": [-24, -16]
+      },
+      "factionPenalties": {
+        "pdip": [-17, -12],
+        "golkar_habibie": [-18, -12],
+        "poros_tengah": [-18, -12],
+        "utusan_daerah": [-18, -12],
+        "golkar_akbar": [-18, -12],
+        "abri": [-14, -10],
+        "other_parties": [-18, -12],
+        "pkb": [-18, -12],
+        "ppp": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "imf_bulog_deregulation",
+    "category": "Economy",
+    "text": "Bongkar Monopoli Pangan BULOG",
+    "baseCost": 45,
+    "description": "Mengaudit dan membongkar monopoli impor Badan Urusan Logistik (BULOG) sesuai syarat penyesuaian struktural IMF, melucuti wewenang BULOG atas seluruh komoditas pangan kecuali beras. Menjamin <font color=\"#00838F\"><b>Posisi Internasional</b></font> pada tingkat <font color=\"#4682B4\"><b>$tier.intl.watched_closely$</b></font> dan membatasi <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> maksimal pada tingkat <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font>. Memancing kemarahan masyarakat dan para petinggi partai.",
+    "alertMsg": "Monopoli BULOG resmi dibongkar. IMF memuji komitmen Anda terhadap pasar bebas, dan cengkeraman keluarga Cendana atas pasokan pangan dibatasi maksimal pada tingkat <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font>, meskipun gejolak harga bahan pokok memancing kemarahan publik dan para bos partai.",
+    "locks": {
+      "minStats": {
+        "intl": 65
+      },
+      "maxCendana": 35,
+      "statPenalties": {
+        "pop": [-24, -16],
+        "econ": [8, 12],
+        "stab": [-18, -12]
+      },
+      "factionPenalties": {
+        "pdip": [-17, -12],
+        "golkar_habibie": [-18, -12],
+        "poros_tengah": [-18, -12],
+        "utusan_daerah": [-18, -12],
+        "golkar_akbar": [-18, -12],
+        "abri": [-14, -10],
+        "other_parties": [-18, -12],
+        "pkb": [-18, -12],
+        "ppp": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "imf_ibra_liquidation",
+    "category": "Economy",
+    "text": "Sahkan Sapu Bersih Likuidasi Bank oleh BPPN",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "economic_bailout",
+      "peoples_economy_charter"
+    ],
+    "description": "Memberi wewenang kepada BPPN untuk melikuidasi 38 bank swasta yang bangkrut dan membekukan operasional 7 bank lainnya dalam semalam di bawah pengawasan IMF. Menjamin <font color=\"#00838F\"><b>Posisi Internasional</b></font> berada di atas <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font>. Memancing kemarahan masyarakat dan para petinggi partai.",
+    "alertMsg": "Tim likuidator BPPN menyapu kawasan finansial Jakarta, menjamin Posisi Internasional berada di atas <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font>. Namun, penutupan bank secara menyeluruh tersebut membekukan jalur kredit bagi para elit politik di seluruh Majelis.",
+    "locks": {
+      "minStats": {
+        "intl": 80
+      },
+      "statPenalties": {
+        "stab": [-12, -8]
+      },
+      "factionPenalties": {
+        "pdip": [-17, -12],
+        "golkar_habibie": [-18, -12],
+        "poros_tengah": [-18, -12],
+        "utusan_daerah": [-18, -12],
+        "golkar_akbar": [-18, -12],
+        "abri": [-14, -10],
+        "other_parties": [-18, -12],
+        "pkb": [-18, -12],
+        "ppp": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "anti_monopoly_law",
+    "category": "Economy",
+    "text": "Tandatangani UU Larangan Praktik Monopoli dan Persaingan Usaha Tidak Sehat (UU No. 5/1999)",
+    "baseCost": 45,
+    "description": "Membentuk Komisi Pengawas Persaingan Usaha (KPPU) yang independen berdasarkan UU No. 5/1999 untuk membongkar kartel-kartel Orde Baru, penetapan harga sepihak, dan monopoli vertikal. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> pada tingkat <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> dan membatasi <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> maksimal pada tingkat <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font>. Mengasingkan para patron konglomerat <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "UU Antimonopoli (UU No. 5/1999) resmi disahkan menjadi undang-undang dan KPPU mulai melantik para anggotanya. Menjamin Kredibilitas Reformasi setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font>, membatasi Pengaruh Cendana maksimal pada tingkat <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font>, serta mengangkat Kesehatan Ekonomi, sekaligus mengasingkan sayap bisnis Golkar di kubu Tandjung.",
+    "locks": {
+      "minStats": {
+        "ref": 45
+      },
+      "maxCendana": 40,
+      "statPenalties": {
+        "econ": [6, 10],
+        "intl": [4, 6]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-18, -12],
+        "golkar_habibie": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "peoples_economy_charter",
+    "category": "Economy",
+    "text": "Sahkan Piagam Koperasi 'Ekonomi Kerakyatan' Adi Sasono",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "imf_ibra_liquidation"
+    ],
+    "description": "Melaksanakan Ketetapan MPR No. XVI/MPR/1998 tentang Politik Ekonomi dalam rangka Demokrasi Ekonomi dengan kecepatan penuh: menginstruksikan Menteri Koperasi Adi Sasono untuk mengalihkan hingga 20% saham perkebunan yang diselamatkan negara, konsesi kehutanan, dan jaringan distribusi secara langsung kepada Koperasi Unit Desa (KUD) serta usaha kecil pribumi. Menjamin <font color=\"#D81B60\"><b>Popularitas</b></font> setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.pop.distrusted$</b></font> dan membatasi <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> maksimal pada tingkat <font color=\"#2F4F4F\"><b>$tier.cendana.persistent$</b></font>. Membuat cemas para pemegang obligasi dan memancing kemarahan para patron <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Piagam 'Ekonomi Kerakyatan' Adi Sasono mulai berlaku. Koperasi-koperasi akar rumput, aktivis ICMI, dan partai-partai Islam menyambut redistribusi tersebut sebagai perwujudan Pasal 33 UUD 1945, menjamin Popularitas setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.pop.distrusted$</b></font>—meskipun media keuangan asing memperingatkan bahaya nasionalisasi populis.",
+    "locks": {
+      "minStats": {
+        "pop": 45
+      },
+      "maxCendana": 50,
+      "statPenalties": {
+        "intl": [-14, -10],
+        "econ": [-6, -4],
+        "ref": [5, 7]
+      },
+      "factionPenalties": {
+        "poros_tengah": [8, 12],
+        "ppp": [8, 12],
+        "pkb": [6, 10],
+        "golkar_habibie": [6, 10],
+        "golkar_akbar": [-17, -11]
+      }
+    }
+  },
+  {
+    "id": "timor_national_car_seizure",
+    "category": "Economy",
+    "text": "Sita Kerajaan Mobil Nasional 'Timor' Milik Tommy Soeharto",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "cendana_restoration_pact"
+    ],
+    "description": "Menyusul putusan Organisasi Perdagangan Dunia (WTO) yang menolak Inpres 'Mobil Nasional' Soeharto tahun 1996 (Inpres No. 2/1996), perintahkan Direktorat Jenderal Bea dan Cukai serta BPPN untuk menyita 15.000 unit sedan Timor buatan Kia yang belum terjual di Cikampek dan menyita aset PT Timor Putra Nasional atas tunggakan pajak barang mewah senilai Rp3,7 triliun. Membatasi <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> maksimal pada tingkat <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> serta mendongkrak <font color=\"#1B7837\"><b>Kesehatan Ekonomi</b></font>, <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, dan <font color=\"#D81B60\"><b>Popularitas</b></font>. Memicu pembalasan dari <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> dan para sekutunya di dalam <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Juru sita pajak menggembok lapangan parkir PT Timor Putra Nasional di Cikampek dan menyita monopoli mahkota milik Tommy Soeharto. Masyarakat bersorak menyambut tumbangnya simbol nepotisme Cendana yang paling dibenci, membatasi Pengaruh Cendana maksimal pada tingkat <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font>.",
+    "locks": {
+      "maxCendana": 35,
+      "statPenalties": {
+        "pop": [8, 12],
+        "ref": [8, 12],
+        "econ": [6, 10],
+        "intl": [5, 7]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-17, -11],
+        "pdip": [5, 7],
+        "utusan_golongan": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "political_prisoner_release",
+    "category": "Civil Society",
+    "text": "Perintahkan Pembebasan Tanpa Syarat Seluruh Tahanan Politik yang Tersisa",
+    "baseCost": 40,
+    "militaryShock": 10,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Memerintahkan amnesti presiden secara menyeluruh bagi seluruh tahanan politik yang masih mendekam di penjara di bawah Undang-Undang Antisubversi Orde Baru (PNPS No. 11/1963)—termasuk para aktivis PRD, pengorganisasi buruh, dan pembangkang daerah—serta mengajukan rancangan undang-undang yang mencabut UU Antisubversi secara tuntas. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> pada tingkat <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> serta mendongkrak Popularitas dan Posisi Internasional. Menimbulkan ketegangan dengan aparat keamanan Cilangkap.",
+    "alertMsg": "Gerbang-gerbang penjara di Cipinang dan di seluruh nusantara terbuka lebar bagi para tahanan yang dijerat dengan undang-undang subversi lama. Menjamin Kredibilitas Reformasi setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> serta mendongkrak Popularitas dan Posisi Internasional, sekaligus merenggangkan hubungan dengan Cilangkap.",
+    "locks": {
+      "minStats": {
+        "ref": 45
+      },
+      "statPenalties": {
+        "pop": [6, 10],
+        "intl": [6, 10],
+        "mil": [-10, -7]
+      },
+      "factionPenalties": {
+        "abri": [-10, -7],
+        "pdip": [5, 7],
+        "utusan_golongan": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "human_rights_commission_powers",
+    "category": "Civil Society",
+    "text": "Sahkan UU Hak Asasi Manusia & Mandat Pengadilan HAM (UU No. 39/1999)",
+    "baseCost": 50,
+    "militaryShock": 30,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Menandatangani UU No. 39/1999 tentang Hak Asasi Manusia dan menerbitkan Perppu pembentukan Pengadilan HAM dengan wewenang pemanggilan paksa (<i>subpoena</i>) resmi untuk menyelidiki pelanggaran militer di Aceh, Timor Timur, Trisakti, dan Semanggi. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan <font color=\"#00838F\"><b>Posisi Internasional</b></font> pada tingkat yang terhormat. Membakar habis kesabaran para jenderal.",
+    "alertMsg": "UU No. 39/1999 resmi diberlakukan dan para penyelidik Komnas HAM mulai memanggil paksa dokumen-dokumen langsung dari markas komando teritorial. Menjamin Kredibilitas Reformasi berada di atas <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> dan Posisi Internasional di atas <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font>, meraih dukungan kuat kalangan reformis sekaligus memicu keretakan tajam dengan ABRI.",
+    "locks": {
+      "minStats": {
+        "ref": 55,
+        "intl": 50
+      },
+      "statPenalties": {
+        "pop": [8, 12]
+      },
+      "factionPenalties": {
+        "abri": [-17, -12],
+        "pdip": [6, 10],
+        "golkar_habibie": [6, 10],
+        "utusan_golongan": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "chinese_cultural_ban_repeal",
+    "category": "Civil Society",
+    "text": "Cabut Inpres No. 14/1967 & Pulihkan Hak Budaya Tionghoa Sepenuhnya",
+    "baseCost": 40,
+    "description": "Menindaklanjuti Instruksi Presiden No. 26/1998 yang Anda keluarkan (yang menghapus pembedaan resmi <i>pribumi / non-pribumi</i>) dengan mencabut secara tuntas Instruksi Kabinet Soeharto No. 14/1967—memulihkan hak warga Tionghoa-Indonesia untuk merayakan Imlek secara terbuka, menampilkan pertunjukan Barongsai, dan menerbitkan media berbahasa Mandarin tanpa pembatasan. Menjamin sikap <font color=\"#555555\"><b>Utusan Golongan</b></font> pada tingkat <font color=\"#009000\"><b>$mood.utusan_golongan.favorable$</b></font> dan menjamin <font color=\"#00838F\"><b>Posisi Internasional</b></font> berada di atas <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font>. Membuat kalangan nativis Orde Baru di dalam <font color=\"#7D6000\"><b>Golkar</b></font> tidak senang.",
+    "alertMsg": "Tiga puluh dua tahun penghapusan budaya yang dipaksakan negara berakhir dengan satu goresan pena Anda. Para utusan masyarakat sipil, partai-partai minoritas, dan investor diaspora memuji dekrit emansipasi tersebut, menjamin sikap Utusan Golongan berada pada tingkat <font color=\"#009000\"><b>$mood.utusan_golongan.favorable$</b></font> serta mengangkat Kesehatan Ekonomi.",
+    "locks": {
+      "minStats": {
+        "intl": 50
+      },
+      "minFactions": {
+        "utusan_golongan": 60
+      },
+      "statPenalties": {
+        "econ": [6, 10],
+        "ref": [6, 10],
+        "pop": [3, 5]
+      },
+      "factionPenalties": {
+        "other_parties": [6, 10],
+        "pdip": [4, 6],
+        "golkar_akbar": [-10, -6]
+      }
+    }
+  },
+  {
+    "id": "broadcast_liberalization",
+    "category": "Civil Society",
+    "text": "Bubarkan Departemen Penerangan",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "reinstate_siupp_censorship"
+    ],
+    "description": "Menutup <i>Departemen Penerangan</i> yang ditakuti—kementerian sensor, perizinan pers, dan propaganda negara warisan Orde Baru—serta mengubah TVRI dan RRI menjadi lembaga penyiaran publik yang otonom. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> setidaknya pada tingkat <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> dan menjamin <font color=\"#D81B60\"><b>Popularitas</b></font> setidaknya pada tingkat <font color=\"#2F4F4F\"><b>$tier.pop.distrusted$</b></font>. Memancing kemarahan kelompok garis keras di dalam <font color=\"#7D6000\"><b>Golkar</b></font> dan <font color=\"#3E5022\"><b>ABRI</b></font>.",
+    "alertMsg": "Departemen Penerangan resmi dibubarkan. Para jurnalis dan mahasiswa merayakan pembongkaran kementerian propaganda lama peninggalan Harmoko tersebut, menjamin Kredibilitas Reformasi setidaknya pada tingkat <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font>, meskipun kelompok garis keras Golkar dan ABRI meratapi hilangnya corong propaganda negara.",
+    "locks": {
+      "minStats": {
+        "ref": 60,
+        "pop": 45
+      },
+      "statPenalties": {
+        "intl": [5, 7]
+      },
+      "factionPenalties": {
+        "utusan_golongan": [8, 12],
+        "pdip": [6, 10],
+        "poros_tengah": [5, 7],
+        "golkar_akbar": [-14, -10],
+        "abri": [-8, -5]
+      }
+    }
+  },
+  {
+    "id": "reinstate_siupp_censorship",
+    "category": "Civil Society",
+    "text": "Berlakukan Kembali Perizinan Pers SIUPP & Bredel Tabloid Oposisi",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "broadcast_liberalization"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 40
+      }
+    ],
+    "description": "Membalikkan kebijakan liberalisasi pers 1998 Anda dengan memberi wewenang kembali kepada Departemen Penerangan untuk mencabut Surat Izin Usaha Penerbitan Pers (<i>SIUPP</i>) dan menggembok surat-surat kabar yang memusuhi pemerintah (<i>Rakyat Merdeka</i>, <i>Tempo</i>) atas tuduhan 'menyebarkan kebencian terhadap lembaga negara.' Menjamin <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> setidaknya pada tingkat <font color=\"#4682B4\"><b>$tier.stab.simmering_tension$</b></font>. Mengorbankan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, <font color=\"#D81B60\"><b>Popularitas</b></font>, dan <font color=\"#00838F\"><b>Posisi Internasional</b></font>.",
+    "alertMsg": "Gembok-gembok kepolisian kembali dipasang di pintu-pintu ruang redaksi di Palmerah dan Kuningan saat Departemen Penerangan mencabut izin penerbitan pertamanya sejak tahun 1994. Tabloid-tabloid jalanan bungkam dan Stabilitas Nasional dijamin pada tingkat <font color=\"#4682B4\"><b>$tier.stab.simmering_tension$</b></font>, meskipun kalangan reformis dalam negeri dan kedutaan-kedutaan asing mengecam kembalinya pembredelan pers.",
+    "locks": {
+      "minStats": {
+        "stab": 60
+      },
+      "statPenalties": {
+        "ref": [-30, -20],
+        "pop": [-18, -12],
+        "intl": [-18, -12],
+        "cendana": [8, 12]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [8, 12],
+        "abri": [8, 12],
+        "pdip": [-14, -10],
+        "utusan_golongan": [-24, -16]
+      }
+    }
+  },
+  {
+    "id": "purge_utusan_golongan",
+    "category": "Civil Society",
+    "text": "Bubarkan Kaukus Utusan Golongan Independen & Dudukkan Korporatis Negara",
+    "baseCost": 65,
+    "mutexDecrees": [
+      "chinese_cultural_ban_repeal",
+      "abolish_abri_mpr_seats"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "utusan_golongan"
+    ],
+    "seatRecipients": {
+      "golkar_habibie": 65
+    },
+    "description": "Mencabut mandat keanggotaan 65 utusan masyarakat sipil, buruh, dan hak asasi manusia independen di dalam blok Utusan Golongan, lalu melebur ke-65 kursi MPR mereka secara langsung ke dalam organisasi-organisasi korporatis binaan negara (SPSI, KORPRI, KNPI) di bawah payung <font color=\"#7D6000\"><b>Golkar</b></font>. Membubarkan Utusan Golongan secara permanen dan menyerahkan 65 kursinya kepada <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Melalui dekrit presiden, delegasi Utusan Golongan independen resmi dibubarkan dan 65 kursi MPR miliknya dialihkan langsung kepada organisasi-organisasi afiliasi korporatis Golkar! Bangku masyarakat sipil dibungkam dan dibuat abu-abu di papan sidang.",
+    "locks": {
+      "statPenalties": {
+        "ref": [-30, -20],
+        "pop": [-18, -12],
+        "intl": [-18, -12],
+        "cendana": [8, 12]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "golkar_habibie": [8, 12],
+        "pdip": [-14, -10],
+        "poros_tengah": [-12, -8]
+      }
+    }
+  },
+  {
+    "id": "police_military_separation",
+    "category": "Security",
+    "text": "Resmikan Pemisahan POLRI dari ABRI",
+    "baseCost": 40,
+    "militaryShock": 25,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Mengodifikasikan Inpres No. 2/1999 yang memisahkan Kepolisian Negara Republik Indonesia (POLRI) dari struktur komando ABRI dan mengubah nama angkatan bersenjata menjadi TNI. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> berada di atas <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> dan mendongkrak dukungan masyarakat sipil. Membakar kesabaran para jenderal.",
+    "alertMsg": "POLRI memulai pemisahan resminya dari struktur komando militer. Menjamin Kredibilitas Reformasi berada di atas <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> dan menuai pujian dari faksi-faksi reformis, meskipun para jenderal membenci pemangkasan Dwifungsi tersebut.",
+    "locks": {
+      "minStats": {
+        "ref": 50
+      },
+      "statPenalties": {
+        "pop": [6, 10],
+        "stab": [-6, -4]
+      },
+      "factionPenalties": {
+        "abri": [-16, -11],
+        "golkar_habibie": [6, 10],
+        "utusan_golongan": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "civilian_defense_ministry",
+    "category": "Security",
+    "text": "Pisahkan Jabatan Pangab & Angkat Menteri Pertahanan Sipil",
+    "baseCost": 50,
+    "militaryShock": 25,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Mengakhiri tradisi rangkap jabatan era Soeharto yang mendudukkan Panglima Angkatan Bersenjata (Pangab) sekaligus sebagai Menteri Pertahanan dan Keamanan (Menhankam), dengan mengangkat cendekiawan sipil terpandang Prof. Juwono Sudarsono sebagai Menteri Pertahanan sipil pertama Indonesia sejak tahun 1959. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> pada tingkat <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> dan <font color=\"#00838F\"><b>Posisi Internasional</b></font> di atas <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font>. Membakar kesabaran para jenderal.",
+    "alertMsg": "Untuk pertama kalinya dalam empat puluh tahun, seorang tokoh sipil menduduki pucuk pimpinan Departemen Pertahanan di Jalan Medan Merdeka Barat. Kalangan reformis demokratis dan negara-negara asing memuji penegasan bersejarah atas supremasi sipil tersebut, menjamin Kredibilitas Reformasi setidaknya pada tingkat <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font>—meskipun para jenderal Cilangkap memendam kemarahan dingin atas penurunan wewenang itu.",
+    "locks": {
+      "minStats": {
+        "ref": 60,
+        "intl": 50
+      },
+      "statPenalties": {
+        "pop": [5, 7],
+        "cendana": [-10, -6]
+      },
+      "factionPenalties": {
+        "abri": [-16, -11],
+        "golkar_habibie": [8, 12],
+        "utusan_golongan": [8, 12],
+        "poros_tengah": [5, 7]
+      }
+    }
+  },
+  {
+    "id": "abolish_kodam_territorial",
+    "category": "Security",
+    "text": "Bongkar Struktur Komando Teritorial ABRI (Kodam / Koramil)",
+    "baseCost": 65,
+    "militaryShock": 40,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "ratify_kamra_militia_bill"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      }
+    ],
+    "description": "Melintasi garis merah paling terlarang yang bahkan tidak berani disentuh oleh para perwira reformis <i>Paradigma Baru</i> di tubuh militer sendiri: mengeluarkan Dekrit Presiden yang membongkar hierarki komando teritorial paralel militer (<i>Kodam, Korem, Kodim, Koramil, Babinsa</i>) yang membayangi setiap provinsi, kabupaten, dan desa di Indonesia, serta membatasi peran angkatan bersenjata semata-mata pada pertahanan perbatasan luar. Menjamin <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> pada tingkat <font color=\"#006400\"><b>$tier.ref.cautiously_credible$</b></font> serta menjamin dukungan <font color=\"#555555\"><b>Utusan Golongan</b></font> dan <font color=\"#555555\"><b>Utusan Daerah</b></font> pada tingkat yang tinggi. Mengakhiri hubungan dengan <font color=\"#3E5022\"><b>ABRI</b></font> untuk selamanya.",
+    "alertMsg": "Dalam tindakan supremasi sipil paling berani sejak tahun 1950, Anda telah memerintahkan pembongkaran jaringan komando teritorial militer dari tingkat desa hingga provinsi. Gerakan mahasiswa, para gubernur daerah, dan pengamat internasional memuji berakhirnya dwifungsi militer—sementara para jenderal Cilangkap memutus seluruh hubungan dengan Istana Merdeka.",
+    "locks": {
+      "minStats": {
+        "ref": 85,
+        "intl": 65
+      },
+      "minFactions": {
+        "utusan_golongan": 75,
+        "utusan_daerah": 65
+      },
+      "statPenalties": {
+        "pop": [12, 18],
+        "cendana": [-18, -12],
+        "stab": [-12, -8]
+      },
+      "factionPenalties": {
+        "abri": [-24, -19],
+        "pdip": [10, 14],
+        "poros_tengah": [8, 12],
+        "golkar_habibie": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "ratify_kamra_militia_bill",
+    "category": "Security",
+    "text": "Lembagakan Korps Bantuan Keamanan Rakyat (Kamra) Berkekuatan 40.000 Personel",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "abolish_kodam_territorial",
+      "abolish_abri_mpr_seats"
+    ],
+    "description": "Mengubah personel bantuan kepolisian sipil sementara <i>Keamanan Rakyat</i> (Kamra) yang dibentuk berdasarkan UU No. 20/1982 menjadi Korps Gendarmeri Bantuan permanen yang digaji negara di bawah pengawasan bersama Departemen Dalam Negeri dan ABRI untuk mengamankan jalanan kota serta ibu kota provinsi. Menjamin <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> berada di atas <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> dan mendongkrak <font color=\"#556B2F\"><b>Dukungan Militer</b></font>. Mengorbankan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font> dan dukungan masyarakat sipil.",
+    "alertMsg": "Empat puluh ribu personel Kamra berseragam resmi dilembagakan secara permanen di kota-kota seluruh Indonesia. Kejahatan jalanan dan kerusuhan menurun drastis, menjamin Stabilitas Nasional berada di atas <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> serta menyenangkan hati ABRI, meskipun kelompok mahasiswa dan pegiat HAM mengecam pembentukan paramiliter yang didanai negara tersebut.",
+    "locks": {
+      "minStats": {
+        "stab": 50
+      },
+      "statPenalties": {
+        "ref": [-14, -10],
+        "econ": [-6, -4]
+      },
+      "factionPenalties": {
+        "abri": [10, 14],
+        "golkar_akbar": [6, 10],
+        "utusan_golongan": [-14, -10],
+        "pdip": [-8, -5]
+      }
+    }
+  },
+  {
+    "id": "invoke_supersemar_ii",
+    "category": "Security",
+    "text": "Keluarkan 'Supersemar II' & Umumkan Keadaan Bahaya Nasional",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "abolish_kodam_territorial",
+      "abolish_abri_mpr_seats",
+      "police_military_separation",
+      "civilian_defense_ministry",
+      "direct_presidential_amendment",
+      "political_prisoner_release",
+      "human_rights_commission_powers"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 35
+      }
+    ],
+    "description": "Menggemakan mandat 11 Maret 1966 milik Soeharto, gunakan wewenang dekrit darurat presiden berdasarkan Undang-Undang Keadaan Bahaya 1959 untuk melarang demonstrasi jalanan, memberlakukan jam malam militer di kampus-kampus universitas, dan membentuk Komando Pemulihan Keamanan dan Ketertiban Nasional bersama antara Istana dan Cilangkap (<i>Kopkamtib Baru</i>). Menjamin <font color=\"#37474F\"><b>Stabilitas Nasional</b></font> pada tingkat <font color=\"#009000\"><b>$tier.stab.fragile_peace$</b></font> dan menjamin sikap <font color=\"#3E5022\"><b>ABRI</b></font> pada tingkat <font color=\"#006400\"><b>$mood.abri.supporting_habibie$</b></font>, sekaligus membuka akses ke dekrit-dekrit darurat untuk membubarkan partai-partai oposisi. Mengorbankan <font color=\"#8E24AA\"><b>Kredibilitas Reformasi</b></font>, <font color=\"#D81B60\"><b>Popularitas</b></font>, dan <font color=\"#00838F\"><b>Posisi Internasional</b></font>.",
+    "alertMsg": "Kendaraan-kendaraan lapis baja mengambil posisi di sekitar Monas dan Senayan saat 'Supersemar II' dibacakan melalui saluran televisi negara. Jalanan menjadi sunyi senyap, menjamin Stabilitas Nasional pada tingkat <font color=\"#009000\"><b>$tier.stab.fragile_peace$</b></font> dan mengamankan dukungan blok ABRI tanpa syarat—serta memberi Anda wewenang darurat untuk membubarkan partai-partai oposisi di dalam MPR.",
+    "locks": {
+      "minStats": {
+        "stab": 75,
+        "mil": 80
+      },
+      "minFactions": {
+        "abri": 85
+      },
+      "statPenalties": {
+        "ref": [-42, -28],
+        "pop": [-30, -20],
+        "intl": [-30, -20],
+        "cendana": [12, 18]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "pdip": [-30, -20],
+        "utusan_golongan": [-30, -20],
+        "poros_tengah": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "unify_golkar_slipi",
+    "category": "Politics",
+    "text": "Satukan Kembali Golkar di Bawah Kepemimpinan DPP Slipi",
+    "baseCost": 60,
+    "unlockEvent": "ev_assembly_convenes",
+    "mutexDecrees": [
+      "dissolve_golkar_old_guard"
+    ],
+    "reqStats": [
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 74
+      }
+    ],
+    "reqFactions": [
+      {
+        "key": "golkar_akbar",
+        "op": ">=",
+        "val": 50
+      },
+      {
+        "key": "golkar_habibie",
+        "op": ">=",
+        "val": 60
+      }
+    ],
+    "banFactions": [
+      "golkar_habibie"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 1
+    },
+    "description": "Selama lebih dari setahun, Golkar ibarat dua partai yang mengenakan satu jaket yang sama. Pengurus DPP pimpinan Akbar Tandjung di Slipi, yang dilantik melalui Musyawarah Nasional Luar Biasa Juli 1998, mengendalikan mesin partai, pengurus-pengurus daerah provinsi, dan sebagian besar dana, sementara lingkaran teknokrat, cendekiawan ICMI, dan alumni IPTN Anda sendiri duduk di dalam fraksi sebagai kaukus terpisah yang melapor ke Istana alih-alih ke Slipi. Dengan MPR yang kini tengah bersidang, undang Akbar ke Istana Merdeka, lebur kaukus Loyalis ke dalam kepemimpinan Slipi, dan tempatkan seluruh mandat Golkar di bawah satu rantai komando tunggal. Kaukus Loyalis akan dibubarkan sebagai blok terpisah dan 40 mandatnya akan beralih ke Golkar pimpinan Akbar Tandjung, yang para utusannya kemudian terikat untuk berdiri di belakang Anda tanpa keraguan. Mengorbankan fraksi Anda yang paling setia, dan tidak dapat dibatalkan setelah Pidato Pertanggungjawaban.",
+    "alertMsg": "Dalam sebuah upacara singkat di Istana Merdeka, Akbar Tandjung dan lingkaran dalam Anda menandatangani selembar kesepakatan: satu Golkar, satu rantai komando, satu daftar utusan. Para insinyur dan veteran ICMI yang mengikuti Anda dari IPTN melangkah keluar dari ruang kaukus terpisah mereka untuk menduduki kursi di bawah panji Slipi, dan para ketua DPD provinsi yang tadinya bermain dua kaki secara diam-diam di antara kedua kubu mengumumkan rekonsiliasi tersebut sebelum berita petang ditayangkan. Untuk pertama kalinya sejak Munaslub Juli 1998, Golkar berbicara dengan satu suara tunggal, dan suara itu menyatakan akan berdiri di belakang Presiden saat kotak suara dibuka. Kalangan reformis di luar partai mencatat, dengan sedikit rasa waswas, mesin politik siapa yang baru saja diperkuat.",
+    "locks": {
+      "minFactions": {
+        "golkar_akbar": 50
+      },
+      "statPenalties": {
+        "ref": [-5, -3],
+        "cendana": [3, 5]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [20, 30],
+        "pdip": [-8, -5],
+        "utusan_golongan": [-6, -4]
+      }
+    }
+  },
+  {
+    "id": "rainbow_coalition_accord",
+    "category": "Politics",
+    "text": "Deklarasikan Koalisi Pelangi: Pemerintahan Persatuan Nasional",
+    "baseCost": 70,
+    "unlockEvent": "ev_eve_of_vote",
+    "mutexDecrees": [
+      "ban_pdip_subversion",
+      "dissolve_golkar_old_guard",
+      "enforce_asas_tunggal_ban",
+      "abolish_abri_mpr_seats"
+    ],
+    "reqFactions": [
+      {
+        "key": "pdip",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "abri",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "golkar_akbar",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "golkar_habibie",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "poros_tengah",
+        "op": ">=",
+        "val": 80
+      }
+    ],
+    "description": "Pada malam menjelang pemungutan suara, lima blok penentu hasil sidang berada lebih dekat dengan Istana dibandingkan kapan pun sejak Mei 1998: PDI-P pimpinan Megawati, Cilangkap, kedua sayap Golkar, dan Poros Tengah. Alih-alih meminta suara untuk esok hari kepada masing-masing pihak secara terpisah, tawarkan kepada mereka semua sesuatu yang belum pernah dimiliki secara bersamaan di republik ini, yaitu kursi di meja yang sama. Panggil para pemimpin mereka ke Istana Merdeka malam ini dan umumkan pembentukan pemerintahan persatuan nasional, sebuah 'Koalisi Pelangi' yang membagi portofolio kabinet, kursi ketua komisi, dan pucuk pimpinan Majelis di antara partai-partai yang telah menjaga negeri ini agar tidak terpecah-belah. Langkah ini secara bertahap akan memperkokoh dukungan PDI-P, ABRI, kedua sayap Golkar, dan Poros Tengah menuju tingkat tertingginya, mengamankan sedikit demi sedikit tambahan dukungan setiap harinya. Kalangan masyarakat sipil, utusan daerah, dan partai-partai kecil akan membenci bagi-bagi kekuasaan tersebut.",
+    "alertMsg": "Lewat tengah malam, para pemimpin dari setiap blok besar di Majelis melangkah masuk ke Istana Merdeka: para letnan politik Megawati, para jenderal dari Cilangkap, para ketua partai di kubu Akbar Tandjung, barisan loyalis Anda sendiri, dan delegasi Poros Tengah. Daftar portofolio dibacakan sesuai urutan abjad agar tidak ada seorang pun yang dapat mengklaim namanya disebut lebih dulu. Saat komunike bersama tersebut dirilis ke hadapan pers, aritmatika politik Senayan telah berubah: setiap kaukus di dalam ruangan itu kini memiliki kursi kementerian, komisi, atau wakil ketua majelis yang akan hilang jika Pidato Pertanggungjawaban ditolak. Di lobi-lobi Hotel Mulia, para utusan yang tidak diundang mulai bertanya-tanya apa sebenarnya yang tersisa untuk mereka.",
+    "locks": {
+      "minFactions": {
+        "pdip": 80,
+        "abri": 80,
+        "golkar_akbar": 80,
+        "golkar_habibie": 80,
+        "poros_tengah": 80
+      },
+      "factionPenalties": {
+        "utusan_golongan": [-14, -10],
+        "other_parties": [-14, -10],
+        "utusan_daerah": [-10, -6]
+      },
+      "statPenalties": {
+        "stab": [-7, -5],
+        "intl": [-5, -3]
+      }
+    },
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 40
+      }
+    ]
+  }
+]

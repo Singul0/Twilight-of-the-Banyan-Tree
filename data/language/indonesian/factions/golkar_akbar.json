@@ -1,0 +1,196 @@
+{
+  "name": "Fraksi Karya Pembangunan<br>(DPP Slipi)",
+  "short": "Tanjung",
+  "seats": 80,
+  "affinity": 30,
+  "image": "photo/tanjung.png",
+  "coverImage": "photo/faction/golkar.png",
+  "summary": "Dari kantor pusat partai di <font color=\"#7D6000\"><b>DPP Slipi</b></font>, Akbar Tandjung memegang komando atas tulang punggung organisasi <font color=\"#7D6000\"><b>Golongan Karya (Golkar)</b></font>: para gubernur provinsi, penguasa daerah tingkat kabupaten, birokrat senior KORPRI, dan jaringan patronase pedesaan yang ditempa selama era Orde Baru. Selama tiga dekade, Pohon Beringin beroperasi sebagai pilar sipil dari bangunan tiga jalur Soeharto (<i>Jalur A-B-G</i>)—yang mengikat angkatan bersenjata (<font color=\"#3E5022\"><b>ABRI</b></font>), birokrasi pegawai negeri, dan kelompok-kelompok fungsional ke dalam mesin pemilu raksasa yang menegakkan <i>monoloyalitas</i> PNS mulai dari kementerian di Jakarta hingga ke balai desa. Keberhasilan meraih 22,44% suara nasional—23,7 juta surat suara dan 120 kursi parlemen—pada Juni 1999 memberi Akbar bukti nyata bahwa perombakan citra yang dilakukannya secara hati-hati telah menyelamatkan partai dari pembubaran yang dituntut oleh para demonstran mahasiswa setahun lalu.<p></p>Berbeda dengan para pendukung setia Anda asal Sulawesi dan ICMI di dalam kaukus <font color=\"#8A5A00\"><b><i>Irama Suka Nusantara</i></b></font>, <font color=\"#7D6000\"><b>aparat Slipi di bawah Akbar</b></font> tidak merasa memiliki hutang pribadi kepada Anda. Kesetiaan mereka sepenuhnya tertuju pada mesin partai itu sendiri: menjaga cengkeramannya atas Badan Usaha Milik Negara (BUMN), melindungi para bendahara daerah dari dakwaan KKN, dan mengamankan jatah kekuasaan eksekutif pasca-Oktober. Dalam pandangan mereka, Anda hanyalah penghuni sementara di Bina Graha yang didukung oleh <font color=\"#7D6000\"><b>Golkar</b></font> selama hubungan tersebut masih memberikan keuntungan. Nilai tukar rupiah yang stabil, urat nadi patronase yang terlindungi, serta tameng dari imbas skandal Jalan Cendana jauh lebih mampu membujuk para operator politik ini ketimbang khotbah apa pun tentang pembaruan demokrasi. Jika penghitungan suara di lapangan meyakinkan para ketua daerah (<i>DPD Tingkat I</i>) bahwa kapal kepresidenan Anda mulai karam, Akbar bersama penggalang suara parlemen Marzuki Darusman tidak akan ragu menggadaikan mandat Anda di balik tirai bilik suara.",
+  "biography": "Lahir di Sibolga, Sumatera Utara, Djandji Akbar Zahiruddin Tandjung mengasah naluri politiknya saat memimpin Himpunan Mahasiswa Islam (HMI) dari tahun 1972 hingga 1974, tempat ia membangun jaringan alumni 'Hijau' seumur hidup yang kini mengisi jajaran puncak aparatur negara Indonesia. Setelah ikut mendirikan organisasi payung kepemudaan KNPI dan melenggang ke DPR melalui <font color=\"#7D6000\"><b>Golkar</b></font> pada tahun 1977, ia meraih kepercayaan Soeharto lewat kemampuannya merajut koalisi secara disiplin, hingga dipercaya menjabat sebagai Menteri Negara Pemuda dan Olahraga (1988–1993) serta Menteri Negara Perumahan Rakyat (1993–1998). Ketika Soeharto jatuh pada Mei 1998, Anda mengangkat Akbar sebagai Menteri Sekretaris Negara. Dua bulan kemudian, pada Musyawarah Nasional Luar Biasa (<i>Munaslub</i>) <font color=\"#7D6000\"><b>Golkar</b></font> yang penuh gejolak pada Juli 1998 di Hotel Indonesia, para sekutu Anda bersama jajaran Pangdam Jenderal Wiranto mendukung Akbar untuk mengalahkan Jenderal (Purn.) Edi Sudradjat dengan perolehan suara tujuh belas DPD provinsi berbanding sepuluh.<p></p>Dari <font color=\"#7D6000\"><b>DPP Slipi</b></font>, Akbar membubarkan <i>Dewan Pembina</i> yang dulunya memberi Jalan Cendana hak veto mutlak atas partai, lalu memperkenalkan <i>Paradigma Baru</i> Golkar. Ketika sayap militer-sekuler Sudradjat yang kalah memilih keluar untuk mendirikan Partai Keadilan dan Persatuan (<i>PKP</i>), Akbar berhasil menjaga keutuhan basis-basis provinsi Pohon Beringin melewati kampanye Juni 1999, bertahan menghadapi lemparan batu dan cemoohan di panggung-panggung kampanye pulau Jawa hingga mengamankan peringkat kedua. Di balik suaranya yang lembut dan senyumnya yang tenang, duduk ahli taktik paling tajam di Senayan. Ia tidak menyimpan ikatan ideologis terhadap Anda maupun agenda reformasi Anda; tujuan tunggalnya adalah menjaga <font color=\"#7D6000\"><b>Golkar</b></font> tetap berada di jantung kekuasaan. Entah sebagai tulang punggung periode kedua Anda, atau sebagai <i>kingmaker</i> yang memahkotai pengganti Anda.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Berdiri di Belakang Habibie",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Mendukung Habibie, Untuk Saat Ini",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Menimbang Peluang Habibie",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Playing Safe di Slipi",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Melirik Calon Selain Habibie",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Bersiap Membelot",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Melepas Habibie",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "golkar_patronage",
+      "text": "Jamin kelanjutan akses para ketua DPD provinsi Golkar terhadap tender negara dan kredit daerah",
+      "cost": 28,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Selama tiga dekade, menduduki kursi ketua Dewan Pimpinan Daerah (<font color=\"#7D6000\"><b>DPD Tingkat I Golkar</b></font>) memberikan hak istimewa atas kontrak-kontrak pekerjaan umum, konsesi kehutanan, dan kucuran kredit Bank Pembangunan Daerah (<i>BPD</i>)—sebuah ekosistem yang oleh para penguasa partai lokal dianggap sebagai tatanan alami pemerintahan. Kirimkan kurir dari Bina Graha ke <font color=\"#7D6000\"><b>DPP Slipi</b></font> dengan jaminan mengikat bahwa pemerintahan Anda akan menjaga keran-keran dana daerah tersebut tetap terbuka. Mencoreng kredibilitas reformis Anda dan menjauhkan simpati oposisi, namun mengikat para ketua provinsi di kubu Akbar Tandjung dengan hutang budi politik yang nyata.",
+      "effects": {
+        "golkar_akbar": [14, 26],
+        "golkar_akbar_favor": 1,
+        "ref": [-13, -7],
+        "pop": [-10, -6],
+        "golkar_habibie": [3, 7],
+        "cendana": [3, 7],
+        "abri": [3, 5],
+        "pdip": [-6, -3],
+        "ppp": [-5, -3],
+        "pkb": [-5, -3],
+        "poros_tengah": [-5, -3],
+        "other_parties": [-5, -3],
+        "utusan_daerah": [3, 5],
+        "econ": [2, 4]
+      },
+      "alertMsg": "Akbar Tandjung menerima jaminan tersebut dengan penuh kepuasan, dan para ketua DPD provinsi Golkar kembali merapatkan barisan di seluruh nusantara. Ketika rincian alokasi tersebut bocor ke pers Jakarta, para pemimpin mahasiswa dan legislator oposisi mengecam kesepakatan itu sebagai bukti bahwa KKN hanya sekadar berganti kop surat."
+    },
+    {
+      "id": "golkar_threaten",
+      "text": "Ingatkan DPP Slipi tentang berkas-berkas keuangan tanpa sensor yang berada di meja Jaksa Agung",
+      "cost": 16,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 6,
+      "description": "Hasil audit forensik oleh PricewaterhouseCoopers (PwC) atas aliran dana <i>cessie</i> Bank Bali—bersama berkas-berkas Kejaksaan Agung yang menyeret nama Wakil Bendahara <font color=\"#7D6000\"><b>Golkar</b></font> Setya Novanto serta rekening-rekening kampanye nonbujeter—masih berada di bawah segel Istana. Biarkan Akbar Tandjung dan Marzuki Darusman memahami, tanpa perlu ancaman kasar, bahwa diskresi eksekutif mengenai berkas mana yang tetap terkunci rapat di dalam brankas bergantung sepenuhnya pada kedisiplinan delapan puluh utusan mereka.",
+      "effects": {
+        "golkar_akbar": [5, 9],
+        "cendana": [-7, -3],
+        "stab": [-7, -3],
+        "golkar_habibie": 2,
+        "pop": 1,
+        "ref": 1
+      },
+      "alertMsg": "Pesan tersebut mendarat di DPP Slipi tepat seperti yang diharapkan. Para letnan politik Akbar segera meredam sindiran terbuka mereka sebelum koran-koran pagi naik cetak, dan para operator jaringan Cendana yang namanya terseret dalam jejak dokumen Bank Bali mundur perlahan dari kasak-kusuk penggalangan suara oposisi."
+    },
+    {
+      "id": "golkar_congress",
+      "text": "Dukung wewenang Akbar Tandjung atas pengurus pusat partai menghadapi barisan loyalis luar Jawa Anda sendiri",
+      "cost": 22,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Hierarki internal <font color=\"#7D6000\"><b>Golkar</b></font> masih terbelah antara aparatus berakar HMI milik Akbar Tandjung di <font color=\"#7D6000\"><b>Slipi</b></font> dan barisan pendukung setia Anda dari Sulawesi serta ICMI di dalam kaukus <font color=\"#8A5A00\"><b><i>Irama Suka Nusantara</i></b></font> pimpinan A.A. Baramuli, yang ingin mendongkel Akbar sebelum Sidang Umum dimulai. Instruksikan Bina Graha untuk menegaskan wewenang Akbar atas Dewan Pimpinan Pusat partai, meredam pemberontakan para loyalis Anda demi membeli perdamaian dengan mesin politik <font color=\"#7D6000\"><b>Slipi</b></font>. Memancing kekecewaan blok Golkar Loyalis pimpinan Baramuli.",
+      "effects": {
+        "golkar_akbar": [8, 16],
+        "cendana": [3, 7],
+        "golkar_habibie": [-16, -8],
+        "ref": [-5, -3],
+        "stab": 2,
+        "abri": [2, 4]
+      },
+      "alertMsg": "Keputusan dari Istana memperkokoh cengkeraman Akbar atas pengurus pusat dan memadamkan wacana kudeta kepemimpinan pra-sidang. Namun di Makassar dan di seluruh jaringan ICMI, para loyalis Anda berang karena Anda justru memperkuat posisi satu-satunya pemimpin partai yang paling siap mengkhianati Anda."
+    },
+    {
+      "id": "golkar_bumn",
+      "text": "Angkat para makelar kekuasaan provinsi Golkar ke jajaran dewan komisaris BUMN",
+      "cost": 24,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Dewan komisaris di perusahaan-perusahaan Badan Usaha Milik Negara (BUMN) strategis Indonesia—mulai dari Pertamina dan Telkom hingga bank-bank pemerintah penerima dana talangan BLBI—menyimpan kursi-kursi basah yang berada di bawah pengawasan Menteri Tanri Abeng. Tandatangani surat keputusan untuk mengisi kursi-kursi kosong tersebut dengan daftar penguasa daerah yang selama berbulan-bulan diajukan oleh pengurus provinsi Akbar Tandjung ke Sekretariat Negara. Merusak reformasi BUMN dan kredibilitas Reformasi, namun membuat DPP Slipi berhutang budi kepada Anda.",
+      "effects": {
+        "golkar_akbar": [11, 21],
+        "golkar_akbar_favor": 1,
+        "ref": [-16, -8],
+        "econ": [-10, -6],
+        "golkar_habibie": 2,
+        "cendana": [3, 7],
+        "abri": [3, 5],
+        "pdip": [-6, -3],
+        "poros_tengah": [-7, -3],
+        "intl": [-4, -2],
+        "pop": -2,
+        "utusan_daerah": [2, 4]
+      },
+      "alertMsg": "Anda menandatangani surat keputusan pengangkatan komisaris tersebut tanpa gembar-gembor, dan para baron daerah Golkar menyambut jabatan itu sebagai bukti bahwa sistem bagi-bagi kue lama masih bertahan. Para analis pasar dan pemantau IMF, yang menyaksikan fungsionaris partai menduduki kursi puncak perusahaan negara yang masih rapuh, menurunkan peringkat prospek ekonomi Jakarta."
+    },
+    {
+      "id": "golkar_pwc_shelve",
+      "text": "Tahan lampiran audit PricewaterhouseCoopers atas Bank Bali yang belum disensor sebelum sampai ke Senayan",
+      "mutexGroup": "bank_bali_audit",
+      "locksGroup": true,
+      "cost": 12,
+      "repeatable": false,
+      "maxTurn": 16,
+      "minTurn": 7,
+      "description": "Laporan lengkap audit forensik PwC terhadap komisi Rp546 miliar milik PT Era Giat Prima menyebutkan nama-nama bendahara <font color=\"#7D6000\"><b>Golkar</b></font> dan penyandang dana kampanye yang oleh <font color=\"#7D6000\"><b>DPP Slipi</b></font> ingin dijauhkan dari rapat dengar pendapat DPR yang disiarkan televisi. Gunakan protokol kerahasiaan undang-undang di Badan Pemeriksa Keuangan (BPK) untuk menahan lampiran tanpa sensor tersebut dari parlemen. Menutup segala langkah untuk menyerahkan berkas lengkap Bank Bali kepada para penyelidik Pansus PDI Perjuangan, sekaligus mengamankan hutang budi politik yang besar dari pucuk pimpinan Akbar Tandjung.",
+      "effects": {
+        "golkar_akbar": [10, 18],
+        "golkar_akbar_favor": 1,
+        "cendana": [3, 7],
+        "ref": [-13, -7],
+        "intl": [-8, -4],
+        "pop": [-8, -4],
+        "pdip": [-10, -6],
+        "econ": [-4, -2],
+        "golkar_habibie": -2
+      },
+      "alertMsg": "Embargo administratif di BPK memberi perbendaharaan Golkar perlindungan yang sangat dibutuhkannya, dan Akbar mencatat hutang budi tersebut di DPP Slipi. Di dalam gedung Senayan, para penyelidik Komisi IX dari PDI Perjuangan mengecam keras upaya penutupan kasus itu, sementara jajaran direktur IMF memperingatkan bahwa penyembunyian hasil audit mengancam pencairan dana talangan tahap berikutnya."
+    },
+    {
+      "id": "golkar_own_nomination",
+      "text": "Paksa Rapimnas Golkar untuk mengikat seluruh 120 utusan F-KP pada pencalonan tunggal Anda",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 4,
+      "description": "Pengurus-pengurus daerah yang masih bermain aman di dalam kubu Akbar Tandjung mulai melempar wacana untuk mencalonkan Akbar sendiri—atau Jenderal Wiranto—jika posisi Anda goyah pada bulan Oktober, menantang keputusan Mei 1999. Tuntut agar Rapat Pimpinan Nasional (<i>Rapimnas</i>) <font color=\"#7D6000\"><b>Golkar</b></font> mengikat seluruh 120 utusan <font color=\"#7D6000\"><b>Fraksi Karya Pembangunan</b></font> pada pencalonan Anda di bawah ancaman pergantian antarwaktu (<i>recall</i>), mengikat kelangsungan hidup Pohon Beringin dengan nasib Anda sebelum para makelar pesaing memecah-belah fraksi. Mengunci komitmen politik resmi dari DPP Slipi.",
+      "effects": {
+        "golkar_akbar": [7, 13],
+        "golkar_akbar_favor": 1,
+        "golkar_habibie": [7, 13],
+        "stab": [2, 4]
+      },
+      "alertMsg": "Setelah sidang semalam suntuk yang tegang di Slipi, Rapimnas mengesahkan resolusi mengikat yang menegaskan Anda sebagai calon presiden tunggal dari Golkar. Para loyalis Baramuli memuji hasil pemungutan suara tersebut sebagai mandat baja, meskipun para manajer lapangan Akbar tetap membuka jalur belakang mereka ke Amien Rais dan Gus Dur."
+    },
+    {
+      "id": "golkar_final_appeal",
+      "text": "Panggil Akbar Tandjung menjelang pemungutan suara dan tuntut DPP Slipi menjaga barisan",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Setiap kursi komisaris BUMN, setiap berkas audit yang ditahan, dan setiap konsesi daerah yang telah Anda berikan kepada <font color=\"#7D6000\"><b>DPP Slipi</b></font> selama empat bulan terakhir bermuara pada pemungutan suara tertutup malam ini di Senayan. Panggil Akbar Tandjung ke Bina Graha dan tuntut ia menegakkan disiplin baja atas kedelapan puluh utusannya saat sekretariat majelis memanggil nama mereka satu per satu. Menagih setiap hutang politik dan komitmen di balik layar yang dimiliki DPP Slipi terhadap Istana.",
+      "effects": {
+        "golkar_akbar": [13, 23],
+        "golkar_habibie": [3, 7],
+        "cendana": [3, 5]
+      },
+      "alertMsg": "Akbar Tandjung berjanji akan mengawal disiplin para utusan Slipi hingga fajar menyingsing, sembari tidak sedikit pun membocorkan isi pembicaraan larut malamnya bersama Amien Rais dan Gus Dur di Hotel Mulia."
+    }
+  ]
+}

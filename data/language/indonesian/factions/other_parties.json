@@ -1,0 +1,155 @@
+{
+  "name": "F-KKI, F-PDU & Fraksi-Fraksi Kecil",
+  "short": "Partai Lain",
+  "seats": 46,
+  "affinity": 35,
+  "image": "photo/other.png",
+  "coverImage": "photo/faction/other.png",
+  "summary": "Setelah UU No. 2/1999 membongkar pemasungan politik tiga partai warisan Orde Baru—yang sejak 1973 membatasi kontestasi elektoral hanya pada <font color=\"#7D6000\"><b>Golkar</b></font>, <font color=\"#1E6840\"><b>PPP</b></font>, dan PDI—empat puluh delapan partai berlaga dalam pemilihan umum Juni 1999. Di luar lima kekuatan besar parlemen, delapan belas partai kecil berhasil meraih kursi di Senayan dan menggabungkan empat puluh enam mandat mereka ke dalam fraksi-fraksi gabungan: kubu Islam modernis <font color=\"#006068\"><b>Partai Bulan Bintang (F-PBB)</b></font> dan <font color=\"#006068\"><b>Perserikatan Daulatul Ummah (F-PDU)</b></font>, kubu nasionalis <font color=\"#006068\"><b>Fraksi Kesatuan Kebangsaan Indonesia (F-KKI)</b></font>, serta kubu Kristen-pluralis <font color=\"#006068\"><b>Partai Demokrasi Kasih Bangsa (F-PDKB)</b></font>.<p></p>Tanpa doktrin tunggal yang menyatukan mereka, mozaik politik ini membentang dari kalangan konstitusionalis Neo-Masyumi di bawah pimpinan Yusril Ihza Mahendra, kader-kader <i>Tarbiyah</i> kampus di <font color=\"#006068\"><b>Partai Keadilan (PK) pimpinan Nur Mahmudi Ismail</b></font>, para veteran sekuler Siliwangi di <font color=\"#006068\"><b>PKP pimpinan Edi Sudradjat</b></font>, hingga para cendekiawan Protestan yang dipimpin oleh Manasse Malo. Karena tidak satu pun dari blok-blok sempalan ini mampu menguasai ruang sidang sendirian, para ketua umum mereka memperlakukan Sidang Umum MPR layaknya balai lelang untuk memperebutkan kursi kabinet, palu pimpinan komisi, dan perlindungan undang-undang. Bahkan ketika Amien Rais merayu partai-partai Islam kecil agar merapat ke dalam <font color=\"#004488\"><b>Poros Tengah</b></font> bentukannya, puluhan mandat bebas masih terbuka untuk diperebutkan. Menjaga dukungan publik dan mempertahankan ketenangan di jalanan akan memberi Istana posisi tawar yang kuat atas fraksi-fraksi kecil ini, yang para pemimpinnya akan ciut nyali untuk mendukung presiden yang terjepit jika kerusuhan mengancam menelan Jakarta.",
+  "biography": "Ketika Departemen Kehakiman membuka pendaftaran partai politik pada tahun 1998, aliran-aliran politik historis Indonesia—yang diberangus sejak kebijakan fusi partai paksa oleh Soeharto pada tahun 1973—kembali bermunculan dalam semalam. Lebih dari seratus gerakan politik terbentuk; empat puluh delapan di antaranya lolos verifikasi Tim Sebelas untuk tampil dalam surat suara 7 Juni 1999, menghidupkan kembali pluralisme ideologi yang terakhir kali terlihat pada pemilihan umum parlemen tahun 1955.<p></p>Di dalam aliran Islam, <font color=\"#006068\"><b>Partai Bulan Bintang (PBB) pimpinan Yusril Ihza Mahendra</b></font> mengklaim warisan Masyumi era Mohammad Natsir untuk memenangkan tiga belas kursi, sementara <font color=\"#006068\"><b>Partai Keadilan (PK) pimpinan Nur Mahmudi Ismail</b></font> memobilisasi jaringan Lembaga Dakwah Kampus di perkotaan untuk merebut tujuh kursi dan menjadi jangkar bagi fraksi <font color=\"#006068\"><b>Daulatul Ummah (F-PDU)</b></font> bersama <font color=\"#006068\"><b>PNU pimpinan K.H. Syukron Ma'mun</b></font> serta <font color=\"#006068\"><b>PDR</b></font> yang disokong jaringan koperasi Adi Sasono. Di seberang spektrum ideologi, Jenderal (Purn.) Edi Sudradjat—yang dikalahkan oleh Akbar Tandjung pada Munaslub <font color=\"#7D6000\"><b>Golkar</b></font> tahun 1998—memimpin <font color=\"#006068\"><b>Partai Keadilan dan Persatuan (PKP)</b></font> masuk ke dalam blok <font color=\"#006068\"><b>F-KKI</b></font> bersama partai-partai sempalan nasionalis lainnya, sementara sosiolog <font color=\"#006068\"><b>Manasse Malo melalui PDKB</b></font> menghimpun kalangan intelektual Kristen. Secara sendiri-sendiri, setiap partai hanya memegang secuil kursi di ruang sidang; namun bersama-sama, empat puluh enam suara mereka dapat membalikkan hasil pemungutan suara bulan Oktober. Memenangkan hati mereka menuntut pendekatan yang disesuaikan: prestise konstitusional bagi <font color=\"#006068\"><b>PBB</b></font>, komitmen pemerintahan bersih bagi <font color=\"#006068\"><b>PK</b></font>, jaminan perlindungan minoritas bagi <font color=\"#006068\"><b>PDKB</b></font>, dan dana operasional kampanye bagi partai-partai gurem yang kehabisan kas.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Terkunci",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Bersahabat",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Terpecah-belah",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Menimbang Tawaran",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Skeptis",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Membelot",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Bermusuhan",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "others_bribe",
+      "text": "Salurkan dana operasional nonbujeter kepada para ketua umum partai sempalan yang kesulitan dana",
+      "cost": 16,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Berkampanye di dua puluh tujuh provinsi telah menguras habis kas partai-partai mikro yang duduk di <font color=\"#006068\"><b>F-KKI</b></font> dan <font color=\"#006068\"><b>F-PDU</b></font>—partai-partai sempalan yang masing-masing hanya mengantongi satu atau dua kursi, mulai dari <font color=\"#006068\"><b>Partai Daulat Rakyat (PDR)</b></font> hingga <font color=\"#006068\"><b>IPKI</b></font> dan PDI hasil Kongres Medan 1996. Kirim kurir Bina Graha untuk melunasi utang kampanye pasca-pemilu mereka dengan imbalan komitmen tertulis mendukung pidato pertanggungjawaban Anda.",
+      "effects": {
+        "other_parties": [8, 16],
+        "ref": [-5, -3],
+        "cendana": [2, 4],
+        "pop": -1,
+        "stab": 1
+      },
+      "alertMsg": "Beroperasi dari kamar-kamar suite hotel di sekitar Senayan, para ketua umum partai sempalan terkecil di parlemen menerima dana operasional tersebut tanpa ragu dan mengikat komitmen utusan mereka ke dalam barisan pendukung Istana."
+    },
+    {
+      "id": "others_pbb_counsel",
+      "text": "Angkat Ketua Umum Partai Bulan Bintang (PBB) Yusril Ihza Mahendra sebagai penasihat khusus bidang konstitusi",
+      "cost": 16,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Ketua Umum <font color=\"#006068\"><b>Partai Bulan Bintang (PBB)</b></font> Yusril Ihza Mahendra—seorang pakar hukum tata negara Universitas Indonesia yang tajam, yang pernah menyusun pidato-pidato kepresidenan di Sekretariat Negara untuk Soeharto serta menulis naskah pengunduran dirinya pada Mei 1998—memegang komando atas tiga belas utusan Muslim modernis dan menyimpan ambisi kepresidenannya sendiri. Tarik Yusril ke dalam lingkaran perancang undang-undang Bina Graha untuk ikut menyusun rancangan undang-undang reformasi konstitusi Anda. Mengamankan hutang budi politik yang mengikat dari pucuk pimpinan PBB.",
+      "effects": {
+        "other_parties": [10, 18],
+        "other_parties_favor": 1,
+        "poros_tengah": [3, 7],
+        "ref": [2, 4],
+        "pop": 1,
+        "golkar_akbar": 2
+      },
+      "alertMsg": "Yusril Ihza Mahendra menerima penugasan tersebut dengan kepercayaan dirinya yang khas. Dalam hitungan hari, tim hukumnya menyempurnakan draf legislasi Istana, dan ketiga belas utusan PBB mulai melunak terhadap pemerintahan Anda."
+    },
+    {
+      "id": "others_pk_outreach",
+      "text": "Dekati Nur Mahmudi Ismail dan para kader dakwah kampus dari Partai Keadilan (PK)",
+      "cost": 10,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Tempaan jaringan gerakan masjid kampus (<i>Usrah</i> dan <i>Tarbiyah</i>) yang dipimpin oleh ilmuwan pangan lulusan Texas A&amp;M Nur Mahmudi Ismail bersama Hidayat Nur Wahid membuat <font color=\"#006068\"><b>Partai Keadilan (PK)</b></font> menerapkan disiplin internal ketat yang menjadikan ketujuh utusannya kebal terhadap amplop patronase. Hadiri musyawarah nasional perdana mereka dan ikrarkan pembersihan KKN tanpa kompromi di seluruh kementerian.",
+      "effects": {
+        "other_parties": [8, 14],
+        "ref": [5, 9],
+        "poros_tengah": [3, 5],
+        "pop": 2
+      },
+      "alertMsg": "Nur Mahmudi Ismail dan Majelis Syuro Partai Keadilan menyambut baik pendekatan tersebut setelah melalui musyawarah yang cermat. Berbeda dengan para makelar transaksional di lobi parlemen, ketujuh legislator PK merespons komitmen pemerintahan yang bersih, bukan uang tunai."
+    },
+    {
+      "id": "others_pdkb_courtship",
+      "text": "Janjikan perlindungan konstitusional bagi minoritas agama kepada PDKB pimpinan Manasse Malo dan F-KKI",
+      "cost": 10,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Partai-partai Kristen-pluralis di dalam blok ini—yang dipimpin oleh sosiolog <font color=\"#006068\"><b>Manasse Malo dari Partai Demokrasi Kasih Bangsa (PDKB)</b></font> serta para utusan Katolik dan Protestan di dalam <font color=\"#006068\"><b>F-KKI</b></font>—menyaksikan pertumpahan darah sektarian di Ambon dan seruan di Senayan untuk menghidupkan kembali Piagam Jakarta dengan kecemasan yang kian memuncak. Terima para tokoh gereja dan pimpinan parlemen mereka di Istana Merdeka, lalu keluarkan jaminan terbuka yang melindungi kebebasan beribadah kaum minoritas dan pluralisme Pancasila.",
+      "effects": {
+        "other_parties": [7, 13],
+        "utusan_golongan": [3, 7],
+        "pop": 2,
+        "ref": 2,
+        "intl": 2
+      },
+      "alertMsg": "Manasse Malo dan para utusan Kristen dari PDKB serta F-KKI menyambut baik jaminan presiden tersebut. Merasa tenang bahwa Bina Graha tidak akan menggadaikan hak-hak minoritas demi memuaskan faksi-faksi garis keras, fraksi mereka melunakkan sikapnya terhadap pemerintahan Anda."
+    },
+    {
+      "id": "others_committee_seats",
+      "text": "Alokasikan kursi wakil ketua komisi DPR kepada fraksi F-KKI, F-PDU, dan F-PBB",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 12,
+      "description": "Berdasarkan tata tertib Senayan, fraksi-fraksi raksasa—<font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> dan <font color=\"#7D6000\"><b>Golkar</b></font>—berharap dapat memonopoli palu pimpinan di sembilan komisi tetap DPR. Instruksikan para penggalang suara Anda di parlemen untuk mematahkan duopoli tersebut dan mendukung calon-calon dari <font color=\"#006068\"><b>F-PBB</b></font>, <font color=\"#006068\"><b>F-PDU</b></font>, dan <font color=\"#006068\"><b>F-KKI</b></font> guna menduduki kursi wakil ketua di komisi-komisi anggaran dan hukum yang strategis. Membuat fraksi-fraksi partai kecil berhutang budi kepada Istana.",
+      "effects": {
+        "other_parties": [10, 18],
+        "other_parties_favor": 1,
+        "ref": [2, 4],
+        "pop": 1,
+        "stab": 2
+      },
+      "alertMsg": "Duduk di meja pimpinan ruang sidang komisi Senayan untuk pertama kalinya, para wakil ketua dari partai-partai kecil menikmati peningkatan martabat politik mereka dan berterima kasih kepada penggalang suara Bina Graha karena telah mematahkan monopoli partai besar."
+    },
+    {
+      "id": "others_final_appeal",
+      "text": "Hubungi para ketua umum partai kecil lewat telepon sepanjang malam untuk mengunci suara mereka sebelum pemungutan suara",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Dengan peta suara MPR yang terbelah dua sama kuat, para utusan yang tersebar di <font color=\"#006068\"><b>F-PBB</b></font>, <font color=\"#006068\"><b>F-PDU</b></font>, <font color=\"#006068\"><b>F-KKI</b></font>, dan <font color=\"#006068\"><b>F-PDKB</b></font> memegang selisih penentu antara keselamatan dan kekalahan. Habiskan jam-jam terakhir menjelang pemungutan suara paripurna di depan pesawat telepon dari Bina Graha, berbicara langsung dari hati ke hati dengan Yusril Ihza Mahendra, Nur Mahmudi Ismail, Manasse Malo, dan para deputi Edi Sudradjat. Mencairkan setiap hutang budi politik dan komitmen parlemen yang dimiliki blok-blok kecil terhadap Istana.",
+      "effects": {
+        "other_parties": [13, 23],
+        "stab": 2
+      },
+      "alertMsg": "Tersanjung oleh panggilan telepon tengah malam langsung dari Presiden Republik Indonesia, para ketua umum blok partai kecil menegaskan kembali komitmen mereka satu per satu dan mengerahkan penggalang suara mereka untuk menjaga barisan utusan tetap disiplin saat kotak suara dibuka."
+    }
+  ]
+}

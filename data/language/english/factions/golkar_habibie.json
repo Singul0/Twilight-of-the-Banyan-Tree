@@ -1,0 +1,157 @@
+{
+  "name": "Fraksi Karya Pembangunan<br>(Irama Suka Nusantara)",
+  "short": "Loyalists",
+  "seats": 40,
+  "affinity": 80,
+  "image": "photo/loyal.png",
+  "coverImage": "photo/faction/loyal.png",
+  "summary": "Spearheaded by Sulawesi kingmaker Ahmad Arnold Baramuli and fiery parliamentarian Marwah Daud Ibrahim, the <font color=\"#8A5A00\"><b><i>Irama Suka Nusantara</i></b></font> or the <font color=\"#8A5A00\"><b><i>Iramasuka Group</i></b></font> caucus—mocked in the Jakarta press as <font color=\"#8A5A00\"><b><i>Irama Tersedak</i></b></font> ('Choked Rhythm')—forms your palace guard inside <font color=\"#7D6000\"><b>Golkar</b></font>. This forty-seat bloc unites outer-island barons from Sulawesi, Kalimantan, and Nusa Tenggara with modernist Muslim scholars from ICMI and state engineers who climbed the ranks beside you at BPPT and the IPTN aircraft works in Bandung. Where Akbar Tandjung's <font color=\"#7D6000\"><b>DPP Slipi</b></font> operators calculate coalition odds, these men and women treat your presidency as a personal crusade: proof that Indonesia's eastern islands and civilian technocrats can govern the Republic without asking permission from Java's military brass or Jalan Cendana.<p></p>Unlike <font color=\"#7D6000\"><b>Slipi's</b></font> machine politicians, Baramuli's partisans have nowhere else to go. Their cabinet portfolios, their BPIS research budgets, and their protection from Bank Bali subpoenas hang on keeping you in Istana Merdeka past October. Sustaining reformist momentum, reviving economic confidence, and maintaining Indonesia's standing abroad keep this caucus energized and sharpen your leverage over them, though forty loyalists alone cannot carry the MPR floor if the larger blocs turn against you.",
+  "biography": "For twenty years before May 1998, you built an archipelago of laboratories, shipyards, and aircraft hangars under the umbrella of the Agency for the Assessment and Application of Technology (BPPT) and the Strategic Industries Management Agency (BPIS). In December 1990, with Suharto's blessing at a symposium in Malang, you added a political engine to that technocratic base by founding the Association of Indonesian Muslim Intellectuals (ICMI). Through its think tank CIDES and the daily <i>Republika</i>, figures like Adi Sasono, Jimly Asshiddiqie, and Wardiman Djojonegoro challenged the dominance of secular-nationalist generals and CSIS technocrats who had shaped New Order policy since 1966.<p></p>When Suharto stepped down on May 21, 1998, your ascension marked the triumph of the ICMI intelligentsia, the BPPT engineering corps, and eastern Indonesian powerbrokers led by Supreme Advisory Council chair A.A. Baramuli and Gorontalo entrepreneur Fadel Muhammad. Yet their grip on state power remains precarious. Resented by Cilangkap's officer corps, distrusted by Megawati's secular nationalists, and outmaneuvered inside <font color=\"#7D6000\"><b>Golkar's</b></font> central board by Akbar Tandjung's HMI network, your inner circle knows that if your accountability speech fails in Senayan, their decade-long march through Indonesia's institutions ends that same night.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Ride or Die",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Faithful",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Nervous",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Worried",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Losing Confidence",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Panicking",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Jumping Ship",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "loyalist_rally",
+      "text": "Host an off-the-record midnight strategy session at the Patra Kuningan residence",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Your private residence at Patra Kuningan has served as the nerve center for this circle since the early years at IPTN and the tense nights of May 1998 when Suharto cut you loose. Summon A.A. Baramuli, Adi Sasono, Marwah Daud Ibrahim, and your senior BPPT deputies to the house after midnight—no press, no State Secretariat stenographers, just strong Makassar coffee and a candid reckoning of what hangs in the balance.",
+      "effects": {
+        "golkar_habibie": [7, 13],
+        "poros_tengah": 2,
+        "pop": 2,
+        "ref": 2
+      },
+      "alertMsg": "Sitting around the dining table at Patra Kuningan until three in the morning, your oldest comrades rediscover the conviction that carried them from the hangars of Bandung to Istana Merdeka. Doubts that had begun to fester in the corridors of Senayan evaporate by dawn."
+    },
+    {
+      "id": "loyalist_bppt",
+      "text": "Carve out off-budget bridge financing to shield BPIS and BPPT laboratories from IMF austerity",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Ever since IMF Managing Director Michel Camdessus stood over Suharto in January 1998, Fund auditors have targeted the strategic industries you spent two decades building—IPTN in Bandung, PT PAL in Surabaya, and PT Pindad—as wasteful prestige projects. Instruct the Finance Ministry to route emergency bridge funds through research endowments to keep your BPPT and BPIS engineering teams on the payroll. Binds your technocratic inner circle with a lasting debt of gratitude, though IMF monitors and foreign creditors will penalize the fiscal sleight of hand.",
+      "effects": {
+        "golkar_habibie": [10, 18],
+        "golkar_habibie_favor": 1,
+        "econ": [-8, -4],
+        "intl": [-8, -4],
+        "ref": -2,
+        "golkar_akbar": 2
+      },
+      "alertMsg": "The disbursement keeps the laboratories open and spares hundreds of aerospace and maritime engineers from pink slips. Inside BPPT and BPIS, your veteran directors greet the lifeline with palpable relief, even as IMF mission chiefs in Jakarta flag the off-budget transfer as a breach of the Letter of Intent."
+    },
+    {
+      "id": "loyalist_icmi",
+      "text": "Convene ICMI scholars and CIDES fellows for an evening colloquium on modernist Muslim statecraft",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "The intellectual network you assembled at Malang in 1990 through the Association of Indonesian Muslim Intellectuals (ICMI) now spans cabinet ministries, university rectorates, and the editorial board of <i>Republika</i>—though several of its brightest minds have drifted toward <font color=\"#004488\"><b>Amien Rais's PAN</b></font> and <font color=\"#1E6840\"><b>PPP</b></font>. Gather ICMI's senior council and CIDES researchers for a closed-door colloquium to reaffirm that Bina Graha remains the home of modernist Muslim governance.",
+      "effects": {
+        "golkar_habibie": [6, 10],
+        "poros_tengah": [2, 4],
+        "ppp": 2,
+        "pop": 2,
+        "ref": 2
+      },
+      "alertMsg": "Word of the evening colloquium travels through campus mosques, ministry corridors, and the newsroom at Republika. Because several ICMI scholars in attendance also advise Amien Rais and Hamzah Haz, the goodwill generated in the room ripples beyond your own caucus into the modernist Islamic parties."
+    },
+    {
+      "id": "loyalist_technocrat_defense",
+      "text": "Defend your economic technocrats in public against populist attacks over IMF structural adjustments",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 6,
+      "description": "Your economic team—Coordinating Minister Ginandjar Kartasasmita, Finance Minister Bambang Subianto, and Bappenas chief Boediono—faces daily broadsides in the press over bank closures, subsidy cuts, and food prices. Rather than letting your technocrats absorb the street's anger alone while the Palace keeps its distance, step before the microphones at Bina Graha and claim full presidential ownership of their stabilization program.",
+      "effects": {
+        "golkar_habibie": [7, 13],
+        "econ": [3, 5],
+        "ref": [2, 4],
+        "intl": [2, 4],
+        "pop": 1
+      },
+      "alertMsg": "Several economic ministers who had drafted resignation letters return them to their desk drawers after watching your press conference. Foreign bondholders and Jakarta's financial press welcome the display of cabinet solidarity, and morale across your technocratic wing rebounds."
+    },
+    {
+      "id": "loyalist_n250",
+      "text": "Authorize prototype continuation funding for IPTN's N-250 Gatotkaca turboprop in Bandung",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "To the engineers who followed you home from Aachen and Hamburg, August 10, 1995—the day the fly-by-wire N-250 Gatotkaca lifted off the tarmac in Bandung—remains the proudest hour of the Republic's industrial history. Defy the IMF's structural adjustment ban on aerospace subsidies and sign a presidential authorization releasing state funds to keep the N-250 flight-test program alive. Earns an enduring personal debt from the IPTN and BPPT old guard, at the cost of straining the state budget and provoking Washington and the IMF.",
+      "effects": {
+        "golkar_habibie": [10, 18],
+        "golkar_habibie_favor": 1,
+        "econ": [-8, -4],
+        "intl": [-5, -3],
+        "pop": [2, 4],
+        "golkar_akbar": 2
+      },
+      "alertMsg": "Cheers echo across the hangars at Husein Sastranegara Airport in Bandung when news of the presidential authorization arrives. For the engineers who built the Gatotkaca from scratch, your signature salvages their life's work—even as Finance Ministry auditors and IMF inspectors warn that Indonesia cannot afford prestige aviation amidst a sovereign debt crisis."
+    },
+    {
+      "id": "loyalist_final_stand",
+      "text": "Summon the Irama Suka Nusantara and ICMI inner circle to Patra Kuningan on the eve of the vote",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Tomorrow the MPR decides whether your presidency lives or dies. Summon A.A. Baramuli, Marwah Daud Ibrahim, Fadel Muhammad, Adi Sasono, and the IPTN pioneers back to Patra Kuningan one final time—not to haggle over portfolios, but to stand shoulder to shoulder before entering the cauldron at Senayan. Calls in every personal bond and past commitment you have forged with your loyalist core.",
+      "effects": {
+        "golkar_habibie": [14, 26],
+        "pop": 2,
+        "ref": 2
+      },
+      "alertMsg": "After a quiet prayer led by your ICMI scholars in the Patra Kuningan living room, Baramuli and Marwah Daud embrace you at the door. Whatever happens behind the voting curtains at Senayan tomorrow, these forty delegates will fight for every ballot until the final gavel falls."
+    }
+  ]
+}

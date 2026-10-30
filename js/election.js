@@ -1,14 +1,15 @@
-// election.js: October 19-20, 1999 MPR roll call, hemicycle, TAP MPR No. III/MPR/1999 text and the post-election verdict.
+// SUMMARY: The October 1999 MPR election night. Runs the roll call with seat-by-seat results, draws the hemicycle, builds the TAP MPR document,
+// the post-election verdict screen and the epilogue slides.
 
 // Tuning knobs for election-night unpredictability
 const ELECTION_DRAMA = {
-    moodSwing: 7,          // max shared "mood of the hall" shift, in affinity points (triangular, so usually small)
-    wildcardChance: 0.16,  // chance a whole caucus has a sudden change of heart or a fit of nerves
-    wildcardMin: 8,        // wildcard size range, in affinity points
-    wildcardMax: 20,
-    crossoverRate: 0.06,   // max share of a caucus that quietly votes against its line in the secret ballot
-    surgeBias: 9,          // how strongly a surge favours one side's ballots surfacing next
-    blocBias: 12           // how strongly a bloc run favours one caucus' ballots surfacing next
+    moodSwing: 7,
+    wildcardChance: 0.50,
+    wildcardMin: 20,
+    wildcardMax: 50,
+    crossoverRate: 0.35,
+    surgeBias: 15,
+    blocBias: 10
 };
 
 // Stop the running vote-tally animation timer
@@ -24,7 +25,7 @@ window.setTallySpeed = function(speed) {
     window.tallySpeed = speed;
     const speedBtnsContainer = document.getElementById('speed-controls-container');
     if (speedBtnsContainer) {
-        let html = '<b style="font-family: MS Sans Serif; font-size: 12px;">Speed: </b>';
+        let html = '<b style="font-family: MS Sans Serif; font-size: 12px;">' + LOC('election.speed') + ' </b>';
         [1, 2, 5, 10].forEach(s => {
             html += `<button class="${window.tallySpeed === s ? 'is-selected' : ''}" style="width: 45px; --py: 3px; --px: 3px; margin: 0 3px; display: inline-block; text-align: center;" onclick="setTallySpeed(${s})">${s}x</button>`;
         });
@@ -47,11 +48,11 @@ function renderElectionPartyBadge(factionKey, fallbackName) {
     const f = (typeof factions !== 'undefined' && factions[factionKey]) ? factions[factionKey] : null;
     const rawName = (f && f.name) ? f.name : (fallbackName || factionKey);
     const cleanName = stripLeaderParentheses(rawName);
-    const col = (typeof FACTION_HISTORICAL_COLORS !== 'undefined' && FACTION_HISTORICAL_COLORS[factionKey])
-        ? FACTION_HISTORICAL_COLORS[factionKey]
+    const col = (typeof getFactionColors === 'function' && getFactionColors(factionKey))
+        ? getFactionColors(factionKey)
         : { fill: '#808080' };
-    const textCol = (typeof FACTION_TEXT_COLORS !== 'undefined' && FACTION_TEXT_COLORS[factionKey])
-        ? FACTION_TEXT_COLORS[factionKey]
+    const textCol = (typeof getFactionTextColor === 'function' && getFactionTextColor(factionKey))
+        ? getFactionTextColor(factionKey)
         : '#111111';
 
     return `<span style="display: inline-flex; align-items: center; gap: 6px;">
@@ -60,9 +61,10 @@ function renderElectionPartyBadge(factionKey, fallbackName) {
     </span>`;
 }
 
-// Generates the 700-seat semi-circular MPR hemicycle coordinates
+// Generates the 700-seat semi-circular MPR hemicycle
 function generateHemicycleLayout(totalSeats) {
     const numRows = 13;
+    const numSectors = 5;
     const radiiX = [];
     let weightSum = 0;
 
@@ -89,88 +91,106 @@ function generateHemicycleLayout(totalSeats) {
         rowCounts[remainders[i].r]++;
     }
 
+    const REM_PATTERNS = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [1, 1, 0, 1, 1]
+    ];
+
     const seats = [];
-    const numSectors = 5;
-    const aisleGap = 0.032;
+    const aisleGap = 0.042;
     const totalAisleAngle = (numSectors - 1) * aisleGap;
-    const startMargin = 0.05;
+    const startMargin = 0.045;
     const usableSpan = Math.PI - (2 * startMargin) - totalAisleAngle;
+    const sectorSpan = usableSpan / numSectors;
 
     for (let r = 0; r < numRows; r++) {
         const count = rowCounts[r];
+        if (count <= 0) continue;
+
         const rx = radiiX[r];
         const ry = rx * 1.90;
 
-        for (let j = 0; j < count; j++) {
-            const u = count > 1 ? j / (count - 1) : 0.5;
-            const sector = Math.min(numSectors - 1, Math.floor((j / count) * numSectors));
-            const theta = (Math.PI - startMargin) - (u * usableSpan + sector * aisleGap);
+        const basePerSector = Math.floor(count / numSectors);
+        const remPattern = REM_PATTERNS[count % numSectors];
 
-            const xPct = 50 + rx * Math.cos(theta);
-            const yPct = 92 - ry * Math.sin(theta);
-            seats.push({ x: xPct, y: yPct, theta: theta, row: r });
+        for (let s = 0; s < numSectors; s++) {
+            const secCount = basePerSector + remPattern[s];
+            if (secCount <= 0) continue;
+
+            const sectorStartTheta = (Math.PI - startMargin) - s * (sectorSpan + aisleGap);
+
+            for (let k = 0; k < secCount; k++) {
+                const u = (k + 0.5) / secCount;
+                const theta = sectorStartTheta - (u * sectorSpan);
+
+                const xPct = 50 + rx * Math.cos(theta);
+                const yPct = 92 - ry * Math.sin(theta);
+                seats.push({ x: xPct, y: yPct, theta: theta, row: r, sector: s });
+            }
         }
     }
 
-    seats.sort((a, b) => (b.theta - a.theta) || (a.row - b.row));
+    seats.sort((a, b) => (a.sector - b.sector) || (b.theta - a.theta) || (a.row - b.row));
     return seats;
 }
 
-// Builds the condensed English translation of TAP MPR No. III/MPR/1999
+// Builds the condensed translation of TAP MPR No. III/MPR/1999 (text lives in data/language/*/tap_mpr.json)
 function buildTapMprDocumentHTML(accepted, forVotes, againstVotes, blankVotes) {
-    const verdictWord = accepted ? 'ACCEPTED' : 'REJECTED';
+    const verdictWord = LOC(accepted ? 'election.verdict_accepted' : 'election.verdict_rejected');
     const verdictColor = accepted ? '#006400' : '#8B0000';
+    const verdictHTML = `<span style="color: ${verdictColor}; font-weight: bold; text-decoration: underline;">${verdictWord}</span>`;
+    const considering = ['a', 'b', 'c', 'd']
+        .map(k => `<li style="margin-bottom: 4px;">${LOC('tap.considering.' + k)}</li>`)
+        .join('\n                ');
 
     return `<div class="tap-mpr-document">
         <div class="tap-mpr-header">
-            <img src="photo/pancasila.png" alt="[Garuda]" style="width: 96px; height: auto; display: block; margin: 0 auto 8px auto;" onerror="this.style.display='none'">
-            <div style="font-size: 13px; font-weight: bold; letter-spacing: 0.5px;">PEOPLE'S CONSULTATIVE ASSEMBLY OF THE REPUBLIC OF INDONESIA</div>
-            <div style="font-size: 12px; font-weight: bold; margin-top: 26px;">DECREE OF THE PEOPLE'S CONSULTATIVE ASSEMBLY<br>OF THE REPUBLIC OF INDONESIA<br>NUMBER III/MPR/1999</div>
-            <div style="font-size: 11px; font-weight: bold; margin-top: 13px;">CONCERNING<br><br>THE ACCOUNTABILITY OF THE PRESIDENT OF THE REPUBLIC OF INDONESIA<br>Prof. Dr. Ing. BACHARUDDIN JUSUF HABIBIE</div>
+            <img src="photo/pancasila.png" alt="${escapeAttr(LOC('tap.garuda_alt'))}" style="width: 96px; height: auto; display: block; margin: 0 auto 8px auto;" onerror="this.style.display='none'">
+            <div style="font-size: 13px; font-weight: bold; letter-spacing: 0.5px;">${LOC('tap.org')}</div>
+            <div style="font-size: 12px; font-weight: bold; margin-top: 26px;">${LOC('tap.decree_title')}</div>
+            <div style="font-size: 11px; font-weight: bold; margin-top: 13px;">${LOC('tap.concerning')}</div>
         </div>
 
         <hr style="border-top: 1px solid #444; margin: 10px 0;">
 
         <div class="tap-mpr-body">
-            <div style="text-align: center; font-weight: bold; margin-bottom: 8px;">BY THE GRACE OF GOD ALMIGHTY<br>THE PEOPLE'S CONSULTATIVE ASSEMBLY OF THE REPUBLIC OF INDONESIA,</div>
+            <div style="text-align: center; font-weight: bold; margin-bottom: 8px;">${LOC('tap.grace')}</div>
 
-            <p style="margin: 6px 0;"><b>Considering:</b></p>
+            <p style="margin: 6px 0;"><b>${LOC('tap.considering_heading')}</b></p>
             <ol type="a" style="margin: 4px 0 8px 18px; padding-left: 6px;">
-                <li style="margin-bottom: 4px;">that the President elected and appointed by the People's Consultative Assembly of the Republic of Indonesia is subordinate and accountable to the Assembly and, at the conclusion of his term, delivers an accounting for the implementation of the Outlines of State Policy established by the 1945 Constitution and/or by the Assembly;</li>
-                <li style="margin-bottom: 4px;">that Prof. Dr. Ing. Bacharuddin Jusuf Habibie has held office as President of the Republic of Indonesia since taking the oath of office on May 21, 1998;</li>
-                <li style="margin-bottom: 4px;">that the President of the Republic of Indonesia Prof. Dr. Ing. Bacharuddin Jusuf Habibie delivered his Accountability Speech before the 8th Plenary Meeting on October 14, 1999, and his formal reply to the General Views of the Factions before the 11th Plenary Meeting on October 17, 1999;</li>
-                <li style="margin-bottom: 4px;">that the People's Consultative Assembly must evaluate and render a binding decision upon the accountability of President Prof. Dr. Ing. Bacharuddin Jusuf Habibie during his tenure in office.</li>
+                ${considering}
             </ol>
 
-            <p style="margin: 6px 0;"><b>Having Observed:</b> The deliberations of Commission D (October 17–18, 1999) and the secret-ballot decision of the 12th Plenary Meeting on October 19–20, 1999 (${forVotes} Accept, ${againstVotes} Reject, ${blankVotes} Blank votes).</p>
+            <p style="margin: 6px 0;">${LOC('tap.observed', { FOR: forVotes, AGAINST: againstVotes, BLANK: blankVotes })}</p>
 
-            <div style="text-align: center; font-weight: bold; margin: 10px 0 6px 0; letter-spacing: 0.5px;">DECIDES</div>
-            <p style="margin: 4px 0;"><b>To Enact:</b> DECREE OF THE PEOPLE'S CONSULTATIVE ASSEMBLY OF THE REPUBLIC OF INDONESIA CONCERNING THE ACCOUNTABILITY OF THE PRESIDENT OF THE REPUBLIC OF INDONESIA Prof. Dr. Ing. BACHARUDDIN JUSUF HABIBIE.</p>
+            <div style="text-align: center; font-weight: bold; margin: 10px 0 6px 0; letter-spacing: 0.5px;">${LOC('tap.decides')}</div>
+            <p style="margin: 4px 0;">${LOC('tap.to_enact')}</p>
 
             <div class="tap-mpr-article-bo">
-                <div style="text-align: center; font-weight: bold; margin-bottom: 4px;">Article 1</div>
-                <div>The Accountability of the President of the Republic of Indonesia, <b>Prof. Dr. Ing. Bacharuddin Jusuf Habibie</b>, delivered before the 8th Plenary Meeting on October 14, 1999, together with the President's reply to the General Views of the Factions before the 11th Plenary Meeting on October 17, 1999 at the General Session of the People's Consultative Assembly, is hereby declared <span style="color: ${verdictColor}; font-weight: bold; text-decoration: underline;">${verdictWord}</span>.</div>
-                <div style="text-align: center; font-weight: bold; margin-top: 8px; margin-bottom: 2px;">Article 2</div>
-                <div style="text-align: center;">This Decree shall enter into force on the date of its enactment.</div>
+                <div style="text-align: center; font-weight: bold; margin-bottom: 4px;">${LOC('tap.article1_heading')}</div>
+                <div>${LOC('tap.article1', { VERDICT: verdictHTML })}</div>
+                <div style="text-align: center; font-weight: bold; margin-top: 8px; margin-bottom: 2px;">${LOC('tap.article2_heading')}</div>
+                <div style="text-align: center;">${LOC('tap.article2')}</div>
             </div>
 
             <div class="tap-mpr-signatures">
                 <div style="text-align: right; margin-bottom: 8px;">
-                    Enacted in Jakarta<br>
-                    on October 19, 1999
+                    ${LOC('tap.enacted')}
                 </div>
                 <div style="text-align: center; font-weight: bold; margin-bottom: 8px;">
-                    PEOPLE'S CONSULTATIVE ASSEMBLY OF THE REPUBLIC OF INDONESIA<br>
-                    CHAIRMAN,<br>
-                    <span style="font-weight: normal; font-style: italic;">[Signed]</span><br>
-                    <b>Prof. Dr. H. M. Amien Rais, M.A.</b>
+                    ${LOC('tap.chairman')}<br>
+                    <span style="font-weight: normal; font-style: italic;">${LOC('tap.signed')}</span><br>
+                    <b>${LOC('tap.chairman_name')}</b>
                 </div>
                 <div style="font-size: 10.5px; color: #333; text-align: center; line-height: 1.45;">
-                    <b>VICE CHAIRMEN:</b> Prof. Dr. Ir. Ginandjar Kartasasmita &bull; Drs. Kwik Kian Gie &bull; H. Matori Abdul Djalil &bull; Drs. H. M. Husnie Thamrin &bull; Hari Sabarno, S.IP., M.B.A., M.M. &bull; Prof. Dr. Jusuf Amir Feisal, S.Pd. &bull; Drs. H. A. Nazri Adlani
+                    <b>${LOC('tap.vice_chairmen_label')}</b> ${LOC('tap.vice_chairmen')}
                 </div>
             </div>
         </div>
-    </div>`; 
+    </div>`;
 }
 
 // Run the MPR roll call: build the chamber, animate the tally and show the verdict
@@ -193,7 +213,6 @@ function runElection() {
     const cendanaSabotage = Math.round((stats.cendana - 50) / 10);
     const stabilityFloorMod = Math.round((govStability - 50) / 10);
 
-    // The mood of the hall on the night: one shared swing that moves every caucus together
     const chamberMood = Math.round((Math.random() + Math.random() - 1) * ELECTION_DRAMA.moodSwing);
 
     for (let i = 0; i < portraitFactions.length; i++) {
@@ -208,7 +227,6 @@ function runElection() {
         const unspentFavor = f.favor || 0;
         const favorBonus = unspentFavor * 8;
 
-        // Wildcard: now and then a whole caucus has a sudden change of heart, or a fit of nerves
         let wildcard = 0;
         if (Math.random() < ELECTION_DRAMA.wildcardChance) {
             const span = ELECTION_DRAMA.wildcardMax - ELECTION_DRAMA.wildcardMin + 1;
@@ -219,7 +237,7 @@ function runElection() {
             ? Math.round(rawVariance / (1 + unspentFavor * 0.5))
             : rawVariance;
 
-        const advAdj = window.AdversaryEngine ? AdversaryEngine.affinityAdjust(key) : 0;
+        const advAdj = window.OppositionEngine ? OppositionEngine.affinityAdjust(key) : 0;
         const finalAffinity = clampFaction(key, f.affinity + favorBonus + cushionedVariance + advAdj);
 
         let votesFor = 0;
@@ -236,7 +254,6 @@ function runElection() {
         votesFor = Math.max(0, Math.min(activeSeats, votesFor));
         let votesAgainst = activeSeats - votesFor;
 
-        // Secret ballot: some members quietly vote against their caucus line. Unspent favor keeps more of them loyal.
         let crossovers = Math.floor(Math.random() * (activeSeats * ELECTION_DRAMA.crossoverRate + 1));
         if (unspentFavor > 0) crossovers = Math.floor(crossovers / 2);
         if (votesFor >= votesAgainst) {
@@ -249,13 +266,14 @@ function runElection() {
             votesAgainst -= crossovers;
         }
 
-        if (window.AdversaryEngine) {
-            const adv = AdversaryEngine.electionSeatAdjust(key, f, finalAffinity, votesFor, votesAgainst, blankVotes);
+        if (window.OppositionEngine) {
+            const adv = OppositionEngine.electionSeatAdjust(key, f, finalAffinity, votesFor, votesAgainst, blankVotes);
             votesFor = adv.votesFor; votesAgainst = adv.votesAgainst; blankVotes = adv.blankVotes;
         }
 
         let rebel = null;
-        if (wildcard > 0) rebel = 'surge';
+        if (window.OppositionEngine && OppositionEngine.isVoteLocked(key)) rebel = null;
+        else if (wildcard > 0) rebel = 'surge';
         else if (wildcard < 0) rebel = 'revolt';
         else if (crossovers >= 4) rebel = 'crossvote';
 
@@ -282,7 +300,6 @@ function runElection() {
     const totalChamberSeats = Math.max(1, grandTotalFor + grandTotalAgainst + grandTotalBlank);
     const hemicycleCoords = generateHemicycleLayout(totalChamberSeats);
 
-    // Give each faction a contiguous seat block, then shuffle its seat indices so votes light up randomly
     let runningSeatOffset = 0;
     for (let i = 0; i < finalData.length; i++) {
         const pool = [];
@@ -303,30 +320,29 @@ function runElection() {
     let electionFinished = false;
 
     let html = '<div class="tally-box">';
-    html += '<center><h2>12th Plenary Meeting of the 1999 MPR General Session</h2></center>';
+    html += '<center><h2>' + LOC('election.plenary_title') + '</h2></center>';
 
-    html += `<center><div id="tally-clock" class="tally-clock-fixed">OCT 19, 08:30 PM</div></center>`;
+    html += `<center><div id="tally-clock" class="tally-clock-fixed">${formatFixedClock(clockTime)}</div></center>`;
 
     html += '<div id="speed-controls-container" style="text-align: center; margin-bottom: 12px;">';
-    html += '<b style="font-family: MS Sans Serif; font-size: 12px;">Speed: </b>';
+    html += '<b style="font-family: MS Sans Serif; font-size: 12px;">' + LOC('election.speed') + ' </b>';
     [1, 2, 5, 10].forEach(s => {
         html += `<button class="${window.tallySpeed === s ? 'is-selected' : ''}" style="width: 45px; --py: 3px; --px: 3px; margin: 0 3px; display: inline-block; text-align: center;" onclick="setTallySpeed(${s})">${s}x</button>`;
     });
     html += '</div>';
 
-    // Chamber Visual Box: Tug-of-War Bar + 700-Seat Semi-Circular Hemicycle
     html += '<div class="mpr-chamber-box">';
     html += '<div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: bold; margin-bottom: 3px;">';
-    html += '<span style="color: #006400;">ACCEPT: <span id="bar-label-for">0</span></span>';
+    html += '<span style="color: #006400;">' + LOC('election.bar_accept') + ' <span id="bar-label-for">0</span></span>';
     html += '<span style="color: #333333;"></span>';
-    html += '<span style="color: #8B0000;">REJECT: <span id="bar-label-against">0</span></span>';
+    html += '<span style="color: #8B0000;">' + LOC('election.bar_reject') + ' <span id="bar-label-against">0</span></span>';
     html += '</div>';
 
     html += '<div class="mpr-tug-container">';
     html += '<div id="tug-for" class="mpr-tug-for" style="width: 0%;"></div>';
     html += '<div id="tug-blank" class="mpr-tug-blank" style="width: 0%;"></div>';
     html += '<div id="tug-against" class="mpr-tug-against" style="width: 0%;"></div>';
-    html += '<div class="mpr-majority-marker" title="Majority Threshold"></div>';
+    html += '<div class="mpr-majority-marker" title="' + escapeAttr(LOC('election.majority_marker')) + '"></div>';
     html += '</div>';
 
     html += '<div id="mpr-hemicycle" class="mpr-hemicycle-wrap">';
@@ -334,13 +350,12 @@ function runElection() {
         const pt = hemicycleCoords[s];
         html += `<div id="seat-dot-${s}" class="mpr-seat-dot" style="left: ${pt.x.toFixed(2)}%; top: ${pt.y.toFixed(2)}%;"></div>`;
     }
-    html += '<div class="mpr-rostrum">MPR ROSTRUM</div>';
+    html += '<div class="mpr-rostrum">' + LOC('parliament.rostrum') + '</div>';
     html += '</div>';
     html += '</div>';
 
-    // Faction Whiteboard Tally Table (Color-Coded Party Rows, No Parenthetical Leader Names)
     html += '<table width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#808080">';
-    html += '<tr bgcolor="#000080"><td width="36%"><font color="#FFFFFF"><b>Caucus</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>ACCEPT</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>REJECT</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>BLANK</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>SEATS</b></font></td></tr>';
+    html += '<tr bgcolor="#000080"><td width="36%"><font color="#FFFFFF"><b>' + LOC('election.col_caucus') + '</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>' + LOC('election.col_accept') + '</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>' + LOC('election.col_reject') + '</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>' + LOC('election.col_blank') + '</b></font></td><td width="16%" align="center"><font color="#FFFFFF"><b>' + LOC('election.col_seats') + '</b></font></td></tr>';
 
     for (let i = 0; i < finalData.length; i++) {
         const d = finalData[i];
@@ -361,14 +376,14 @@ function runElection() {
     }
 
     html += `<tr bgcolor="#FFFF00">
-        <td><b>TALLY:</b></td>
+        <td><b>${LOC('election.tally')}</b></td>
         <td align="center"><font color="#008000" size="4"><b id="tot-for">0</b></font></td>
         <td align="center"><font color="#FF0000" size="4"><b id="tot-against">0</b></font></td>
         <td align="center"><font color="#808080" size="4"><b id="tot-blank">0</b></font></td>
         <td align="center"><b id="tot-counted">0 / ${totalChamberSeats}</b></td>
     </tr></table><br>`;
 
-    html += '<div id="skip-btn-wrap" style="text-align: center;"><button id="skip-tally-btn" style="width: 250px; background-color: #ff9999; text-align: center;" onclick="skipTally()">SKIP ANIMATION</button></div>';
+    html += '<div id="skip-btn-wrap" style="text-align: center;"><button id="skip-tally-btn" style="width: 250px; background-color: #ff9999; text-align: center;" onclick="skipTally()">' + LOC('election.skip_animation') + '</button></div>';
     html += '<div id="election-result-container"></div>';
     html += '</div>';
 
@@ -399,14 +414,12 @@ function runElection() {
     };
 
     function formatFixedClock(dt) {
-        const dayLabel = dt.getDate() === 20 ? "OCT 20, " : "OCT 19, ";
         let hrs = dt.getHours();
         const mins = String(dt.getMinutes()).padStart(2, '0');
-        const ampm = hrs >= 12 ? 'PM' : 'AM';
+        const ampm = LOC(hrs >= 12 ? 'election.clock.pm' : 'election.clock.am');
         hrs = hrs % 12;
         if (hrs === 0) hrs = 12;
-        const hrsStr = String(hrs).padStart(2, '0');
-        return `${dayLabel}${hrsStr}:${mins} ${ampm}`;
+        return LOC('election.clock', { DAY: dt.getDate() === 20 ? 20 : 19, HOUR: String(hrs).padStart(2, '0'), MIN: mins, AMPM: ampm });
     }
 
     function updateTallyDOM() {
@@ -464,6 +477,7 @@ function runElection() {
         if (skipWrap) skipWrap.style.display = 'none';
 
         unlockAchievement('complete_run');
+        if (stats.PC >= 100) unlockAchievement('sedia_payung');
 
         if (
             factions['pdip'] && factions['pdip'].affinity >= 60 &&
@@ -482,13 +496,13 @@ function runElection() {
             unlockAchievement('camdessus_arms');
         }
 
-        const accepted = grandTotalFor > grandTotalAgainst && (!window.AdversaryEngine || AdversaryEngine.meetsQuorum(grandTotalFor));
+        const accepted = grandTotalFor > grandTotalAgainst && (!window.OppositionEngine || OppositionEngine.meetsQuorum(grandTotalFor));
         let resHTML = '';
-        if (!accepted && grandTotalFor > grandTotalAgainst && window.AdversaryEngine) resHTML += AdversaryEngine.quorumFailureHTML(grandTotalFor);
+        if (!accepted && grandTotalFor > grandTotalAgainst && window.OppositionEngine) resHTML += OppositionEngine.quorumFailureHTML(grandTotalFor);
 
         if (accepted) {
             unlockAchievement('win_any');
-            if (window.AdversaryEngine) AdversaryEngine.achievementsOnWin();
+            if (window.OppositionEngine) OppositionEngine.achievementsOnWin();
             if (selectedDifficulty === 'historical') unlockAchievement('win_historical');
 
             const hasIMFDurability = activeDecrees['imf_fuel_subsidy'] && activeDecrees['imf_bulog_deregulation'] && activeDecrees['imf_ibra_liquidation'];
@@ -498,7 +512,7 @@ function runElection() {
 
             if (lowestGovStability < 35) unlockAchievement('mr_crack');
             if (completedInteractions['loyalist_bppt'] && completedInteractions['loyalist_n250']) unlockAchievement('cleared_for_takeoff');
-            if (!window.wirantoLocked && activeDecrees['police_military_separation'] && activeDecrees['human_rights_commission_powers']) {
+            if (window.OppositionEngine && OppositionEngine.isMilitaryBroken() && activeDecrees['police_military_separation'] && activeDecrees['human_rights_commission_powers']) {
                 unlockAchievement('dwifungsi_kaput');
             }
             if (timorPromiseSteps.countdown && timorPromiseSteps.votes && timorPromiseSteps.peacekeepers) {
@@ -506,12 +520,27 @@ function runElection() {
             }
             if (stats.cendana >= 85 && stats.ref <= 25) unlockAchievement('enak_jamanku');
             if (stats.PC === 0) unlockAchievement('fumes_in_the_tank');
+            // Stat tiers below 15 are the bottom tier in stats.json (Bankruptcy, Pariah State, Universally Hated).
+            if (stats.econ < 15) unlockAchievement('utang_nanti_dulu');
+            if (stats.intl < 15) unlockAchievement('persona_non_grata');
+            if (stats.pop < 15) unlockAchievement('sinetron_villain');
+            if (!Object.keys(activeDecrees).some(id => activeDecrees[id])) unlockAchievement('presiden_rebahan');
+            if (typeof recordDifficultyWin === 'function' && recordDifficultyWin(selectedDifficulty)) unlockAchievement('khatam');
+            if (window.UCN && UCN.runMaxed()) unlockAchievement(UCN.ACH_ID);
             if (
                 factions['poros_tengah'] && factions['poros_tengah'].affinity >= 85 &&
                 factions['utusan_golongan'] && factions['utusan_golongan'].affinity >= 80 &&
                 factions['other_parties'] && factions['other_parties'].affinity >= 80
             ) {
                 unlockAchievement('habibi_ya_habibi');
+            }
+
+            const blocBacksYou = key => {
+                const b = finalData.find(x => x.key === key);
+                return Boolean(b) && b.totalSeats > 0 && b.targetFor > b.totalSeats / 2;
+            };
+            if (['golkar_habibie', 'golkar_akbar', 'utusan_daerah', 'utusan_golongan', 'other_parties', 'abri'].every(blocBacksYou)) {
+                unlockAchievement('the_center_holds');
             }
 
             if (stats.ref >= 85 && stats.cendana <= 25) {
@@ -521,30 +550,35 @@ function runElection() {
                 unlockAchievement('orba_jilid_dua');
             }
 
-            let title = "HABIBIE HOLDS ON";
+            let title = '';
             let desc = "";
 
             if (grandTotalFor >= 450) {
-                title = "OVERWHELMING VICTORY";
-                desc = "An absolute landslide. Against all expectations, the MPR has embraced your Accountability Speech with a commanding majority, cementing your mandate through 2004.";
+                title = LOC('election.win_overwhelming.title');
+                desc = LOC('election.win_overwhelming.desc');
                 unlockAchievement('win_overwhelming');
             } else if (grandTotalFor >= 380) {
-                title = "COMFORTABLE MAJORITY";
-                desc = "A comfortable victory. The MPR has accepted your Accountability Speech, securing your mandate with room to spare as your coalition holds firm.";
+                title = LOC('election.win_comfortable.title');
+                desc = LOC('election.win_comfortable.desc');
                 unlockAchievement('win_comfortable');
             } else {
-                title = "NARROW UPSET";
-                desc = "A nail-biting upset in the dead of night. By the thinnest of margins, you have reversed the historical verdict of October 1999 and survived the General Session.";
+                title = LOC('election.win_narrow.title');
+                desc = LOC('election.win_narrow.desc');
                 unlockAchievement('win_narrow');
             }
 
             const winImg = (gameConfig && gameConfig.victoryImage) ? gameConfig.victoryImage : 'photo/victory.png';
-            resHTML += `<center><h1 style="color:#008000; margin-bottom: 5px;">${title} (${grandTotalFor} – ${grandTotalAgainst})</h1></center>
+            resHTML += `<center><h1 style="color:#008000; margin-bottom: 5px;">${LOC('election.result_heading', { TITLE: title, FOR: grandTotalFor, AGAINST: grandTotalAgainst })}</h1></center>
                 <p align="center" style="font-family: MS Sans Serif; font-size: 13px; line-height: 1.5;">${desc}</p>
-                <center><img src="${winImg}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-top: 10px; margin-bottom: 15px;" alt="Victory"></center>`;
+                <center><span class="glass-frame glass-top"><img src="${winImg}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-top: 10px; margin-bottom: 15px;" alt="${escapeAttr(LOC('election.victory_alt'))}"></span></center>`;
         } else {
+            if (typeof getGovStabilityTier === 'function' && ['secure', 'stable'].includes(getGovStabilityTier().id)) unlockAchievement('dipecat_dengan_hormat');
             if (grandTotalFor >= 318 && grandTotalFor <= 326) {
                 unlockAchievement('deja_vu_322');
+            }
+            // Within reach of 351: the blank ballots and absent delegates, not the "no" votes, were the margin.
+            if (grandTotalFor >= 330 && grandTotalFor <= 350 && grandTotalFor + grandTotalBlank >= 351) {
+                unlockAchievement('those_who_stayed_silent');
             }
             if (
                 factions['golkar_habibie'] && factions['golkar_habibie'].affinity >= 85 &&
@@ -556,30 +590,29 @@ function runElection() {
                 unlockAchievement('gus_dur_twist');
             }
 
-            let title = "MPR REJECTS ACCOUNTABILITY SPEECH";
+            let title = '';
             let desc = "";
 
             if (grandTotalFor >= 320) {
-                title = "NARROWLY DEFEATED";
-                desc = "A razor-thin loss echoing the real history of October 20, 1999. Betrayed behind the secret-ballot curtain by last-minute defections, your Accountability Speech falls just short, prompting you to withdraw your presidential candidacy before dawn.";
+                title = LOC('election.lose_narrow.title');
+                desc = LOC('election.lose_narrow.desc');
                 unlockAchievement('lose_narrow');
             } else if (grandTotalFor >= 200) {
-                title = "DECISIVE DEFEAT";
-                desc = "A decisive rejection. The MPR has formally voted down your Accountability Speech, ending your seventeen-month caretaker presidency.";
+                title = LOC('election.lose_decisive.title');
+                desc = LOC('election.lose_decisive.desc');
                 unlockAchievement('lose_decisive');
             } else {
-                title = "A RESOUNDING 'NO'";
-                desc = "A historic repudiation. United across ideological lines, the MPR has resoundingly rejected your Accountability Speech in an overwhelming landslide.";
+                title = LOC('election.lose_overwhelming.title');
+                desc = LOC('election.lose_overwhelming.desc');
                 unlockAchievement('lose_overwhelming');
             }
 
             const loseImg = (gameConfig && gameConfig.defeatImage) ? gameConfig.defeatImage : 'photo/defeat.png';
-            resHTML += `<center><h1 style="color:#FF0000; margin-bottom: 5px;">${title} (${grandTotalFor} – ${grandTotalAgainst})</h1></center>
+            resHTML += `<center><h1 style="color:#FF0000; margin-bottom: 5px;">${LOC('election.result_heading', { TITLE: title, FOR: grandTotalFor, AGAINST: grandTotalAgainst })}</h1></center>
                 <p align="center" style="font-family: MS Sans Serif; font-size: 13px; line-height: 1.5;">${desc}</p>
-                <center><img src="${loseImg}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-top: 10px; margin-bottom: 15px;" alt="Defeat"></center>`;
+                <center><span class="glass-frame glass-top"><img src="${loseImg}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-top: 10px; margin-bottom: 15px;" alt="${escapeAttr(LOC('election.defeat_alt'))}"></span></center>`;
         }
 
-        // Append the official English translation of TAP MPR No. III/MPR/1999
         resHTML += buildTapMprDocumentHTML(accepted, grandTotalFor, grandTotalAgainst, grandTotalBlank);
 
         window.lastElectionSummary = {
@@ -619,7 +652,6 @@ function runElection() {
             for (let a = 0; a < remAgainst; a++) outcomes.push('against');
             for (let b = 0; b < remBlank; b++) outcomes.push('blank');
 
-            // Shuffle remaining outcomes so skipped seats also light up randomly across the bloc
             for (let j = outcomes.length - 1; j > 0; j--) {
                 const r = Math.floor(Math.random() * (j + 1));
                 const tmp = outcomes[j];
@@ -644,9 +676,6 @@ function runElection() {
         updateTallyDOM();
     };
 
-    // Drama engine. The final totals are already decided; what changes is the ORDER the ballots surface in.
-    // The count moves in phases (surges, caucus runs, hushed lulls) instead of a smooth random drip,
-    // and a side that is trailing is more likely to see a sudden surge.
     const drama = { phase: 'neutral', last: '', left: 14, favorType: null, blocIdx: -1, pace: 1, paceAcc: 0 };
 
     function pickFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
@@ -668,7 +697,6 @@ function runElection() {
         const remFor = grandTotalFor - t.f;
         const remAgainst = grandTotalAgainst - t.a;
 
-        // The trailing side is the more likely to find a sudden surge
         const opts = [];
         if (remFor > 0) opts.push({ kind: 'surge_for', w: lead < 0 ? 4 + Math.min(6, Math.abs(lead) / 6) : 1.2 });
         if (remAgainst > 0) opts.push({ kind: 'surge_against', w: lead > 0 ? 3 + Math.min(5, lead / 6) : 1.2 });
@@ -722,7 +750,6 @@ function runElection() {
         }
     }
 
-    // Reveal one ballot, weighted by the current phase. Returns false once nothing is left.
     function castOneBallot() {
         const avail = [];
         let totalW = 0;
@@ -752,7 +779,6 @@ function runElection() {
         }
 
         const facData = finalData[pick.idx];
-        // Pop a random seat index from this faction's shuffled pool so seats light up unpredictably
         const dot = seatDots[facData.seatPool.pop()];
 
         if (pick.type === 'for') {
@@ -768,7 +794,6 @@ function runElection() {
 
         clockTime.setSeconds(clockTime.getSeconds() + 22);
 
-        // End the phase early when its target runs dry
         drama.left--;
         if (drama.phase === 'bloc') {
             const b = finalData[drama.blocIdx];
@@ -783,7 +808,6 @@ function runElection() {
     }
 
     window.activeTallyInterval = setInterval(() => {
-        // Phase pace stretches or squeezes the player's chosen speed (surges rush, lulls crawl)
         drama.paceAcc += window.tallySpeed * drama.pace;
         const steps = Math.floor(drama.paceAcc);
         drama.paceAcc -= steps;
@@ -802,16 +826,16 @@ function runElection() {
     }, 120);
 }
 
-// POST-ELECTION VERDICT & STATE OF THE REPUBLIC DOSSIER
+// Builds the navigation buttons that switch between the election verdict and the State of the Republic dossier.
 function getPostElectionNavHTML(activeView) {
     const isVerdict = activeView === 'verdict';
     const isDossier = activeView === 'dossier';
 
-    return `<div style="margin-top: 14px; padding-top: 12px; border-top: 2px solid #808080; text-align: center;">
-        <button class="${isVerdict ? 'is-selected' : ''}" style="width: 220px; display: inline-block; text-align: center; margin: 4px;" onclick="showPostElectionSection('verdict')">Verdict &amp; Decree</button>
-        <button class="${isDossier ? 'is-selected' : ''}" style="width: 230px; display: inline-block; text-align: center; margin: 4px;" onclick="showPostElectionSection('dossier')">State of the Republic</button>
+    return `<div style="margin-top: 14px; padding-top: 12px; border-top: 2px solid var(--win95-shadow); text-align: center;">
+        <button class="${isVerdict ? 'is-selected' : ''}" style="width: 220px; display: inline-block; text-align: center; margin: 4px;" onclick="showPostElectionSection('verdict')">${LOC('election.nav.verdict')}</button>
+        <button class="${isDossier ? 'is-selected' : ''}" style="width: 230px; display: inline-block; text-align: center; margin: 4px;" onclick="showPostElectionSection('dossier')">${LOC('election.nav.dossier')}</button>
         <br>
-        <button style="width: 250px; display: inline-block; text-align: center; margin-top: 10px; background-color: #d0e8d0;" onclick="showEpilogue()">Continue</button>
+        <button style="width: 250px; display: inline-block; text-align: center; margin-top: 10px; background-color: var(--tint-good);" onclick="showEpilogue()">${LOC('common.continue')}</button>
     </div>`;
 }
 
@@ -829,28 +853,30 @@ window.showPostElectionSection = function(section) {
     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
-
-// Epilogue: image id, caption, heading and text (images are optional: photo/epilogue_<id>.png)
-const EPILOGUE_SECTIONS = [
-    {
-        id: 'end',
-        caption: 'Epilogue',
-        title: '',
-        text: 'In the history that actually happened, the People’s Consultative Assembly voted 355 to 322 shortly after midnight on October 20, 1999, with nine abstentions and four spoiled ballots, to reject B.J. Habibie’s accountability speech. He withdrew from the presidential race the same day. Hours later, Abdurrahman Wahid, the nearly blind Nahdlatul Ulama cleric everyone called Gus Dur, defeated Megawati Sukarnoputri 373 to 313 in the first contested presidential vote in the republic’s history. Megawati, whose party had won the most seats in June, was elected vice president the following day, after her supporters had spent a night angry in the streets. Whatever happened in your version of that hall, the larger fact is the same. A seventeen month caretaker presidency ended in a vote, counted on green slips of paper, and not by a decree, a coup, or a crowd storming the gates.<br><br>To see how far that was from where the country had been, it helps to remember the numbers. The rupiah had traded at roughly 2,400 to the dollar in mid-1997. By June 1998 it was near 17,000. Real GDP fell by about 13 percent in 1998, a collapse the IMF itself later described as possibly the largest single-year fall of any country in modern economic history. Inflation approached 80 percent. Suharto had signed his second letter of intent with the Fund on January 15, 1998, while Michel Camdessus stood watching with folded arms. The closure of sixteen banks in November 1997 had been meant to restore confidence and instead set off a run. Then came the Trisakti shootings on May 12, 1998, the riots of May 13 to 15 in which well over a thousand people died, many in burning shopping malls, and the sexual violence against ethnic Chinese women documented by the Joint Fact-Finding Team. On May 21, Suharto resigned after thirty-two years, nine days after students had occupied the parliament building.<br><br>The government recapitalized the banking system at a cost of about Rp 658 trillion, equal to more than half of a year’s GDP, and public debt rose from roughly 24 percent of GDP before the crisis to about 93 percent. The Indonesian Bank Restructuring Agency, created in January 1998, spent six years selling off seized assets and chasing the owners of banks that had looted their own depositors, with mixed success, before it was dissolved in 2004. Four state banks were merged into Bank Mandiri in 1999. The IMF programs themselves ran from 1997 to the end of 2003, and Indonesia drew about SDR 7.4 billion, around $11.1 billion. The government of Susilo Bambang Yudhoyono, who had won the presidency in 2004, decided not to extend the arrangement. It paid $3.75 billion in June 2006, then announced on October 5 that it would settle the remaining SDR 2.2 billion, about $3.2 billion, and the payment cleared that month. The original schedule had run to December 2010. A commodity boom, a current account surplus, and tighter budgets made it possible. In January 2007 Jakarta also asked for the Consultative Group on Indonesia, the donor forum that had met under World Bank leadership since 1967, to be disbanded. Its own Independent Evaluation Office reviewed the episode in 2003, and critics such as Joseph Stiglitz argued that the early bank closures and tight money deepened the panic. What no one disputes is that Indonesia came out of the decade owing the IMF nothing and growing at around 5 to 6 percent a year.<br><br>Between 1999 and 2002 the MPR amended the 1945 Constitution four times. It limited presidents to two terms, moved to direct presidential elections, created the Constitutional Court, and ended the military’s appointed seats in the legislatures by 2004. Regional autonomy took effect on January 1, 2001, and from 2005 governors, mayors, and regents were elected directly. The Press Law of September 1999 abolished the licensing regime that had let information ministers shut newspapers, and Tempo, Detik, and Editor, banned in 1994, were back on the stands. The Corruption Eradication Commission, the KPK, was founded in 2002 and spent its first decade jailing ministers, governors, and a police general, which no one in the Suharto era would have thought possible.<br><br>Habibie had offered East Timor a choice in January 1999, and on August 30, 78.5 percent voted against autonomy within Indonesia. Militias backed by elements of the army burned Dili and drove hundreds of thousands from their homes before the Australian-led INTERFET force under Major General Peter Cosgrove landed on September 20. The Assembly formally accepted the result in October, and Timor-Leste became independent on May 20, 2002.<br><br>Aceh took longer. After the tsunami of December 26, 2004 killed roughly 170,000 people in the province, the Finnish mediator Martti Ahtisaari helped broker the Helsinki memorandum between Jakarta and the Free Aceh Movement, signed on August 15, 2005. The Malino agreements had already calmed the communal killing in Poso and Ambon, though the Bali bombings of October 12, 2002, which killed 202 people, showed that new dangers had arrived alongside the old ones. No senior officer was convicted for May 1998, the disappearance of activists such as Wiji Thukul remained unresolved, and Suharto died on January 27, 2008 without ever standing trial.<br><br>Habibie lived to see much of it. He founded The Habibie Center in 1999 to promote democracy and technology, and he died on September 11, 2019, at 83. In the years between, Yudhoyono won a second term in 2009, and in 2014 Joko Widodo, a furniture seller from Solo with no ties to the old elite, won the presidency.<br><br>But the reform era was never a straight line. In September 2019, weeks before Habibie’s death, parliament revised the KPK law in a way that most observers believed weakened it, and students returned to the streets. Prabowo Subianto, a former special forces commander and Suharto’s former son-in-law, whose dismissal from the army in 1998 was part of the story you have just played, won the presidency in February 2024 and was inaugurated on October 20, 2024, twenty-five years to the day after Wahid. In March 2025 parliament unanimously passed a revision of the armed forces law that widened the list of civilian posts open to active-duty officers, and in August 2025 protests spread to more than a hundred cities after the killing of Affan Kurniawan, a 21-year-old ride-hailing driver, under a police armored vehicle. Human Rights Watch’s 2026 report counted the growing role of military officers in civilian affairs among the year’s chief concerns. Against that, hundreds of thousands of mostly young people took to the streets and the press kept reporting, which is a different picture from 1997.'
+// Epilogue sections. Each one is an image id (photo/epilogue/epilogue_<id>.png is optional) plus text read from
+// data/language/*/epilogue.json: epilogue.<id>.caption, epilogue.<id>.title and paragraphs epilogue.<id>.p1, p2, ...
+const EPILOGUE_SECTIONS = ['end'].map(id => ({
+    id: id,
+    get caption() { return LOC(`epilogue.${id}.caption`); },
+    get title() { return LOC(`epilogue.${id}.title`); },
+    get text() {
+        const paragraphs = [];
+        for (let i = 1; LOC.has(`epilogue.${id}.p${i}`); i++) paragraphs.push(LOC(`epilogue.${id}.p${i}`));
+        return paragraphs.join('<br><br>');
     }
-];
+}));
 
-// Epilogue image block: shows a placeholder until the real image exists
+// Epilogue image block
 function buildEpilogueImageHTML(sec) {
     const src = (gameConfig && gameConfig.epilogueImages && gameConfig.epilogueImages[sec.id]) || `photo/epilogue/epilogue_${sec.id}.png`;
     const cap = escapeAttr(sec.caption);
     return `<center><div style="position: relative; width: 100%; max-width: 880px; aspect-ratio: 2 / 1; max-height: 440px; box-sizing: border-box; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px; overflow: hidden;">
-        <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: #555; padding: 6px;">[ PHOTO:<br>${cap} ]</span>
+        <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11px; color: #555; padding: 6px;">${LOC('dash.photo_placeholder', { NAME: cap })}</span>
         <img src="${escapeAttr(src)}" alt="${cap}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
     </div></center>`;
 }
 
-// Show the epilogue: replaces the whole game window with a Situation-style panel
+// Show the epilogue
 window.showEpilogue = function() {
     const sum = window.lastElectionSummary;
     const mainPanel = document.getElementById('main-panel');
@@ -866,14 +892,12 @@ window.showEpilogue = function() {
     if (typeof updateMobileStatusBar === 'function') updateMobileStatusBar();
 
     const won = Boolean(sum && sum.won);
-    const intro = won
-        ? 'The Assembly accepted your <i>Pidato Pertanggungjawaban</i>. A president had stood before the MPR and been held to account, and the answer came in a vote, not by decree or by force.'
-        : 'The Assembly did not accept your <i>Pidato Pertanggungjawaban</i>. It stung, but the verdict was delivered by vote in a hall of seven hundred delegates, and power passed the way it should in a republic: peacefully, under the rules.';
+    const intro = LOC(won ? 'epilogue.intro_won' : 'epilogue.intro_lost');
 
-    let html = '<center><h2>EPILOGUE</h2></center>';
+    let html = '<center><h2>' + LOC('epilogue.title') + '</h2></center>';
     const bodyStyle = 'padding: 15px; margin-bottom: 10px; font-family: MS Sans Serif, sans-serif; font-size: 13px; line-height: 1.6; color: #333; text-align: justify;';
 
-    html += `<div style="${bodyStyle}"><b>Dear Mr. President,</b><br><br>${intro} You inherited a nation on the edge. You leave it with a free press, free parties and a ballot box that works. What follows is not your doing alone, but it could not have begun without the doors you opened.</div>`;
+    html += `<div style="${bodyStyle}"><b>${LOC('situation.salutation')}</b><br><br>${intro} ${LOC('epilogue.intro_common')}</div>`;
 
     EPILOGUE_SECTIONS.forEach(sec => {
         html += buildEpilogueImageHTML(sec);
@@ -881,10 +905,10 @@ window.showEpilogue = function() {
         html += `<div style="${bodyStyle}">${sec.text}</div>`;
     });
 
-    html += `<div style="${bodyStyle} text-align: center; font-style: italic;">Indonesia is still unfinished, and still hopeful. Thank you for playing.</div>`;
+    html += `<div style="${bodyStyle} text-align: center; font-style: italic;">${LOC('epilogue.closing')}</div>`;
     html += '<center>';
-    html += '<button style="width: 300px; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px;" onclick="returnToTitleScreen()">Return to Title Screen</button><br>';
-    html += '<button style="width: 300px; text-align: center; background-color: #ff9999; --py: 10px; --px: 10px;" onclick="closeEpilogue()">Back to Results</button>';
+    html += '<button style="width: 300px; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px;" onclick="returnToTitleScreen()">' + LOC('epilogue.btn_title') + '</button><br>';
+    html += '<button style="width: 300px; text-align: center; background-color: #ff9999; --py: 10px; --px: 10px;" onclick="closeEpilogue()">' + LOC('epilogue.btn_back') + '</button>';
     html += '</center>';
     mainPanel.innerHTML = html;
     scrollMainPanelToTop();

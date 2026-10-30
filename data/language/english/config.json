@@ -1,0 +1,186 @@
+{
+  "systemModifiers": {
+    "lowStatThreshold": 40,
+    "highStatThreshold": 60,
+    "malusMultiplier": 0.45,
+    "malusDecayNormal": 0.5,
+    "malusDecayHigh": 1.5,
+    "maxGlobalMalus": 10.0,
+    "bonusMultiplier": 0.3,
+    "maxBonusDrift": 2.0,
+    "baseLobbyCost": 20,
+    "loyalistDrainMitigation": 0.35,
+    "routineRepeatDecay": 0.15,
+    "routineEffectDecay": 0.06,
+    "routineEffectFloor": 0.6,
+    "factionRepeatDecay": 0.2,
+    "factionRepeatFloor": 0.5,
+    "maxStatFloor": 90,
+    "maxFactionFloor": 85,
+    "floorEnactGrant": 5,
+    "factionFloorEnactGrant": 8,
+    "floorRampStat": 4,
+    "floorRampFaction": 5
+  },
+  "situationImage": "photo/images/situation.png",
+  "habibieCoverImage": "photo/faction/habibibe.png",
+  "victoryImage": "photo/images/win.png",
+  "defeatImage": "photo/images/defeat.png",
+  "difficultySettings": {
+    "easy": {
+      "image": "photo/difficulty/easy.png",
+      "name": "Easy",
+      "pc": 75,
+      "statMod": 15,
+      "cendana": 40,
+      "malusCap": 0.0,
+      "passivePCMod": 2,
+      "actionCostMod": -3,
+      "costPct": -10,
+      "decreeCostPct": -10,
+      "eventNegMult": 0.75,
+      "eventPosMult": 1.1,
+      "gainMult": 1.15,
+      "maxFavor": 4,
+      "factionDrift": 0,
+      "cendanaRegen": 0,
+      "cooldownBonus": 0,
+      "opposition": {
+        "scale": 0.25,
+        "defectionMult": 0.6,
+        "drama": {
+          "moodSwing": 6,
+          "wildcardChance": 0.25,
+          "wildcardMin": 12,
+          "wildcardMax": 25,
+          "crossoverRate": 0.12
+        }
+      },
+      "description": "A version of that year where things did not quite go the way everyone remembers. The Palace begins in a somewhat sturdier position than history is generally willing to admit, the old regime's lingering hooks into the state a bit looser than usual, and <font color=\"#0000FF\"><b>the consequences of a misstep slower to arrive and gentler when they do.</b></font> It is still 1999. It is just, for once, a somewhat kinder one. <p></p>• Significantly higher starting <font color=\"#0000FF\"><b>Political Capital</b></font> and a steady passive tailwind. <p></p>• Early national metrics and faction stances are significantly boosted. <p></p>• Starting <font color=\"#704d00\"><b>Cendana Influence</b></font> is $tier.cendana.contained$, and it never claws its way back. <p></p>• There are no passive <font color=\"#B22222\"><b>maluses</b></font> on faction loyalty. <p></p>• Actions and decrees cost noticeably less, and faction outreach pays better. Up to four favors can be banked. <p></p>• Bad news from events lands softer, good news a little stronger, and the support you build does not fade. <p></p>• The army and the old regime grumble, but rarely do more than that, and few delegates break ranks in the secret ballot."
+    },
+    "medium": {
+      "image": "photo/difficulty/medium.png",
+      "name": "Medium",
+      "pc": 50,
+      "statMod": 5,
+      "cendana": 60,
+      "malusCap": 0.35,
+      "passivePCMod": 1,
+      "actionCostMod": 0,
+      "costPct": 0,
+      "decreeCostPct": 0,
+      "eventNegMult": 1.0,
+      "eventPosMult": 1.08,
+      "gainMult": 1.15,
+      "maxFavor": 3,
+      "factionDrift": 0.1,
+      "cendanaRegen": 0,
+      "cooldownBonus": 0,
+      "opposition": {
+        "scale": 0.6,
+        "defectionMult": 1.0,
+        "drama": {
+          "moodSwing": 8,
+          "wildcardChance": 0.35,
+          "wildcardMin": 15,
+          "wildcardMax": 35,
+          "crossoverRate": 0.2
+        }
+      },
+      "description": "Something closer to the middle ground between what actually happened and what might have happened under slightly better circumstances. <font color=\"#0000FF\"><b>You inherit a position that is neither generous nor especially cruel.</b></font> The administration is still tangled up in the old regime's entanglements to a degree that will make itself known eventually. <p></p>• Moderate starting <font color=\"#0000FF\"><b>Political Capital</b></font> and a slight passive tailwind. <p></p>• Early national metrics are modestly boosted. <p></p>• Starting <font color=\"#704d00\"><b>Cendana Influence</b></font> is $tier.cendana.subversive$. <p></p>• Passive <font color=\"#B22222\"><b>maluses</b></font> are mild and manageable. <p></p>• Standard action costs and standard faction outreach. Up to three favors can be banked. <p></p>• Support built far above a faction's starting stance fades very slowly if you ignore it. <p></p>• <font color=\"#B22222\"><b>An alienated military</b></font> will push back some of the time."
+    },
+    "high": {
+      "image": "photo/difficulty/high.png",
+      "name": "High",
+      "pc": 35,
+      "statMod": 0,
+      "cendana": 75,
+      "malusCap": 0.75,
+      "passivePCMod": 0,
+      "actionCostMod": 0,
+      "costPct": 5,
+      "decreeCostPct": 3,
+      "eventNegMult": 1.05,
+      "eventPosMult": 1.0,
+      "gainMult": 1.0,
+      "maxFavor": 3,
+      "factionDrift": 0.15,
+      "cendanaRegen": 0.25,
+      "cooldownBonus": 0,
+      "opposition": {
+        "scale": 0.85,
+        "defectionMult": 1.15,
+        "drama": {
+          "moodSwing": 10,
+          "wildcardChance": 0.45,
+          "wildcardMin": 18,
+          "wildcardMax": 45,
+          "crossoverRate": 0.28
+        }
+      },
+      "description": "<font color=\"#0000FF\"><b>You inherit a position that owes very little to luck and even less to generosity.</b></font> With the old regime's fingerprints still very much present in places the Palace would rather they weren't. Left unattended, certain problems have a way of making other problems worse. Beyond that, it is probably better left for you to find out for yourself, <font color=\"#B22222\"><b>the way Habibie did.</b></font><p></p>• Lower starting <font color=\"#0000FF\"><b>Political Capital.</b></font><p></p>• Starting <font color=\"#704d00\"><b>Cendana Influence</b></font> is deeply $tier.cendana.entrenched$, and slowly rebuilds if you cut it down. <p></p>• Passive <font color=\"#B22222\"><b>maluses</b></font> bite hard if stability falters. <p></p>• Actions and decrees cost somewhat more, and faction outreach pays slightly less. <p></p>• Bad news from events hits harder than it should. <p></p>• Support you have built fades unless it is maintained, and delegates are likelier to break ranks in the secret ballot. <p></p>• <font color=\"#B22222\"><b>Alienate the generals</b></font> and expect sabotage in the streets and in East Timor."
+    },
+    "historical": {
+      "image": "photo/difficulty/historical.png",
+      "name": "Historical",
+      "pc": 20,
+      "statMod": -1,
+      "cendana": 95,
+      "malusCap": 3.25,
+      "passivePCMod": 0,
+      "actionCostMod": 2,
+      "costPct": 15,
+      "decreeCostPct": 8,
+      "eventNegMult": 1.1,
+      "eventPosMult": 0.95,
+      "gainMult": 0.95,
+      "maxFavor": 2,
+      "factionDrift": 0.4,
+      "cendanaRegen": 1,
+      "cooldownBonus": 1,
+      "opposition": {
+        "scale": 1.0,
+        "defectionMult": 1.3,
+        "drama": {
+          "moodSwing": 12,
+          "wildcardChance": 1.5,
+          "wildcardMin": 25,
+          "wildcardMax": 50,
+          "crossoverRate": 0.55
+        }
+      },
+      "description": "<font color=\"#B22222\"><b>What really went down that year.</b></font> The old regime's grip on the state has barely loosened, and the problems Suharto left unattended have an unpleasant tendency to compound into one another before you fully notice it happening. Even the ordinary business of governing costs more than it should. <b>RECOMMENDED WAY TO PLAY.</b> <p></p>• Scarce starting <font color=\"#0000FF\"><b>Political Capital.</b></font><p></p>• Starting <font color=\"#704d00\"><b>Cendana Influence</b></font> is $tier.cendana.untouchable$, and they recover influence faster. <p></p>• Passive <font color=\"#B22222\"><b>maluses</b></font> are unforgiving when the country destabilizes. <p></p>• Every political action costs more than it should, routine business needs longer to recover, and faction negotiations buys loyalty. Only two favors can be banked. <p></p>• Events cut deeper than they heal. <p></p>• Delegates defect far more readily. <p></p>• An <font color=\"#B22222\"><b>$tier.mil.alienated$</b></font> military will do whatever they can to oust you."
+    },
+    "ucn": {
+      "image": "photo/difficulty/ucn.png",
+      "name": "Ultimate Custom Night",
+      "pc": 20,
+      "statMod": -1,
+      "cendana": 95,
+      "malusCap": 3.25,
+      "passivePCMod": 0,
+      "actionCostMod": 2,
+      "costPct": 15,
+      "decreeCostPct": 8,
+      "eventNegMult": 1.1,
+      "eventPosMult": 0.95,
+      "gainMult": 0.95,
+      "maxFavor": 2,
+      "factionDrift": 0.4,
+      "cendanaRegen": 1,
+      "cooldownBonus": 1,
+      "opposition": {
+        "scale": 1.0,
+        "defectionMult": 1.3,
+        "drama": {
+          "moodSwing": 12,
+          "wildcardChance": 1.5,
+          "wildcardMin": 25,
+          "wildcardMax": 50,
+          "crossoverRate": 0.55
+        }
+      },
+      "description": "<font color=\"#B22222\"><b>You survived the real thing. Now you choose how bad it gets.</b></font> Twenty-two dials, each from 0 to 20, control every handicap in the game: your opening hand, the price of governing, how much good news is worth, how loyal anyone stays, and how the generals and the Assembly behave on the final night. Ten on every dial is roughly Historical. <p></p>• Every starting metric, every faction's goodwill and the cost of every action can be tuned separately. <p></p>• Presets: all 0, all 10, all 20, or let fate decide. <p></p>• Settings are locked in when the campaign starts and travel with your save. <p></p>• <font color=\"#B22222\"><b>Win with every dial at 20 and the night ends at 6 AM.</b></font>"
+    }
+  }
+}

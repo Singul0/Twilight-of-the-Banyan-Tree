@@ -1,0 +1,1154 @@
+[
+  {
+    "id": "anti_corruption",
+    "category": "Politics",
+    "text": "Push the Anti-Corruption Omnibus Bill (Law No. 28 & 31/1999)",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "cendana_restoration_pact"
+    ],
+    "description": "A sweeping legislative package moving through Senayan under the banner of <i>transparansi dan akuntabilitas</i>, drafted in the long shadow of the still-unresolved Bank Bali affair and three decades of accumulated KKN (korupsi, kolusi, nepotisme). Establishes mandatory wealth audits for state officials (<b>KPKPN</b>) and lays the statutory mandate for an independent Anti-Corruption Commission. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> or better and limits <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#2F4F4F\"><b>$tier.cendana.persistent$</b></font> or lower. Upsets <font color=\"#7D6000\"><b>Golkar</b></font>'s patronage networks and rules out any pact with Jalan Cendana.",
+    "alertMsg": "The Omnibus Bill passes. Reformasi Credibility is guaranteed at <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> and above, and Cendana Influence is limited to <font color=\"#2F4F4F\"><b>$tier.cendana.persistent$</b></font> or lower. Establishment politicians in Golkar are furious at the disruption of their patronage networks, though reformist delegates rally to your side.",
+    "locks": {
+      "minStats": {
+        "ref": 60
+      },
+      "maxCendana": 50,
+      "statPenalties": {
+        "pop": [8, 12]
+      },
+      "factionPenalties": {
+        "pdip": [-5, -3],
+        "golkar_akbar": [-18, -12],
+        "golkar_habibie": [8, 12],
+        "utusan_golongan": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "civil_service_neutrality",
+    "category": "Politics",
+    "text": "Enforce Civil Service Political Neutrality (PP No. 5 & 12/1999)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "enforce_asas_tunggal_ban"
+    ],
+    "description": "Strictly enforces Government Regulations No. 5 and No. 12/1999, severing the New Order's compulsory monoloyalitas doctrine that forced four million civil servants in <b>KORPRI</b> to campaign, fundraise, and vote exclusively for <font color=\"#7D6000\"><b>Golkar</b></font>. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> above <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and guarantees <font color=\"#006068\"><b>Other Parties</b></font> a <font color=\"#4682B4\"><b>$mood.other_parties.fragmented$</b></font> stance or better. Angers <font color=\"#7D6000\"><b>Golkar</b></font>'s provincial bosses.",
+    "alertMsg": "KORPRI's thirty-year umbilical cord to Golkar is severed in practice as well as on paper. Opposition parties across the MPR applaud the level playing field, guaranteeing Reformasi Credibility above <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and boosting minor party support, though Golkar's provincial machine bosses are livid.",
+    "locks": {
+      "minStats": {
+        "ref": 55
+      },
+      "minFactions": {
+        "other_parties": 55
+      },
+      "statPenalties": {
+        "pop": [6, 10],
+        "cendana": [-12, -8]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-22, -14],
+        "pdip": [6, 10],
+        "poros_tengah": [6, 10],
+        "ppp": [5, 7],
+        "pkb": [5, 7]
+      }
+    }
+  },
+  {
+    "id": "direct_presidential_amendment",
+    "category": "Politics",
+    "text": "Back the Constitutional Pact for Direct Presidential Elections",
+    "baseCost": 55,
+    "militaryShock": 10,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "cendana_restoration_pact"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 60
+      }
+    ],
+    "description": "Throws the full weight of the Presidency behind the MPR Working Body (<b>BP MPR</b>) as it drafts the First Amendment to the 1945 Constitution—limiting future presidents to two terms, curbing executive decree powers, and committing the Republic to direct popular presidential elections after this transitional term. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#009000\"><b>$tier.ref.reform_minded$</b></font> and boosts <font color=\"#9E1F14\"><b>PDI-P</b></font>, <font color=\"#004488\"><b>Poros Tengah</b></font>, and <font color=\"#555555\"><b>Utusan Golongan</b></font>. Alienates <font color=\"#7D6000\"><b>Golkar</b></font> and <font color=\"#3E5022\"><b>ABRI</b></font> institutionalists and rules out emergency rule.",
+    "alertMsg": "The constitutional pact is signed ahead of the plenary vote. By willingly curtailing the imperial presidency Suharto built and endorsing future direct elections, you lock Reformasi Credibility at <font color=\"#009000\"><b>$tier.ref.reform_minded$</b></font> and disarm your harshest democratic critics—though old-guard Golkar and ABRI institutionalists resent the constitutional overhaul.",
+    "locks": {
+      "minStats": {
+        "ref": 75
+      },
+      "statPenalties": {
+        "pop": [10, 14],
+        "intl": [6, 10]
+      },
+      "factionPenalties": {
+        "pdip": [8, 12],
+        "poros_tengah": [8, 12],
+        "utusan_golongan": [10, 14],
+        "golkar_habibie": [5, 7],
+        "golkar_akbar": [-14, -10],
+        "abri": [-8, -5]
+      }
+    }
+  },
+  {
+    "id": "suharto_asset_seizure_tribunal",
+    "category": "Politics",
+    "text": "Charter the Extraordinary KKN Tribunal & Seize Cendana Conglomerates",
+    "baseCost": 65,
+    "militaryShock": 12,
+    "mutexDecrees": [
+      "cendana_restoration_pact",
+      "economic_bailout"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 60
+      },
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 45
+      }
+    ],
+    "description": "Bypasses the compromised Attorney General's Office entirely by establishing an Extraordinary KKN Special Tribunal under TAP MPR No. XI/1998 with authority to nationalize the Suharto family's Bimantara, Humpuss, and Citra Lamtoro Gung empires and place the former President on televised public trial. Permanently crushes <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#006400\"><b>$tier.cendana.dormant$</b></font> and guarantees <font color=\"#D81B60\"><b>Popularity</b></font> at <font color=\"#009000\"><b>$tier.pop.grudging_acceptance$</b></font> or better. Triggers a revolt by Akbar's <font color=\"#7D6000\"><b>Golkar</b></font> and old-guard <font color=\"#3E5022\"><b>ABRI</b></font> generals.",
+    "alertMsg": "State prosecutors escorted by Marines seize the headquarters of Bimantara and Humpuss as formal indictments are served at No. 8 Jalan Cendana. Millions of Indonesians cheer in the streets as Cendana Influence is permanently crushed to <font color=\"#006400\"><b>$tier.cendana.dormant$</b></font> and Popularity is guaranteed at <font color=\"#009000\"><b>$tier.pop.grudging_acceptance$</b></font>—though Akbar's New Order holdovers inside Golkar revolt.",
+    "locks": {
+      "minStats": {
+        "pop": 75,
+        "ref": 75
+      },
+      "maxCendana": 10,
+      "statPenalties": {
+        "econ": [10, 14],
+        "intl": [8, 12]
+      },
+      "factionPenalties": {
+        "pdip": [12, 18],
+        "poros_tengah": [10, 14],
+        "utusan_golongan": [12, 18],
+        "golkar_habibie": [8, 12],
+        "golkar_akbar": [-30, -20],
+        "abri": [-11, -8]
+      }
+    }
+  },
+  {
+    "id": "abolish_abri_mpr_seats",
+    "category": "Politics",
+    "text": "Abolish ABRI's 38 Unelected MPR Seats by Emergency Decree",
+    "baseCost": 70,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "ratify_kamra_militia_bill"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      }
+    ],
+    "banFactions": [
+      "abri"
+    ],
+    "seatRecipients": {
+      "utusan_golongan": 38
+    },
+    "description": "Why wait until 2004 or 2009 to end unelected military representation in the legislature? Issue an immediate constitutional decree revoking ABRI's 38 appointed MPR mandates ahead of the October roll call and transferring their seats to civil society and elected minor-party representatives. Dissolves <font color=\"#3E5022\"><b>ABRI</b></font> in the MPR for good and shocks Cilangkap.",
+    "alertMsg": "By emergency constitutional decree, the 38 unelected military seats in the MPR are abolished effective immediately, and their credentials transferred to Utusan Golongan and minor-party delegates! General Wiranto's parliamentary bloc is dissolved and removed from the board as student movements across Indonesia hail the death of Dwifungsi.",
+    "locks": {
+      "minStats": {
+        "ref": 75
+      },
+      "statPenalties": {
+        "pop": [12, 18],
+        "intl": [8, 12],
+        "stab": [-14, -10]
+      },
+      "factionPenalties": {
+        "abri": [-60, -40],
+        "utusan_golongan": [16, 24],
+        "other_parties": [16, 24],
+        "pdip": [10, 14],
+        "poros_tengah": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "dissolve_golkar_old_guard",
+    "category": "Politics",
+    "text": "Disqualify Golkar's Old-Guard Caucus Over the Bank Bali Election Fraud",
+    "baseCost": 80,
+    "militaryShock": 15,
+    "mutexDecrees": [
+      "cendana_restoration_pact",
+      "economic_bailout",
+      "unify_golkar_slipi"
+    ],
+    "reqDecree": "anti_corruption",
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "golkar_akbar"
+    ],
+    "seatRecipients": {
+      "golkar_habibie": 50
+    },
+    "description": "Using the unredacted Bank Bali forensic audit and the campaign-finance provisions of the 1999 Election Law (UU No. 3/1999)—which explicitly empowers the Supreme Court to disqualify party slates funded by illicit state funds—order the dissolution of Akbar Tandjung's implicated New Order party board and transfer 50 of its 80 MPR mandates to vetted reformist cadres, leaving the remaining 30 vacant because replacement slates cannot be certified before the Assembly sits. Bans Akbar's <font color=\"#7D6000\"><b>Golkar</b></font> for good.",
+    "alertMsg": "Armed with the Bank Bali campaign-finance audit and Supreme Court certification orders, you have dissolved Akbar Tandjung's old-guard Golkar board! Fifty of its 80 MPR seats pass to your Loyalist Reformers while thirty stand empty for want of certified replacements, and Cilangkap watches the precedent with open alarm—fulfilling the student movement's 1998 demand to dismantle the New Order's electoral machine.",
+    "locks": {
+      "minStats": {
+        "ref": 65
+      },
+      "maxCendana": 25,
+      "statPenalties": {
+        "pop": [6, 10],
+        "intl": [4, 6],
+        "stab": [-18, -12]
+      },
+      "factionPenalties": {
+        "golkar_habibie": [10, 14],
+        "pdip": [6, 8],
+        "poros_tengah": [5, 7],
+        "utusan_golongan": [7, 11],
+        "utusan_daerah": [5, 7],
+        "abri": [-16, -11]
+      }
+    },
+    "seatsVacated": 30
+  },
+  {
+    "id": "cendana_restoration_pact",
+    "category": "Politics",
+    "text": "Sign the Jalan Cendana Restoration & Amnesty Pact",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "anti_corruption",
+      "suharto_asset_seizure_tribunal",
+      "dissolve_golkar_old_guard",
+      "direct_presidential_amendment"
+    ],
+    "reqStats": [
+      {
+        "key": "cendana",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 40
+      }
+    ],
+    "description": "Drive to No. 8 Jalan Cendana after midnight and reconcile unconditionally with your old mentor. In exchange for a permanent presidential pardon for Suharto, his children, and his cronies, the Cendana syndicate opens its offshore Singapore vaults to finance your MPR campaign wholesale. <font color=\"#0000FF\"><b>Injects a sizeable windfall of Political Capital</b></font> and pulls <font color=\"#7D6000\"><b>Golkar (Akbar)</b></font> sharply toward the Palace, while pushing <font color=\"#704d00\"><b>Cendana Influence</b></font> back toward <font color=\"#8B0000\"><b>$tier.cendana.untouchable$</b></font>. Foreign capital will not forgive the optics. Destroys your <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> and enrages students.",
+    "alertMsg": "The prodigal son returns to Jalan Cendana. With Suharto's family shielded by a blanket pardon and their monopolies restored, Cendana bagmen flood Senayan with Political Capital and swing Golkar's machine behind your re-election—turning your presidency into New Order Volume II.",
+    "locks": {
+      "statPenalties": {
+        "PC": [20, 30],
+        "cendana": [16, 24],
+        "ref": [-36, -24],
+        "pop": [-24, -16],
+        "intl": [-24, -16],
+        "econ": [-10, -6]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "abri": [10, 14],
+        "utusan_daerah": [10, 14],
+        "pdip": [-24, -16],
+        "utusan_golongan": [-24, -16],
+        "poros_tengah": [-14, -10]
+      }
+    }
+  },
+  {
+    "id": "ban_pdip_subversion",
+    "category": "Politics",
+    "text": "Outlaw PDI-P & Re-Install the 1996 Suryadi 'PDI' Board by Emergency Decree",
+    "baseCost": 85,
+    "reqDecree": "invoke_supersemar_ii",
+    "reqStats": [
+      {
+        "key": "mil",
+        "op": ">=",
+        "val": 75
+      },
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 25
+      }
+    ],
+    "banFactions": [
+      "pdip"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 53,
+      "utusan_daerah": 50,
+      "utusan_golongan": 50
+    },
+    "description": "Repeating the brutal July 27, 1996 (<i>Kudatuli</i>) playbook on a national scale: under emergency military authority, accuse Megawati Sukarnoputri's PDI-P of harboring banned leftist movements (PRD) and inciting insurrection, revoke its KPU certification, and transfer its 153 MPR mandates to state-vetted Suryadi loyalists, regional governors, and the military bloc. Bans <font color=\"#9E1F14\"><b>PDI-P</b></font> for good and brings sanctions.",
+    "alertMsg": "Armored Kostrad vehicles seal off Jalan Diponegoro as Megawati's PDI-P is declared dissolved under emergency subversion statutes! Its 153 seats in Senayan are handed over to state-vetted Golkar, regional, and military appointees. While foreign capitals freeze relations in horror, your largest parliamentary rival has been wiped off the board by force.",
+    "locks": {
+      "minStats": {
+        "stab": 60
+      },
+      "statPenalties": {
+        "pop": [-42, -28],
+        "ref": [-36, -24],
+        "intl": [-36, -24],
+        "econ": [-18, -12],
+        "cendana": [12, 18]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "abri": [12, 18],
+        "utusan_daerah": [8, 12],
+        "poros_tengah": [-24, -16],
+        "utusan_golongan": [-30, -20],
+        "golkar_habibie": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "enforce_asas_tunggal_ban",
+    "category": "Politics",
+    "text": "Re-Impose the 1985 'Asas Tunggal' Law & Dissolve Religious Party Blocs",
+    "baseCost": 75,
+    "mutexDecrees": [
+      "civil_service_neutrality"
+    ],
+    "reqDecree": "invoke_supersemar_ii",
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "poros_tengah",
+      "ppp",
+      "pkb",
+      "other_parties"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 65,
+      "golkar_habibie": 35,
+      "utusan_daerah": 38
+    },
+    "description": "Re-activates Suharto's 1985 Political Parties Law requiring all organizations to subscribe exclusively to state-defined Pancasila (<i>Asas Tunggal</i>), outlawing parties based on religious or ideological symbols and dissolving Amien Rais's Central Axis, PPP, and the minor Islamic parties—folding their seats back into Golkar and the regional delegations. Bans <font color=\"#004488\"><b>Poros Tengah</b></font>, <font color=\"#1E6840\"><b>PPP</b></font> and <font color=\"#006068\"><b>the Minor Parties</b></font> for good.",
+    "alertMsg": "By emergency decree, the 1985 Asas Tunggal restriction is re-imposed! Amien Rais's Central Axis, PPP, and the minor ideological parties are stripped of their MPR standing, their portraits grayed out, and their seats folded into Golkar and the regional delegations.",
+    "locks": {
+      "statPenalties": {
+        "pop": [-30, -20],
+        "ref": [-30, -20],
+        "intl": [-18, -12],
+        "cendana": [8, 12]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "abri": [8, 12],
+        "pkb": [-30, -20],
+        "utusan_golongan": [-24, -16]
+      }
+    }
+  },
+  {
+    "id": "regional_autonomy",
+    "category": "Regional Affairs",
+    "text": "Ratify the Special Regional Autonomy Fiscal Package",
+    "baseCost": 55,
+    "description": "Fundamentally reorders the fiscal relationship between Jakarta and the provinces under Laws No. 22 and 25/1999, decentralizing natural resource revenue-sharing toward the outer islands. Guarantees <font color=\"#555555\"><b>Regional Delegates (Utusan Daerah)</b></font> a <font color=\"#009000\"><b>$mood.utusan_daerah.content$</b></font> stance or better. Strains the treasury.",
+    "alertMsg": "Massive funds have been legally decentralized. The Regional Delegates (Utusan Daerah) are now guaranteed a highly favorable mood, though the central treasury absorbs a heavy hit.",
+    "locks": {
+      "minFactions": {
+        "utusan_daerah": 70
+      },
+      "statPenalties": {
+        "econ": [-22, -14],
+        "stab": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "aceh_special_status_law",
+    "category": "Regional Affairs",
+    "text": "Enact Law No. 44/1999 on the Special Status of the Province of Aceh",
+    "baseCost": 45,
+    "description": "Codifies Aceh's historic special status (<i>Keistimewaan Aceh</i>) into statute, granting the province formal autonomy over religious life, customary law (<i>Adat</i>), education, and an official advisory role for the council of <i>ulama</i> (<b>MPU</b>). Guarantees <font color=\"#37474F\"><b>National Stability</b></font> at <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> or better and rallies both <font color=\"#555555\"><b>Regional Delegates</b></font> and the Islamic Factions. Displeases <font color=\"#9E1F14\"><b>PDI-P</b></font>'s secular nationalists.",
+    "alertMsg": "Law No. 44/1999 is signed into force. Acehnese <i>ulama</i>, provincial legislators, and Islamic parties in Senayan welcome the statutory guarantee of Aceh's religious and cultural autonomy, guaranteeing National Stability at <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> and above.",
+    "locks": {
+      "minStats": {
+        "stab": 45
+      },
+      "statPenalties": {
+        "pop": [4, 6],
+        "ref": [4, 6]
+      },
+      "factionPenalties": {
+        "utusan_daerah": [10, 14],
+        "ppp": [8, 12],
+        "poros_tengah": [6, 10],
+        "pdip": [-5, -3]
+      }
+    }
+  },
+  {
+    "id": "maluku_irja_division",
+    "category": "Regional Affairs",
+    "text": "Enact Laws No. 45 & 46/1999 Creating North Maluku and Partitioning Irian Jaya",
+    "baseCost": 50,
+    "description": "Signs Laws No. 45 and 46/1999, carving out a separate province of <b>North Maluku</b> (separating Ternate and Tidore from conflict-torn Ambon) and partitioning <b>Irian Jaya</b> into three provinces (West, Central, and East) with dozens of new regencies, civil service posts, and provincial legislative seats. Guarantees <font color=\"#555555\"><b>Regional Delegates (Utusan Daerah)</b></font> a <font color=\"#009000\"><b>$mood.utusan_daerah.content$</b></font> stance and pleases <font color=\"#7D6000\"><b>Golkar</b></font>'s eastern Indonesian network. Drains the budget and angers Jayapura.",
+    "alertMsg": "Laws No. 45 and 46/1999 are enacted. Creating North Maluku immediately calms the northern spice islands, and the proliferation of new provincial posts guarantees Utusan Daerah a <font color=\"#009000\"><b>$mood.utusan_daerah.content$</b></font> mood—though Papuan activists in Jayapura protest the partition and administrative costs weigh on the budget.",
+    "locks": {
+      "minFactions": {
+        "utusan_daerah": 62
+      },
+      "statPenalties": {
+        "econ": [-10, -6],
+        "stab": [-5, -3]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [8, 12],
+        "golkar_habibie": [6, 10],
+        "other_parties": [5, 7]
+      }
+    }
+  },
+  {
+    "id": "economic_bailout",
+    "category": "Economy",
+    "text": "Sign the Sweeping Corporate Bailout (BLBI MSAA Settlement)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "imf_ibra_liquidation",
+      "suharto_asset_seizure_tribunal",
+      "dissolve_golkar_old_guard"
+    ],
+    "description": "Extends Master Settlement and Acquisition Agreements (<b>MSAA</b>) and state recapitalization bonds to major banking conglomerates hemorrhaging bad loans from the crisis. Guarantees <font color=\"#1B7837\"><b>Economic Health</b></font> above <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font>. Empowers <font color=\"#704d00\"><b>Cendana Influence</b></font> oligarchs and angers the public.",
+    "alertMsg": "Corporate balance sheets are guaranteed by the state. Economic Health is guaranteed above <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font>, and Akbar's Golkar business wing applauds the move, though Cendana oligarchs gorge themselves on the bailout terms.",
+    "locks": {
+      "minStats": {
+        "econ": 50
+      },
+      "statPenalties": {
+        "cendana": [16, 24],
+        "pop": [-14, -10]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [10, 14]
+      }
+    }
+  },
+  {
+    "id": "currency_board",
+    "category": "Economy",
+    "text": "Resurrect the Currency Board Scheme (CBS)",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "central_bank_independence"
+    ],
+    "description": "Revives American economist Steve Hanke's radical monetary proposal to peg the rupiah at a fixed dollar rate by decree. Guarantees <font color=\"#1B7837\"><b>Economic Health</b></font> at <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font> and above while pleasing domestic economic nationalists. Angers the IMF and Washington.",
+    "alertMsg": "Against the advice of foreign creditors, you have revived the currency board proposal. The exchange rate stabilizes by decree, guaranteeing Economic Health at <font color=\"#2F4F4F\"><b>$tier.econ.struggling$</b></font> and above, though Washington and the IMF react with fury.",
+    "locks": {
+      "minStats": {
+        "econ": 45
+      },
+      "statPenalties": {
+        "intl": [-24, -16],
+        "stab": [-18, -12],
+        "pop": [4, 6]
+      }
+    }
+  },
+  {
+    "id": "central_bank_independence",
+    "category": "Economy",
+    "text": "Enact the Central Bank Independence Act (Law No. 23/1999)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "currency_board"
+    ],
+    "description": "Severs the New Order arrangement under which the Governor of Bank Indonesia sat in cabinet and answered to the Palace, forbidding the central bank from financing government budget deficits or political slush funds. Guarantees <font color=\"#00838F\"><b>International Standing</b></font> above <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font> and boosts <font color=\"#1B7837\"><b>Economic Health</b></font>. Angers <font color=\"#7D6000\"><b>Golkar</b></font>'s patronage machine.",
+    "alertMsg": "The Bank Indonesia Act (Law No. 23/1999) has passed. Foreign creditors hail it as a landmark institutional reform, guaranteeing International Standing above <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font> and boosting Economic Health, though Golkar's patronage machine resents losing control of central bank credit.",
+    "locks": {
+      "minStats": {
+        "intl": 50
+      },
+      "statPenalties": {
+        "econ": [8, 12],
+        "ref": [4, 6],
+        "PC": [-12, -8]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-18, -12],
+        "golkar_habibie": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "ibra_extraordinary_powers",
+    "category": "Economy",
+    "text": "Expand the Bank Restructuring Agency's Seizure Authority (PP No. 17/1999)",
+    "baseCost": 45,
+    "description": "Enacts Government Regulation No. 17/1999 granting the Indonesian Bank Restructuring Agency (<b>IBRA / BPPN</b>) extraordinary extrajudicial authority ('PP 17 powers') to seize assets directly from conglomerates that defaulted on BLBI liquidity support. Limits <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#FF8C00\"><b>$tier.cendana.subversive$</b></font> or lower. Rattles business and angers <font color=\"#7D6000\"><b>Golkar</b></font>'s patrons.",
+    "alertMsg": "IBRA's PP 17 seizure authority has been signed into force. Conglomerates linked to the old order find their assets constrained, capping Cendana Influence at <font color=\"#FF8C00\"><b>$tier.cendana.subversive$</b></font>.",
+    "locks": {
+      "maxCendana": 60,
+      "statPenalties": {
+        "econ": [-12, -8],
+        "ref": [4, 6]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-14, -10]
+      }
+    }
+  },
+  {
+    "id": "imf_fuel_subsidy",
+    "category": "Economy",
+    "text": "Implement the IMF Mandate on Fuel and Power Subsidies",
+    "baseCost": 50,
+    "description": "The Letter of Intent signed with the International Monetary Fund leaves no room for negotiation: the government must eliminate administered subsidies on fuel and electricity to balance the budget. Guarantees <font color=\"#00838F\"><b>International Standing</b></font> at <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font> and above. Angers the public and party bosses.",
+    "alertMsg": "The subsidies are slashed. Billions in IMF tranches are immediately released, guaranteeing International Standing at <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font> and above. In the streets, living costs spike and political factions scramble to distance themselves from the austerity shock.",
+    "locks": {
+      "minStats": {
+        "intl": 75,
+        "econ": 40
+      },
+      "statPenalties": {
+        "pop": [-36, -24],
+        "stab": [-24, -16]
+      },
+      "factionPenalties": {
+        "pdip": [-17, -12],
+        "golkar_habibie": [-18, -12],
+        "poros_tengah": [-18, -12],
+        "utusan_daerah": [-18, -12],
+        "golkar_akbar": [-18, -12],
+        "abri": [-14, -10],
+        "other_parties": [-18, -12],
+        "pkb": [-18, -12],
+        "ppp": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "imf_bulog_deregulation",
+    "category": "Economy",
+    "text": "Dismantle the BULOG Food Monopolies",
+    "baseCost": 45,
+    "description": "Audits and dismantles the import monopolies of the National Logistics Agency (BULOG) per IMF structural adjustment conditions, stripping BULOG of all commodities except rice. Guarantees <font color=\"#00838F\"><b>International Standing</b></font> at <font color=\"#4682B4\"><b>$tier.intl.watched_closely$</b></font> and limits <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> or lower. Angers the public and party bosses.",
+    "alertMsg": "BULOG's monopolies are dismantled. The IMF commends your commitment to free markets, and the Cendana family's grip on the food supply is limited to <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> or lower, though volatile staple prices anger the public and party bosses.",
+    "locks": {
+      "minStats": {
+        "intl": 65
+      },
+      "maxCendana": 35,
+      "statPenalties": {
+        "pop": [-24, -16],
+        "econ": [8, 12],
+        "stab": [-18, -12]
+      },
+      "factionPenalties": {
+        "pdip": [-17, -12],
+        "golkar_habibie": [-18, -12],
+        "poros_tengah": [-18, -12],
+        "utusan_daerah": [-18, -12],
+        "golkar_akbar": [-18, -12],
+        "abri": [-14, -10],
+        "other_parties": [-18, -12],
+        "pkb": [-18, -12],
+        "ppp": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "imf_ibra_liquidation",
+    "category": "Economy",
+    "text": "Authorize IBRA's Ruthless Liquidation Sweep",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "economic_bailout",
+      "peoples_economy_charter"
+    ],
+    "description": "Authorizes IBRA to liquidate 38 insolvent private banks and freeze 7 others overnight under IMF supervision. Guarantees <font color=\"#00838F\"><b>International Standing</b></font> above <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font>. Angers the public and party bosses.",
+    "alertMsg": "IBRA's liquidators sweep through Jakarta's financial district, guaranteeing International Standing above <font color=\"#009000\"><b>$tier.intl.tolerated_partner$</b></font>. However, the sweeping bank closures freeze credit lines for the political elite across the Assembly.",
+    "locks": {
+      "minStats": {
+        "intl": 80
+      },
+      "statPenalties": {
+        "stab": [-12, -8]
+      },
+      "factionPenalties": {
+        "pdip": [-17, -12],
+        "golkar_habibie": [-18, -12],
+        "poros_tengah": [-18, -12],
+        "utusan_daerah": [-18, -12],
+        "golkar_akbar": [-18, -12],
+        "abri": [-14, -10],
+        "other_parties": [-18, -12],
+        "pkb": [-18, -12],
+        "ppp": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "anti_monopoly_law",
+    "category": "Economy",
+    "text": "Sign the Anti-Monopoly and Unfair Business Competition Act (Law No. 5/1999)",
+    "baseCost": 45,
+    "description": "Establishes the independent Business Competition Supervisory Commission (<b>KPPU</b>) under Law No. 5/1999 to dismantle New Order cartels, price-fixing, and vertical monopolies. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and limits <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> or lower. Alienates <font color=\"#7D6000\"><b>Golkar</b></font>'s conglomerate patrons.",
+    "alertMsg": "The Anti-Monopoly Act (Law No. 5/1999) is signed into law and the KPPU begins seating its members. Guarantees Reformasi Credibility at <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and above, limits Cendana Influence to <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> or lower, and lifts Economic Health, while alienating Tandjung's Golkar business wing.",
+    "locks": {
+      "minStats": {
+        "ref": 45
+      },
+      "maxCendana": 40,
+      "statPenalties": {
+        "econ": [6, 10],
+        "intl": [4, 6]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-18, -12],
+        "golkar_habibie": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "peoples_economy_charter",
+    "category": "Economy",
+    "text": "Enact Adi Sasono's 'Ekonomi Kerakyatan' Cooperative Charter",
+    "baseCost": 50,
+    "mutexDecrees": [
+      "imf_ibra_liquidation"
+    ],
+    "description": "Implements MPR Decree No. XVI/MPR/1998 on Economic Democracy at full throttle: directs Cooperatives Minister Adi Sasono to transfer up to 20% of equity in state-rescued plantations, forestry concessions, and distribution networks directly to village cooperatives (<b>KUD</b>) and small indigenous enterprises. Guarantees <font color=\"#D81B60\"><b>Popularity</b></font> at <font color=\"#2F4F4F\"><b>$tier.pop.distrusted$</b></font> or better and limits <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#2F4F4F\"><b>$tier.cendana.persistent$</b></font> or lower. Spooks bondholders and angers <font color=\"#7D6000\"><b>Golkar</b></font>'s patrons.",
+    "alertMsg": "Adi Sasono's 'People's Economy' charter takes effect. Grassroots cooperatives, ICMI activists, and Islamic parties hail the redistribution as the fulfillment of Article 33 of the Constitution, guaranteeing Popularity at <font color=\"#2F4F4F\"><b>$tier.pop.distrusted$</b></font> and above—even as foreign financial papers warn of populist nationalization.",
+    "locks": {
+      "minStats": {
+        "pop": 45
+      },
+      "maxCendana": 50,
+      "statPenalties": {
+        "intl": [-14, -10],
+        "econ": [-6, -4],
+        "ref": [5, 7]
+      },
+      "factionPenalties": {
+        "poros_tengah": [8, 12],
+        "ppp": [8, 12],
+        "pkb": [6, 10],
+        "golkar_habibie": [6, 10],
+        "golkar_akbar": [-17, -11]
+      }
+    }
+  },
+  {
+    "id": "timor_national_car_seizure",
+    "category": "Economy",
+    "text": "Foreclose Tommy Suharto's 'Timor' National Car Empire",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "cendana_restoration_pact"
+    ],
+    "description": "Following the World Trade Organization ruling against Suharto's 1996 'National Car' decree (Inpres No. 2/1996), order the Directorate General of Customs and IBRA to seize the 15,000 unsold Kia-built Timor sedans sitting in Cikampek and foreclose PT Timor Putra Nasional for Rp 3.7 trillion in unpaid luxury tax arrears. Limits <font color=\"#704d00\"><b>Cendana Influence</b></font> to <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> or lower and boosts <font color=\"#1B7837\"><b>Economic Health</b></font>, <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font>, and <font color=\"#D81B60\"><b>Popularity</b></font>. Provokes retaliation from <font color=\"#704d00\"><b>Cendana Influence</b></font> and its allies in <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Tax bailiffs padlock PT Timor Putra Nasional's lots in Cikampek and seize Tommy Suharto's crown-jewel monopoly. The public cheers the downfall of the most despised symbol of Cendana nepotism, limiting Cendana Influence to <font color=\"#4682B4\"><b>$tier.cendana.contained$</b></font> or lower.",
+    "locks": {
+      "maxCendana": 35,
+      "statPenalties": {
+        "pop": [8, 12],
+        "ref": [8, 12],
+        "econ": [6, 10],
+        "intl": [5, 7]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [-17, -11],
+        "pdip": [5, 7],
+        "utusan_golongan": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "political_prisoner_release",
+    "category": "Civil Society",
+    "text": "Order the Unconditional Release of Remaining Political Prisoners",
+    "baseCost": 40,
+    "militaryShock": 10,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Orders a comprehensive presidential amnesty for all remaining political detainees held under the New Order's Anti-Subversion Law (PNPS No. 11/1963)—including PRD activists, labor organizers, and regional dissidents—and submits the bill repealing the Anti-Subversion Law outright. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and boosts Popularity and International Standing. Strains ties with Cilangkap's security apparatus.",
+    "alertMsg": "Prison gates open across Cipinang and the archipelago for detainees held under the old subversion laws. Guarantees Reformasi Credibility at <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and above and boosts Popularity and International Standing, while straining relations with Cilangkap.",
+    "locks": {
+      "minStats": {
+        "ref": 45
+      },
+      "statPenalties": {
+        "pop": [6, 10],
+        "intl": [6, 10],
+        "mil": [-10, -7]
+      },
+      "factionPenalties": {
+        "abri": [-10, -7],
+        "pdip": [5, 7],
+        "utusan_golongan": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "human_rights_commission_powers",
+    "category": "Civil Society",
+    "text": "Enact the Human Rights Act & Human Rights Court Mandate (Law No. 39/1999)",
+    "baseCost": 50,
+    "militaryShock": 30,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Signs Law No. 39/1999 on Human Rights and issues the Perppu establishing Human Rights Courts with formal subpoena authority to investigate military abuses in Aceh, East Timor, Trisakti, and Semanggi. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> and <font color=\"#00838F\"><b>International Standing</b></font> at respectable levels. Burns the generals' patience.",
+    "alertMsg": "Law No. 39/1999 is enacted and Komnas HAM investigators begin subpoenaing records directly from territorial commands. Guarantees Reformasi Credibility above <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and International Standing above <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font>, winning strong reformist support while provoking a sharp rupture with ABRI.",
+    "locks": {
+      "minStats": {
+        "ref": 55,
+        "intl": 50
+      },
+      "statPenalties": {
+        "pop": [8, 12]
+      },
+      "factionPenalties": {
+        "abri": [-17, -12],
+        "pdip": [6, 10],
+        "golkar_habibie": [6, 10],
+        "utusan_golongan": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "chinese_cultural_ban_repeal",
+    "category": "Civil Society",
+    "text": "Repeal Inpres No. 14/1967 & Restore Chinese Cultural Rights in Full",
+    "baseCost": 40,
+    "description": "Follows up your Presidential Instruction No. 26/1998 (which abolished the official <i>pribumi / non-pribumi</i> distinction) by repealing Suharto's 1967 Cabinet Instruction No. 14/1967 outright—restoring the right of Chinese Indonesians to celebrate Imlek publicly, perform Barongsai, and publish Chinese-language media without restriction. Guarantees <font color=\"#555555\"><b>Utusan Golongan</b></font> a <font color=\"#009000\"><b>$mood.utusan_golongan.favorable$</b></font> stance and guarantees <font color=\"#00838F\"><b>International Standing</b></font> above <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font>. Displeases New Order nativists in <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "Thirty-two years of state-enforced cultural erasure end with a single stroke of your pen. Civil society delegates, minority parties, and diaspora investors hail the emancipation decree, guaranteeing Utusan Golongan a <font color=\"#009000\"><b>$mood.utusan_golongan.favorable$</b></font> mood and lifting Economic Health.",
+    "locks": {
+      "minStats": {
+        "intl": 50
+      },
+      "minFactions": {
+        "utusan_golongan": 60
+      },
+      "statPenalties": {
+        "econ": [6, 10],
+        "ref": [6, 10],
+        "pop": [3, 5]
+      },
+      "factionPenalties": {
+        "other_parties": [6, 10],
+        "pdip": [4, 6],
+        "golkar_akbar": [-10, -6]
+      }
+    }
+  },
+  {
+    "id": "broadcast_liberalization",
+    "category": "Civil Society",
+    "text": "Dissolve the Ministry of Information (Departemen Penerangan)",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "reinstate_siupp_censorship"
+    ],
+    "description": "Shutters the dreaded <i>Departemen Penerangan</i>—the New Order's overarching ministry of censorship, press licensing, and state propaganda—and converts TVRI and RRI into autonomous public service broadcasters. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> or better and guarantees <font color=\"#D81B60\"><b>Popularity</b></font> at <font color=\"#2F4F4F\"><b>$tier.pop.distrusted$</b></font> or above. Angers <font color=\"#7D6000\"><b>Golkar</b></font> and <font color=\"#3E5022\"><b>ABRI</b></font> hardliners.",
+    "alertMsg": "The Ministry of Information is abolished. Journalists and students celebrate the dismantling of Harmoko's old propaganda ministry, guaranteeing Reformasi Credibility at <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> and above, though Golkar and ABRI hardliners lament the loss of the state megaphone.",
+    "locks": {
+      "minStats": {
+        "ref": 60,
+        "pop": 45
+      },
+      "statPenalties": {
+        "intl": [5, 7]
+      },
+      "factionPenalties": {
+        "utusan_golongan": [8, 12],
+        "pdip": [6, 10],
+        "poros_tengah": [5, 7],
+        "golkar_akbar": [-14, -10],
+        "abri": [-8, -5]
+      }
+    }
+  },
+  {
+    "id": "reinstate_siupp_censorship",
+    "category": "Civil Society",
+    "text": "Re-Instate SIUPP Press Licensing & Shutter Hostile Tabloids",
+    "baseCost": 45,
+    "mutexDecrees": [
+      "broadcast_liberalization"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 40
+      }
+    ],
+    "description": "Reverses your 1998 press liberalization by empowering the Ministry of Information to revoke publishing licenses (<i>SIUPP</i>) and padlock hostile newspapers (<i>Rakyat Merdeka</i>, <i>Tempo</i>) for 'inciting hatred against state institutions.' Guarantees <font color=\"#37474F\"><b>National Stability</b></font> at <font color=\"#4682B4\"><b>$tier.stab.simmering_tension$</b></font> or better. Costs <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font>, <font color=\"#D81B60\"><b>Popularity</b></font> and <font color=\"#00838F\"><b>International Standing</b></font>.",
+    "alertMsg": "Police padlocks go back onto newsroom doors in Palmerah and Kuningan as the Ministry of Information revokes its first publishing licenses since 1994. The street tabloids fall silent and National Stability is guaranteed at <font color=\"#4682B4\"><b>$tier.stab.simmering_tension$</b></font>, though domestic reformers and foreign embassies condemn the return of censorship.",
+    "locks": {
+      "minStats": {
+        "stab": 60
+      },
+      "statPenalties": {
+        "ref": [-30, -20],
+        "pop": [-18, -12],
+        "intl": [-18, -12],
+        "cendana": [8, 12]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [8, 12],
+        "abri": [8, 12],
+        "pdip": [-14, -10],
+        "utusan_golongan": [-24, -16]
+      }
+    }
+  },
+  {
+    "id": "purge_utusan_golongan",
+    "category": "Civil Society",
+    "text": "Dissolve the Independent Utusan Golongan Caucus & Seat State Corporatists",
+    "baseCost": 65,
+    "mutexDecrees": [
+      "chinese_cultural_ban_repeal",
+      "abolish_abri_mpr_seats"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 30
+      }
+    ],
+    "banFactions": [
+      "utusan_golongan"
+    ],
+    "seatRecipients": {
+      "golkar_habibie": 65
+    },
+    "description": "Revokes the credentials of the 65 independent civil society, labor, and human rights delegates in the <b>Utusan Golongan</b> bloc, folding their 65 MPR seats directly into state-vetted corporatist organizations (SPSI, KORPRI, KNPI) under <font color=\"#7D6000\"><b>Golkar</b></font>'s umbrella. Dissolves Utusan Golongan for good and hands its 65 seats to <font color=\"#7D6000\"><b>Golkar</b></font>.",
+    "alertMsg": "By presidential decree, the independent Utusan Golongan delegation is dissolved and its 65 MPR seats transferred directly to Golkar's corporatist affiliates! The civil society benches are silenced and grayed out on the board.",
+    "locks": {
+      "statPenalties": {
+        "ref": [-30, -20],
+        "pop": [-18, -12],
+        "intl": [-18, -12],
+        "cendana": [8, 12]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "golkar_habibie": [8, 12],
+        "pdip": [-14, -10],
+        "poros_tengah": [-12, -8]
+      }
+    }
+  },
+  {
+    "id": "police_military_separation",
+    "category": "Security",
+    "text": "Formalize the Separation of POLRI from ABRI",
+    "baseCost": 40,
+    "militaryShock": 25,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Codifies Inpres No. 2/1999 disentangling the National Police (POLRI) from the ABRI command structure and renaming the armed forces <b>TNI</b>. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> above <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and boosts civil society support. Burns the generals' patience.",
+    "alertMsg": "POLRI begins its formal separation from the military command structure. Guarantees Reformasi Credibility above <font color=\"#2F4F4F\"><b>$tier.ref.questionable$</b></font> and wins praise from reformist factions, though the generals resent the curtailment of Dwifungsi.",
+    "locks": {
+      "minStats": {
+        "ref": 50
+      },
+      "statPenalties": {
+        "pop": [6, 10],
+        "stab": [-6, -4]
+      },
+      "factionPenalties": {
+        "abri": [-16, -11],
+        "golkar_habibie": [6, 10],
+        "utusan_golongan": [6, 10]
+      }
+    }
+  },
+  {
+    "id": "civilian_defense_ministry",
+    "category": "Security",
+    "text": "Decouple Pangab & Appoint a Civilian Minister of Defense",
+    "baseCost": 50,
+    "militaryShock": 25,
+    "mutexDecrees": [
+      "invoke_supersemar_ii"
+    ],
+    "description": "Ends the Suharto-era dual appointment under which the Commander of the Armed Forces (<b>Pangab</b>) simultaneously sits as Minister of Defense and Security (<b>Menhankam</b>), appointing respected civilian scholar Prof. Juwono Sudarsono as Indonesia's first civilian Defense Minister since 1959. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> and <font color=\"#00838F\"><b>International Standing</b></font> above <font color=\"#2F4F4F\"><b>$tier.intl.distrusted$</b></font>. Burns the generals' patience.",
+    "alertMsg": "For the first time in forty years, a civilian sits atop the Ministry of Defense on Jalan Medan Merdeka Barat. Democratic reformers and foreign capitals hail the historic assertion of civilian supremacy, guaranteeing Reformasi Credibility at <font color=\"#4682B4\"><b>$tier.ref.ambiguous$</b></font> and above—though Cilangkap's generals are coldly furious at the demotion.",
+    "locks": {
+      "minStats": {
+        "ref": 60,
+        "intl": 50
+      },
+      "statPenalties": {
+        "pop": [5, 7],
+        "cendana": [-10, -6]
+      },
+      "factionPenalties": {
+        "abri": [-16, -11],
+        "golkar_habibie": [8, 12],
+        "utusan_golongan": [8, 12],
+        "poros_tengah": [5, 7]
+      }
+    }
+  },
+  {
+    "id": "abolish_kodam_territorial",
+    "category": "Security",
+    "text": "Dismantle ABRI's Territorial Command Structure (Kodam / Koramil)",
+    "baseCost": 65,
+    "militaryShock": 40,
+    "mutexDecrees": [
+      "invoke_supersemar_ii",
+      "ratify_kamra_militia_bill"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 75
+      }
+    ],
+    "description": "Crosses the ultimate red line that even the military's own <i>New Paradigm</i> reformers dared not touch: issues a Presidential Decree dismantling the parallel military territorial hierarchy (<i>Kodam, Korem, Kodim, Koramil, Babinsa</i>) that shadows every province, district, and village in Indonesia, restricting the armed forces strictly to external border defense. Guarantees <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> at <font color=\"#006400\"><b>$tier.ref.cautiously_credible$</b></font> and guarantees <font color=\"#555555\"><b>Utusan Golongan</b></font> and <font color=\"#555555\"><b>Utusan Daerah</b></font> at high levels. Ends relations with <font color=\"#3E5022\"><b>ABRI</b></font> for good.",
+    "alertMsg": "In the boldest act of civilian supremacy since 1950, you have ordered the dismantling of the military's village-to-province territorial command network. Student movements, regional governors, and international observers hail the end of military dual-function—while Cilangkap's generals break all ties with Merdeka Palace.",
+    "locks": {
+      "minStats": {
+        "ref": 85,
+        "intl": 65
+      },
+      "minFactions": {
+        "utusan_golongan": 75,
+        "utusan_daerah": 65
+      },
+      "statPenalties": {
+        "pop": [12, 18],
+        "cendana": [-18, -12],
+        "stab": [-12, -8]
+      },
+      "factionPenalties": {
+        "abri": [-24, -19],
+        "pdip": [10, 14],
+        "poros_tengah": [8, 12],
+        "golkar_habibie": [8, 12]
+      }
+    }
+  },
+  {
+    "id": "ratify_kamra_militia_bill",
+    "category": "Security",
+    "text": "Institutionalize the 40,000-Strong Kamra Auxiliary Corps",
+    "baseCost": 40,
+    "mutexDecrees": [
+      "abolish_kodam_territorial",
+      "abolish_abri_mpr_seats"
+    ],
+    "description": "Converts the temporary <i>Keamanan Rakyat</i> (Kamra) civilian police auxiliaries created under Law No. 20/1982 into a permanent, state-salaried Auxiliary Gendarmerie under joint Home Affairs and ABRI supervision to secure urban streets and provincial capitals. Guarantees <font color=\"#37474F\"><b>National Stability</b></font> above <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> and boosts <font color=\"#556B2F\"><b>Military Support</b></font>. Costs <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font> and civil society support.",
+    "alertMsg": "Forty thousand uniformed Kamra auxiliaries are permanently institutionalized across Indonesia's cities. Street crime and rioting drop noticeably, guaranteeing National Stability above <font color=\"#2F4F4F\"><b>$tier.stab.tense$</b></font> and pleasing ABRI, though student and human rights groups denounce the creation of a state-funded paramilitary.",
+    "locks": {
+      "minStats": {
+        "stab": 50
+      },
+      "statPenalties": {
+        "ref": [-14, -10],
+        "econ": [-6, -4]
+      },
+      "factionPenalties": {
+        "abri": [10, 14],
+        "golkar_akbar": [6, 10],
+        "utusan_golongan": [-14, -10],
+        "pdip": [-8, -5]
+      }
+    }
+  },
+  {
+    "id": "invoke_supersemar_ii",
+    "category": "Security",
+    "text": "Invoke 'Supersemar II' & Declare a State of National Emergency",
+    "baseCost": 55,
+    "mutexDecrees": [
+      "abolish_kodam_territorial",
+      "abolish_abri_mpr_seats",
+      "police_military_separation",
+      "civilian_defense_ministry",
+      "direct_presidential_amendment",
+      "political_prisoner_release",
+      "human_rights_commission_powers"
+    ],
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": "<=",
+        "val": 35
+      }
+    ],
+    "description": "Echoing Suharto's March 11, 1966 mandate, invoke emergency presidential decree powers under the 1959 State of Danger statute to ban street demonstrations, place university campuses under military curfew, and establish a joint Palace–Cilangkap National Stability Command (<i>Kopkamtib Baru</i>). Guarantees <font color=\"#37474F\"><b>National Stability</b></font> at <font color=\"#009000\"><b>$tier.stab.fragile_peace$</b></font> and guarantees <font color=\"#3E5022\"><b>ABRI</b></font> in <font color=\"#006400\"><b>$mood.abri.supporting_habibie$</b></font>, while unlocking emergency decrees to ban opposition parties. Costs <font color=\"#8E24AA\"><b>Reformasi Credibility</b></font>, <font color=\"#D81B60\"><b>Popularity</b></font> and <font color=\"#00838F\"><b>International Standing</b></font>.",
+    "alertMsg": "Armored vehicles take up positions around Monas and Senayan as 'Supersemar II' is read over state television. The streets fall dead silent, guaranteeing National Stability at <font color=\"#009000\"><b>$tier.stab.fragile_peace$</b></font> and securing ABRI's bloc unconditionally—and giving you the emergency authority to dissolve opposition parties in the MPR.",
+    "locks": {
+      "minStats": {
+        "stab": 75,
+        "mil": 80
+      },
+      "minFactions": {
+        "abri": 85
+      },
+      "statPenalties": {
+        "ref": [-42, -28],
+        "pop": [-30, -20],
+        "intl": [-30, -20],
+        "cendana": [12, 18]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [12, 18],
+        "pdip": [-30, -20],
+        "utusan_golongan": [-30, -20],
+        "poros_tengah": [-18, -12]
+      }
+    }
+  },
+  {
+    "id": "unify_golkar_slipi",
+    "category": "Politics",
+    "text": "Reunify Golkar Under the DPP at Slipi",
+    "baseCost": 60,
+    "unlockEvent": "ev_assembly_convenes",
+    "mutexDecrees": [
+      "dissolve_golkar_old_guard"
+    ],
+    "reqStats": [
+      {
+        "key": "cendana",
+        "op": "<=",
+        "val": 74
+      }
+    ],
+    "reqFactions": [
+      {
+        "key": "golkar_akbar",
+        "op": ">=",
+        "val": 50
+      },
+      {
+        "key": "golkar_habibie",
+        "op": ">=",
+        "val": 60
+      }
+    ],
+    "banFactions": [
+      "golkar_habibie"
+    ],
+    "seatRecipients": {
+      "golkar_akbar": 1
+    },
+    "description": "For more than a year Golkar has been two parties wearing one jacket. Akbar Tandjung's board at Slipi, installed at the extraordinary congress of July 1998, controls the party machinery, the provincial chapters and most of the money, while your own circle of technocrats, ICMI intellectuals and IPTN alumni sits in the faction as a separate caucus that answers to the Palace rather than to Slipi. With the MPR now in session, invite Akbar to Merdeka Palace, fold the Loyalist caucus into the Slipi leadership, and place every Golkar mandate under a single chain of command. The Loyalist caucus will be dissolved as a separate bloc and its 40 mandates will pass to Akbar Tandjung's Golkar, whose delegates are then bound to stand behind you without reservation. Costs your most devoted faction, and cannot be undone after the Accountability Speech.",
+    "alertMsg": "In a short ceremony at Merdeka Palace, Akbar Tandjung and your inner circle sign a single page: one Golkar, one chain of command, one list of delegates. The engineers and ICMI veterans who followed you from IPTN file out of their separate caucus room and take their seats under the Slipi banner, and the provincial chairmen who had been quietly hedging between the two camps announce the reconciliation before the evening news. For the first time since the July 1998 congress, Golkar speaks with a single voice, and that voice says it will stand behind the President when the ballot boxes open. Reformers outside the party note, with some unease, whose machine has just been strengthened.",
+    "locks": {
+      "minFactions": {
+        "golkar_akbar": 50
+      },
+      "statPenalties": {
+        "ref": [-5, -3],
+        "cendana": [3, 5]
+      },
+      "factionPenalties": {
+        "golkar_akbar": [20, 30],
+        "pdip": [-8, -5],
+        "utusan_golongan": [-6, -4]
+      }
+    }
+  },
+  {
+    "id": "rainbow_coalition_accord",
+    "category": "Politics",
+    "text": "Proclaim the Rainbow Coalition: A Government of National Unity",
+    "baseCost": 70,
+    "unlockEvent": "ev_eve_of_vote",
+    "mutexDecrees": [
+      "ban_pdip_subversion",
+      "dissolve_golkar_old_guard",
+      "enforce_asas_tunggal_ban",
+      "abolish_abri_mpr_seats"
+    ],
+    "reqFactions": [
+      {
+        "key": "pdip",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "abri",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "golkar_akbar",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "golkar_habibie",
+        "op": ">=",
+        "val": 80
+      },
+      {
+        "key": "poros_tengah",
+        "op": ">=",
+        "val": 80
+      }
+    ],
+    "description": "On the eve of the ballot, the five blocs that decide the vote are closer to the Palace than they have been at any point since May 1998: Megawati's PDI-P, Cilangkap, both wings of Golkar and the Central Axis. Rather than ask each of them separately for tomorrow's votes, offer all of them what none has ever had in this republic, a seat at the same table. Summon their leaders to Merdeka Palace tonight and announce a government of national unity, a 'Rainbow Coalition' that divides cabinet portfolios, commission chairs and the leadership of the Assembly among the parties that have kept the country from coming apart. This will steadily harden the support of PDI-P, ABRI, both Golkar wings and the Central Axis toward its highest level, securing a little more each day. Civil society, the regions and the minor parties will resent the carve-up.",
+    "alertMsg": "Past midnight, the leaders of every great bloc in the Assembly file into Merdeka Palace: Megawati's lieutenants, generals from Cilangkap, Akbar Tandjung's party chairmen, your own loyalists and the Central Axis delegation. Portfolios are read out in alphabetical order so that no one can claim to have been named first. By the time the communiqué is released to the press, the arithmetic of Senayan has changed: every caucus in the room has a ministry, a commission or a deputy speakership to lose if the Accountability Speech fails. In the lobbies of the Hotel Mulia, the delegates who were not invited begin to ask what, exactly, they have been left with.",
+    "locks": {
+      "minFactions": {
+        "pdip": 80,
+        "abri": 80,
+        "golkar_akbar": 80,
+        "golkar_habibie": 80,
+        "poros_tengah": 80
+      },
+      "factionPenalties": {
+        "utusan_golongan": [-14, -10],
+        "other_parties": [-14, -10],
+        "utusan_daerah": [-10, -6]
+      },
+      "statPenalties": {
+        "stab": [-7, -5],
+        "intl": [-5, -3]
+      }
+    },
+    "reqStats": [
+      {
+        "key": "ref",
+        "op": ">=",
+        "val": 40
+      }
+    ]
+  }
+]

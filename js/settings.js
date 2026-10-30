@@ -1,4 +1,6 @@
-// settings.js: Settings menu and customization: effects, accessibility, wallpaper, sound, and data backup.
+// SUMMARY: Settings screen and its options: language switching (title screen & mid-game), effects, accessibility (left-side touch mode),
+// desktop wallpapers and custom upload, sound and tally defaults, custom dropdowns, achievement backup and reset, saved-campaign clearing and support links.
+// Loads saved settings when the script runs.
 
 // Support links
 const SUPPORT_LINKS = {
@@ -7,17 +9,49 @@ const SUPPORT_LINKS = {
     twitter: "https://x.com/MeniirIII"
 };
 
+const INSPIRATION_GAMES = [
+    {
+        id: 'nct',
+        title: 'The New Campaign Trail',
+        creator: 'Dan Bryan & DecstarG, Danxv 33, T3CH0X',
+        image: 'photo/images/nct.png',
+        url: 'https://www.newcampaigntrail.com/'
+    },
+    {
+        id: 'socdem',
+        title: 'Social Democracy: An Alternate History',
+        creator: 'Autumn Chen',
+        image: 'photo/images/socdem.png',
+        url: 'https://red-autumn.itch.io/social-democracy'
+    }
+];
+
 // Default values of the extended settings
 window.extraSettings = {
     autoAdvanceTurn: true,
     defaultTallySpeed: 1,
+    seatShape: 'square',
     sfxEnabled: true,
     desktopBg: 'teal',
     leftMode: false,
     leftWidth: 70
 };
 
-// SETTINGS > EFFECTS
+
+// Pending confirmation state for destructive actions in Settings (avoids browser confirm())
+let pendingSettingsConfirm = null;
+
+window.triggerSettingsConfirm = function(actionKey) {
+    pendingSettingsConfirm = actionKey;
+    showSettingsMenu(true);
+};
+
+window.cancelSettingsConfirm = function() {
+    pendingSettingsConfirm = null;
+    showSettingsMenu(true);
+};
+
+// Builds one toggle-switch row of the effects card.
 function fxSwitchHTML(id, label, desc, on, action, extraHTML) {
     return `<div class="settings-row">
         <div class="fx-row">
@@ -31,25 +65,25 @@ function fxSwitchHTML(id, label, desc, on, action, extraHTML) {
 // Build the Effects settings card
 function renderEffectsCard() {
     const allOn = EFFECTS.every(e => isEffectOn(e.id));
-    let rows = fxSwitchHTML('all', 'All Effects', 'Switch every effect on or off together. You can still change each one below.', allOn, `setAllEffects(${!allOn})`);
+    let rows = fxSwitchHTML('all', LOC('settings.effects.all_label'), LOC('settings.effects.all_desc'), allOn, `setAllEffects(${!allOn})`);
     EFFECTS.forEach(e => {
         const on = isEffectOn(e.id);
         const slider = (e.id === 'crt' && on) ? `
             <div class="settings-sunken-well" style="margin-top: 8px;">
-                <span>Scanline Intensity:</span>
+                <span>${LOC('settings.effects.scanline_intensity')}</span>
                 <input type="range" id="crt-slider" min="5" max="100" value="${crtIntensity}" oninput="updateCRTIntensity()">
                 <span id="crt-display">${crtIntensity}%</span>
             </div>` : '';
         rows += fxSwitchHTML(e.id, e.label, e.desc, on, `setEffect('${e.id}', ${!on})`, slider);
     });
     return `<div class="settings-card fx-card">
-        <div class="settings-card-header">Effects</div>
+        <div class="settings-card-header">${LOC('settings.effects.title')}</div>
         <div class="settings-card-body">${rows}
         </div>
     </div>`;
 }
 
-// ACCESSIBILITY: LEFT-SIDE TOUCH MODE
+// Applies the accessibility options (left-side touch mode and its width) to the page.
 window.applyAccessibility = function() {
     const root = document.documentElement;
     const s = window.extraSettings || {};
@@ -84,49 +118,58 @@ window.isSfxEnabled = function() {
     return !window.extraSettings || window.extraSettings.sfxEnabled !== false;
 };
 
-// SAVE & LOAD EXTENDED SETTINGS
+// Saves the extended settings through the main settings save.
 function saveExtendedSettings() {
     saveUserSettings();
 }
 
-// Load saved extended settings, migrating the old storage key
-function loadExtendedSettings() {
-    // One-time migration from the old separate key
-    try {
-        const legacy = localStorage.getItem('habibie_extra_settings');
-        if (legacy) {
-            const current = JSON.parse(localStorage.getItem('habibie_settings') || '{}');
-            if (!current.extra) {
-                window.extraSettings = Object.assign({}, window.extraSettings, JSON.parse(legacy));
-            }
-            localStorage.removeItem('habibie_extra_settings');
-            saveUserSettings();
-        }
-    } catch (e) { console.warn('Settings migration failed:', e); }
+// Applies the chosen parliament seat shape ('square' or 'circle') to <html>
+window.applySeatShape = function() {
+    const shape = (window.extraSettings && window.extraSettings.seatShape === 'circle') ? 'circle' : 'square';
+    document.documentElement.setAttribute('data-seat-shape', shape);
+};
 
+// Load saved extended settings, then apply the wallpaper, tally speed, seat shape and accessibility options
+function loadExtendedSettings() {
     paintDesktopBackground(window.extraSettings.desktopBg);
     window.tallySpeed = window.extraSettings.defaultTallySpeed || 1;
+    applySeatShape();
     applyAccessibility();
 }
 
-// DESKTOP BACKGROUND & CUSTOM UPLOAD APPLIERS
+// One table drives both the painting and the dropdown. The text for each id is "settings.wallpaper.<id>" in settings.json.
+const WALLPAPERS = [
+    { id: 'teal',        hex: '#008080' },
+    { id: 'slate',       hex: '#2F4F4F' },
+    { id: 'navy',        hex: '#001B3A' },
+    { id: 'crimson',     hex: '#4A1212' },
+    { id: 'cherry',      hex: '#E48FAE' },
+    { id: 'piecrust',    hex: '#B07A3A' },
+    { id: 'twilight',    hex: '#C8632B' },
+    { id: 'banyan',      hex: '#2F5D3A' },
+    { id: 'dusk',        hex: '#4B3A6B' },
+    { id: 'sogan',       hex: '#5B3A1E' },
+    { id: 'classicblue', hex: '#3A6EA5' },
+    { id: 'maroon',      hex: '#800000' },
+    { id: 'olive',       hex: '#808000' },
+    { id: 'plum',        hex: '#6E2A5A' },
+    { id: 'black',       hex: '#000000' },
+    { id: 'swirl',       hex: '#4B3FC4', anim: true, bg: 'conic-gradient(#D7263D, #E8710A, #E8C400, #2E9E4F, #1F7AD1, #4B3FC4, #9B3FC8, #D7263D)' },
+    { id: 'rainbow',     hex: '#4B3FC4', bg: 'linear-gradient(135deg, #D7263D, #E8710A, #E8C400, #2E9E4F, #1F7AD1, #4B3FC4, #9B3FC8)' }
+];
+
+// Paints the chosen desktop background (colour, image, animated or custom) onto the page.
 function paintDesktopBackground(bgKey) {
     const b = document.body;
     if (!b) return;
 
     b.style.backgroundImage = 'none';
-    if (bgKey === 'teal') {
-        b.style.backgroundColor = '#008080';
-    } else if (bgKey === 'slate') {
-        b.style.backgroundColor = '#2F4F4F';
-    } else if (bgKey === 'navy') {
-        b.style.backgroundColor = '#001B3A';
-    } else if (bgKey === 'crimson') {
-        b.style.backgroundColor = '#4A1212';
-    } else if (bgKey === 'cherry') {
-        b.style.backgroundColor = '#E48FAE';
-    } else if (bgKey === 'piecrust') {
-        b.style.backgroundColor = '#B07A3A';
+    document.documentElement.removeAttribute('data-wallpaper');
+    const wp = WALLPAPERS.find(w => w.id === bgKey);
+    if (wp) {
+        b.style.backgroundColor = wp.hex;
+        if (wp.anim) document.documentElement.setAttribute('data-wallpaper', wp.id);
+        else if (wp.bg) b.style.backgroundImage = wp.bg;
     } else if (bgKey === 'custom') {
         b.style.backgroundColor = '#008080';
         try {
@@ -153,7 +196,7 @@ function storeAndApplyWallpaper(dataUrl) {
         localStorage.setItem('habibie_custom_bg', dataUrl);
     } catch (err) {
         console.warn('Wallpaper not persisted:', err);
-        showCustomAlert("Image file is too large to save permanently in browser storage, but it has been applied for this session.", null);
+        showCustomAlert(LOC('settings.wallpaper_too_large'), null);
     }
     window.extraSettings.desktopBg = 'custom';
     if (document.body) {
@@ -201,7 +244,7 @@ window.clearCustomWallpaper = function() {
     showSettingsMenu(true);
 };
 
-// SETTINGS CONTROLS HANDLERS
+// Setting handlers: auto-advance turn, sound effects and default tally speed.
 window.toggleAutoAdvanceSetting = function(cb) {
     window.extraSettings.autoAdvanceTurn = cb.checked;
     saveExtendedSettings();
@@ -221,7 +264,24 @@ window.setDefaultTallySpeedSetting = function(spd) {
     showSettingsMenu(true);
 };
 
-// DATA BACKUP & RESET
+// Dropdown items for the parliament seat shape
+function getSeatShapeList() {
+    return [
+        { id: 'square', label: LOC.has('settings.gameplay.seat_square') ? LOC('settings.gameplay.seat_square') : 'Square (Default)' },
+        { id: 'circle', label: LOC.has('settings.gameplay.seat_circle') ? LOC('settings.gameplay.seat_circle') : 'Circle' }
+    ];
+}
+
+// Pick the parliament seat shape from the Settings dropdown
+window.pickSeatShape = function(id) {
+    closeDropdowns();
+    window.extraSettings.seatShape = (id === 'circle') ? 'circle' : 'square';
+    applySeatShape();
+    saveExtendedSettings();
+    showSettingsMenu(true);
+};
+
+// Exports the unlocked achievements to a downloadable JSON backup file.
 window.exportAchievementsBackup = function() {
     try {
         const data = JSON.stringify(unlockedAchievements || []);
@@ -249,10 +309,9 @@ window.importAchievementsBackup = function(inputElem) {
         } catch (err) {}
 
         if (!ids) {
-            showCustomAlert("Invalid backup file format.", () => showSettingsMenu(true));
+            showCustomAlert(LOC('settings.backup_invalid'), () => showSettingsMenu(true));
             return;
         }
-        // Merge with current progress and keep only IDs the game knows about
         const known = new Set((typeof ACHIEVEMENTS !== 'undefined' ? ACHIEVEMENTS : []).map(a => a.id));
         if (known.size > 0) ids = ids.filter(id => known.has(id));
         const before = unlockedAchievements.length;
@@ -261,29 +320,37 @@ window.importAchievementsBackup = function(inputElem) {
             localStorage.setItem('habibie_achievements', JSON.stringify(unlockedAchievements));
         } catch (err) { console.warn(err); }
         const added = unlockedAchievements.length - before;
-        showCustomAlert(`Achievements backup merged. ${added} new achievement(s) restored.`, () => showSettingsMenu(true));
+        showCustomAlert(LOC('settings.backup_merged', { COUNT: added }), () => showSettingsMenu(true));
     };
     reader.readAsText(inputElem.files[0]);
 };
 
-// Confirm, then reset all unlocked achievements
-window.resetAllAchievementsPrompt = function() {
-    if (confirm("Are you sure you want to permanently reset all unlocked Achievements?")) {
-        unlockedAchievements = [];
-        localStorage.removeItem('habibie_achievements');
-        showSettingsMenu(true);
-    }
+// Reset all unlocked achievements after inline confirmation
+window.resetAllAchievementsConfirmed = function() {
+    pendingSettingsConfirm = null;
+    unlockedAchievements = [];
+    localStorage.removeItem('habibie_achievements');
+    localStorage.removeItem(DIFFICULTY_WINS_KEY);
+    showSettingsMenu(true);
 };
 
-// INLINE LOGOS (KO-FI, TRAKTEER, X/TWITTER)
+// Clear saved campaign after inline confirmation
+window.clearSavedCampaignConfirmed = function() {
+    pendingSettingsConfirm = null;
+    clearCampaignSave();
+    showCustomAlert(LOC('settings.data.clear_campaign_done'), () => showSettingsMenu(true));
+};
+
+// SVG icons for the support links (Ko-fi, Trakteer, X/Twitter).
 const SETTINGS_ICONS = {
     kofi: `<svg width="15" height="15" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 6px;"><path fill="#FFFFFF" d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3z"/><path fill="#FF5E5B" d="M11 13.5l-3.3-3.1c-.9-.9-.9-2.3 0-3.2.8-.8 2.2-.8 3 0l.3.3.3-.3c.8-.8 2.2-.8 3 0 .9.9.9 2.3 0 3.2L11 13.5z"/></svg>`,
     trakteer: `<svg width="15" height="15" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 6px;"><path fill="#FFFFFF" d="M12 2L14.8 8.5L22 9.3L16.5 14L18.2 21L12 17.3L5.8 21L7.5 14L2 9.3L9.2 8.5L12 2Z"/></svg>`,
     twitter: `<svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 6px;"><path fill="#FFFFFF" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
 };
 
-// SETTINGS > COLOR SCHEME DROPDOWN
-(function injectSchemePickerStyles() {
+// SETTINGS > CUSTOM DROPDOWNS (color scheme, wallpaper, window style)
+// Built by hand instead of <select> so every entry can show its color dot.
+(function injectDropdownStyles() {
     if (document.getElementById('scheme-picker-css')) return;
     const st = document.createElement('style');
     st.id = 'scheme-picker-css';
@@ -304,6 +371,7 @@ button.cs-trigger:hover:not(:disabled),
 button.cs-trigger:active:not(:disabled) { filter: none; box-shadow: var(--bevel-sunken); }
 button.cs-trigger:disabled { color: var(--win95-text-dim); text-shadow: none; cursor: not-allowed; }
 button.cs-trigger:focus-visible { outline: 1px dotted var(--win95-text); outline-offset: -4px; }
+.cs-current { display: inline-flex; align-items: center; min-width: 0; }
 .cs-arrow {
     margin-left: auto; flex: 0 0 auto;
     width: 16px; height: 16px; line-height: 16px;
@@ -342,73 +410,115 @@ button.cs-trigger:focus-visible { outline: 1px dotted var(--win95-text); outline
     document.head.appendChild(st);
 })();
 
-function renderSchemePicker(disabled) {
-    const cur = COLOR_SCHEMES[colorScheme] || { label: colorScheme, swatch: '#C0C0C0' };
-    const groups = [['Light', 'light'], ['Dark', 'dark']].map(([title, grp]) => {
-        const items = Object.keys(COLOR_SCHEMES).filter(id => COLOR_SCHEMES[id].group === grp).map(id =>
-            `<div class="cs-item ${colorScheme === id ? 'is-current' : ''}" role="option" tabindex="-1" aria-selected="${colorScheme === id}" data-scheme="${id}" onclick="pickColorScheme('${id}')"><span class="settings-color-dot" style="background-color: ${COLOR_SCHEMES[id].swatch};"></span>${COLOR_SCHEMES[id].label}</div>`
-        ).join('');
-        return `<div class="cs-group">${title}</div>${items}`;
-    }).join('');
-    return `<div class="cs-wrap" id="cs-wrap">
-        <button type="button" class="cs-trigger" id="cs-trigger" aria-haspopup="listbox" aria-expanded="false" ${disabled ? 'disabled' : ''} onclick="toggleSchemeDropdown(event)">
-            <span class="settings-color-dot" id="cs-dot" style="background-color: ${cur.swatch};"></span><span id="cs-label">${cur.label}</span><span class="cs-arrow">&#9660;</span>
+// The little color dot, or nothing for entries that have no color
+function ddDot(swatch) {
+    return swatch ? `<span class="settings-color-dot" style="background: ${swatch};"></span>` : '';
+}
+
+// Build one dropdown.
+//   key      unique name (used for element ids)
+//   groups   [{ title: 'Heading' | null, items: [{ id, label, swatch? }] }]
+//   current  id of the selected entry
+//   fallback { label, swatch? } shown when current matches no entry (e.g. a custom wallpaper)
+//   pickFn   name of the global function called with the chosen id
+function renderDropdown(key, groups, current, disabled, pickFn, fallback) {
+    let cur = fallback || { label: current };
+    groups.forEach(g => g.items.forEach(it => { if (it.id === current) cur = it; }));
+    const list = groups.map(g => (g.title ? `<div class="cs-group">${g.title}</div>` : '') +
+        g.items.map(it =>
+            `<div class="cs-item ${it.id === current ? 'is-current' : ''}" role="option" tabindex="-1" aria-selected="${it.id === current}" data-id="${it.id}" onclick="${pickFn}('${it.id}')">${ddDot(it.swatch)}${it.label}</div>`
+        ).join('')
+    ).join('');
+    return `<div class="cs-wrap" id="dd-${key}">
+        <button type="button" class="cs-trigger" id="dd-${key}-trigger" aria-haspopup="listbox" aria-expanded="false" ${disabled ? 'disabled' : ''} onclick="toggleDropdown('${key}', event)">
+            <span class="cs-current" id="dd-${key}-cur">${ddDot(cur.swatch)}${cur.label}</span><span class="cs-arrow">&#9660;</span>
         </button>
-        <div class="cs-list" role="listbox" id="cs-list">${groups}</div>
+        <div class="cs-list" role="listbox" id="dd-${key}-list">${list}</div>
     </div>`;
 }
 
-window.closeSchemeDropdown = function() {
-    const w = document.getElementById('cs-wrap');
-    if (!w) return;
-    w.classList.remove('open');
-    const t = document.getElementById('cs-trigger');
-    if (t) t.setAttribute('aria-expanded', 'false');
+// Closes every open custom dropdown.
+window.closeDropdowns = function() {
+    document.querySelectorAll('.cs-wrap.open').forEach(w => {
+        w.classList.remove('open');
+        const t = w.querySelector('.cs-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+    });
 };
 
-window.toggleSchemeDropdown = function(evt) {
+// Opens or closes one custom dropdown and closes the others.
+window.toggleDropdown = function(key, evt) {
     if (evt) evt.stopPropagation();
-    const w = document.getElementById('cs-wrap');
+    const w = document.getElementById('dd-' + key);
     if (!w) return;
     const open = !w.classList.contains('open');
-    w.classList.toggle('open', open);
-    const t = document.getElementById('cs-trigger');
-    if (t) t.setAttribute('aria-expanded', String(open));
-    if (open) {
-        const cur = w.querySelector('.cs-item.is-current') || w.querySelector('.cs-item');
-        if (cur) { cur.focus(); cur.scrollIntoView({ block: 'nearest' }); }
-    }
+    closeDropdowns();
+    if (!open) return;
+    w.classList.add('open');
+    const t = w.querySelector('.cs-trigger');
+    if (t) t.setAttribute('aria-expanded', 'true');
+    const cur = w.querySelector('.cs-item.is-current') || w.querySelector('.cs-item');
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: 'nearest' }); }
 };
 
+// Show the chosen entry in the closed box and mark it in the list
+function ddShowChoice(key, id, label, swatch) {
+    const curEl = document.getElementById('dd-' + key + '-cur');
+    if (curEl) curEl.innerHTML = ddDot(swatch) + label;
+    document.querySelectorAll('#dd-' + key + '-list .cs-item').forEach(el => {
+        const on = el.getAttribute('data-id') === id;
+        el.classList.toggle('is-current', on);
+        el.setAttribute('aria-selected', String(on));
+    });
+}
+
+// Color scheme
 window.pickColorScheme = function(id) {
-    closeSchemeDropdown();
+    closeDropdowns();
     if (typeof setColorScheme === 'function') setColorScheme(id);
-    // The menu may or may not be re-rendered by setColorScheme
     const s = COLOR_SCHEMES[id];
-    const dot = document.getElementById('cs-dot');
-    const label = document.getElementById('cs-label');
-    if (s && dot && label) {
-        dot.style.backgroundColor = s.swatch;
-        label.textContent = s.label;
-        document.querySelectorAll('#cs-list .cs-item').forEach(el => {
-            const on = el.getAttribute('data-scheme') === id;
-            el.classList.toggle('is-current', on);
-            el.setAttribute('aria-selected', String(on));
-        });
-    }
+    if (s) ddShowChoice('scheme', id, s.label, s.swatch);
+};
+
+// Returns the colour schemes grouped into light and dark for the dropdown.
+function getSchemeGroups() {
+    return [['light', 'settings.scheme_group.light'], ['dark', 'settings.scheme_group.dark']].map(([grp, locKey]) => ({
+        title: LOC(locKey),
+        items: Object.keys(COLOR_SCHEMES).filter(id => COLOR_SCHEMES[id].group === grp)
+            .map(id => ({ id, label: COLOR_SCHEMES[id].label, swatch: COLOR_SCHEMES[id].swatch }))
+    }));
+}
+
+// Desktop wallpaper
+function getWallpaperList() {
+    return WALLPAPERS.map(w => ({ id: w.id, label: LOC('settings.wallpaper.' + w.id), swatch: w.bg || w.hex }));
+}
+
+// Applies the wallpaper chosen in the dropdown and refreshes the Settings screen.
+window.pickWallpaper = function(id) {
+    closeDropdowns();
+    applyDesktopBackground(id);
+    showSettingsMenu(true);
+};
+
+// Window style
+window.pickWindowStyle = function(id) {
+    closeDropdowns();
+    setWindowStyle(id);
+    showSettingsMenu(true);
 };
 
 // Close on outside click / Escape; arrow keys, Enter and Space work inside the list
 document.addEventListener('click', function(e) {
-    const w = document.getElementById('cs-wrap');
-    if (w && w.classList.contains('open') && !w.contains(e.target)) closeSchemeDropdown();
+    const open = document.querySelector('.cs-wrap.open');
+    if (open && !open.contains(e.target)) closeDropdowns();
 });
 document.addEventListener('keydown', function(e) {
-    const w = document.getElementById('cs-wrap');
-    if (!w || !w.classList.contains('open')) return;
+    const w = document.querySelector('.cs-wrap.open');
+    if (!w) return;
     if (e.key === 'Escape') {
-        closeSchemeDropdown();
-        const t = document.getElementById('cs-trigger');
+        const t = w.querySelector('.cs-trigger');
+        closeDropdowns();
         if (t) t.focus();
         return;
     }
@@ -416,77 +526,90 @@ document.addEventListener('keydown', function(e) {
     const i = items.indexOf(document.activeElement);
     if (e.key === 'ArrowDown') { e.preventDefault(); (items[i + 1] || items[0]).focus(); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); (items[i - 1] || items[items.length - 1]).focus(); }
-    else if ((e.key === 'Enter' || e.key === ' ') && i >= 0) { e.preventDefault(); pickColorScheme(items[i].getAttribute('data-scheme')); }
+    else if ((e.key === 'Enter' || e.key === ' ') && i >= 0) { e.preventDefault(); items[i].click(); }
 });
 
-// RENDER SETTINGS MENU
+// Renders the full Settings screen (language, appearance, effects, accessibility, sound, wallpaper, backup and reset, support links).
 window.showSettingsMenu = function(keepScroll) {
     if (!enterMenuView()) return;
     if (keepScroll !== true && typeof scrollMainPanelToTop === 'function') scrollMainPanelToTop();
 
-    let html = '<h2>SETTINGS</h2>';
+    let html = '<h2>' + LOC('settings.title') + '</h2>';
     html += '<div class="settings-panel-wrap">';
 
-    // 0. ACCESSIBILITY (first, so it is the easiest thing to reach)
-    const leftOn = Boolean(window.extraSettings.leftMode);
-    const leftW = parseInt(window.extraSettings.leftWidth, 10) || 70;
-    html += `<div class="settings-card">
-        <div class="settings-card-header">Accessibility</div>
-        <div class="settings-card-body">
-            <div class="settings-row" ${leftOn ? '' : 'style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;"'}>
-                <button class="${leftOn ? 'is-selected' : ''}" style="width: 100%; max-width: 100%; text-align: left; min-height: 44px; margin: 0 0 6px 0; font-weight: bold;" onclick="setLeftMode(${!leftOn})">Left-Side Touch Mode: ${leftOn ? 'ON' : 'OFF'}</button>
-                <div class="settings-hint">For phones and tablets. Squeezes the whole game, including pop-ups, the loading window and notifications, into the left part of the screen, so every button can be reached when the rest of the screen cannot be used. Tap the button above to switch it on or off. It has no effect with a mouse on a wide window.</div>
-            </div>
-            ${leftOn ? `<div class="settings-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                <div style="margin-bottom: 6px;">Usable width of the screen:</div>
-                ${[50, 60, 70, 80, 90].map(w => `<button class="settings-pill-btn ${leftW === w ? 'is-selected' : ''}" style="min-height: 40px;" onclick="setLeftWidth(${w})">${w}%</button>`).join('')}
-                <div class="settings-hint">The shaded strip on the right is the part the game no longer uses. Pick the largest width that still sits inside the area your screen responds to.</div>
-            </div>` : ''}
-        </div>
-    </div>`;
+    const curLangObj = LOC.languages().find(l => l.code === currentLang);
+    const curLangName = curLangObj ? curLangObj.name : currentLang.toUpperCase();
+    const langLabel = LOC.has('settings.language.label') ? LOC('settings.language.label') : 'Language:';
 
-    // 1. GAMEPLAY & SIMULATION
     const toggleChecked = showOptionEffects ? 'checked' : '';
     const diffDisabled = selectedDifficulty === 'historical' ? 'disabled' : '';
     const autoAdvChecked = window.extraSettings.autoAdvanceTurn ? 'checked' : '';
 
     html += `<div class="settings-card">
-        <div class="settings-card-header">Gameplay</div>
+        <div class="settings-card-header">${LOC('settings.gameplay.title')}</div>
         <div class="settings-card-body">
+            <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div>
+                    <b>${langLabel}</b> <span>${curLangName}</span>
+                </div>
+                ${typeof renderLanguageFlagsHTML === 'function' ? renderLanguageFlagsHTML(true) : ''}
+            </div>
             <div class="settings-row">
                 <label style="cursor: pointer;">
                     <input type="checkbox" id="settings-effects-toggle" ${toggleChecked} ${diffDisabled} onchange="toggleSettingsEffects()">
-                    Enable Outcome Forecast Tooltips
+                    ${LOC('settings.gameplay.forecast')}
                 </label>
-                ${selectedDifficulty === 'historical' ? '<div class="settings-hint">(Locked: Forecast tooltips are disabled on Historical difficulty)</div>' : '<div class="settings-hint">Displays stat impact previews beneath crisis and faction choices.</div>'}
+                ${selectedDifficulty === 'historical' ? `<div class="settings-hint">${LOC('settings.gameplay.forecast_locked')}</div>` : `<div class="settings-hint">${LOC('settings.gameplay.forecast_hint')}</div>`}
             </div>
             <div class="settings-row">
                 <label style="cursor: pointer;">
                     <input type="checkbox" ${autoAdvChecked} onchange="toggleAutoAdvanceSetting(this)">
-                    Auto-Advance Turn when both Action Phase slots are spent
+                    ${LOC('settings.gameplay.auto_advance')}
                 </label>
-                <div class="settings-hint">Automatically proceeds to the next crisis once an Executive Action and Faction Engagement are completed.</div>
+                <div class="settings-hint">${LOC('settings.gameplay.auto_advance_hint')}</div>
             </div>
-            <div class="settings-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                <span style="margin-right: 8px;">Default MPR Roll-Call Speed:</span>`;
+            <div class="settings-row">
+                <span style="margin-right: 8px;">${LOC('settings.gameplay.tally_speed')}</span>`;
 
     [1, 2, 5, 10].forEach(spd => {
         const isSel = (window.extraSettings.defaultTallySpeed === spd);
         html += `<button class="settings-pill-btn ${isSel ? 'is-selected' : ''}" onclick="setDefaultTallySpeedSetting(${spd})">${spd}x</button>`;
     });
 
-    html += `</div></div></div>`;
+    const curSeatShape = (window.extraSettings && window.extraSettings.seatShape === 'circle') ? 'circle' : 'square';
+    const seatShapeLabel = LOC.has('settings.gameplay.seat_shape') ? LOC('settings.gameplay.seat_shape') : 'Parliament Seat Shape:';
 
-    // 2. DISPLAY, THEME & AUDIO (2-Column Grid on Desktop)
+    html += `</div>
+            <div class="settings-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                <div style="margin-bottom: 6px;">${seatShapeLabel}</div>
+                ${renderDropdown('seatshape', [{ title: null, items: getSeatShapeList() }], curSeatShape, false, 'pickSeatShape')}
+            </div></div></div>`;
+
+    const leftOn = Boolean(window.extraSettings.leftMode);
+    const leftW = parseInt(window.extraSettings.leftWidth, 10) || 70;
+    html += `<div class="settings-card">
+        <div class="settings-card-header">${LOC('settings.accessibility.title')}</div>
+        <div class="settings-card-body">
+            <div class="settings-row" ${leftOn ? '' : 'style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;"'}>
+                <button class="${leftOn ? 'is-selected' : ''}" style="width: 100%; max-width: 100%; text-align: left; min-height: 44px; margin: 0 0 6px 0; font-weight: bold;" onclick="setLeftMode(${!leftOn})">${LOC('settings.accessibility.left_mode', { STATE: LOC(leftOn ? 'settings.on' : 'settings.off') })}</button>
+                <div class="settings-hint">${LOC('settings.accessibility.left_mode_hint')}</div>
+            </div>
+            ${leftOn ? `<div class="settings-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                <div style="margin-bottom: 6px;">${LOC('settings.accessibility.width_label')}</div>
+                ${[50, 60, 70, 80, 90].map(w => `<button class="settings-pill-btn ${leftW === w ? 'is-selected' : ''}" style="min-height: 40px;" onclick="setLeftWidth(${w})">${w}%</button>`).join('')}
+                <div class="settings-hint">${LOC('settings.accessibility.width_hint')}</div>
+            </div>` : ''}
+        </div>
+    </div>`;
+
     html += `<div class="settings-two-col">`;
 
-    // Left Column: Display & Desktop Wallpaper
     html += `<div class="settings-card" style="margin-bottom: 0;">
-        <div class="settings-card-header">Display</div>
+        <div class="settings-card-header">${LOC('settings.display.title')}</div>
         <div class="settings-card-body">
             <div class="settings-row">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
-                    <span>Text &amp; UI Scale:</span>
+                    <span>${LOC('settings.display.text_scale')}</span>
                     <span>
                         <input type="range" id="text-scale-slider" min="80" max="150" value="${textScale}" oninput="updateTextScale()">
                         <span id="text-scale-display" style="display: inline-block; width: 38px; text-align: right;">${textScale}%</span>
@@ -494,46 +617,28 @@ window.showSettingsMenu = function(keepScroll) {
                 </div>
             </div>
             <div class="settings-row">
-                <div style="margin-bottom: 6px;">Desktop Wallpaper Color:</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
-
-    const bgs = [
-        { id: 'teal',    label: 'Win95 Teal',    hex: '#008080' },
-        { id: 'slate',   label: 'Slate Gray',    hex: '#2F4F4F' },
-        { id: 'navy',    label: 'Midnight Navy', hex: '#001B3A' },
-        { id: 'crimson', label: 'Crimson',       hex: '#4A1212' },
-        { id: 'cherry',  label: 'Cherry Pink',   hex: '#E48FAE' },
-        { id: 'piecrust', label: 'Pie Crust',    hex: '#B07A3A' }
-    ];
-    bgs.forEach(bg => {
-        const isCur = (window.extraSettings.desktopBg === bg.id);
-        html += `<button class="settings-swatch-btn ${isCur ? 'is-selected' : ''}" onclick="applyDesktopBackground('${bg.id}'); showSettingsMenu(true);">
-            <span class="settings-color-dot" style="background-color: ${bg.hex};"></span>${bg.label}
-        </button>`;
-    });
-
-    html += `   </div>
+                <div style="margin-bottom: 6px;">${LOC('settings.display.wallpaper')}</div>
+                ${renderDropdown('wallpaper', [{ title: null, items: getWallpaperList() }], window.extraSettings.desktopBg, false, 'pickWallpaper', { label: LOC('settings.display.custom') })}
                 <div style="margin-top: 8px;">
-                    <button class="settings-inline-btn" onclick="document.getElementById('custom-bg-upload').click()">Custom</button>
+                    <button class="settings-inline-btn" onclick="document.getElementById('custom-bg-upload').click()">${LOC('settings.display.custom')}</button>
                     <input type="file" id="custom-bg-upload" accept="image/*" style="display: none;" onchange="uploadCustomWallpaper(this)">
-                    ${window.extraSettings.desktopBg === 'custom' ? `<button class="settings-inline-btn" style="background-color: #ffcccc;" onclick="clearCustomWallpaper()">Clear Custom</button>` : ''}
+                    ${window.extraSettings.desktopBg === 'custom' ? `<button class="settings-inline-btn" style="background-color: #ffcccc;" onclick="clearCustomWallpaper()">${LOC('settings.display.clear_custom')}</button>` : ''}
                 </div>
             </div>
             <div class="settings-row">
-                <div style="margin-bottom: 5px;">Window Style:</div>
-                ${Object.keys(WINDOW_STYLES).map(id => `<button class="settings-inline-btn ${windowStyle === id ? 'is-selected' : ''}" onclick="setWindowStyle('${id}')">${WINDOW_STYLES[id].label}</button>`).join('')}
+                <div style="margin-bottom: 5px;">${LOC('settings.display.window_style')}</div>
+                ${renderDropdown('wstyle', [{ title: null, items: Object.keys(WINDOW_STYLES).map(id => ({ id, label: WINDOW_STYLES[id].label })) }], windowStyle, false, 'pickWindowStyle')}
             </div>
             <div class="settings-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                <div style="margin-bottom: 6px;">Color Scheme:</div>
-                ${renderSchemePicker(windowStyle === 'macos8')}
-                ${windowStyle === 'macos8' ? `<div class="settings-hint" style="margin-left: 0; margin-top: 6px;">Mac OS 8 keeps its own Platinum gray. Schemes apply to the Windows styles.</div>` : ''}
+                <div style="margin-bottom: 6px;">${LOC('settings.display.color_scheme')}</div>
+                ${renderDropdown('scheme', getSchemeGroups(), colorScheme, windowStyle === 'macos8', 'pickColorScheme', { label: colorScheme, swatch: '#C0C0C0' })}
+                ${windowStyle === 'macos8' ? `<div class="settings-hint" style="margin-left: 0; margin-top: 6px;">${LOC('settings.display.mac_hint')}</div>` : ''}
             </div>
         </div>
     </div>`;
 
     html += renderEffectsCard();
 
-    // Right Column: Audio & Data Management
     const musicChecked = musicEnabled ? 'checked' : '';
     const sfxChecked = window.extraSettings.sfxEnabled !== false ? 'checked' : '';
     const audioElem = document.getElementById('bg-music');
@@ -541,54 +646,82 @@ window.showSettingsMenu = function(keepScroll) {
     const volumeDisabled = musicEnabled ? '' : 'disabled';
 
     html += `<div class="settings-card" style="margin-bottom: 0;">
-        <div class="settings-card-header">Audio &amp; Save Data</div>
+        <div class="settings-card-header">${LOC('settings.audio.title')}</div>
         <div class="settings-card-body">
             <div class="settings-row">
                 <label style="cursor: pointer; display: block; margin-bottom: 6px;">
                     <input type="checkbox" id="settings-music-toggle" ${musicChecked} onchange="toggleMusicEnabled()">
-                    Enable Background Music Player
+                    ${LOC('settings.audio.music')}
                 </label>
                 <label style="cursor: pointer; display: block; margin-bottom: 8px;">
                     <input type="checkbox" id="settings-sfx-toggle" ${sfxChecked} onchange="toggleSfxSetting(this)">
-                    Enable Sound Effects (Alerts &amp; Chimes)
+                    ${LOC('settings.audio.sfx')}
                 </label>
                 <div style="${musicEnabled ? '' : 'color: #888;'}">
-                    <span>Music Volume:</span>
+                    <span>${LOC('settings.audio.volume')}</span>
                     <input type="range" id="volume-slider" min="0" max="100" value="${currentVolume}" oninput="updateVolume()" ${volumeDisabled}>
                     <span id="volume-display">${currentVolume}%</span>
                 </div>
             </div>
             <div class="settings-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                <div style="margin-bottom: 6px;">Data:</div>
+                <div style="margin-bottom: 6px;">${LOC('settings.data.label')}</div>
                 <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px;">
-                    <button class="settings-inline-btn" onclick="exportAchievementsBackup()">Export Achievements</button>
-                    <button class="settings-inline-btn" onclick="document.getElementById('import-achv-input').click()">Import Achievements</button>
+                    <button class="settings-inline-btn" onclick="exportAchievementsBackup()">${LOC('settings.data.export')}</button>
+                    <button class="settings-inline-btn" onclick="document.getElementById('import-achv-input').click()">${LOC('settings.data.import')}</button>
                     <input type="file" id="import-achv-input" accept=".json" style="display: none;" onchange="importAchievementsBackup(this)">
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                    <button class="settings-inline-btn" style="background-color: #ffd6d6;" onclick="if(confirm('Delete your saved campaign? This cannot be undone.')){ clearCampaignSave(); showCustomAlert('Saved campaign cleared.', () => showSettingsMenu(true)); }">Clear Saved Campaign</button>
-                    <button class="settings-inline-btn" style="background-color: #ff9999;" onclick="resetAllAchievementsPrompt()">Reset All Achievements</button>
+                    <button class="settings-inline-btn" style="background-color: #ffd6d6;" onclick="triggerSettingsConfirm('campaign')">${LOC('settings.data.clear_campaign')}</button>
+                    <button class="settings-inline-btn" style="background-color: #ff9999;" onclick="triggerSettingsConfirm('achievements')">${LOC('settings.data.reset_achievements')}</button>
                 </div>
+                ${pendingSettingsConfirm === 'campaign' ? `
+                <div class="settings-sunken-well" style="margin-top: 8px;">
+                    <div style="margin-bottom: 6px; font-weight: bold;">${LOC('settings.data.clear_campaign_confirm')}</div>
+                    <button class="settings-inline-btn" style="background-color: #ff9999;" onclick="clearSavedCampaignConfirmed()">${LOC('common.continue')}</button>
+                    <button class="settings-inline-btn" onclick="cancelSettingsConfirm()">${LOC('common.back')}</button>
+                </div>` : ''}
+                ${pendingSettingsConfirm === 'achievements' ? `
+                <div class="settings-sunken-well" style="margin-top: 8px;">
+                    <div style="margin-bottom: 6px; font-weight: bold;">${LOC('settings.data.reset_confirm')}</div>
+                    <button class="settings-inline-btn" style="background-color: #ff9999;" onclick="resetAllAchievementsConfirmed()">${LOC('common.continue')}</button>
+                    <button class="settings-inline-btn" onclick="cancelSettingsConfirm()">${LOC('common.back')}</button>
+                </div>` : ''}
             </div>
+        </div>
+    </div>`;
+
+    const inspiredCaption = LOC.has('settings.inspired.caption') ? LOC('settings.inspired.caption') : 'Inspired by:';
+
+    html += `<div class="settings-inspired-wrap">
+        <div class="settings-inspired-caption">${inspiredCaption}</div>
+        <div class="settings-inspired-grid">
+            ${INSPIRATION_GAMES.map(g => `
+            <div class="settings-inspired-item" onclick="window.open('${g.url}', '_blank')" title="${g.title} — ${g.creator}">
+                <div class="settings-inspired-img-frame glass-frame">
+                    <span class="settings-inspired-placeholder">[ ${g.title.toUpperCase()} ]</span>
+                    <img src="${g.image}" alt="${g.title}" draggable="false" onerror="this.style.display='none'">
+                </div>
+                <div class="settings-inspired-title">${g.title}</div>
+                <div class="settings-inspired-creator">${g.creator}</div>
+            </div>`).join('')}
         </div>
     </div>`;
 
     html += `</div>`;
 
-    // 3. COMMUNITY & SUPPORT
     html += `<div class="settings-card">
-        <div class="settings-card-header">Support</div>
+        <div class="settings-card-header">${LOC('settings.support.title')}</div>
         <div class="settings-card-body">
             <div style="margin-bottom: 12px;">
                 <div class="settings-brand-btn-row">
                     <button class="brand-btn brand-btn-kofi" onclick="window.open('${SUPPORT_LINKS.kofi}', '_blank')">
-                        ${SETTINGS_ICONS.kofi}Buy me a coffee
+                        ${SETTINGS_ICONS.kofi}${LOC('settings.support.kofi')}
                     </button>
                     <button class="brand-btn brand-btn-trakteer" onclick="window.open('${SUPPORT_LINKS.trakteer}', '_blank')">
-                        ${SETTINGS_ICONS.trakteer}Support on Trakteer
+                        ${SETTINGS_ICONS.trakteer}${LOC('settings.support.trakteer')}
                     </button>
                     <button class="brand-btn brand-btn-twitter" onclick="window.open('${SUPPORT_LINKS.twitter}', '_blank')">
-                        ${SETTINGS_ICONS.twitter}X / Twitter
+                        ${SETTINGS_ICONS.twitter}${LOC('settings.support.twitter')}
                     </button>
                 </div>
             </div>
@@ -597,12 +730,12 @@ window.showSettingsMenu = function(keepScroll) {
 
     html += '</div>';
 
-    html += `<center><button style="width: 250px; margin-top: 6px; background-color: #ff9999; text-align: center;" onclick="returnToPreviousView()">Back</button></center>`;
+    html += `<center><button style="width: 250px; margin-top: 6px; background-color: #ff9999; text-align: center;" onclick="returnToPreviousView()">${LOC('common.back')}</button></center>`;
 
     document.getElementById('main-panel').innerHTML = html;
 };
 
-// Apply saved settings immediately at load, since the DOM already exists (scripts sit at the end of body)
+// Apply saved settings immediately at load
 loadUserSettings();
 loadExtendedSettings();
 if (textScale !== 100) applyTextScale(textScale);

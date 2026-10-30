@@ -1,4 +1,5 @@
-// debug
+// SUMMARY: Developer tools: debug election presets and tally controls, horse-trading test settings and a debug menu, plus console helpers.
+// Campaign saving is paused during debug runs.
 
 // Whether achievements may unlock during debug runs
 window.debugAllowAchievements = false;
@@ -34,6 +35,7 @@ window.exitDebugElectionToMenu = function() {
     showStartMenu();
 };
 
+// Console helper that gives the player Political Capital (100 by default).
 window.givePC = function(amount = 100) {
     if (typeof stats === 'undefined') {
         console.warn("Start the game first!");
@@ -41,7 +43,6 @@ window.givePC = function(amount = 100) {
     }
 
     const prev = stats.PC;
-    // Tops you off cleanly to 100 (or whatever max is)
     stats.PC = typeof clampPC === 'function' ? clampPC(stats.PC + amount) : Math.min(100, stats.PC + amount);
 
     if (typeof logPCChange === 'function') {
@@ -73,7 +74,6 @@ window.runDebugElection = function(preset = 'pure_random') {
         portraitFactions = ['pdip', 'golkar_akbar', 'poros_tengah', 'abri', 'ppp', 'pkb', 'golkar_habibie', 'utusan_daerah', 'utusan_golongan', 'other_parties'];
     }
 
-    // Apply the Oct 7 Poros Tengah merger so the 700 seats match Election Day
     if (factions['poros_tengah'] && factions['poros_tengah'].transformed) {
         const t = factions['poros_tengah'].transformed;
         factions['poros_tengah'].name = t.name;
@@ -177,8 +177,6 @@ function injectDebugTallyControls(lastPreset) {
     mainPanel.appendChild(debugBar);
 }
 
-// DEBUG: JUMP TO THE NIGHT OF THE LONG KNIVES (HORSE-TRADING)
-
 // State of the horse-trading tester (active flag, settings, saving backup)
 window.debugHorseActive = false;
 window.debugHorseSettings = { mood: 'mixed', national: 'mid', pc: 40 };
@@ -233,7 +231,6 @@ window.runDebugHorseTrading = function(mood, national, pc) {
     }
     debugDisableSaving();
 
-    // Fresh factions, then the Oct 7 Poros Tengah merger (mirrors the real game before Oct 18)
     if (typeof initialFactionsSnapshot !== 'undefined' && Object.keys(initialFactionsSnapshot).length > 0) {
         factions = JSON.parse(JSON.stringify(initialFactionsSnapshot));
     }
@@ -258,7 +255,6 @@ window.runDebugHorseTrading = function(mood, national, pc) {
         if (factions['other_parties']) factions['other_parties'].seats = 26;
     }
 
-    // Clean campaign state
     bannedFactions = {};
     activeDecrees = {};
     completedInteractions = {};
@@ -280,7 +276,6 @@ window.runDebugHorseTrading = function(mood, national, pc) {
     if (window.OppositionEngine) OppositionEngine.reset();
     window.pcLog = [];
 
-    // Randomized national metrics and faction loyalty
     const nat = DEBUG_HORSE_NATIONAL[cfg.national];
     const mo = DEBUG_HORSE_MOODS[cfg.mood];
     stats.PC = cfg.pc;
@@ -299,13 +294,11 @@ window.runDebugHorseTrading = function(mood, national, pc) {
     if (factions['abri']) stats.mil = Math.round(factions['abri'].affinity);
     else stats.mil = randInt(nat.min, nat.max);
 
-    // Jump to the Night of the Long Knives turn, already in the action phase
     gameStarted = true;
     currentTurn = nightIdx + 1;
     window.resolvedEventTurn = currentTurn;
     isActionPhase = true;
 
-    // Achievements stay locked in debug runs unless the debug menu box is ticked
     if (!originalUnlockAchievement && typeof window.unlockAchievement === 'function') {
         originalUnlockAchievement = window.unlockAchievement;
     }
@@ -395,7 +388,6 @@ window.showDebugMenu = function() {
     html += `<label style="cursor: pointer; font-weight: bold;"><input type="checkbox" ${achvChecked} onchange="window.debugAllowAchievements = this.checked"> Allow Achievements to unlock during Debug Elections</label>`;
     html += '</div>';
 
-    // Night of the Long Knives (horse-trading) tester
     const hs = window.debugHorseSettings;
     const opt = (obj, sel) => Object.keys(obj).map(k => `<option value="${k}" ${k === sel ? 'selected' : ''}>${obj[k].label}</option>`).join('');
     html += '<div style="padding: 15px; margin-bottom: 15px; background-color: #F5F5F5; border: 2px solid #808080; font-family: MS Sans Serif; font-size: 13px; line-height: 1.8;">';

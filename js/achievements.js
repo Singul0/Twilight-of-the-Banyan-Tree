@@ -1,21 +1,25 @@
-// achievements.js: achievement flags, unlock rules, toast queue and the Achievements screen.
-// Load order: after storage.js, before game.js.
+// SUMMARY: Achievement system: tracking flags, unlock rules checked against the game state, a one-at-a-time toast queue
+// and the Achievements screen. Load order: after storage.js, before game.js.
 
-// Achievement Tracking Flags
+// Counters and flags that achievement rules read (also saved with the campaign by storage.js).
 let lowestGovStability = 100;
 let bankBaliCleanSteps = {};
 let timorPromiseSteps = {};
 let sp3UpheldWithHighCendana = false;
 let helpedRaisSpeaker = false;
 
-// ACHIEVEMENTS SYSTEM
-let unlockedAchievements = [];
+// Ids of unlocked achievements (loaded from storage) and the achievement definitions (filled by game.js from achievements.json).
+let unlockedAchievements = loadUnlockedAchievements();
 let ACHIEVEMENTS = [];
 
-// Load the ids of previously unlocked achievements from storage
-unlockedAchievements = loadUnlockedAchievements();
+// Final Appeals, one per faction that has one. They are only open on the last three turns, so a run can use at most three.
+const FINAL_APPEAL_IDS = ['tni_final_appeal', 'golkar_final_appeal', 'loyalist_final_stand', 'pdip_final_appeal', 'axis_final_deal', 'others_final_appeal', 'daerah_final_appeal', 'golongan_final_appeal'];
 
-// Evaluate every achievement unlock rule against the current game state
+// True if every listed decree is enacted / every listed routine action was used at least once.
+function allDecreesEnacted(ids) { return ids.every(id => activeDecrees[id]); }
+function allRoutinesUsed(ids) { return ids.every(id => (actionUsageCount[id] || 0) > 0); }
+
+// Evaluates every unlock rule against the current game state; stat-based ones only count on medium, high and historical difficulty.
 function checkAchievements() {
     if (!gameStarted) return;
 
@@ -24,11 +28,11 @@ function checkAchievements() {
         lowestGovStability = curGovStab;
     }
 
-    const isEligibleDifficulty = ['medium', 'high', 'historical'].includes(selectedDifficulty);
-    if (isEligibleDifficulty) {
+    if (['medium', 'high', 'historical'].includes(selectedDifficulty)) {
         if (stats.pop >= 100) unlockAchievement('pop_max');
         if (stats.cendana <= 0) unlockAchievement('cendana_zero');
         if (factions['pdip'] && factions['pdip'].affinity >= 100) unlockAchievement('pdip_max');
+        if (stats.stab >= 90) unlockAchievement('aman_terkendali');
 
         const hasIMFDurability = activeDecrees['imf_fuel_subsidy'] && activeDecrees['imf_bulog_deregulation'] && activeDecrees['imf_ibra_liquidation'];
         if (stats.intl >= 100 && stats.econ <= 15 && stats.pop <= 30 && hasIMFDurability) {
@@ -44,7 +48,6 @@ function checkAchievements() {
         unlockAchievement('baligate_clean');
     }
 
-    // Alt-History & Party-Banning Achievements
     if (activeDecrees['ban_pdip_subversion']) {
         unlockAchievement('kudatuli_redux');
     }
@@ -63,9 +66,41 @@ function checkAchievements() {
     if (activeDecrees['rainbow_coalition_accord']) {
         unlockAchievement('rainbow_coalition');
     }
+
+    // Decree and routine-action sets.
+    if (allDecreesEnacted(['anti_corruption', 'civil_service_neutrality', 'direct_presidential_amendment', 'suharto_asset_seizure_tribunal', 'political_prisoner_release', 'human_rights_commission_powers', 'broadcast_liberalization'])) {
+        unlockAchievement('total_reformasi');
+    }
+    if (allDecreesEnacted(['civilian_defense_ministry', 'police_military_separation', 'abolish_kodam_territorial', 'abolish_abri_mpr_seats'])) {
+        unlockAchievement('finis_dwifungsi');
+    }
+    if (allDecreesEnacted(['regional_autonomy', 'aceh_special_status_law', 'maluku_irja_division'])) {
+        unlockAchievement('nkri_terms');
+    }
+    if (activeDecrees['chinese_cultural_ban_repeal'] &&
+        allRoutinesUsed(['trisakti_semanggi_commemoration', 'chinatown_reconciliation', 'womens_commission', 'sbkri_review', 'declassify_1965_files'])) {
+        unlockAchievement('tolak_lupa');
+    }
+    if (activeDecrees['suharto_asset_seizure_tribunal'] && allRoutinesUsed(['seize_cendana_tolls', 'audit_kodam_foundations'])) {
+        unlockAchievement('cendana_cashback');
+    }
+    if (allDecreesEnacted(['ratify_kamra_militia_bill', 'reinstate_siupp_censorship', 'purge_utusan_golongan']) && allRoutinesUsed(['mobilize_pam_swakarsa'])) {
+        unlockAchievement('empire_strikes_beringin');
+    }
+    if (activeDecrees['reinstate_siupp_censorship']) {
+        unlockAchievement('siupp_is_back');
+    }
+
+    // Faction play: the finale telephone calls and banked Favors.
+    if (FINAL_APPEAL_IDS.filter(id => completedInteractions[id]).length >= 3) {
+        unlockAchievement('halo_halo_senayan');
+    }
+    if (Object.keys(factions).filter(k => (factions[k].favor || 0) >= 1).length >= 6) {
+        unlockAchievement('utang_budi');
+    }
 }
 
-// Unlock an achievement once, save it and show its toast
+// Unlocks an achievement once, saves it and queues its toast.
 function unlockAchievement(id) {
     if (!unlockedAchievements.includes(id)) {
         unlockedAchievements.push(id);
@@ -75,17 +110,17 @@ function unlockAchievement(id) {
     }
 }
 
-// Toast queue state: toasts are shown one at a time
+// Toast queue state: toasts are shown one at a time.
 const achievementToastQueue = [];
 let achievementToastBusy = false;
 
-// Queue an achievement toast and start showing it if idle
+// Adds a toast to the queue and starts showing it if nothing is showing.
 function showAchievementToast(achv) {
     achievementToastQueue.push(achv);
     if (!achievementToastBusy) showNextAchievementToast();
 }
 
-// Show the next queued toast with its sound, then hide it after 3.5 seconds
+// Shows the next queued toast with its sound for 3.5 seconds, then continues with the queue.
 function showNextAchievementToast() {
     const toast = document.getElementById('achievement-toast');
     const achv = achievementToastQueue.shift();
@@ -95,37 +130,34 @@ function showNextAchievementToast() {
         return;
     }
     achievementToastBusy = true;
-    document.getElementById('toast-name').innerText = achv.title;
+    document.getElementById('toast-name').innerText = LOC.r(achv.title);
     toast.style.display = 'block';
     if (typeof window.playAchievementSfx === 'function') window.playAchievementSfx();
-    else if (typeof window.playPopupChime === 'function') window.playPopupChime();
     setTimeout(() => {
         toast.style.display = 'none';
         if (achievementToastQueue.length > 0) setTimeout(showNextAchievementToast, 250);
         else achievementToastBusy = false;
     }, 3500);
-}
+} 
 
-// ACHIEVEMENTS SCREEN
+// Renders the Achievements screen with locked and unlocked entries.
 window.showAchievementsMenu = function() {
     if (!enterMenuView()) return;
     scrollMainPanelToTop();
-    let html = '<center><h2>Achievements</h2></center>';
-    html += '<p style="font-family: MS Sans Serif; font-size: 13px; color: #333; text-align: center; margin-bottom: 20px;">Review your achievements below.</p>';
+    let html = '<center><h2>' + LOC('title.achievements') + '</h2></center>';
+    html += '<p style="font-family: MS Sans Serif; font-size: 13px; color: #333; text-align: center; margin-bottom: 20px;">' + LOC('achievements.intro') + '</p>';
 
     ACHIEVEMENTS.forEach(achv => {
-        const isUnlocked = unlockedAchievements.includes(achv.id);
-        const iconClass = isUnlocked ? 'unlocked' : 'locked';
+        const rowClass = unlockedAchievements.includes(achv.id) ? 'unlocked' : 'locked';
 
-        html += `<div class="achievement-row">
-                    <div class="achievement-icon ${iconClass}"><img src="${achv.icon}" alt="Achv"></div>
-                    <div class="achievement-details">
-                        <div class="achievement-title">${achv.title}</div>
-                        <div class="achievement-desc">${achv.desc}</div>
+        html += `<div class="achievement-row ${rowClass}">
+                    <div class="achievement-details"> 
+                        <div class="achievement-title">${LOC.r(achv.title)}</div>
+                        <div class="achievement-desc">${LOC.r(achv.desc)}</div>
                     </div>
                  </div>`;
     });
 
-    html += `<center><button style="width: 250px; margin-top: 20px; background-color: #ff9999; text-align: center;" onclick="returnToPreviousView()">Back</button></center>`;
+    html += `<center><button style="width: 250px; margin-top: 20px; background-color: #ff9999; text-align: center;" onclick="returnToPreviousView()">${LOC('common.back')}</button></center>`;
     document.getElementById('main-panel').innerHTML = html;
 };

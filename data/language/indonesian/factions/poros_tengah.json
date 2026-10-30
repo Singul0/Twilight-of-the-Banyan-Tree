@@ -1,0 +1,288 @@
+{
+  "name": "Fraksi Reformasi<br>(Amien Rais)",
+  "short": "A. Rais",
+  "seats": 34,
+  "affinity": 20,
+  "image": "photo/rais.png",
+  "coverImage": "photo/faction/pan.png",
+  "summary": "Ketua Umum <font color=\"#004488\"><b>Partai Amanat Nasional (PAN)</b></font> sekaligus tokoh sentral di balik kebangkitan gerakan mahasiswa 1998, Amien Rais mengendalikan pengaruh parlemen yang jauh lebih kecil ketimbang perawakan nasionalnya. Setelah <font color=\"#004488\"><b>PAN</b></font> meraup 7,12% suara pada Pemilu Juni 1999—tiga puluh empat kursi di Senayan, yang kemudian bergabung dengan tujuh legislator <font color=\"#006068\"><b>Partai Keadilan (PK)</b></font> membentuk <font color=\"#004488\"><b>Fraksi Reformasi</b></font>—ilmuwan politik lulusan Universitas Gadjah Mada ini tidak memiliki jumlah suara mentah yang cukup untuk mengklaim kursi kepresidenan secara mandiri. Yang ia miliki sebagai gantinya adalah otoritas moral dan keberanian taktis. Pernah menantang para jenderal Soeharto pada Mei 1998, Amien mendominasi studio televisi dan halaman depan surat kabar, beroperasi laksana penembak jitu politik yang mengamati <font color=\"#7D6000\"><b>Golkar</b></font> dan <font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> saling menghantam sementara ia merajut jalan ketiga di balik pintu tertutup.<p></p>Di dalam <font color=\"#004488\"><b>Fraksi Reformasi</b></font>, kaum modernis Muhammadiyah perkotaan duduk berdampingan dengan para intelektual sekuler-pluralis dari Majelis Amanat Rakyat (MARA) serta mantan tahanan politik seperti A.M. Fatwa. Tak satupun dari mereka yang mempercayai para sisa-sisa Orde Baru yang memenuhi kabinet Anda, namun mereka menyimpan ketakutan yang sama besarnya terhadap kepresidenan Megawati yang memusuhi Islam politik. Memamerkan kredibilitas reformis yang sejati serta merawat dukungan publik memberikan Istana posisi tawar yang kuat atas kaukus Amien, kendati pria yang dijuluki Raja Pembuat (<i>Kingmaker</i>) oleh pers Jakarta ini tak pernah berhenti menghitung langkah berikutnya.",
+  "biography": "Lahir di Surakarta pada 26 April 1944 dari keluarga Muhammadiyah yang taat, Mohammad Amien Rais merampungkan disertasinya di Universitas Chicago mengenai Ikhwanul Muslimin sebelum kembali untuk mengajar hubungan internasional di Universitas Gadjah Mada (<i>UGM</i>), Yogyakarta. Pada tahun 1993, di saat membicarakan suksesi kepresidenan masih dianggap tabu, ia memecah keheningan dengan melontarkan isu <i>suksesi kepemimpinan nasional</i> ke ruang publik. Terpilih sebagai Ketua Umum Muhammadiyah—gerakan Islam modernis beranggotakan dua puluh delapan juta orang di Indonesia—dalam Muktamar Banda Aceh 1995, ia juga memimpin Dewan Pakar di dalam ICMI Anda sendiri hingga Februari 1997, tatkala Soeharto memaksa Anda mendepaknya setelah ia mengecam penjarahan asing di tambang tembaga-emas Freeport di Irian Jaya dan skandal penipuan emas Busang (Bre-X).<p></p>Sepanjang musim semi 1998, Amien memberikan payung organisatoris berskala nasional bagi gerakan protes kampus, yang mencapai puncaknya pada 20 Mei ketika ia membatalkan aksi long march satu juta massa di Monumen Nasional (<i>Monas</i>) setelah <font color=\"#3E5022\"><b>ABRI</b></font> mengepung Medan Merdeka dengan kawat berduri dan panser—dengan alasan ia menolak menyerahkan korban bergaya Lapangan Tiananmen kepada para jenderal. Beberapa jam kemudian, Soeharto mengundurkan diri. Mendirikan <font color=\"#004488\"><b>PAN</b></font> pada Agustus 1998 sebagai partai reformasi yang inklusif, Amien menelan kekecewaan pahit ketika para pemilih Muhammadiyah terpecah suaranya pada Juni 1999. Tak gentar meski berada di peringkat kelima, ia kini mondar-mandir di suite Hotel Senayan, bertekad menyatukan partai-partai Islam Indonesia yang terpecah ke dalam sebuah blok yang cukup kuat untuk mendikte suksesi bulan Oktober.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Mendukung",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Tertarik",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Mengamati",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Skeptis",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Kritis",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Mengecam",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Lawan Tangguh",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "rais_islamic_law",
+      "text": "Dukung otonomi undang-undang bagi penerapan kerangka hukum Islam di tingkat provinsi",
+      "cost": 28,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Sejak berkampanye di Banda Aceh dan Sumatera Barat, Amien Rais mengusung desentralisasi asimetris—berargumen bahwa provinsi-provinsi dengan tradisi keislaman yang kuat harus menerima wewenang undang-undang untuk menerapkan syariat agama dalam bidang pendidikan, peradilan keluarga, dan adat istiadat publik tanpa harus menghidupkan kembali pertarungan konstitusional nasional memperebutkan Piagam Jakarta. Berikan sinyal melalui Bina Graha bahwa pemerintahan Anda mendukung otonomi keagamaan tingkat provinsi. Mengikat kepemimpinan Fraksi Reformasi dengan hutang budi politik jangka panjang, sekaligus memicu penolakan sengit dari kalangan nasionalis sekuler PDI Perjuangan.",
+      "effects": {
+        "poros_tengah": [14, 26],
+        "poros_tengah_favor": 1,
+        "ppp": [4, 8],
+        "pdip": [-12, -7],
+        "ref": 2,
+        "stab": 2,
+        "pop": -1
+      },
+      "alertMsg": "Amien Rais menyambut baik pendekatan tersebut sebagai terobosan bagi penentuan nasib sendiri daerah, dan para legislator modernis di PAN maupun PPP merapatkan barisan di belakang kerangka tersebut. Namun di Jalan Diponegoro, para petinggi Megawati mengecam janji itu sebagai serangan terselubung dari belakang terhadap negara kesatuan Pancasila."
+    },
+    {
+      "id": "rais_diplomatic",
+      "text": "Angkat para intelektual MARA dan kader PAN menduduki posisi duta besar serta dewan pertimbangan negara",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Ketika Amien Rais ikut mendirikan Majelis Amanat Rakyat (MARA) pada Mei 1998 dan mendeklarasikan <font color=\"#004488\"><b>PAN</b></font> tiga bulan berselang, puluhan akademisi reformis, ekonom seperti Bambang Sudibyo, dan insinyur seperti Hatta Rajasa mempertaruhkan karier mereka pada partai baru tersebut. Buka lowongan penempatan diplomatik di luar negeri serta kursi penasihat ekonomi bagi calon-calon yang diajukan oleh dewan pimpinan eksekutif Amien.",
+      "effects": {
+        "poros_tengah": [7, 13],
+        "ref": -1,
+        "pop": 1,
+        "golkar_akbar": -1
+      },
+      "alertMsg": "Penunjukan tersebut meluncur mulus melewati Sekretariat Negara tanpa hambatan. Dengan disematkannya beberapa kolega akademis terdekatnya ke dalam dewan penasihat negara dan daftar duta besar, Amien Rais melunakkan nada serangan paginya terhadap Bina Graha."
+    },
+    {
+      "id": "rais_freeport",
+      "text": "Buka izin peninjauan kembali parlemen atas Kontrak Karya Freeport-McMoRan dan konsesi pertambangan Orde Baru",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Pada Februari 1997, Soeharto memaksa Anda mencopot Amien Rais dari jabatan Ketua Dewan Pakar ICMI setelah ia menyerang ketentuan bagi hasil tambang Grasberg milik PT Freeport Indonesia di Irian Jaya serta skandal emas Busang yang melibatkan para kroni Cendana. Tuntaskan utang masa lalu tersebut dengan memberikan mandat kepada <font color=\"#004488\"><b>Fraksi Reformasi</b></font> untuk mengaudit Kontrak Karya pertambangan asing. Mengamankan hutang budi politik personal dari Amien Rais, meskipun para investor Wall Street dan diplomat Washington akan meradang menghadapi peninjauan kontrak tersebut.",
+      "effects": {
+        "poros_tengah": [11, 19],
+        "poros_tengah_favor": 1,
+        "econ": [-7, -3],
+        "intl": [-7, -3],
+        "pop": [3, 5],
+        "utusan_daerah": [2, 4],
+        "ref": [2, 4]
+      },
+      "alertMsg": "Amien Rais menikmati mandat tersebut sebagai bentuk pemulihan nama baik personal atas pendepakannya dari ICMI pada tahun 1997, memuji kesediaan Anda untuk menghadapi kontrak-kontrak sumber daya Orde Baru. Namun dalam hitungan jam, Kedutaan Besar AS dan para eksekutif tambang asing melayangkan protes mendesak ke Departemen Pertambangan dan Energi."
+    },
+    {
+      "id": "rais_muhammadiyah",
+      "text": "Salurkan hibah kesehatan dan pendidikan negara ke universitas-universitas Muhammadiyah dan klinik PKU",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Meskipun Amien Rais menyerahkan kepemimpinan Muhammadiyah kepada Ahmad Syafii Maarif saat ia mendirikan <font color=\"#004488\"><b>PAN</b></font>, jaringan sekolah, universitas, dan rumah sakit PKU milik organisasi tersebut tetap menjadi rumah spiritualnya—sekaligus jembatan menuju Menteri Agama Anda sendiri, Malik Fadjar. Cairkan dana jaring pengaman sosial negara untuk mensubsidi klinik-klinik dan perguruan tinggi Muhammadiyah di perkotaan.",
+      "effects": {
+        "poros_tengah": [7, 13],
+        "pop": [3, 7],
+        "ref": 2,
+        "ppp": 2,
+        "stab": 2
+      },
+      "alertMsg": "Dari Yogyakarta hingga Padang, pengurus wilayah Muhammadiyah menyambut hibah tersebut sebagai penyelamat vital bagi sekolah dan klinik yang dihantam inflasi. Kabar mengenai kedermawanan Istana sampai ke telinga Amien Rais melalui Syafii Maarif sebelum pekan ini berakhir."
+    },
+    {
+      "id": "rais_reformasi_credit",
+      "text": "Puji Amien Rais dalam pidato kenegaraan sebagai arsitek moral gerakan Reformasi Mei 1998",
+      "cost": 10,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Di dalam markas <font color=\"#004488\"><b>PAN</b></font>, rasa gundah masih membekas karena kabinet Anda meraup buah institusional dari pengunduran diri Soeharto sementara Amien Rais—yang mempertaruhkan penangkapan demi memimpin mahasiswa dan meredakan pertumpahan darah di Monas pada 20 Mei 1998—justru disingkirkan di luar lingkaran kekuasaan. Gunakan pidato televisi dari Istana Negara untuk menyapa Amien secara terhormat sebagai katalisator terdepan kebangkitan demokratisasi Indonesia.",
+      "effects": {
+        "poros_tengah": [6, 10],
+        "pop": [3, 5],
+        "ref": [2, 4],
+        "intl": 1
+      },
+      "alertMsg": "Pujian tersebut tidak membebani kas negara sama sekali namun merayu rasa kebangsaan Amien Rais yang kuat terhadap takdir sejarah. Jaringan aktivis mahasiswa yang berbaris di belakangnya pada Mei 1998 menyambut pidato itu sebagai kejujuran yang sudah lama tertunda dari Istana."
+    }
+  ],
+  "transformed": {
+    "name": "Poros Tengah<br>(Amien Rais & Abdurrahman Wahid)",
+    "coverImage": "photo/faction/porostengah.png",
+    "seats": 163,
+    "summary": "Direkayasa oleh Amien Rais bersama <font color=\"#1E6840\"><b>Hamzah Haz dari PPP</b></font> dan <font color=\"#005500\"><b>Abdurrahman Wahid (Gus Dur) dari PKB</b></font>, <font color=\"#004488\"><b>Poros Tengah (Central Axis)</b></font> telah menjungkirbalikkan aritmatika Sidang Umum 1999 dalam semalam. Dengan merajut <font color=\"#004488\"><b>Fraksi Reformasi (PAN &amp; PK)</b></font>, <font color=\"#1E6840\"><b>PPP</b></font>, <font color=\"#005500\"><b>PKB</b></font>, <font color=\"#006068\"><b>Partai Bulan Bintang (PBB) pimpinan Yusril Ihza Mahendra</b></font>, serta faksi-faksi sempalan <font color=\"#006068\"><b>Daulatul Ummah</b></font> di bawah panji persaudaraan Islam (<i>Ukhuwah Islamiyah</i>), Amien berhasil menghimpun koalisi 163 kursi yang melampaui kekuatan <font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> maupun <font color=\"#7D6000\"><b>Golkar</b></font>.<p></p>Di balik permukaannya, <font color=\"#004488\"><b>Poros Tengah</b></font> tetaplah sebuah perkawinan kepentingan antara dua kubu yang telah lama berseteru: kaum modernis Muhammadiyah dan para kiai tradisionalis Nahdlatul Ulama, kaum puritan <i>Tarbiyah</i> kampus di dalam <font color=\"#006068\"><b>PK</b></font> serta para veteran gaek Orde Baru di dalam <font color=\"#1E6840\"><b>PPP</b></font>. Apa yang menyatukan mereka adalah penolakan bersama untuk menyerahkan Republik kepada kubu nasionalis-sekuler Megawati—serta siasat Amien yang menjagokan Gus Dur sebagai kandidat presiden alternatif seandainya pencalonan Anda goyah. Kredibilitas reformasi yang kuat dan kedudukan publik yang kokoh tetap menjadi kunci untuk berunding dengan blok ini, sebab baik Bina Graha maupun Diponegoro tidak akan mampu mencapai 351 suara di Senayan tanpa merangkul—atau memecah belah—Poros Tengah.",
+    "biography": "Selama setengah abad, persaingan antara kalangan Muslim modernis perkotaan di Muhammadiyah dan para ulama tradisionalis pedesaan di Nahdlatul Ulama telah membelah umat Islam Indonesia, sebuah perpecahan yang bermula sejak keluarnya NU dari Masyumi pada tahun 1952. Namun seiring berjalannya musim panas 1999 dan membayanginya prospek pertarungan terpolarisasi antara pemerintahan Anda yang tertekan dengan <font color=\"#9E1F14\"><b>PDI Perjuangan pimpinan Megawati Soekarnoputri</b></font> di Jakarta, Amien Rais melancarkan manuver paling berani sepanjang masa transisi.<p></p>Diplomasi antar-jemput yang menghubungkan markas besar Gus Dur di Ciganjur, kantor Hamzah Haz di <font color=\"#1E6840\"><b>PPP</b></font>, serta para pemimpin modernis dari <font color=\"#006068\"><b>PBB</b></font> dan Partai Keadilan akhirnya melahirkan <font color=\"#004488\"><b>Poros Tengah</b></font>. Berhasil merebut kursi Ketua MPR dengan dukungan dari seluruh spektrum Islam, Amien Rais kini memegang palu pimpinan Sidang Umum sementara Gus Dur menunggu di sayap sebagai kuda hitam penantang kursi kepresidenan dari koalisi ini. Untuk bertahan hidup dalam pemungutan suara pertanggungjawaban tersebut, Anda harus meyakinkan Amien, Gus Dur, dan Hamzah Haz bahwa mempertahankan Anda di Istana Merdeka jauh lebih menguntungkan kaukus Islam ketimbang merebut mahkota itu untuk diri mereka sendiri.",
+    "moods": [
+      {
+        "min": 80,
+        "text": "Berdiri Bersama Habibie",
+        "color": "#006400",
+        "overlay": "rgba(0, 255, 0, 0.15)"
+      },
+      {
+        "min": 60,
+        "text": "Condong ke Habibie",
+        "color": "#009000",
+        "overlay": "rgba(0, 191, 255, 0.10)"
+      },
+      {
+        "min": 50,
+        "text": "Menimbang Opsi",
+        "color": "#4682B4",
+        "overlay": "rgba(0, 0, 255, 0.10)"
+      },
+      {
+        "min": 40,
+        "text": "Skeptis",
+        "color": "#2F4F4F",
+        "overlay": "rgba(255, 140, 0, 0.10)"
+      },
+      {
+        "min": 30,
+        "text": "Menyiapkan Pencalonan Gus Dur",
+        "color": "#FF4500",
+        "overlay": "rgba(255, 69, 0, 0.15)"
+      },
+      {
+        "min": 20,
+        "text": "Bersatu Melawan Habibie",
+        "color": "#FF0000",
+        "overlay": "rgba(255, 0, 0, 0.15)"
+      },
+      {
+        "min": 0,
+        "text": "Bergerak Menjatuhkan Habibie",
+        "color": "#8B0000",
+        "overlay": "rgba(139, 0, 0, 0.25)"
+      }
+    ],
+    "interactions": [
+      {
+        "id": "axis_cabinet",
+        "text": "Janjikan kursi Wakil Presiden dan kementerian ekonomi senior kepada pimpinan Poros Tengah",
+        "cost": 35,
+        "repeatable": false,
+        "maxTurn": 21,
+        "minTurn": 18,
+        "description": "Sejak <font color=\"#004488\"><b>Poros Tengah</b></font> terbentuk, para makelarnya telah memperjelas harga untuk mencegah Gus Dur maju menantang Anda di ruang sidang: posisi Wakil Presiden serta kendali atas portofolio ekonomi dan kesejahteraan utama bagi <font color=\"#004488\"><b>PAN</b></font>, <font color=\"#1E6840\"><b>PPP</b></font>, dan <font color=\"#005500\"><b>PKB</b></font>. Sodorkan pakta pembagian kekuasaan di atas meja sebagai tukaran atas instruksi penggalangan suara yang mendukung pidato pertanggungjawaban Anda di seluruh 163 utusan Poros Tengah. Mengamankan komitmen koalisi yang mengikat dari Poros Tengah, sekaligus membuat PDI Perjuangan meradang.",
+        "effects": {
+          "poros_tengah": 25,
+          "poros_tengah_favor": 1,
+          "pdip": -12,
+          "stab": -3
+        },
+        "alertMsg": "Di balik pintu tertutup di Senayan, tawaran pembagian kekuasaan tersebut mengubah kalkulasi di dalam tubuh Poros Tengah, menarik para negosiator PPP dan PAN untuk merapat ke kubu Anda. Di markas besar PDI Perjuangan, kabar mengenai pakta tersebut memicu kemarahan saat para ahli strategi Megawati menyadari bahwa mereka sedang disingkirkan dari hitung-hitungan koalisi."
+      },
+      {
+        "id": "axis_education",
+        "text": "Lipat gandakan alokasi anggaran Departemen Agama untuk pesantren NU dan sekolah-sekolah Muhammadiyah",
+        "cost": 22,
+        "repeatable": false,
+        "maxTurn": 21,
+        "minTurn": 18,
+        "description": "Kedua sayap <font color=\"#004488\"><b>Poros Tengah</b></font>—kiai tradisionalis NU dan para pendidik modernis Muhammadiyah—bergantung pada pendanaan yang dikelola oleh Menteri Agama Malik Fadjar. Tandatangani instruksi eksekutif yang melipatgandakan subsidi pendidikan negara untuk madrasah, pesantren, dan universitas Islam di pedesaan sebelum pemungutan suara paripurna. Menempatkan jajaran pimpinan kependetaan Poros Tengah dalam hutang budi Anda.",
+        "effects": {
+          "poros_tengah": 16,
+          "poros_tengah_favor": 1,
+          "econ": -5,
+          "pop": 3
+        },
+        "alertMsg": "Para ulama dan pimpinan sekolah dari kalangan Nahdlatul Ulama maupun Muhammadiyah menyambut hangat instruksi tersebut, mencatat bahwa tidak ada satu pun pemerintahan dalam sejarah Republik yang pernah memperluas anggaran pendidikan keagamaan dalam skala sebesar itu."
+      },
+      {
+        "id": "axis_speaker_deference",
+        "text": "Tunjukkan sikap hormat kepada Ketua MPR Amien Rais terkait aturan paripurna dan penjadwalan komisi",
+        "cost": 20,
+        "repeatable": false,
+        "maxTurn": 21,
+        "minTurn": 18,
+        "description": "Dari mimbar Sidang Umum MPR, Ketua Amien Rais mengendalikan jarum jam prosedural, aturan tata tertib, serta mekanisme penghitungan suara atas laporan pertanggungjawaban Anda. Instruksikan para penggalang suara Anda di <font color=\"#7D6000\"><b>Golkar</b></font> untuk menghormati putusan-putusan Amien dari kursi pimpinan alih-alih memperdebatkan palunya di ruang sidang.",
+        "effects": {
+          "poros_tengah": 15,
+          "ref": 3,
+          "stab": 2
+        },
+        "alertMsg": "Amien Rais mencatat sikap hormat Istana dari podium Ketua MPR dengan anggukan puas, meredakan gesekan prosedural antara penggalang suara Bina Graha dan pimpinan MPR menjelang pemungutan suara pertanggungjawaban."
+      },
+      {
+        "id": "axis_hajj_quota",
+        "text": "Alokasikan kembali kuota haji daerah dan perjalanan carter ONH kepada yayasan-yayasan afiliasi Poros Tengah",
+        "cost": 18,
+        "repeatable": true,
+        "maxTurn": 21,
+        "minTurn": 18,
+        "description": "Departemen Agama mengawasi kuota tahunan haji sebanyak dua ratus ribu jemaah serta yayasan bimbingan Ongkos Naik Haji (ONH) atau Kelompok Bimbingan Ibadah Haji (<i>KBIH</i>) yang sangat menguntungkan. Revisi formula alokasi tahun ini agar berpihak kepada yayasan-yayasan perjalanan ziarah daerah yang terikat dengan jaringan <font color=\"#1E6840\"><b>PPP</b></font>, NU, dan Muhammadiyah di dalam <font color=\"#004488\"><b>Poros Tengah</b></font>.",
+        "effects": {
+          "poros_tengah": 12,
+          "pop": 2
+        },
+        "alertMsg": "Kabar mengenai revisi alokasi kuota haji tersebut menyebar ke kantor-kantor departemen agama daerah dan biro perjalanan KBIH dalam hitungan jam, memberikan para pengurus wilayah Poros Tengah kepentingan nyata dalam kelangsungan hidup pemerintahan Anda."
+      },
+      {
+        "id": "axis_ppp_courtship",
+        "text": "Akui Ketua Umum PPP Hamzah Haz sebagai co-author utama Garis-Garis Besar Haluan Negara (GBHN) MPR",
+        "cost": 15,
+        "repeatable": false,
+        "maxTurn": 21,
+        "minTurn": 18,
+        "description": "Di dalam <font color=\"#004488\"><b>Poros Tengah</b></font>, Ketua Umum <font color=\"#1E6840\"><b>Partai Persatuan Pembangunan (PPP)</b></font> Hamzah Haz—yang pernah mengabdi di kabinet Anda sebagai Menteri Investasi sebelum mundur untuk memimpin fraksinya yang berkekuatan 58 kursi—memegang komando atas blok partai tunggal terbesar. Angkat Hamzah Haz sebagai mitra utama Istana dalam merumuskan Garis-Garis Besar Haluan Negara (<i>GBHN</i>) 1999–2004.",
+        "effects": {
+          "poros_tengah": 12,
+          "ref": 2,
+          "stab": 2
+        },
+        "alertMsg": "Hamzah Haz menerima peran perumusan yang menonjol itu dengan ketenangan parlementer yang terlatih, dan 58 utusan PPP di dalam Poros Tengah melunakkan retorika mereka terhadap laporan pertanggungjawaban Anda."
+      },
+      {
+        "id": "axis_final_deal",
+        "text": "Adakan pertemuan puncak tengah malam bersama Amien Rais, Gus Dur, dan Hamzah Haz sebelum kotak suara dibuka",
+        "cost": 0,
+        "repeatable": false,
+        "maxTurn": 22,
+        "minTurn": 20,
+        "description": "Mengendalikan 163 suara di lantai paripurna, <font color=\"#004488\"><b>Poros Tengah</b></font> memegang nasib kepresidenan Anda di tangan mereka. Duduklah berunding di balik pintu tertutup di Hotel Mulia bersama Amien Rais, Abdurrahman Wahid, Hamzah Haz, dan Yusril Ihza Mahendra untuk menagih setiap janji, subsidi, dan hutang politik yang telah Anda himpun di seputar <font color=\"#004488\"><b>PAN</b></font>, <font color=\"#005500\"><b>PKB</b></font>, dan <font color=\"#1E6840\"><b>PPP</b></font>. Mencairkan setiap hutang budi politik yang dimiliki Poros Tengah dan partai-partai pembentuknya terhadap Istana.",
+        "effects": {
+          "poros_tengah": 20,
+          "pdip": -5,
+          "other_parties": 4,
+          "stab": 2
+        },
+        "alertMsg": "Setelah berjam-jam tawar-menawar alot di atas secangkir teh di dalam suite berkeamanan ketat di Hotel Mulia, Amien Rais, Gus Dur, dan Hamzah Haz bangkit untuk menyalami tangan Anda. Setiap hutang politik yang Anda tabung bersama PAN, PKB, dan PPP telah diletakkan di atas meja sebelum sidang pagi mengetukkan palunya."
+      }
+    ]
+  }
+}

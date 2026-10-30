@@ -1,0 +1,145 @@
+{
+  "name": "Fraksi Kebangkitan Bangsa<br>(Gus Dur)",
+  "short": "PKB",
+  "seats": 51,
+  "affinity": 30,
+  "image": "photo/jalil.png",
+  "coverImage": "photo/faction/pkb.png",
+  "summary": "<font color=\"#005500\"><b>Partai Kebangkitan Bangsa (PKB)</b></font> berfungsi sebagai sayap elektoral Nahdlatul Ulama (NU), organisasi Islam tradisionalis terbesar di Indonesia dengan lebih dari tiga puluh juta pengikut. Meskipun Matori Abdul Djalil memegang pucuk pimpinan ketua di Senayan, arah spiritual dan taktis partai sepenuhnya berada di tangan Abdurrahman Wahid—<i>Gus Dur</i>. Meraih lima puluh satu kursi pada Juni 1999, <font color=\"#005500\"><b>PKB</b></font> menjadi jangkar bagi blok pemilih pedesaan yang sangat besar dan terkonsentrasi di Jawa Timur serta Jawa Tengah, tempat jaringan ulama, pesantren, dan basis keagamaan NU mengungguli mesin partai sekuler mana pun.<p></p>Secara teologis pluralis dan menentang keras pemberlakuan hukum Islam melalui negara, <font color=\"#005500\"><b>PKB</b></font> menolak kekakuan sektarian yang diusung oleh faksi-faksi konservatif. Namun keluwesan politik Gus Dur yang sulit ditebak membuat fraksinya terbuka untuk berkoalisi dengan siapa pun yang sejalan dengan strategi besarnya. Berakar pada diskursus Islam neo-modernis, corak pluralismenya memadukan yurisprudensi Islam dengan nasionalisme Indonesia. Dukungan finansial bagi pesantren pedesaan, diplomasi kesehatan, dan penghormatan terhadap jaringan tradisionalis menjamin kerja sama blok ini, meskipun Gus Dur menyimpan ambisi tertinggi untuk menduduki kursi kepresidenan sendiri.",
+  "biography": "Dibentuk pada Juli 1998 segera setelah runtuhnya Orde Baru, <font color=\"#005500\"><b>PKB</b></font> memberikan wadah politik legal pertama bagi para kiai Nahdlatul Ulama sejak kebijakan fusi partai paksa Soeharto tahun 1973 yang menyeret NU ke dalam <font color=\"#1E6840\"><b>PPP</b></font>. Gus Dur—yang saat itu tengah memulihkan diri dari stroke parah yang mengganggu penglihatannya—membayangkan <font color=\"#005500\"><b>PKB</b></font> sebagai rumah politik yang inklusif dan nasionalis bagi Islam tradisionalis yang mengontekstualisasikan penafsiran Al-Qur'an dan Hadis untuk masyarakat demokratis modern.<p></p>Asumsi awal bahwa <font color=\"#005500\"><b>PKB</b></font> akan otomatis berkoalisi dengan <font color=\"#9E1F14\"><b>PDI Perjuangan pimpinan Megawati Soekarnoputri</b></font>—yang berakar dari persahabatan pribadi jangka panjang antara Gus Dur dan Megawati—buyar ketika Gus Dur mulai mempermainkan faksi-faksi besar untuk memposisikan dirinya sebagai <i>kingmaker</i> utama dalam masa transisi. Memadukan intuisi politik tradisional Jawa dengan otoritas teologis yang mendalam, ia bergerak di koridor-koridor kekuasaan Jakarta sebagai figur krusial yang mampu menjembatani jurang pemisah sekuler-religius yang mengancam keutuhan Republik.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Sejalan dengan Gus Dur",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Mendukung",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Pragmatis",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Sulit Ditebak",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Menjaga Jarak",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Menentang",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Bermusuhan",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "pkb_fund",
+      "text": "Arahkan dana pembangunan negara ke jantung kantong pesantren di Jawa Timur",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Jaringan pesantren pedesaan di seluruh Jawa Timur—khususnya di sekitar Jombang dan madrasah Tebuireng yang didirikan oleh kakek Gus Dur, Hasyim Asy'ari—membentuk fondasi organisasi di balik perolehan kursi parlemen <font color=\"#005500\"><b>PKB</b></font>. Salurkan suntikan dana pertanian dan pendidikan negara secara diam-diam langsung ke kabupaten-kabupaten pedesaan tersebut.",
+      "effects": {
+        "pkb": [8, 16],
+        "poros_tengah": [2, 4],
+        "pop": 2,
+        "ref": 1,
+        "utusan_daerah": 2
+      },
+      "alertMsg": "Gus Dur menyampaikan salamnya yang khas, jenaka, dan tak tertebak melalui seorang perantara di Bina Graha, menyambut langkah tersebut dengan kelakar kering yang menjadi ciri khasnya. Di Jombang dan pedesaan Jawa Timur, para kiai kampung yang pengaruhnya menggerakkan basis suara PKB menyambut dukungan tersebut dengan rasa puas."
+    },
+    {
+      "id": "pkb_gusdur_health",
+      "text": "Atur evakuasi medis internasional rahasia dan perawatan spesialis bagi Gus Dur",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Penglihatan Abdurrahman Wahid yang kian merosot serta komplikasi kesehatan kronisnya memerlukan perhatian neurologis ahli di luar negeri. Lakukan koordinasi melalui jalur pribadi yang aman—dengan melewati birokrasi kesehatan publik—untuk menerbangkan dokter spesialis ke Jakarta atau mengatur pengobatan di Eropa. Mengamankan hutang budi politik yang sangat penting dari lingkaran dalam Gus Dur yang akan berlanjut ke dalam Poros Tengah.",
+      "effects": {
+        "pkb": [11, 19],
+        "pkb_favor": 1,
+        "ref": [3, 7],
+        "poros_tengah": [3, 7],
+        "pop": 2,
+        "ppp": 2
+      },
+      "alertMsg": "Bantuan tersebut diterima dengan humor kering khasnya alih-alih sikap formal konvensional. Orang-orang terdekat Gus Dur mencatat gestur tersebut, menyadari bahwa Istana mengulurkan tangan kemanusiaan saat percaturan politik berada di ujung tanduk."
+    },
+    {
+      "id": "pkb_ansor",
+      "text": "Koordinasikan pengamanan di basis-basis NU secara langsung dengan unit milisi GP Ansor dan Banser",
+      "cost": 18,
+      "repeatable": true,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Sayap pemuda Nahdlatul Ulama (GP Ansor) memiliki korps pengamanan berseragam sendiri (Banser) di seluruh Jawa, yang memobilisasi ratusan ribu anak muda untuk pengamanan massa dan pertahanan situs-situs keagamaan. Alih-alih mengandalkan detasemen <font color=\"#3E5022\"><b>ABRI</b></font> semata di basis-basis tradisionalis, buka jalur penghubung langsung ke jajaran komando Banser demi menjaga ketertiban umum.",
+      "effects": {
+        "pkb": [7, 13],
+        "poros_tengah": [2, 4],
+        "stab": [4, 8],
+        "mil": [-4, -2],
+        "abri": [-3, -2],
+        "ref": 2,
+        "pop": 2
+      },
+      "alertMsg": "Koordinasi keamanan berjalan tanpa hambatan, memungkinkan unit-unit Banser meredam potensi titik api sektarian di Jawa Tengah dan Jawa Timur tanpa perlu mengerahkan pasukan teritorial. Para jenderal Cilangkap, yang mengamati pemerintahan sipil berunding langsung dengan milisi keagamaan, menggerutu di balik pintu tertutup."
+    },
+    {
+      "id": "pkb_matori_role",
+      "text": "Angkat Ketua Umum PKB Matori Abdul Djalil ke dalam portofolio kabinet senior",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Sementara Gus Dur memegang komando spiritual atas partai, Matori Abdul Djalil mengelola mesin legislatif <font color=\"#005500\"><b>PKB</b></font> di Senayan. Angkat Matori ke posisi jabatan kabinet penting guna mengikat sayap institusional partai secara kokoh pada pemerintahan Anda menjelang bulan Oktober. Mengamankan hutang budi politik jangka panjang dari pimpinan parlemen PKB.",
+      "effects": {
+        "pkb": [10, 18],
+        "pkb_favor": 1,
+        "golkar_akbar": 2,
+        "ref": 2,
+        "stab": 2
+      },
+      "alertMsg": "Matori Abdul Djalil menerima jabatan tersebut dengan kepuasan yang terlihat jelas, memperkokoh jembatan institusional antara fraksi parlemen PKB dan Bina Graha seiring mendekatnya Sidang Umum MPR."
+    },
+    {
+      "id": "pkb_nu_congress",
+      "text": "Berikan subsidi untuk muktamar nasional Nahdlatul Ulama dan madrasah-madrasah daerah afiliasinya",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Muktamar nasional Nahdlatul Ulama yang akan datang serta pemeliharaan ribuan sekolah asrama yang berafiliasi di seluruh nusantara memerlukan dukungan finansial yang besar. Sahkan hibah langsung dari negara untuk menyokong jalannya kegiatan tersebut.",
+      "effects": {
+        "pkb": [8, 16],
+        "poros_tengah": [3, 5],
+        "pop": [3, 5],
+        "econ": [-4, -2],
+        "ref": 1,
+        "stab": 2
+      },
+      "alertMsg": "Pengurus besar NU menerima kontribusi negara tersebut dengan apresiasi mendalam, dan kabar mengenai dukungan kepresidenan itu menyebar melalui jaringan tradisionalis di seluruh Jawa dalam hitungan hari."
+    }
+  ]
+}

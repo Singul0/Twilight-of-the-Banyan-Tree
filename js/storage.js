@@ -1,27 +1,26 @@
-// storage.js: localStorage saving and loading: campaign autosave, user settings and unlocked achievements.
-// Load order: before achievements.js and game.js.
+// SUMMARY: All localStorage persistence: the automatic mid-run campaign save and resume, user settings
+// (difficulty, audio, appearance, language, extended settings) and the list of unlocked achievements.
+// Must load before achievements.js and game.js.
 
-// localStorage keys
+// localStorage keys for settings, achievements, custom wallpaper and the active campaign.
 const SETTINGS_KEY = 'habibie_settings';
 const ACHIEVEMENTS_KEY = 'habibie_achievements';
 const CUSTOM_BG_KEY = 'habibie_custom_bg';
-
-// AUTOMATIC MID-RUN CAMPAIGN SAVE & RESUME SYSTEM (localStorage)
 const CAMPAIGN_SAVE_KEY = 'habibie_active_campaign_v1';
+const DIFFICULTY_WINS_KEY = 'habibie_difficulty_wins';
 
-// Save the current campaign to localStorage
-// Save the current campaign to localStorage
+// Writes the whole running campaign (turn, stats, factions, decrees, cooldowns, achievement counters, opposition state) to localStorage.
 window.saveCampaignState = function() {
     if (!gameStarted || currentTurn >= MAX_TURNS) return;
     try {
         const curEv = events[currentTurn - 1];
-        const oppState = window.OppositionEngine ? OppositionEngine.getState() : null;
         const payload = {
             timestamp: Date.now(),
             currentTurn,
             isActionPhase,
             globalMalus,
             selectedDifficulty,
+            ucnActive: window.ucnActive || null,
             showOptionEffects,
             actionCooldowns,
             actionUsageCount,
@@ -29,6 +28,7 @@ window.saveCampaignState = function() {
             factionUsageCount: typeof factionUsageCount !== 'undefined' ? factionUsageCount : {},
             turnExecutiveUsed,
             turnFactionUsed,
+            turnFactionCount,
             activeDecrees,
             bannedFactions,
             completedInteractions,
@@ -38,16 +38,13 @@ window.saveCampaignState = function() {
             stats,
             factions,
             portraitFactions,
-            wirantoLocked: window.wirantoLocked,
-            wirantoStrain: window.wirantoStrain,
             lowestGovStability,
             bankBaliCleanSteps,
             timorPromiseSteps,
             sp3UpheldWithHighCendana,
             helpedRaisSpeaker,
             pcLog: window.pcLog || [],
-            opposition: oppState,
-            adversary: oppState, // Legacy key kept for backward compatibility
+            opposition: window.OppositionEngine ? OppositionEngine.getState() : null,
             lang: currentLang,
             curEventShuffledIndices: curEv ? curEv.shuffledIndices : null
         };
@@ -55,7 +52,7 @@ window.saveCampaignState = function() {
     } catch (e) { console.warn('Could not save campaign:', e); }
 };
 
-// Return the saved campaign if a valid one exists, otherwise null
+// Returns the saved campaign if a valid, unfinished one exists, otherwise null.
 window.hasSavedCampaign = function() {
     try {
         const raw = localStorage.getItem(CAMPAIGN_SAVE_KEY);
@@ -68,14 +65,14 @@ window.hasSavedCampaign = function() {
     return null;
 };
 
-// Delete the saved campaign
+// Deletes the saved campaign.
 window.clearCampaignSave = function() {
     try {
         localStorage.removeItem(CAMPAIGN_SAVE_KEY);
     } catch (e) { console.warn(e); }
 };
 
-// Restore the saved campaign into the game state and resume it
+// Restores the saved campaign into the game state (reloading its language first if needed) and resumes at the saved screen.
 window.continueSavedCampaign = async function() {
     const data = hasSavedCampaign();
     if (!data) {
@@ -85,8 +82,7 @@ window.continueSavedCampaign = async function() {
 
     clearTallyInterval();
 
-    // The save holds text in the language it was played in; reload matching assets first
-    if ((data.lang === 'en' || data.lang === 'id') && data.lang !== currentLang) {
+    if (LOC.languages().some(l => l.enabled && l.code === data.lang) && data.lang !== currentLang) {
         currentLang = data.lang;
         saveUserSettings();
         await loadLocalizedAssets();
@@ -96,6 +92,8 @@ window.continueSavedCampaign = async function() {
     isActionPhase = Boolean(data.isActionPhase);
     globalMalus = Number(data.globalMalus) || 0;
     selectedDifficulty = data.selectedDifficulty || selectedDifficulty;
+    window.ucnActive = null;
+    if (selectedDifficulty === 'ucn' && window.UCN) UCN.restoreRun(data.ucnActive);
     if (typeof data.showOptionEffects === 'boolean') showOptionEffects = data.showOptionEffects;
 
     actionCooldowns = data.actionCooldowns || {};
@@ -104,6 +102,7 @@ window.continueSavedCampaign = async function() {
     factionUsageCount = data.factionUsageCount || {};
     turnExecutiveUsed = Boolean(data.turnExecutiveUsed);
     turnFactionUsed = Boolean(data.turnFactionUsed);
+    turnFactionCount = Number.isFinite(data.turnFactionCount) ? data.turnFactionCount : (turnFactionUsed ? 1 : 0);
     activeDecrees = data.activeDecrees || {};
     bannedFactions = data.bannedFactions || {};
     completedInteractions = data.completedInteractions || {};
@@ -121,20 +120,7 @@ window.continueSavedCampaign = async function() {
     helpedRaisSpeaker = Boolean(data.helpedRaisSpeaker);
     window.pcLog = Array.isArray(data.pcLog) ? data.pcLog : [];
 
-    // Restore opposition state (supports both new `opposition` key and legacy `adversary` + top-level Wiranto fields)
-    const savedOpp = Object.assign({}, data.opposition || data.adversary || {});
-    if (savedOpp.wirantoLocked === undefined && data.wirantoLocked !== undefined) {
-        savedOpp.wirantoLocked = Boolean(data.wirantoLocked);
-    }
-    if (savedOpp.wirantoStrain === undefined && data.wirantoStrain !== undefined) {
-        savedOpp.wirantoStrain = Number(data.wirantoStrain) || 0;
-    }
-    if (window.OppositionEngine) {
-        OppositionEngine.restoreState(savedOpp);
-    } else {
-        window.wirantoLocked = savedOpp.wirantoLocked !== undefined ? Boolean(savedOpp.wirantoLocked) : true;
-        window.wirantoStrain = Number(savedOpp.wirantoStrain) || 0;
-    }
+    if (window.OppositionEngine) OppositionEngine.restoreState(data.opposition || {});
 
     window.resolvedEventTurn = 0;
     window.electionPanelSnapshot = null;
@@ -157,7 +143,7 @@ window.continueSavedCampaign = async function() {
     }
 };
 
-// SETTINGS PERSISTENCE (single key; includes the extended settings from settings.js)
+// Saves difficulty, audio, appearance, text size, language and extended settings under one key.
 function saveUserSettings() {
     try {
         const audioElem = document.getElementById('bg-music');
@@ -180,10 +166,9 @@ function saveUserSettings() {
     } catch (e) { console.warn('Could not save settings:', e); }
 }
 
-// Collect the extended settings to save, dropping a custom wallpaper that has no stored image
+// Returns the extended settings to save, replacing a "custom" wallpaper with "teal" when its image was not stored.
 function getPersistableExtraSettings() {
     const extra = Object.assign({}, window.extraSettings || {});
-    // Never persist "custom" wallpaper when the image itself could not be stored
     if (extra.desktopBg === 'custom') {
         let hasImage = false;
         try { hasImage = Boolean(localStorage.getItem(CUSTOM_BG_KEY)); } catch (e) { console.warn(e); }
@@ -192,7 +177,7 @@ function getPersistableExtraSettings() {
     return extra;
 }
 
-// Load saved settings and apply them
+// Loads saved settings (defaulting the language to English) and applies the appearance and music player visibility.
 function loadUserSettings() {
     try {
         const raw = localStorage.getItem(SETTINGS_KEY);
@@ -204,12 +189,9 @@ function loadUserSettings() {
         if (s.selectedDifficulty) selectedDifficulty = s.selectedDifficulty;
         if (typeof s.showOptionEffects === 'boolean') showOptionEffects = s.showOptionEffects;
         if (typeof s.musicEnabled === 'boolean') musicEnabled = s.musicEnabled;
-        // Appearance (older saves stored one combined 'currentTheme': default | crt | win98)
         if (WINDOW_STYLES[s.windowStyle]) windowStyle = s.windowStyle;
-        else if (WINDOW_STYLES[s.currentTheme]) windowStyle = s.currentTheme;
         if (COLOR_SCHEMES[s.colorScheme]) colorScheme = s.colorScheme;
         if (typeof s.crtEnabled === 'boolean') crtEnabled = s.crtEnabled;
-        else if (s.currentTheme === 'crt') crtEnabled = true;
         if (s.effects && typeof s.effects === 'object') {
             Object.keys(effectsOn).forEach(k => { if (typeof s.effects[k] === 'boolean') effectsOn[k] = s.effects[k]; });
         }
@@ -219,7 +201,7 @@ function loadUserSettings() {
         }
         if (s.crtIntensity !== undefined) crtIntensity = Number(s.crtIntensity);
         if (s.textScale !== undefined) textScale = Number(s.textScale);
-        currentLang = 'en';
+        currentLang = (typeof s.currentLang === 'string' && /^[a-z]{2,3}$/.test(s.currentLang)) ? s.currentLang : 'en';
 
         const audioElem = document.getElementById('bg-music');
         if (audioElem && s.volume !== undefined && (s.volumeSet || Number(s.volume) !== 1)) {
@@ -234,7 +216,7 @@ function loadUserSettings() {
     } catch (e) { console.warn(e); }
 }
 
-// ACHIEVEMENT PROGRESS (the list of unlocked ids; the achievement logic is in achievements.js)
+// Reads the list of unlocked achievement ids (empty list if missing or broken).
 function loadUnlockedAchievements() {
     try {
         const list = JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '[]');
@@ -244,9 +226,23 @@ function loadUnlockedAchievements() {
     }
 }
 
-// Save the unlocked achievement ids to localStorage
+// Writes the list of unlocked achievement ids.
 function saveUnlockedAchievements() {
     try {
         localStorage.setItem(ACHIEVEMENTS_KEY, JSON.stringify(unlockedAchievements));
     } catch (e) { console.warn(e); }
+}
+
+// Records a win on a difficulty (kept across runs). Returns true once Easy, Medium, High and Historical have all been won.
+function recordDifficultyWin(difficulty) {
+    const standard = ['easy', 'medium', 'high', 'historical'];
+    try {
+        let wins = JSON.parse(localStorage.getItem(DIFFICULTY_WINS_KEY) || '[]');
+        if (!Array.isArray(wins)) wins = [];
+        if (standard.includes(difficulty) && !wins.includes(difficulty)) {
+            wins.push(difficulty);
+            localStorage.setItem(DIFFICULTY_WINS_KEY, JSON.stringify(wins));
+        }
+        return standard.every(d => wins.includes(d));
+    } catch (e) { return false; }
 }

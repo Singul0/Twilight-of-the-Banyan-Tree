@@ -1,0 +1,73 @@
+[
+  {
+  "version": "0.2 <i>\"Rekayasa Politik\"</i>",
+  "date": "31 October 2026",
+  "title": "Beta 0.2 \"Rekayasa Politik\"",
+  "notes": [
+    "This version introduces Indonesian localization alongside a major rework of difficulty, opposition mechanics, gameplay balance, UI, music, and code cleanup.",
+
+    "<b>NEW CONTENT</b><ul><ul><li><b>SEVERE STATE SITUATIONS (SSS):</b> Beat Historical to unlock a 24-card custom crisis board. Win with every situation card at Level III to unlock the <i>Bragging Rights</i> achievement.</li><li><b>PDI-P OPPOSITION:</b> Added a Street Mobilization bar to the PDI-P faction screen.</li><li><b>MILITARY OPPOSITION:</b> Added a Patience and Anger bar to the Military faction screen.</li><li><b>ACHIEVEMENTS:</b> Expanded to 66 achievements (31 new) across reformist, authoritarian, stat, and faction paths, and fixed the <i>Bragging Rights</i> unlock trigger.</li><li><b>MUSIC PLAYER:</b> Added genre filters (National, Critique, Pop, International) and direct seek and volume sliders on the dashboard.</li></ul></ul>",
+
+    "<b>DIFFICULTY</b><ul>Updated and reworked. Beyond starting <font color=\"#0000FF\">Political Capital</font>, <font color=\"#704d00\">Cendana Influence</font>, <font color=\"#8B0000\">Maluses</font>, <font color=\"#0000FF\">PC</font> action costs, and military anger, each difficulty now also scales delegate defection rates, chamber volatility, event outcomes, and faction leverage:<br><br><ul><li><b>Easy:</b> 75 PC, +15 to starting stats, Cendana at 40. Decrees and faction deals cost 10% less, bad events hurt 25% less, and faction deals pay 15% more.</li><li><b>Medium:</b> 50 PC, +5 to stats, Cendana at 60, +1 PC/turn. Good events are 8% stronger and faction deals pay 15% more.</li><li><b>High:</b> 35 PC, no stat bonus, Cendana at 75. Slightly higher action costs, bad events hit 5% harder, and Cendana slowly regenerates.</li><li><b>Historical:</b> 20 PC, Cendana at 95, +15% action costs (+2 PC on every faction deal). Bad events hit 10% harder, good events are 5% weaker, favors are capped at 2 per faction, and all cooldowns last 1 turn longer.</li></ul></ul>",
+
+    "<b>GAMEPLAY</b><ul><ul><li><b>STATS:</b> Faction support above baseline slowly erodes each turn unless maintained, high stats gravitate toward neutral (and low stats nudge upward on Easy/Medium), and Cendana regenerates toward its starting strength.</li><li><b>ELECTION:</b> Added difficulty-scaled mood swings, wildcard shocks, aisle-crossing, and secret-ballot betrayal during the final vote.</li><li><b>LEVERAGE:</b> Faction leverage now scales cost and gain multipliers gradually instead of jumping at fixed tiers.</li><li><b>DECREES:</b> Stat and loyalty floors guaranteed by decrees now ramp up each turn instead of locking instantly.</li><li><b>ROUTINE:</b> Repeating the same Routine Action or Faction Deal now yields diminishing PC and weaker effects.</li><li><b>FAVORS:</b> Banked favors per faction are now capped by difficulty.</li></ul></ul>",
+
+    "<b>REBALANCE</b><ul><ul><li><b>ACTIONS &amp; EVENTS:</b> Reworked Decrees, Routine Actions, Faction Deals, and Events to fit the new difficulty curve, nerfed overpowered options, and softened Medium difficulty.</li><li><b>OPPOSITION:</b> Balanced Military and PDI-P impacts across events and actions; extreme decrees now deal direct shock to Military patience, while high Military loyalty slows and drains anger.</li><li><b>POLITICAL CAPITAL:</b> Capped passive PC earnings at 10 PC, made stability maluses take a proportional share of routine PC gains instead of a flat cut, and capped combined Military/PDI-P PC reductions at 40%.</li></ul></ul>",
+
+    "<b>UI &amp; CLEANUP</b><ul><ul><li><b>VISUALS:</b> Added new themes (Merah Putih, Rainbow, Rainbow swirl, Twilight, Kopi, Solarized), added a glossy glass overlay to images, enlarged the \"In Memoriam photo,\" and colored Poros Tengah green once formed.</li><li><b>TEXT &amp; ALERTS:</b> Trimmed events, factions, and decrees to two paragraphs max, justified faction descriptions, standardized all stat names, and color-coded meter text and new-interaction alerts.</li><li><b>UNDER THE HOOD:</b> Cleaned up Library formatting, unified stat and stance strings for localization, removed legacy loading/tooltip code, and fixed minor bugs and typos.</li></ul></ul>",
+
+    "<b>REMOVED</b><ul><ul><li>Removed the Cilangkap Pact, achievement images, and the street mobilization line and tooltips from the presidential agenda.</li></ul></ul>"
+  ]
+  },
+  {
+    "version": "0.1.3 Hotfix",
+    "date": "October 21, 2026",
+    "title": "Beta 0.1.3 Hotfix",
+    "notes": [
+      "The military now coordinate with the other factions to oust you if you piss them off, they also let people protest and scapegoat minorities.",
+      "PDIP and Central Axis are reluctant to be in the same coalition.",
+      "dissolving seats affect your credibility among the delegates, and they may not appear during the vote.",
+      "Reworked opposition AI (Placeholder for later updates).<ul><li><font color='#ff0000'>There are no popups yet, but Megawati, Rais, and Wiranto is fucking over your administration in the backgrond.</font></li></ul>",
+      "Added placeholder for localisation rework.",
+      "Rewrote faction information to be more concise.",
+      "Changed Golkar loyalist portrait with A.A Baramuli.",
+      "Changed Golkar loyalist name from Irama Tersedak to Irama Suka Nusantara (Irian Jaya, Maluku, Sumatra, Sulawesi, Kalimantan, and Nusa Tenggara).",
+      "Improved some election UI.",
+      "Download Results now show enacted decrees.",
+      "Small rebalancing.",
+      "Decluttered settings by making color schemes be a dropdown."
+    ]
+  },
+  {
+    "version": "0.1.2 Hotfix",
+    "date": "October 20, 2026",
+    "title": "Beta 0.1.2 Hotfix",
+    "notes": [
+      "General Wiranto’s patience is no longer infinite: Leave Cilangkap out in the cold, and troops will happily stay in their barracks while the streets burn.",
+      "Amien Rais and Gus Dur remembered they control 163 seats and don't work for you.",
+      "Akbar Tandjung caught on to your weekly blackmail routine.",
+      "Taufik Kiemas has had enough free coffee.",
+      "Increased betrayal."
+    ]
+  },
+  {
+    "version": "0.1.1 Hotfix",
+    "date": "October 19, 2026",
+    "title": "Beta 0.1.1 Hotfix",
+    "notes": [
+      "<b>Amien Rais and Gus Dur will no longer blindly hand you the presidency:</b> Coalition favors are now taxed on merge, and final appeal favor-dumping has heavy diminishing returns.",
+      "<b>Infinite PC button patched:</b> Slashed base Political Capital payouts across routine actions so you can't just print 300+ PC like an ATM.",
+      "<b>PDI-P will literally burn the capital down and then crucify you:</b> Freezing out Megawati into deep hostility now triggers massive red-shirt demonstrations, bleeding National Stability and spooking regional delegates.<ul><li>Added a 'Street Mobilization' indicator to PDI-P's screen so you can see how close the Satgas is to rioting before things explode.</li></ul>",
+      "<b>Cendana actually does something instead of sleeping:</b> Nuking Suharto's family influence too fast in a single turn now causes liquidity runs and street-level sabotage.",
+      "Reunifying Golkar under Slipi sets a reasonable floor instead of permanently making him 100% loyal."
+    ]
+  },
+  {
+    "version": "0.1",
+    "date": "October 19, 2026",
+    "title": "Beta Release \"Pidato Pertanggungjawaban\"",
+    "notes": [
+      "Expect some bugs and missing features, but the game is playable and the core mechanics are in place.<br><font color='#ff0000'>This is a beta release, so please report any bugs you find!<br>Notes: <ul><li>Missing images</li><li>Some untested features</li><li>Broken display</li></ul></font><br><br><font color='#000080'>"
+    ]
+  }
+]

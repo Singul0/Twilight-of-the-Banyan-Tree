@@ -1,0 +1,157 @@
+{
+  "name": "Fraksi Karya Pembangunan<br>(Irama Suka Nusantara)",
+  "short": "Loyalis",
+  "seats": 40,
+  "affinity": 80,
+  "image": "photo/loyal.png",
+  "coverImage": "photo/faction/loyal.png",
+  "summary": "Dipimpin oleh <i>kingmaker</i> asal Sulawesi Ahmad Arnold Baramuli dan anggota parlemen yang vokal Marwah Daud Ibrahim, kaukus <font color=\"#8A5A00\"><b><i>Irama Suka Nusantara</i></b></font> atau <font color=\"#8A5A00\"><b><i>Kelompok Iramasuka</i></b></font>—yang diejek oleh pers Jakarta sebagai <font color=\"#8A5A00\"><b><i>Irama Tersedak</i></b></font>—merupakan barisan pengawal istana Anda di dalam tubuh <font color=\"#7D6000\"><b>Golkar</b></font>. Blok berkekuatan empat puluh kursi ini menyatukan para tokoh berpengaruh luar Jawa dari Sulawesi, Kalimantan, dan Nusa Tenggara dengan para cendekiawan Muslim modernis dari ICMI serta para insinyur negara yang meniti karier di sisi Anda di BPPT dan industri pesawat terbang IPTN di Bandung. Jika para operator <font color=\"#7D6000\"><b>DPP Slipi</b></font> di bawah Akbar Tandjung sibuk berhitung peluang koalisi, para pria dan wanita ini memperlakukan kepresidenan Anda sebagai perjuangan suci: sebuah pembuktian bahwa kawasan Indonesia Timur dan para teknokrat sipil mampu memimpin Republik ini tanpa harus meminta izin dari petinggi militer Jawa ataupun Jalan Cendana.<p></p>Berbeda dengan para politisi mesin partai di <font color=\"#7D6000\"><b>Slipi</b></font>, para pendukung setia Baramuli tidak punya tempat lain untuk berpaling. Kursi kabinet mereka, anggaran riset BPIS mereka, dan perlindungan mereka dari panggilan paksa kasus Bank Bali bergantung sepenuhnya pada keberhasilan mempertahankan Anda di Istana Merdeka melewati bulan Oktober. Menjaga momentum reformasi, membangkitkan kembali kepercayaan ekonomi, dan mempertahankan posisi Indonesia di mata dunia akan menjaga semangat fraksi ini tetap menyala serta mempertajam posisi tawar Anda atas mereka, meskipun empat puluh loyalis saja tidak akan cukup untuk memenangkan lantai sidang MPR jika blok-blok besar berbalik melawan Anda.",
+  "biography": "Selama dua puluh tahun sebelum Mei 1998, Anda membangun gugusan laboratorium, galangan kapal, dan hanggar pesawat terbang di bawah payung Badan Pengkajian dan Penerapan Teknologi (BPPT) serta Badan Pengelola Industri Strategis (BPIS). Pada Desember 1990, dengan restu Soeharto dalam sebuah simposium di Malang, Anda menambahkan mesin politik pada basis teknokratis tersebut dengan mendirikan Ikatan Cendekiawan Muslim se-Indonesia (ICMI). Melalui lembaga kajiannya CIDES dan harian <i>Republika</i>, tokoh-tokoh seperti Adi Sasono, Jimly Asshiddiqie, dan Wardiman Djojonegoro menantang dominasi para jenderal nasionalis-sekuler serta teknokrat CSIS yang telah membentuk kebijakan Orde Baru sejak tahun 1966.<p></p>Ketika Soeharto lengser pada 21 Mei 1998, naiknya Anda ke kursi kepresidenan menandai kemenangan kaum inteligensia ICMI, korps insinyur BPPT, dan para tokoh politik Indonesia Timur yang dipimpin oleh Ketua Dewan Pertimbangan Agung A.A. Baramuli serta pengusaha Gorontalo Fadel Muhammad. Namun cengkeraman mereka atas kekuasaan negara masih sangat rapuh. Dibenci oleh korps perwira Cilangkap, dicurigai oleh kalangan nasionalis-sekuler Megawati, dan dikalahkan dalam manuver di pengurus pusat <font color=\"#7D6000\"><b>Golkar</b></font> oleh jaringan HMI Akbar Tandjung, lingkaran dalam Anda sangat menyadari bahwa jika pidato pertanggungjawaban Anda ditolak di Senayan, perjalanan panjang mereka selama satu dekade menembus lembaga-lembaga negara Indonesia akan berakhir pada malam itu juga.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Setia Mati",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Setia",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Gelisah",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Cemas",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Kehilangan Kepercayaan",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Panik",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Loncat Kapal",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "loyalist_rally",
+      "text": "Adakan rapat strategi tengah malam secara tertutup di kediaman Patra Kuningan",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Kediaman pribadi Anda di Patra Kuningan telah menjadi pusat saraf bagi lingkaran ini sejak tahun-tahun awal di IPTN hingga malam-malam penuh ketegangan pada Mei 1998 ketika Soeharto sempat berpaling dari Anda. Panggil A.A. Baramuli, Adi Sasono, Marwah Daud Ibrahim, dan para deputi senior BPPT Anda ke rumah lewat tengah malam—tanpa pers, tanpa stenografer Sekretariat Negara, hanya suguhan kopi kental Makassar dan perhitungan jujur mengenai apa yang sedang dipertaruhkan.",
+      "effects": {
+        "golkar_habibie": [7, 13],
+        "poros_tengah": 2,
+        "pop": 2,
+        "ref": 2
+      },
+      "alertMsg": "Duduk mengelilingi meja makan di Patra Kuningan hingga pukul tiga dini hari, rekan-rekan seperjuangan tertua Anda menemukan kembali keyakinan yang dulu membawa mereka dari hanggar-hanggar Bandung menuju Istana Merdeka. Keraguan yang sempat mengendap di lorong-lorong Senayan menguap saat fajar menyingsing."
+    },
+    {
+      "id": "loyalist_bppt",
+      "text": "Siapkan dana talangan nonbujeter untuk melindungi laboratorium BPIS dan BPPT dari pemangkasan IMF",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Sejak Direktur Pelaksana IMF Michel Camdessus berdiri melipat tangan di hadapan Soeharto pada Januari 1998, para auditor IMF terus membidik industri-industri strategis yang Anda bangun selama dua dekade—IPTN di Bandung, PT PAL di Surabaya, dan PT Pindad—sebagai proyek mercusuar yang menghamburkan uang. Instruksikan Departemen Keuangan untuk menyalurkan dana talangan darurat melalui dana abadi riset guna menjaga agar tim insinyur BPPT dan BPIS Anda tetap menerima gaji. Mengikat lingkaran dalam teknokratis Anda dengan hutang budi yang mendalam, meskipun para pemantau IMF dan kreditur asing akan menghukum manuver fiskal tersebut.",
+      "effects": {
+        "golkar_habibie": [10, 18],
+        "golkar_habibie_favor": 1,
+        "econ": [-8, -4],
+        "intl": [-8, -4],
+        "ref": -2,
+        "golkar_akbar": 2
+      },
+      "alertMsg": "Pencairan dana tersebut menjaga laboratorium tetap beroperasi dan menyelamatkan ratusan insinyur dirgantara serta perkapalan dari surat pemecatan. Di lingkungan BPPT dan BPIS, para direktur veteran Anda menyambut uluran tangan itu dengan kelegaan luar biasa, meskipun kepala misi IMF di Jakarta menandai transfer nonbujeter tersebut sebagai pelanggaran atas Letter of Intent."
+    },
+    {
+      "id": "loyalist_icmi",
+      "text": "Kumpulkan para cendekiawan ICMI dan peneliti CIDES dalam kolokium malam tentang tata negara Muslim modernis",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Jaringan intelektual yang Anda himpun di Malang pada tahun 1990 melalui Ikatan Cendekiawan Muslim se-Indonesia (ICMI) kini merentang luas melintasi kementerian kabinet, rektorat universitas, dan dewan redaksi <i>Republika</i>—meskipun beberapa pemikir terbaiknya mulai merapat ke <font color=\"#004488\"><b>PAN pimpinan Amien Rais</b></font> dan <font color=\"#1E6840\"><b>PPP</b></font>. Kumpulkan dewan pakar ICMI dan para peneliti CIDES dalam sebuah kolokium tertutup untuk menegaskan kembali bahwa Bina Graha tetaplah rumah besar bagi tata kelola pemerintahan Muslim modernis.",
+      "effects": {
+        "golkar_habibie": [6, 10],
+        "poros_tengah": [2, 4],
+        "ppp": 2,
+        "pop": 2,
+        "ref": 2
+      },
+      "alertMsg": "Kabar mengenai kolokium malam tersebut menyebar melewati masjid-masjid kampus, lorong-lorong kementerian, dan ruang redaksi Republika. Karena beberapa cendekiawan ICMI yang hadir juga menjadi penasihat bagi Amien Rais dan Hamzah Haz, iktikad baik yang terbangun di dalam ruangan itu ikut merembes keluar kaukus Anda menuju partai-partai Islam modernis."
+    },
+    {
+      "id": "loyalist_technocrat_defense",
+      "text": "Bela para teknokrat ekonomi Anda secara terbuka dari serangan populis terkait penyesuaian struktural IMF",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 6,
+      "description": "Tim ekonomi Anda—Menko Ekuin Ginandjar Kartasasmita, Menteri Keuangan Bambang Subianto, dan Kepala Bappenas Boediono—menghadapi gempuran harian di media massa terkait penutupan bank, pencabutan subsidi, dan lonjakan harga pangan. Alih-alih membiarkan para teknokrat Anda menanggung kemarahan jalanan sendirian sementara Istana menjaga jarak aman, tampillah di hadapan mikrofon di Bina Graha dan ambil tanggung jawab penuh kepresidenan atas program stabilisasi mereka.",
+      "effects": {
+        "golkar_habibie": [7, 13],
+        "econ": [3, 5],
+        "ref": [2, 4],
+        "intl": [2, 4],
+        "pop": 1
+      },
+      "alertMsg": "Beberapa menteri ekonomi yang sempat menyusun surat pengunduran diri mengembalikannya ke dalam laci meja mereka setelah menyaksikan konferensi pers Anda. Para pemegang obligasi asing dan pers ekonomi Jakarta menyambut baik unjuk solidaritas kabinet tersebut, dan moral di seluruh sayap teknokratis Anda kembali bangkit."
+    },
+    {
+      "id": "loyalist_n250",
+      "text": "Sahkan pendanaan lanjutan purwarupa pesawat turboprop N-250 Gatotkaca milik IPTN di Bandung",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Bagi para insinyur yang mengikuti jejak Anda pulang dari Aachen dan Hamburg, 10 Agustus 1995—hari ketika pesawat <i>fly-by-wire</i> N-250 Gatotkaca lepas landas dari landasan pacu di Bandung—tetap menjadi momen paling membanggakan dalam sejarah industri Republik ini. Tantang larangan penyesuaian struktural IMF atas subsidi dirgantara dan tandatangani otorisasi presiden yang mencairkan dana negara agar program uji terbang N-250 tetap berjalan. Menghasilkan hutang budi personal yang abadi dari barisan perintis IPTN dan BPPT, dengan risiko membebani anggaran negara serta memancing kemarahan Washington dan IMF.",
+      "effects": {
+        "golkar_habibie": [10, 18],
+        "golkar_habibie_favor": 1,
+        "econ": [-8, -4],
+        "intl": [-5, -3],
+        "pop": [2, 4],
+        "golkar_akbar": 2
+      },
+      "alertMsg": "Sorak-sorai menggema di seluruh hanggar Bandara Husein Sastranegara di Bandung saat kabar otorisasi presiden tersebut tiba. Bagi para insinyur yang membangun Gatotkaca dari nol, tanda tangan Anda telah menyelamatkan mahakarya hidup mereka—meskipun para auditor Departemen Keuangan dan inspektur IMF memperingatkan bahwa Indonesia tidak mampu membiayai proyek penerbangan prestise di tengah krisis utang negara."
+    },
+    {
+      "id": "loyalist_final_stand",
+      "text": "Panggil lingkaran dalam Irama Suka Nusantara dan ICMI ke Patra Kuningan pada malam menjelang pemungutan suara",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Besok MPR akan memutuskan apakah kepresidenan Anda tetap hidup atau mati. Panggil A.A. Baramuli, Marwah Daud Ibrahim, Fadel Muhammad, Adi Sasono, dan para perintis IPTN kembali ke Patra Kuningan untuk terakhir kalinya—bukan untuk tawar-menawar kursi kabinet, melainkan untuk berdiri bahu-membahu sebelum melangkah masuk ke kawah candradimuka di Senayan. Menagih setiap ikatan batin dan komitmen masa lalu yang telah Anda tempa bersama barisan inti loyalis Anda.",
+      "effects": {
+        "golkar_habibie": [14, 26],
+        "pop": 2,
+        "ref": 2
+      },
+      "alertMsg": "Setelah doa hening yang dipimpin oleh para ulama ICMI Anda di ruang tamu Patra Kuningan, Baramuli dan Marwah Daud memeluk Anda di depan pintu. Apa pun yang terjadi di balik tirai bilik suara di Senayan esok hari, keempat puluh utusan ini akan memperjuangkan setiap lembar surat suara hingga ketukan palu terakhir."
+    }
+  ]
+}

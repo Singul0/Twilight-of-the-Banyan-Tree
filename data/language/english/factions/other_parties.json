@@ -1,0 +1,155 @@
+{
+  "name": "F-KKI, F-PDU & Minor Blocs",
+  "short": "Others",
+  "seats": 46,
+  "affinity": 35,
+  "image": "photo/other.png",
+  "coverImage": "photo/faction/other.png",
+  "summary": "After Law No. 2/1999 dismantled the New Order's three-party straitjacket—which since 1973 had confined electoral politics to <font color=\"#7D6000\"><b>Golkar</b></font>, <font color=\"#1E6840\"><b>PPP</b></font>, and PDI—forty-eight parties contested the June 1999 general election. Outside the five major parliamentary powers, eighteen smaller parties won representation in Senayan, pooling their forty-six mandates into composite caucuses: the modernist Islamic <font color=\"#006068\"><b>Crescent Star Party (F-PBB)</b></font> and <font color=\"#006068\"><b>Daulatul Ummah Coalition (F-PDU)</b></font>, the nationalist <font color=\"#006068\"><b>Indonesian National Unity Faction (F-KKI)</b></font>, and the Christian-pluralist <font color=\"#006068\"><b>Love the Nation Democratic Party (F-PDKB)</b></font>.<p></p>Sharing no unified doctrine, this mosaic spans Neo-Masyumi constitutionalists under Yusril Ihza Mahendra, campus <i>Tarbiyah</i> cadres in <font color=\"#006068\"><b>Nur Mahmudi Ismail's Justice Party (PK)</b></font>, secular Siliwangi veterans in <font color=\"#006068\"><b>Edi Sudradjat's PKP</b></font>, and Protestant scholars led by Manasse Malo. Because none of these splinter blocs can command the floor alone, their chairmen treat the MPR General Session as an auction for cabinet seats, commission gavels, and statutory protection. Even as Amien Rais courts the Islamic splinter parties into his <font color=\"#004488\"><b>Central Axis</b></font>, dozens of unbound mandates remain in play. Maintaining public approval and preserving calm in the streets give the Palace strong leverage over these minor caucuses, whose leaders shrink from backing an embattled president if riots threaten to engulf Jakarta.",
+  "biography": "When the Ministry of Justice opened party registration in 1998, Indonesia's historical political streams (<i>aliran</i>)—suppressed since Suharto's forced party fusion (<i>fusi partai</i>) of 1973—resurfaced overnight. More than a hundred movements formed; forty-eight passed verification under Team Eleven to appear on the June 7, 1999 ballot, reviving the ideological pluralism last seen in the 1955 parliamentary election.<p></p>Within the Islamic stream, <font color=\"#006068\"><b>Yusril Ihza Mahendra's Crescent Star Party (PBB)</b></font> claimed the heritage of Mohammad Natsir's Masyumi to win thirteen seats, while <font color=\"#006068\"><b>Nur Mahmudi Ismail's Justice Party (PK)</b></font> mobilized urban university mosque networks (<i>Lembaga Dakwah Kampus</i>) to capture seven seats and anchor the <font color=\"#006068\"><b>Daulatul Ummah (F-PDU)</b></font> caucus alongside <font color=\"#006068\"><b>K.H. Syukron Ma'mun's PNU</b></font> and Adi Sasono's cooperative-backed <font color=\"#006068\"><b>PDR</b></font>. Across the aisle, retired General Edi Sudradjat—defeated by Akbar Tandjung at <font color=\"#7D6000\"><b>Golkar's</b></font> 1998 congress—led his <font color=\"#006068\"><b>Justice and Unity Party (PKP)</b></font> into the <font color=\"#006068\"><b>F-KKI</b></font> bloc alongside minor nationalist splinters, while sociologist <font color=\"#006068\"><b>Manasse Malo's PDKB</b></font> organized Christian intellectuals. On its own, each party holds a sliver of the chamber; together, their forty-six ballots can tip the October roll call. Winning them requires tailoring the pitch: constitutional prestige for <font color=\"#006068\"><b>PBB</b></font>, clean-governance pledges for <font color=\"#006068\"><b>PK</b></font>, minority guarantees for <font color=\"#006068\"><b>PDKB</b></font>, and campaign stipends for the cash-strapped micro-parties.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Secured",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Favorable",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Fragmented",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Weighing Offers",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Skeptical",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Defecting",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Hostile",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "others_bribe",
+      "text": "Disburse off-budget operational stipends to cash-strapped splinter party chairmen",
+      "cost": 16,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Campaigning across twenty-seven provinces exhausted the treasuries of the micro-parties sitting in <font color=\"#006068\"><b>F-KKI</b></font> and <font color=\"#006068\"><b>F-PDU</b></font>—splinters holding one or two seats apiece, from the <font color=\"#006068\"><b>People's Sovereignty Party (PDR)</b></font> to <font color=\"#006068\"><b>IPKI</b></font> and the rump 1996 PDI. Dispatch Bina Graha couriers to clear their post-election campaign debts in exchange for signed pledges backing your accountability speech.",
+      "effects": {
+        "other_parties": [8, 16],
+        "ref": [-5, -3],
+        "cendana": [2, 4],
+        "pop": -1,
+        "stab": 1
+      },
+      "alertMsg": "Working out of hotel suites around Senayan, the chairmen of the smallest parliamentary splinters accept the operational stipends without hesitation and commit their delegates to the Palace column."
+    },
+    {
+      "id": "others_pbb_counsel",
+      "text": "Appoint Crescent Star Party (PBB) Chairman Yusril Ihza Mahendra as special constitutional counsel",
+      "cost": 16,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "<font color=\"#006068\"><b>Crescent Star Party (PBB)</b></font> chairman Yusril Ihza Mahendra—a sharp University of Indonesia constitutional law professor who drafted speeches at the State Secretariat for Suharto and wrote the text of his May 1998 resignation—commands thirteen modernist Muslim delegates and harbors presidential ambitions of his own. Bring Yusril into Bina Graha's legal drafting circle to co-author your upcoming constitutional reform bills. Secures a binding political debt from PBB's leadership.",
+      "effects": {
+        "other_parties": [10, 18],
+        "other_parties_favor": 1,
+        "poros_tengah": [3, 7],
+        "ref": [2, 4],
+        "pop": 1,
+        "golkar_akbar": 2
+      },
+      "alertMsg": "Yusril Ihza Mahendra accepts the brief with characteristic self-assurance. Within days, his legal team refines the Palace's legislative drafts, and PBB's thirteen delegates warm toward your administration."
+    },
+    {
+      "id": "others_pk_outreach",
+      "text": "Court Nur Mahmudi Ismail and the campus dakwah cadres of the Justice Party (PK)",
+      "cost": 10,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Forged out of university mosque movement networks (<i>Usrah</i> and <i>Tarbiyah</i>) and chaired by Texas A&amp;M-trained food scientist Nur Mahmudi Ismail alongside Hidayat Nur Wahid, the <font color=\"#006068\"><b>Justice Party (Partai Keadilan)</b></font> enforces strict internal discipline that renders its seven delegates immune to patronage envelopes. Address their inaugural national gathering and pledge an uncompromising purge of KKN across the ministries.",
+      "effects": {
+        "other_parties": [8, 14],
+        "ref": [5, 9],
+        "poros_tengah": [3, 5],
+        "pop": 2
+      },
+      "alertMsg": "Nur Mahmudi Ismail and the Justice Party's Shura Council welcome the overture after careful deliberation. Unlike the transactional brokers in the lobby, PK's seven lawmakers respond to clean-governance commitments rather than cash."
+    },
+    {
+      "id": "others_pdkb_courtship",
+      "text": "Pledge constitutional protection for religious minorities to Manasse Malo's PDKB and F-KKI",
+      "cost": 10,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Christian-pluralist parties inside this bloc—led by sociologist <font color=\"#006068\"><b>Manasse Malo's Love the Nation Democratic Party (PDKB)</b></font> and Catholic and Protestant delegates within <font color=\"#006068\"><b>F-KKI</b></font>—watch the sectarian bloodshed in Ambon and calls in Senayan to revive the Jakarta Charter with mounting alarm. Receive their church and parliamentary leaders at Istana Merdeka and issue a public guarantee safeguarding minority worship and Pancasila pluralism.",
+      "effects": {
+        "other_parties": [7, 13],
+        "utusan_golongan": [3, 7],
+        "pop": 2,
+        "ref": 2,
+        "intl": 2
+      },
+      "alertMsg": "Manasse Malo and the Christian delegates of PDKB and F-KKI welcome the presidential guarantee. Reassured that Bina Graha will not trade away minority rights to appease hardline factions, their caucus softens its stance toward your government."
+    },
+    {
+      "id": "others_committee_seats",
+      "text": "Allocate DPR commission vice-chairmanships to the F-KKI, F-PDU, and F-PBB caucuses",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 12,
+      "description": "Under Senayan's standing rules, the giant caucuses—<font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> and <font color=\"#7D6000\"><b>Golkar</b></font>—expect to monopolize the gavels of the DPR's nine permanent commissions. Instruct your floor managers to break that duopoly and back nominees from <font color=\"#006068\"><b>F-PBB</b></font>, <font color=\"#006068\"><b>F-PDU</b></font>, and <font color=\"#006068\"><b>F-KKI</b></font> for vice-chair posts across key budget and legal commissions. Places the minor party caucuses in the Palace's debt.",
+      "effects": {
+        "other_parties": [10, 18],
+        "other_parties_favor": 1,
+        "ref": [2, 4],
+        "pop": 1,
+        "stab": 2
+      },
+      "alertMsg": "Seated on the dais of Senayan's hearing rooms for the first time, the minor-party vice-chairmen relish their elevated stature and credit Bina Graha's floor whips for breaking the big-party monopoly."
+    },
+    {
+      "id": "others_final_appeal",
+      "text": "Work the telephones through the night to lock in the minor party chairmen before the ballot",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "With the MPR split down the middle, the scattered delegates of <font color=\"#006068\"><b>F-PBB</b></font>, <font color=\"#006068\"><b>F-PDU</b></font>, <font color=\"#006068\"><b>F-KKI</b></font>, and <font color=\"#006068\"><b>F-PDKB</b></font> hold the margin between survival and defeat. Spend the final hours before the plenary roll call on the telephone from Bina Graha, speaking chairman to chairman with Yusril Ihza Mahendra, Nur Mahmudi Ismail, Manasse Malo, and Edi Sudradjat's deputies. Redeems every political obligation and parliamentary favor the minor blocs owe the Palace.",
+      "effects": {
+        "other_parties": [13, 23],
+        "stab": 2
+      },
+      "alertMsg": "Flattered by direct midnight calls from the President of the Republic, the chairmen of the minor blocs affirm their commitments one by one and dispatch their whips to hold their delegates in line when the ballot boxes open."
+    }
+  ]
+}

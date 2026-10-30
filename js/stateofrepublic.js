@@ -1,5 +1,5 @@
-// STATE OF THE REPUBLIC: dossier, shareable card and HD image export
-// Split out of election.js. Load AFTER election.js (see index.html).
+// SUMMARY: State of the Republic dossier shown after the election: faction vote lists, the shareable card, the canvas-drawn gazette
+// and its HD image export. Loads after election.js.
 
 // Seat colors for the State of the Republic image (match the .seat-* classes in styles.css)
 const STATE_SEAT_PALETTE = {
@@ -7,6 +7,9 @@ const STATE_SEAT_PALETTE = {
     'against': { fill: '#FF2222', light: '#FF9999' },
     'blank':   { fill: '#AAAAAA', light: '#DDDDDD' }
 };
+
+// Seat size in pixels for the exported image (matches .mpr-seat-dot in styles.css). The on-screen card is sized by that CSS.
+const STATE_SEAT_IMAGE_SIZE = 8;
 
 // Image used as the President's portrait on the State of the Republic card
 function getPresidentPortraitSrc() {
@@ -48,8 +51,8 @@ function buildStateFactionRowHTML(entry, kind) {
     const col = (typeof FACTION_HISTORICAL_COLORS !== 'undefined') ? FACTION_HISTORICAL_COLORS[f.key] : null;
     const tone = kind === 'for' ? 'var(--tone-good)' : 'var(--tone-bad)';
     return `<div class="stat-row">
-        <span class="stat-label"><span style="display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: middle; background-color: ${col ? col.fill : '#808080'}; box-shadow: var(--bevel-status-well);"></span>${getStateFactionLabel(f)}${minority ? ' <span style="font-weight: normal; font-style: italic; color: var(--win95-text-dim);">(defectors)</span>' : ''}</span>
-        <span class="stat-value" style="color: ${tone};">${n} ${kind} <span style="font-weight: normal; color: var(--win95-text-dim);">of ${f.seats}</span></span>
+        <span class="stat-label"><span style="display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: middle; background-color: ${col ? col.fill : '#808080'}; box-shadow: var(--bevel-status-well);"></span>${getStateFactionLabel(f)}${minority ? ' <span style="font-weight: normal; font-style: italic; color: var(--win95-text-dim);">' + LOC('republic.defectors') + '</span>' : ''}</span>
+        <span class="stat-value" style="color: ${tone};">${LOC('republic.faction_votes_' + kind, { N: n })} <span style="font-weight: normal; color: var(--win95-text-dim);">${LOC('republic.of_seats', { SEATS: f.seats })}</span></span>
     </div>`;
 }
 
@@ -61,55 +64,53 @@ function buildStateCardHTML(sum) {
     const verdictColor = sum.won ? 'var(--tone-good)' : 'var(--tone-bad)';
     const coords = generateHemicycleLayout(sum.totalSeats);
     const outcomes = getStateSeatOutcomes(sum);
-
-    let dots = '';
-    coords.forEach((pt, i) => {
-        dots += `<div class="mpr-seat-dot seat-${outcomes[i]}" style="left: ${pt.x.toFixed(2)}%; top: ${pt.y.toFixed(2)}%;"></div>`;
-    });
+    const dots = coords.map((pt, i) =>
+        `<div class="mpr-seat-dot seat-${outcomes[i]}" style="left: ${pt.x}%; top: ${pt.y}%;"></div>`
+    ).join('');
 
     const column = (title, kind, list) => `<div>
-        <div class="music-header">${title} (${kind === 'for' ? sum.forVotes : sum.againstVotes})</div>
+        <div class="music-header">${LOC('republic.column_title', { TITLE: title, COUNT: kind === 'for' ? sum.forVotes : sum.againstVotes })}</div>
         <div class="state-gazette-box">
-            ${list.length > 0 ? list.map(e => buildStateFactionRowHTML(e, kind)).join('') : '<span style="font-size: 11px; font-style: italic; color: var(--win95-text-dim);">No delegates voted this way.</span>'}
+            ${list.length > 0 ? list.map(e => buildStateFactionRowHTML(e, kind)).join('') : `<span style="font-size: 11px; font-style: italic; color: var(--win95-text-dim);">${LOC('republic.no_delegates')}</span>`}
         </div>
     </div>`;
 
     return `<div id="state-card" class="tally-box">
-        <div class="music-header">STATE OF THE REPUBLIC</div>
+        <div class="music-header">${LOC('republic.title')}</div>
         <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start;">
             <div style="flex: 0 0 auto; margin: 0 auto; text-align: center;">
                 <div class="player-portrait-container" style="cursor: default;">
-                    <span style="color: #555;">[ PHOTO:<br>HABIBIE ]</span>
-                    <img src="${escapeAttr(getPresidentPortraitSrc())}" class="portrait-img" alt="[HABIBIE]" onerror="this.style.display='none'">
+                    <span style="color: #555;">${LOC('player.photo_placeholder')}</span>
+                    <img src="${escapeAttr(getPresidentPortraitSrc())}" class="portrait-img" alt="${escapeAttr(LOC('player.portrait_alt'))}" onerror="this.style.display='none'">
                 </div>
-                <div style="font-size: 13px; font-weight: bold;">His Excellency</div>
-                <div style="font-size: 13px; font-weight: bold;">Bacharuddin Jusuf Habibie<br><span style="font-size: 11px; font-weight: normal; color: var(--win95-text-dim);">3rd President of the Republic of Indonesia</span></div>
+                <div style="font-size: 13px; font-weight: bold;">${LOC('player.title')}</div>
+                <div style="font-size: 13px; font-weight: bold;">${LOC('player.full_name')}<br><span style="font-size: 11px; font-weight: normal; color: var(--win95-text-dim);">${LOC('player.office')}</span></div>
             </div>
             <div style="flex: 1 1 320px; min-width: 0;">
                 <div class="faction-summary" style="text-align: center; margin-bottom: 8px; padding: 8px;">
-                    <div style="font-size: 16px; font-weight: bold; color: ${verdictColor};">ACCOUNTABILITY SPEECH ${sum.won ? 'ACCEPTED' : 'REJECTED'}</div>
-                    <div style="font-size: 13px; font-weight: bold; margin-top: 2px;"><span style="color: var(--tone-good);">${sum.forVotes} FOR</span> &middot; <span style="color: var(--tone-bad);">${sum.againstVotes} AGAINST</span> &middot; <span style="color: var(--win95-text-dim);">${sum.blankVotes} BLANK</span></div>
+                    <div style="font-size: 16px; font-weight: bold; color: ${verdictColor};">${LOC(sum.won ? 'republic.verdict_accepted' : 'republic.verdict_rejected')}</div>
+                    <div style="font-size: 13px; font-weight: bold; margin-top: 2px;"><span style="color: var(--tone-good);">${LOC('republic.tally_for', { N: sum.forVotes })}</span> &middot; <span style="color: var(--tone-bad);">${LOC('republic.tally_against', { N: sum.againstVotes })}</span> &middot; <span style="color: var(--win95-text-dim);">${LOC('republic.tally_blank', { N: sum.blankVotes })}</span></div>
                 </div>
                 <div class="mpr-tug-container">
                     <div class="mpr-tug-for" style="width: ${pct(sum.forVotes)}%;"></div>
                     <div class="mpr-tug-blank" style="width: ${pct(sum.blankVotes)}%;"></div>
                     <div class="mpr-tug-against" style="width: ${pct(sum.againstVotes)}%;"></div>
-                    <div class="mpr-majority-marker" title="Majority Threshold"></div>
+                    <div class="mpr-majority-marker" title="${escapeAttr(LOC('election.majority_marker'))}"></div>
                 </div>
                 <div class="mpr-hemicycle-wrap">
                     ${dots}
                     <div style="position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); text-align: center; font-weight: bold; font-size: 20px; line-height: 1.1; white-space: nowrap;">${sum.forVotes} &ndash; ${sum.againstVotes}</div>
-                    <div class="mpr-rostrum">MPR ROSTRUM</div>
+                    <div class="mpr-rostrum">${LOC('parliament.rostrum')}</div>
                 </div>
             </div>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 14px;">
-            ${column('VOTED FOR', 'for', forList)}
-            ${column('VOTED AGAINST', 'against', againstList)}
+            ${column(LOC('republic.voted_for'), 'for', forList)}
+            ${column(LOC('republic.voted_against'), 'against', againstList)}
         </div>
     </div>
     <div style="text-align: center; margin-bottom: 14px;">
-        <button style="width: 240px; display: inline-block; text-align: center;" onclick="downloadStateOfRepublicImage()">Download Results</button>
+        <button style="width: 240px; display: inline-block; text-align: center;" onclick="downloadStateOfRepublicImage()">${LOC('republic.download_button')}</button>
     </div>`;
 }
 
@@ -175,11 +176,11 @@ function getStatePlainText(str) {
 function getStateGazetteData() {
     const decrees = [];
     if (actionsData && Array.isArray(actionsData.decrees)) {
-        actionsData.decrees.forEach(dec => { if (activeDecrees[dec.id]) decrees.push(getStatePlainText(dec.text)); });
+        actionsData.decrees.forEach(dec => { if (activeDecrees[dec.id]) decrees.push(getStatePlainText(LOC.r(dec.text))); });
     }
     const dissolved = [];
     INITIAL_PORTRAIT_FACTIONS.forEach(fk => {
-        if (bannedFactions[fk] && initialFactionsSnapshot[fk]) dissolved.push(getStatePlainText(stripLeaderParentheses(initialFactionsSnapshot[fk].name)));
+        if (bannedFactions[fk] && initialFactionsSnapshot[fk]) dissolved.push(getStatePlainText(stripLeaderParentheses(LOC.r(initialFactionsSnapshot[fk].name))));
     });
     return { decrees, dissolved };
 }
@@ -228,12 +229,11 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         : '"MS Sans Serif", Tahoma, Geneva, sans-serif';
     const font = (size, bold, italic) => `${italic ? 'italic ' : ''}${bold ? 'bold ' : ''}${size}px ${FONT}`;
 
-    // Lembaran Negara (State Gazette): lay it out first, because its height decides how tall the image is
     const GAZ = layoutStateGazette(font);
-    const GY = 686;                                   // top of the gazette header bar
-    const cardBottom = GY + 22 + GAZ.boxH + 10;       // bottom edge of the card panel
-    const winH = cardBottom + 12 - 10;                // main window height (window starts at y = 10)
-    const LH = cardBottom + 12 + 10;                  // total image height
+    const GY = 686;
+    const cardBottom = GY + 22 + GAZ.boxH + 10;
+    const winH = cardBottom + 12 - 10;
+    const LH = cardBottom + 12 + 10;
     const cardH = cardBottom - 46;
 
     const canvas = document.createElement('canvas');
@@ -250,7 +250,6 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
             rect(x + w - 1 - i, y + i, 1, h - 2 * i, l[1]);
         });
     };
-    // Bevel recipes copied from --bevel-* in styles.css (Win95), the Windows 98 layer and the Mac OS 8 layer
     const STYLE = MAC ? {
         raised: { outline: '#000000', layers: [['#FFFFFF', '#888888'], ['#F0F0F0', '#BBBBBB']] },
         sunken: { outline: '#555555', layers: [['#777777', '#FFFFFF']] },
@@ -281,7 +280,6 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         return grad;
     };
 
-    // Secondary caption bar (the card and list headers): active in Win95, grey "inactive" in Win98 and Mac OS 8
     const header = (x, y, w, label) => {
         if (MAC) {
             rect(x, y, w, 18, '#DDDDDD');
@@ -297,7 +295,6 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         }
     };
 
-    // Desktop and main window
     rect(0, 0, LW, LH, T.desktop);
     if (MAC) {
         rect(12, 12, 942, winH + 2, 'rgba(0,0,0,0.55)');
@@ -306,14 +303,13 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
     }
     panel(10, 10, 940, winH, T.bg, 'window');
 
-    // Main window title bar, with its own close controls (the only close marks in the image)
     if (MAC) {
         for (let y = 16; y < 36; y++) rect(16, y, 928, 1, (y - 16) % 2 === 0 ? '#FFFFFF' : '#B9B9B9');
         rect(16, 36, 928, 1, '#000000');
         g.font = font(12, true);
-        const capW = g.measureText('Twilight of the Banyan Tree').width + 16;
+        const capW = g.measureText(LOC('app.title')).width + 16;
         rect(480 - capW / 2, 19, capW, 14, '#DDDDDD');
-        text('Twilight of the Banyan Tree', 480, 30, 12, true, '#000000', 'center');
+        text(LOC('app.title'), 480, 30, 12, true, '#000000', 'center');
         const box = (bx) => {
             rect(bx, 19, 13, 13, '#000000');
             rect(bx + 1, 20, 11, 11, '#DDDDDD');
@@ -331,7 +327,7 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
     } else if (W98) {
         rect(16, 17, 928, 18, gradient(16, 928, T.navy, T.blue));
         if (iconImg) g.drawImage(iconImg, 19, 18, 16, 16);
-        text('Twilight of the Banyan Tree', 40, 30, 12, true, '#FFFFFF');
+        text(LOC('app.title'), 40, 30, 12, true, '#FFFFFF');
         const btn = (bx) => panel(bx, 19, 16, 14, T.bg, 'raised');
         btn(886); btn(902); btn(920);
         rect(890, 28, 6, 2, '#000000');
@@ -347,17 +343,15 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         g.stroke();
     } else {
         rect(16, 16, 928, 22, gradient(16, 928, T.navy, T.blue));
-        text('Twilight of the Banyan Tree', 25, 32, 12, true, '#000000');
-        text('Twilight of the Banyan Tree', 24, 31, 12, true, '#FFFFFF');
+        text(LOC('app.title'), 25, 32, 12, true, '#000000');
+        text(LOC('app.title'), 24, 31, 12, true, '#FFFFFF');
         panel(924, 19, 16, 14, T.bg, 'raised');
         text('\u2715', 932, 30, 10, true, T.text, 'center');
     }
 
-    // Card
     panel(22, 46, 916, cardH, T.bg, 'raised');
-    header(34, 58, 892, 'STATE OF THE REPUBLIC');
+    header(34, 58, 892, LOC('republic.title'));
 
-    // Portrait
     rect(39, 88, 160, 200, '#A9A9A9');
     g.save();
     g.beginPath();
@@ -368,24 +362,25 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         const dw = portraitImg.width * s, dh = portraitImg.height * s;
         g.drawImage(portraitImg, 43 + (152 - dw) / 2, 92 + (192 - dh) / 2, dw, dh);
     } else {
-        text('[ PHOTO:', 119, 186, 10, false, '#555555', 'center');
-        text('HABIBIE ]', 119, 200, 10, false, '#555555', 'center');
+        const phLines = LOC('player.photo_placeholder').split('<br>');
+        text(phLines[0], 119, 186, 10, false, '#555555', 'center');
+        text(phLines[1] || '', 119, 200, 10, false, '#555555', 'center');
     }
     g.restore();
     rect(39, 88, 160, 4, '#808080');
     rect(39, 88, 4, 200, '#808080');
     rect(39, 284, 160, 4, '#FFFFFF');
     rect(195, 88, 4, 200, '#FFFFFF');
-    text('His Excellency', 119, 306, 12, true, T.text, 'center');
-    text('Bacharuddin Jusuf Habibie', 119, 321, 12, true, T.text, 'center');
-    text('3rd President of the', 119, 335, 9.5, false, T.dim, 'center');
-    text('Republic of Indonesia', 119, 347, 9.5, false, T.dim, 'center');
+    text(LOC('player.title'), 119, 306, 12, true, T.text, 'center');
+    text(LOC('player.full_name'), 119, 321, 12, true, T.text, 'center');
+    const officeLines = LOC('republic.canvas_office').split('<br>');
+    text(officeLines[0], 119, 335, 9.5, false, T.dim, 'center');
+    text(officeLines[1] || '', 119, 347, 9.5, false, T.dim, 'center');
 
-    // Verdict
     const RX = 218, RW = 708;
     panel(RX, 88, RW, 66, T.well, 'sunken');
-    text('ACCOUNTABILITY SPEECH ' + (sum.won ? 'ACCEPTED' : 'REJECTED'), RX + RW / 2, 111, 17, true, sum.won ? T.good : T.bad, 'center');
-    const segs = [[`${sum.forVotes} FOR`, T.good], [`${sum.againstVotes} AGAINST`, T.bad], [`${sum.blankVotes} BLANK`, T.dim]];
+    text(LOC(sum.won ? 'republic.verdict_accepted' : 'republic.verdict_rejected'), RX + RW / 2, 111, 17, true, sum.won ? T.good : T.bad, 'center');
+    const segs = [[LOC('republic.tally_for', { N: sum.forVotes }), T.good], [LOC('republic.tally_against', { N: sum.againstVotes }), T.bad], [LOC('republic.tally_blank', { N: sum.blankVotes }), T.dim]];
     g.font = font(12, true);
     const sep = '  \u00B7  ';
     const widths = segs.map(s => g.measureText(s[0]).width);
@@ -397,10 +392,9 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         if (i < segs.length - 1) { text(sep, cx, 129, 12, true, T.text); cx += sepW; }
     });
     const diff = (gameConfig && gameConfig.difficultySettings && gameConfig.difficultySettings[selectedDifficulty] && gameConfig.difficultySettings[selectedDifficulty].name)
-        ? gameConfig.difficultySettings[selectedDifficulty].name : String(selectedDifficulty).toUpperCase();
-    text(`Difficulty: ${diff}  \u00B7  Final PC reserve: ${stats.PC}`, RX + RW / 2, 145, 9.5, false, T.dim, 'center');
+        ? LOC.r(gameConfig.difficultySettings[selectedDifficulty].name) : String(selectedDifficulty).toUpperCase();
+    text(LOC('republic.canvas_summary', { DIFF: diff, PC: stats.PC }), RX + RW / 2, 145, 9.5, false, T.dim, 'center');
 
-    // Tug bar
     const total = Math.max(1, sum.totalSeats);
     panel(RX, 162, RW, 26, T.shadow, 'sunken');
     const bx = RX + 2, bw = RW - 4, by = 164, bh = 22;
@@ -416,26 +410,43 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
     stripes(bx + bw - wAgainst, wAgainst, '#CC0000', '#8B0000');
     rect(bx + bw * 0.5014 - 1, by, 2, bh, '#FFFF00');
 
-    // Hemicycle: FOR seats on the left, AGAINST seats on the right
     const HX = RX, HY = 196, HW = 450, HH = 212;
     panel(HX, HY, HW, HH, T.wellAlt, 'sunken');
+    const isCircleSeat = (window.extraSettings && window.extraSettings.seatShape === 'circle');
     const coords = generateHemicycleLayout(sum.totalSeats);
     const outcomes = getStateSeatOutcomes(sum);
     coords.forEach((pt, i) => {
         const pal = STATE_SEAT_PALETTE[outcomes[i]];
-        const sx = Math.round(HX + pt.x / 100 * HW - 3), sy = Math.round(HY + pt.y / 100 * HH - 3);
-        rect(sx, sy, 6, 6, pal.fill);
-        rect(sx, sy, 6, 1, pal.light);
-        rect(sx, sy, 1, 6, pal.light);
-        rect(sx, sy + 5, 6, 1, '#222222');
-        rect(sx + 5, sy, 1, 6, '#222222');
+        const sz = STATE_SEAT_IMAGE_SIZE;
+        if (isCircleSeat) {
+            const cx = HX + pt.x / 100 * HW, cy = HY + pt.y / 100 * HH, r = sz / 2;
+            g.beginPath();
+            g.arc(cx, cy, r, 0, Math.PI * 2);
+            g.fillStyle = pal.fill;
+            g.fill();
+            g.lineWidth = 1;
+            g.strokeStyle = pal.light;
+            g.beginPath();
+            g.arc(cx, cy, r - 0.5, Math.PI * 0.75, Math.PI * 1.75);
+            g.stroke();
+            g.strokeStyle = '#222222';
+            g.beginPath();
+            g.arc(cx, cy, r - 0.5, Math.PI * 1.75, Math.PI * 2.75);
+            g.stroke();
+            return;
+        }
+        const sx = Math.round(HX + pt.x / 100 * HW - sz / 2), sy = Math.round(HY + pt.y / 100 * HH - sz / 2);
+        rect(sx, sy, sz, sz, pal.fill);
+        rect(sx, sy, sz, 1, pal.light);
+        rect(sx, sy, 1, sz, pal.light);
+        rect(sx, sy + sz - 1, sz, 1, '#222222');
+        rect(sx + sz - 1, sy, 1, sz, '#222222');
     });
     text(`${sum.forVotes} \u2013 ${sum.againstVotes}`, HX + HW / 2, HY + HH - 36, 22, true, T.text, 'center');
     panel(HX + HW / 2 - 42, HY + HH - 24, 84, 16, T.bg, 'raised');
-    text('MPR ROSTRUM', HX + HW / 2, HY + HH - 12, 8.5, true, MAC ? T.navy : T.accent, 'center');
+    text(LOC('parliament.rostrum'), HX + HW / 2, HY + HH - 12, 8.5, true, MAC ? T.navy : T.accent, 'center');
 
-    // Totals
-    [['FOR', sum.forVotes, 'for', T.good], ['AGAINST', sum.againstVotes, 'against', T.bad], ['BLANK', sum.blankVotes, 'blank', T.dim]].forEach((t, i) => {
+    [[LOC('republic.label_for'), sum.forVotes, 'for', T.good], [LOC('republic.label_against'), sum.againstVotes, 'against', T.bad], [LOC('republic.label_blank'), sum.blankVotes, 'blank', T.dim]].forEach((t, i) => {
         const y = HY + i * 72;
         panel(HX + HW + 14, y, RW - HW - 14, 64, T.well, 'sunken');
         rect(HX + HW + 18, y + 4, 6, 56, STATE_SEAT_PALETTE[t[2]].fill);
@@ -443,14 +454,13 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         text(t[0], HX + HW + 36, y + 54, 12, true, T.text);
     });
 
-    // Faction lists: every faction with at least one vote on that side, defectors included
     const { forList, againstList } = getStateFactionVoteLists(sum);
     const drawList = (x, title, kind, list, count) => {
         const w = 436, y = 420, boxY = y + 22, boxH = 228;
-        header(x, y, w, `${title} (${count})`);
+        header(x, y, w, LOC('republic.column_title', { TITLE: title, COUNT: count }));
         panel(x, boxY, w, boxH, T.surface, 'sunken');
         if (list.length === 0) {
-            text('No delegates voted this way.', x + 12, boxY + 24, 11, false, T.dim, 'left', true);
+            text(LOC('republic.no_delegates'), x + 12, boxY + 24, 11, false, T.dim, 'left', true);
             return;
         }
         const rowH = Math.min(21, (boxH - 16) / list.length);
@@ -468,24 +478,23 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
             text(label, x + 30, my + 4, 11, true, T.text);
             if (e.minority) {
                 g.font = font(11, true);
-                text('(defectors)', x + 30 + g.measureText(label + ' ').width, my + 4, 10, false, T.dim, 'left', true);
+                text(LOC('republic.defectors'), x + 30 + g.measureText(label + ' ').width, my + 4, 10, false, T.dim, 'left', true);
             }
-            const ofTxt = ` of ${f.seats}`;
+            const ofTxt = ' ' + LOC('republic.of_seats', { SEATS: f.seats });
             text(ofTxt, x + w - 14, my + 4, 11, false, T.dim, 'right');
             g.font = font(11, false);
             const ofW = g.measureText(ofTxt).width;
-            text(`${e.n} ${kind}`, x + w - 14 - ofW, my + 4, 11, true, tone, 'right');
+            text(LOC('republic.faction_votes_' + kind, { N: e.n }), x + w - 14 - ofW, my + 4, 11, true, tone, 'right');
         });
     };
-    drawList(34, 'VOTED FOR', 'for', forList, sum.forVotes);
-    drawList(490, 'VOTED AGAINST', 'against', againstList, sum.againstVotes);
+    drawList(34, LOC('republic.voted_for'), 'for', forList, sum.forVotes);
+    drawList(490, LOC('republic.voted_against'), 'against', againstList, sum.againstVotes);
 
-    // Lembaran Negara: enacted decrees as chips, then any dissolved parliamentary blocs
-    header(34, GY, 892, 'LEMBARAN NEGARA');
+    header(34, GY, 892, LOC('gazette.title'));
     const GBY = GY + 22;
     panel(34, GBY, 892, GAZ.boxH, T.surface, 'sunken');
     if (GAZ.chips.length === 0) {
-        text('No extraordinary decrees were enacted during this administration.', 46, GBY + 22, 11, false, T.dim, 'left', true);
+        text(LOC('republic.no_decrees'), 46, GBY + 22, 11, false, T.dim, 'left', true);
     } else {
         GAZ.chips.forEach(c => {
             const cy = GBY + 8 + c.row * GAZ.rowH;
@@ -498,7 +507,7 @@ function drawStateOfRepublicCanvas(sum, portraitImg, iconImg) {
         const dy = GBY + 8 + Math.max(1, GAZ.rows) * GAZ.rowH + 2;
         g.fillStyle = '#808080';
         for (let dx = 46; dx < 914; dx += 4) g.fillRect(dx, dy, 2, 1);
-        text('Dissolved Parliamentary Blocs:', 46, dy + 15, 11, true, T.bad);
+        text(LOC('republic.dissolved_blocs'), 46, dy + 15, 11, true, T.bad);
         GAZ.dissolvedLines.forEach((ln, i) => text(ln, 46, dy + 30 + i * 14, 11, false, T.bad));
     }
 
@@ -537,14 +546,14 @@ window.downloadStateOfRepublicImage = async function() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'state-of-the-republic-1999.png';
+        a.download = LOC('republic.download_filename');
         document.body.appendChild(a);
         a.click();
         a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 4000);
     } catch (e) {
         console.warn(e);
-        showCustomAlert('The image could not be created in this browser.', null);
+        showCustomAlert(LOC('republic.image_failed'), null);
     }
 };
 
@@ -552,28 +561,21 @@ window.downloadStateOfRepublicImage = async function() {
 function buildStateOfTheRepublicHTML() {
     const sum = window.lastElectionSummary;
     const diffName = (gameConfig.difficultySettings[selectedDifficulty] && gameConfig.difficultySettings[selectedDifficulty].name)
-        ? gameConfig.difficultySettings[selectedDifficulty].name
+        ? LOC.r(gameConfig.difficultySettings[selectedDifficulty].name)
         : selectedDifficulty.toUpperCase();
 
-    const metricKeys = [
-        { k: 'pop', label: 'Popularity' },
-        { k: 'mil', label: 'Military Support' },
-        { k: 'ref', label: 'Reformasi Credibility' },
-        { k: 'econ', label: 'Economic Health' },
-        { k: 'intl', label: 'International Standing' },
-        { k: 'stab', label: 'National Stability' },
-        { k: 'cendana', label: 'Cendana Influence' }
-    ];
+    const metricKeys = ['pop', 'mil', 'ref', 'econ', 'intl', 'stab', 'cendana'].map(k => ({ k: k, label: LOC('effect_name.' + k) }));
 
-    let metricsGridHTML = `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px; margin-bottom: 14px;">`;
+    // Flex-wrap instead of a fixed grid: the last row's cells stretch to fill it, so there is no empty slot.
+    let metricsGridHTML = `<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;">`;
     metricKeys.forEach(m => {
-        metricsGridHTML += `<div class="stat-row" style="margin-bottom: 0; padding: 5px 8px;">
-            <span class="stat-label">${m.label}:</span>
+        metricsGridHTML += `<div class="stat-row" style="margin-bottom: 0; padding: 5px 8px; flex: 1 1 220px; min-width: 0;">
+            <span class="stat-label">${LOC('republic.dossier.metric_label', { LABEL: m.label })}</span>
             <span class="stat-value">${getVagueStatText(m.k, stats[m.k])}</span>
         </div>`;
     });
-    metricsGridHTML += `<div class="stat-row" style="margin-bottom: 0; padding: 5px 8px;">
-        <span class="stat-label">Gov. Stability:</span>
+    metricsGridHTML += `<div class="stat-row" style="margin-bottom: 0; padding: 5px 8px; flex: 1 1 220px; min-width: 0;">
+        <span class="stat-label">${LOC('republic.dossier.gov_stability')}</span>
         <span class="stat-value"><b>${getGovStabilityWord()}</b></span>
     </div></div>`;
 
@@ -581,7 +583,7 @@ function buildStateOfTheRepublicHTML() {
     if (actionsData && Array.isArray(actionsData.decrees)) {
         actionsData.decrees.forEach(dec => {
             if (activeDecrees[dec.id]) {
-                enactedBadges.push(`<span style="display: inline-block; background-color: #FFFFFF; padding: 3px 8px; margin: 2px 4px 2px 0; font-size: 11px; font-weight: bold; color: #000080; box-shadow: var(--bevel-status-well);">&#10003; ${dec.text}</span>`);
+                enactedBadges.push(`<span style="display: inline-block; background-color: var(--win95-window); padding: 3px 8px; margin: 2px 4px 2px 0; font-size: 11px; font-weight: bold; color: var(--win95-accent); box-shadow: var(--bevel-status-well);">&#10003; ${LOC.r(dec.text)}</span>`);
             }
         });
     }
@@ -589,7 +591,7 @@ function buildStateOfTheRepublicHTML() {
     const dissolvedNames = [];
     INITIAL_PORTRAIT_FACTIONS.forEach(fk => {
         if (bannedFactions[fk] && initialFactionsSnapshot[fk]) {
-            dissolvedNames.push(`<b>${stripLeaderParentheses(initialFactionsSnapshot[fk].name)}</b>`);
+            dissolvedNames.push(`<b>${stripLeaderParentheses(LOC.r(initialFactionsSnapshot[fk].name))}</b>`);
         }
     });
 
@@ -597,41 +599,40 @@ function buildStateOfTheRepublicHTML() {
     let achvSummaryHTML = '';
     if (unlockedObjs.length > 0) {
         achvSummaryHTML = unlockedObjs.map(a =>
-            `<span style="display: inline-flex; align-items: center; background-color: #C0C0C0; box-shadow: var(--bevel-raised); padding: 3px 7px; margin: 2px; font-size: 11px;">
-                <img src="${a.icon}" style="width: 16px; height: 16px; margin-right: 5px; object-fit: cover;">
-                <b>${a.title}</b>
+            `<span style="display: inline-flex; align-items: center; background-color: var(--win95-bg); color: var(--win95-text); box-shadow: var(--bevel-raised); padding: 3px 7px; margin: 2px; font-size: 11px;">
+                <b>${LOC.r(a.title)}</b>
             </span>`
         ).join('');
     } else {
-        achvSummaryHTML = `<i>No achievements unlocked yet.</i>`;
+        achvSummaryHTML = `<i>${LOC('republic.dossier.no_achievements')}</i>`;
     }
 
     return `<div style="text-align: left; margin-top: 10px;">
         ${buildStateCardHTML(sum)}
 
-        <div style="background-color: #DFDFDF; box-shadow: var(--bevel-sunken); padding: 10px 12px; margin-bottom: 12px; font-size: 12px;">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid #808080; padding-bottom: 6px; margin-bottom: 8px;">
-                <span><b>ADMINISTRATION:</b> Pres. B.J. Habibie (1998&ndash;1999)</span>
-                <span><b>DIFFICULTY:</b> ${diffName}</span>
-                <span><b>FINAL PC RESERVE:</b> ${stats.PC} PC</span>
+        <div style="background-color: var(--win95-surface); color: var(--win95-text); box-shadow: var(--bevel-sunken); padding: 10px 12px; margin-bottom: 12px; font-size: 12px;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid var(--win95-shadow); padding-bottom: 6px; margin-bottom: 8px;">
+                <span><b>${LOC('republic.dossier.administration_label')}</b> ${LOC('republic.dossier.administration_value')}</span>
+                <span><b>${LOC('republic.dossier.difficulty_label')}</b> ${diffName}</span>
+                <span><b>${LOC('republic.dossier.final_pc_label')}</b> ${LOC('republic.dossier.final_pc_value', { PC: stats.PC })}</span>
             </div>
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
-                <span><b>MPR VERDICT:</b> <font color="${sum.won ? '#006400' : '#8B0000'}"><b>${sum.won ? 'ACCOUNTABILITY SPEECH ACCEPTED' : 'ACCOUNTABILITY SPEECH REJECTED'}</b></font></span>
-                <span><b>FINAL TALLY:</b> <font color="#006400"><b>${sum.forVotes} Accept</b></font> &ndash; <font color="#8B0000"><b>${sum.againstVotes} Reject</b></font> (${sum.blankVotes} Blank)</span>
+                <span><b>${LOC('republic.dossier.verdict_label')}</b> <b style="color: ${sum.won ? 'var(--tone-good)' : 'var(--tone-bad)'};">${LOC(sum.won ? 'republic.verdict_accepted' : 'republic.verdict_rejected')}</b></span>
+                <span><b>${LOC('republic.dossier.tally_label')}</b> ${LOC('republic.dossier.tally_value', { FOR: sum.forVotes, AGAINST: sum.againstVotes, BLANK: sum.blankVotes })}</span>
             </div>
         </div>
 
-        <h3 style="font-size: 13px; margin-bottom: 6px;">Seven Pillars of the State</h3>
+        <h3 style="font-size: 13px; margin-bottom: 6px;">${LOC('republic.dossier.pillars_heading')}</h3>
         ${metricsGridHTML}
 
-        <h3 style="font-size: 13px; margin-bottom: 6px;">Lembaran Negara</h3>
+        <h3 style="font-size: 13px; margin-bottom: 6px;">${LOC('republic.dossier.gazette_heading')}</h3>
         <div class="state-gazette-box" style="margin-bottom: 12px;">
-            ${enactedBadges.length > 0 ? enactedBadges.join('') : '<span style="font-size: 11px; color: #555; font-style: italic;">No extraordinary decrees were enacted during this administration.</span>'}
-            ${dissolvedNames.length > 0 ? `<div style="margin-top: 6px; padding-top: 5px; border-top: 1px dotted #808080; font-size: 11px; color: #8B0000;"><b>Dissolved Parliamentary Blocs:</b> ${dissolvedNames.join(', ')}</div>` : ''}
+            ${enactedBadges.length > 0 ? enactedBadges.join('') : `<span style="font-size: 11px; color: var(--win95-text-dim); font-style: italic;">${LOC('republic.no_decrees')}</span>`}
+            ${dissolvedNames.length > 0 ? `<div style="margin-top: 6px; padding-top: 5px; border-top: 1px dotted var(--win95-shadow); font-size: 11px; color: var(--tone-bad);"><b>${LOC('republic.dissolved_blocs')}</b> ${dissolvedNames.join(', ')}</div>` : ''}
         </div>
 
-        <h3 style="font-size: 13px; margin-bottom: 6px;">Commendations &amp; Historical Milestones (${unlockedObjs.length} / ${ACHIEVEMENTS.length})</h3>
-        <div style="background-color: #DFDFDF; box-shadow: var(--bevel-sunken); padding: 8px; margin-bottom: 6px;">
+        <h3 style="font-size: 13px; margin-bottom: 6px;">${LOC('republic.dossier.achievements_heading', { COUNT: unlockedObjs.length, TOTAL: ACHIEVEMENTS.length })}</h3>
+        <div style="background-color: var(--win95-surface); color: var(--win95-text); box-shadow: var(--bevel-sunken); padding: 8px; margin-bottom: 6px;">
             ${achvSummaryHTML}
         </div>
     </div>`;

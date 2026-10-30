@@ -1,0 +1,223 @@
+{
+  "name": "Fraksi TNI/POLRI",
+  "short": "Wiranto",
+  "seats": 38,
+  "affinity": 50,
+  "image": "photo/wiranto.png",
+  "coverImage": "photo/faction/ABRI.png",
+  "summary": "Di bawah komando Jenderal Wiranto, <font color=\"#3E5022\"><b>Fraksi ABRI (TNI/Polri)</b></font> mengendalikan 38 kursi tanpa pemilihan di MPR—dipangkas separuh dari 75 kursi yang dipegang militer sebelum lahirnya paket undang-undang politik Januari 1999, namun tetap memberikan suara dengan disiplin barak yang ketat setiap kali Mabes Cilangkap mengeluarkan perintah. Pada April 1999, Inpres No. 2 Tahun 1999 secara resmi memisahkan Kepolisian Negara Republik Indonesia (Polri) dari rantai komando angkatan bersenjata, dan pucuk pimpinan militer memperkenalkan <i>Paradigma Baru</i> mereka: sebuah langkah mundur institusional yang terukur dari garis depan politik praktis <font color=\"#7D6000\"><b>Golkar</b></font>, yang dirancang untuk mempertahankan jaringan komando teritorial Kodam milik Angkatan Darat, melindungi yayasan-yayasan nonbujeternya, dan membentengi para jenderal senior dari pengadilan hak asasi manusia.<p></p>Untuk saat ini, sikap akomodatif Jenderal Wiranto terhadap Bina Graha adalah perisai pragmatis yang menjaga pemerintahan Anda tetap tegak di tengah badai harian <i>Reformasi</i>. Selama kesabaran Jenderal Wiranto dan Cilangkap masih terjaga, korps perwira tidak akan secara terbuka meninggalkan Istana: batalion-batalion Kostrad dan Brimob akan membersihkan jalan-jalan protokol yang dilanda kerusuhan dalam satu sore, truk-truk teritorial akan mengangkut beras Bulog saat pelabuhan sipil macet, dan para perwira intelijen BAIS akan secara diam-diam menggulung jaringan provokator bayaran Cendana sebelum mereka sempat beraksi.<p></p>Namun perlindungan itu adalah pinjaman bersyarat, bukan cek kosong. Jika Anda menekan terlalu agresif terhadap kekebalan hukum para jenderal, gurita bisnis komersial mereka, atau operasi penumpasan pemberontakan mereka di Timor Timur dan Aceh, maka kesabaran para jenderal akan habis dan berubah menjadi kemarahan—dan Cilangkap yang murka akan sangat lambat memaafkan, menyeret turun hasil setiap kesepakatan yang Anda buat dengan fraksi lain, serta membebaskan seluruh 38 utusan militer dan kepolisian untuk meninggalkan Anda di ruang sidang Majelis.",
+  "biography": "Lahir di Yogyakarta pada tahun 1947 dan dilantik dari Akademi Militer Nasional (AMN) di Magelang pada tahun 1968, karier Jenderal Wiranto menanjak mantap melewati komando teritorial dan strategis Angkatan Darat setelah mengabdi selama empat tahun krusial sebagai ajudan pribadi Presiden Soeharto (1989–1993). Diangkat sebagai Pangdam Jaya, Pangkostrad, Kepala Staf Angkatan Darat (KSAD), dan akhirnya Panglima ABRI (Pangab) pada Februari 1998, ia berdiri tepat di titik tumpu kekuasaan negara ketika Jakarta terbakar pada Mei 1998. Alih-alih merebut kekuasaan sebagai pemimpin junta militer atau memerintahkan pertumpahan darah di tangga gedung parlemen yang diduduki mahasiswa, Wiranto membujuk Soeharto untuk lengser, menjamin keselamatan fisik dan kehormatan keluarga Cendana, serta mengawal suksesi konstitusional Anda—sebelum dengan sigap mencopot rival kerasnya, Letjen Prabowo Subianto, dari komando Kostrad kurang dari dua puluh empat jam kemudian.<p></p>Menjabat rangkap sebagai Panglima TNI dan Menteri Pertahanan dan Keamanan (Menhankam) dalam Kabinet Reformasi Pembangunan Anda, Wiranto memandang dirinya sebagai penjaga kelangsungan hidup Republik alih-alih bawahan pribadi Anda. Dikepung oleh kemarahan mahasiswa atas penembakan Trisakti dan Semanggi, penculikan aktivis oleh Tim Mawar, serta kecaman internasional atas milisi binaan militer di Timor Timur, kesetiaan tertingginya tetap tertuju pada keutuhan dan kehormatan <font color=\"#3E5022\"><b>korps perwira TNI</b></font>. Santun, njawani, dan gemar mendendangkan lagu-lagu balada di acara resepsi perwira sambil menyembunyikan kartu politiknya rapat-rapat, ia hanya akan menjaga barak tetap berada di belakang pemerintahan Anda selama Anda menghormati garis merah institusional Cilangkap.",
+  "moods": [
+    {
+      "min": 75,
+      "text": "Mendukung Habibie",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 50,
+      "text": "Akomodatif",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Waspada",
+      "color": "#FF8C00",
+      "overlay": "rgba(255, 140, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Terasing",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "tni_riot_control",
+      "text": "Kerahkan batalion Kostrad dan Brimob untuk mengamankan jalan-jalan protokol ibu kota",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 50,
+      "description": "Ketika demonstrasi jalanan dan titik-titik rawan sektarian mengancam melumpuhkan Jakarta, berikan wewenang kepada Jenderal Wiranto dan Kodam Jaya untuk menempatkan infanteri mekanis Kostrad serta polisi anti-huru-hara Brimob di sekitar kementerian-kementerian kunci, pusat perniagaan Glodok, dan kompleks parlemen Senayan. Mengembalikan ketenangan di jalanan ibu kota, meskipun para aktivis mahasiswa akan mengecam unjuk kekuatan tersebut sebagai kembalinya represi gaya Orde Baru.",
+      "effects": {
+        "stab": [6, 12],
+        "pop": -2,
+        "ref": -2
+      },
+      "alertMsg": "Kendaraan lapis baja panser dan barikade kawat berduri mengambil posisi di sepanjang Jalan Sudirman, Medan Merdeka, dan Jembatan Semanggi, membubarkan kerumunan massa yang beringas sebelum malam tiba. Para komuter dan pemilik toko menghela napas lega melihat pulihnya ketertiban, meskipun senat-senat mahasiswa mengecam pengerahan pasukan tersebut."
+    },
+    {
+      "id": "tni_logistics",
+      "text": "Kerahkan truk-truk komando teritorial ABRI untuk distribusi Sembako darurat",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 50,
+      "description": "Dengan lumpuhnya jaringan distribusi swasta akibat pembekuan kredit, kerusuhan rasial, dan aksi borong panik, tugaskan batalion logistik Kodam dan Korem Angkatan Darat untuk mengangkut beras Bulog, minyak goreng, gula, dan minyak tanah (<i>Sembako</i>) langsung dari Tanjung Priok dan Tanjung Perak menuju pasar-pasar provinsi. Meredakan kelangkaan akut dan menenangkan lingkungan kelas pekerja di seluruh nusantara.",
+      "effects": {
+        "econ": [4, 8],
+        "pop": [3, 5],
+        "stab": 2
+      },
+      "alertMsg": "Iring-iringan truk militer Reo berwarna hijau tua menerabas kemacetan jalur tengkulak dan membongkar muatan beras serta minyak goreng bersubsidi Bulog langsung di pasar-pasar kecamatan, meredakan inflasi pangan dan menuai pujian penuh syukur dari keluarga-keluarga pekerja."
+    },
+    {
+      "id": "tni_intel",
+      "text": "Instruksikan intelijen militer BAIS untuk menggulung jaringan provokator bayaran Cendana",
+      "cost": 18,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 50,
+      "description": "Jaringan gelap para penghasut bayaran (<i>preman bayaran</i>) dan makelar Jalan Cendana terus mengangkut provokator dengan bus untuk mengubah unjuk rasa damai dan perselisihan warga menjadi aksi pembakaran. Perintahkan Badan Intelijen Strategis (BAIS) untuk mencegat kurir-kurir mereka dan menggerebek rumah-rumah aman mereka sebelum kerusuhan berikutnya sempat dirancang. Menumpulkan sabotase jalanan Cendana dan menjaga ketertiban umum.",
+      "effects": {
+        "stab": [6, 10],
+        "cendana": [-5, -3],
+        "pop": 2
+      },
+      "alertMsg": "Bekerja berdasarkan sadapan telepon dan laporan informan, aparat BAIS secara diam-diam menahan beberapa penyandang dana utama serta menyita tumpukan amplop dan bahan pembakar di pinggiran Jakarta, menggagalkan upaya terbaru Cendana untuk membakar ibu kota."
+    },
+    {
+      "id": "tni_imf_funds",
+      "text": "Masukkan bank-bank komersial dan yayasan kesejahteraan ABRI ke dalam payung rekapitalisasi negara",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "reqDecree": "economic_bailout",
+      "description": "Jaringan luas yayasan komando milik Angkatan Darat—yang dipimpin oleh Yayasan Kartika Eka Paksi, Bank Artha Graha, dan unit-unit usaha Kodam daerah—menderita kerugian besar saat krisis perbankan melanda. Secara diam-diam masukkan unit-unit bisnis mereka yang bermasalah ke dalam skema obligasi rekapitalisasi pemerintah bersama bank-bank sipil. Mengamankan hutang budi institusional yang besar dari para jenderal Cilangkap, dengan mengorbankan neraca keuangan negara dan reputasi reformis Anda.",
+      "effects": {
+        "abri": [8, 16],
+        "abri_favor": 1,
+        "econ": [-10, -6],
+        "ref": [-7, -3],
+        "cendana": [3, 5]
+      },
+      "alertMsg": "Para pengelola keuangan Cilangkap secara diam-diam menerima alokasi obligasi rekapitalisasi negara mereka. Para Pangdam daerah menyampaikan kehangatan yang langka kepada Bina Graha karena telah menyelamatkan dana kesejahteraan perwira, meskipun para auditor Departemen Keuangan meringis melihat bebannya pada neraca negara."
+    },
+    {
+      "id": "tni_new_paradigm",
+      "text": "Dukung bersama doktrin 'Paradigma Baru' Cilangkap dan protokol pengendalian massa ICRC",
+      "cost": 12,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "minAffinity": 40,
+      "description": "Dukung secara terbuka para arsitek intelektual reformasi militer di <font color=\"#3E5022\"><b>Mabes TNI</b></font>—Letjen Susilo Bambang Yudhoyono, Letjen Agus Widjojo, dan Jenderal Wiranto—dengan mengesahkan doktrin <i>Paradigma Baru</i> mereka berdampingan dengan aturan pelibatan Komite Internasional Palang Merah (ICRC). Memberi ruang bagi Cilangkap untuk mereformasi dirinya sendiri sesuai kecepatannya akan menghasilkan hutang budi jangka panjang dari pucuk pimpinan militer tanpa mengancam struktur komando teritorial.",
+      "effects": {
+        "ref": [7, 13],
+        "intl": [3, 5],
+        "stab": [3, 5],
+        "abri": [3, 7],
+        "abri_favor": 1
+      },
+      "alertMsg": "Diresmikan dengan penghormatan seremonial penuh pada Hari ABRI, 'Paradigma Baru' menuai pujian dari kalangan reformis sipil moderat maupun atase pertahanan asing, sekaligus menenangkan Cilangkap bahwa reformasi institusional akan tetap berada di tangan militer."
+    },
+    {
+      "id": "tni_civilian_posts_withdrawal",
+      "text": "Tegakkan penghentian penugasan perwira militer aktif di birokrasi sipil (Kekaryaan)",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 3,
+      "minAffinity": 40,
+      "description": "Di bawah doktrin <i>Dwifungsi</i> Orde Baru, sekitar 6.800 perwira aktif menduduki jabatan-jabatan sipil yang basah sebagai gubernur provinsi, bupati, dan sekretaris jenderal kementerian. Instruksikan Jenderal Wiranto untuk menegakkan ultimatum ketat mulai April 1999: ajukan <i>pensiun dini</i> dari dinas militer aktif atau segera lepaskan jabatan sipil. Mengikis kesabaran para jenderal dan para kolonel teritorial Cilangkap.",
+      "effects": {
+        "ref": [7, 13],
+        "pop": [3, 5],
+        "abri": [-6, -3],
+        "stab": -2
+      },
+      "alertMsg": "Ribuan perwira yang dikaryakan di seluruh nusantara terpaksa memilih antara bintang di pundak mereka atau kursi jabatan sipil mereka. Kelompok-kelompok masyarakat sipil memuji pembongkaran Kekaryaan ini sebagai tonggak supremasi sipil, meskipun para kolonel menengah menggerutu getir atas hilangnya jabatan empuk tersebut."
+    },
+    {
+      "id": "tni_golkar_withdrawal",
+      "text": "Desak Wiranto untuk memutus aliansi institusional tiga puluh tahun antara ABRI dan Golkar",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 20,
+      "minTurn": 0,
+      "minAffinity": 40,
+      "description": "Selama tiga dekade, angkatan bersenjata merupakan pilar 'Jalur A' dalam tritunggal <font color=\"#3E5022\"><b>ABG (ABRI–Birokrasi–Golkar)</b></font> yang menjamin hegemoni elektoral <font color=\"#7D6000\"><b>Golkar</b></font> mulai dari ibu kota hingga ke pos Koramil di tingkat desa. Desak Jenderal Wiranto untuk secara resmi memutus ikatan <font color=\"#3E5022\"><b>ABRI</b></font> dengan <font color=\"#7D6000\"><b>DPP Slipi</b></font> dan mengikrarkan netralitas ketat militer terhadap seluruh empat puluh delapan partai peserta pemilu. Memancing kemarahan aparat daerah Golkar di bawah Akbar Tandjung.",
+      "effects": {
+        "ref": [6, 12],
+        "stab": [3, 5],
+        "golkar_akbar": [-7, -3]
+      },
+      "alertMsg": "Cilangkap secara resmi menyatakan bahwa ABRI kini berdiri 'pada jarak yang sama dengan semua partai politik.' Para pemimpin oposisi dan pemantau pemilu menyambut gembira pengumuman tersebut, sementara para ketua DPD provinsi di kubu Akbar Tandjung mengeluhkan bahwa Pohon Beringin kini dibiarkan berjuang sendirian."
+    },
+    {
+      "id": "tni_east_timor_security",
+      "text": "Percayakan wewenang keamanan penuh atas jajak pendapat Timor Timur kepada Kodam IX/Udayana",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 10,
+      "minTurn": 2,
+      "minAffinity": 30,
+      "description": "Tolak seruan Perserikatan Bangsa-Bangsa dan negara-negara Barat untuk mengerahkan pasukan penjaga perdamaian internasional bersenjata menjelang pelaksanaan jajak pendapat 30 Agustus di Timor Timur, dengan menyerahkan tanggung jawab keamanan di bawah Kesepakatan New York 5 Mei sepenuhnya ke tangan Jenderal Wiranto dan Kodam IX/Udayana pimpinan Mayjen Adam Damiri. Membuat pucuk pimpinan militer berhutang budi secara mendalam kepada Anda karena telah membela kedaulatan nasional, namun memicu kecemasan para pegiat hak asasi manusia dan kedutaan-kedutaan asing.",
+      "effects": {
+        "stab": [3, 7],
+        "ref": [-10, -6],
+        "intl": [-8, -4],
+        "abri": [7, 13],
+        "abri_favor": 1
+      },
+      "alertMsg": "Jajaran petinggi di Cilangkap menyambut baik pembelaan Anda terhadap kehormatan militer Indonesia di provinsi kedua puluh tujuh tersebut. Namun di Dili, Liquiçá, dan Suai, para pemantau UNAMET segera memperingatkan bahwa milisi Aitarak dan Besi Merah Putih binaan tentara mengintimidasi para pemilih dengan impunitas penuh."
+    },
+    {
+      "id": "tni_parliamentary_reduction",
+      "text": "Desak Cilangkap untuk berkomitmen menghapus seluruh kursi MPR tanpa pemilihan milik ABRI secara bertahap",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 6,
+      "minAffinity": 30,
+      "description": "Meskipun blok legislatif <font color=\"#3E5022\"><b>Fraksi ABRI</b></font> telah dipangkas separuh dari 75 menjadi 38 kursi di bawah undang-undang pemilu bulan Januari, koalisi mahasiswa dan kalangan reformis <font color=\"#555555\"><b>Utusan Golongan</b></font> menuntut jadwal yang tegas untuk menghapus perwakilan militer tanpa pemilihan di parlemen secara keseluruhan. Desak Wiranto untuk menerima jadwal penghapusan yang mengikat. Menguras kesabaran Jenderal Wiranto secara tajam.",
+      "effects": {
+        "ref": [7, 13],
+        "pop": [4, 8],
+        "utusan_golongan": [4, 8],
+        "abri": [-8, -5],
+        "stab": [-4, -2]
+      },
+      "alertMsg": "Setelah perundingan yang dingin dan kaku di Bina Graha, pucuk pimpinan militer setuju secara prinsip terhadap jadwal penghapusan bertahap kursi jatah legislatif. Wiranto secara tertutup memperingatkan Anda bahwa korps perwira merasa semakin terpojok dan dipermalukan oleh para politisi sipil."
+    },
+    {
+      "id": "tni_business_interests",
+      "text": "Perintahkan auditor BPK untuk memeriksa pembukuan yayasan nonbujeter dan konsesi kayu milik ABRI",
+      "cost": 22,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 8,
+      "minAffinity": 25,
+      "description": "Kurang dari sepertiga anggaran pertahanan Indonesia berasal dari APBN resmi; sisanya mengalir melalui kerajaan bisnis yayasan militer yang gelap, konsesi penebangan hutan di Kalimantan, dan jaringan jasa pengamanan daerah. Memberi wewenang kepada para pemeriksa Badan Pemeriksa Keuangan (BPK) untuk mengaudit pembukuan tersebut akan membakar semangat para pejuang Reformasi dan IMF—namun menghantam langsung urat nadi keuangan Cilangkap dan mendorong kesabaran para jenderal ke titik didih.",
+      "effects": {
+        "ref": [8, 14],
+        "econ": [4, 8],
+        "intl": [3, 7],
+        "abri": [-12, -7],
+        "stab": [-7, -3]
+      },
+      "alertMsg": "Kabar mengenai audit tersebut langsung memicu kemurkaan di seluruh markas Kodam daerah. Wiranto menghalangi langkah para auditor BPK di setiap lini, sembari menyampaikan peringatan keras kepada Istana bahwa mengancam otonomi keuangan nonbujeter militer berarti melewati garis merah yang berbahaya."
+    },
+    {
+      "id": "tni_final_appeal",
+      "text": "Adakan konsultasi tengah malam dengan Jenderal Wiranto menjelang pemungutan suara MPR",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Berbeda dengan partai-partai sipil terpecah-belah yang sibuk bertukar amplop di kamar-kamar suite hotel sekitar Senayan, <font color=\"#3E5022\"><b>38 utusan Fraksi TNI/Polri</b></font> berbaris masuk ke ruang Sidang Paripurna di bawah perintah komando militer langsung. Duduklah bersama Jenderal Wiranto untuk terakhir kalinya sebelum kotak suara dibuka guna menagih setiap jaminan institusional yang telah Anda berikan kepada angkatan bersenjata. Mencairkan setiap hutang budi politik dan komitmen institusional yang dimiliki Cilangkap terhadap Istana.",
+      "effects": {
+        "abri": [11, 19],
+        "stab": [3, 5]
+      },
+      "alertMsg": "Jenderal Wiranto mendengarkan dalam keheningan yang terukur, memberikan hormat militer dengan tegas, dan meyakinkan Anda bahwa Fraksi TNI/Polri akan memberikan suaranya demi kepentingan tertinggi stabilitas nasional saat pemungutan suara dimulai."
+    }
+  ]
+}

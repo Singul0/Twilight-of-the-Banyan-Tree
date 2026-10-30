@@ -1,0 +1,1727 @@
+[
+  {
+    "date": "14 Juni 1999",
+    "id": "ev_post_election",
+    "title": "Realitas Pasca-Pemilu",
+    "image": "photo/events/1.png",
+    "desc": "Sudah sepekan berlalu sejak pemungutan suara ditutup, dan Jakarta masih terasa menggantung di udara. Pada 7 Juni, lebih dari 105 juta warga negara memberikan suara mereka di lebih dari 300.000 tempat pemungutan suara dalam pemilihan umum parlemen bebas pertama sejak tahun 1955, sebuah keberhasilan logistik yang diselenggarakan oleh Komisi Pemilihan Umum (KPU) beranggotakan 53 orang di bawah pimpinan Jenderal (Purn.) Rudini tanpa pertumpahan darah meluas yang sempat dikhawatirkan banyak pihak. Kini penghitungan manual terus berjalan lambat desa demi desa, kecamatan demi kecamatan, sementara kru televisi berkemah di luar markas KPU di Jalan Imam Bonjol menunggu angka-angka yang masuk dengan sangat perlahan.<br><br>Apa yang sudah tampak jelas dari penghitungan awal di seluruh Jawa dan Bali sungguh mengkhawatirkan bagi Istana. PDI-P pimpinan Megawati Soekarnoputri melesat meraup sekitar sepertiga suara nasional, unggul hampir dua belas persen di atas Golkar di posisi kedua. Kerumunan massa Banteng berbaju merah sudah berpesta pora di sepanjang Jalan Thamrin seolah-olah kursi kepresidenan itu sendiri telah ditentukan, meskipun berdasarkan UUD 1945, jalanan tidak memilih presiden; 700 anggota MPR-lah yang memilihnya empat bulan dari sekarang. Dengan partai-partai kecil di dalam KPU yang sudah mengancam akan menolak pengesahan hasil pemilu karena dugaan kecurangan, para penasihat Anda terbelah mengenai sinyal apa yang harus dikirimkan oleh Istana Merdeka.",
+    "options": [
+      {
+        "text": "\"Kesabaran telah mengawal masa transisi ini dengan baik, dan saya tidak melihat alasan untuk meninggalkannya sekarang. Komisi pimpinan Jenderal Rudini layak mendapatkan kesempatan untuk menyelesaikan penghitungannya tanpa gangguan, dan jika partai-partai kecil membuat pengesahannya buntu nanti, kantor ini akan turun tangan melalui keputusan presiden untuk mengesahkan suara rakyat.\"",
+        "effects": {
+          "PC": [3, 7],
+          "stab": [4, 8],
+          "ref": [4, 8],
+          "pop": [-4, -2],
+          "golkar_akbar": [-4, -2],
+          "pdip": [-3, -2],
+          "cendana": 1,
+          "golkar_habibie": 2
+        },
+        "reaction": "KOMPAS: 'ISTANA MEMBISU DI TENGAH KEMACETAN KPU, SINYAL KELUMPUHAN POLITIK?'<br><br>Sementara Istana Merdeka bersembunyi di balik kesantunan prosedural dan berjanji membiarkan komisi pimpinan Jenderal Rudini yang tengah buntu menyelesaikan penghitungannya yang sepelan siput, para pengamat politik menyebut keheningan Presiden dengan namanya yang sebenarnya: terguncang hebat. Bahkan isyarat Istana bahwa pihaknya dapat mengesahkan hasil penghitungan suara melalui keputusan presiden jika partai-partai kecil menolak menandatanganinya langsung memancing kecurigaan dari Diponegoro, tempat para kader PDI-P memperingatkan bahwa setiap hari penundaan birokrasi di KPU adalah tambahan dua puluh empat jam bagi para makelar Golkar untuk menyuap para utusan daerah sebelum bulan Oktober."
+      },
+      {
+        "text": "\"Seorang pemimpin harus mampu membaca suasana dengan jujur, bahkan ketika hasilnya tidak nyaman. Apa pun bentuk hasil akhir penghitungan di tingkat daerah nanti, keunggulan suara PDI-P di kotak suara sudah tak terbantahkan, dan saya lebih memilih mengucapkan selamat kepada Ibu Megawati atas pencapaian demokratis yang bersejarah ini sekarang ketimbang berpura-pura sebaliknya.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "ref": [6, 10],
+          "pop": [4, 8],
+          "stab": [3, 7],
+          "golkar_akbar": [-8, -4],
+          "mil": [-4, -2],
+          "pdip": [6, 10],
+          "abri": [-4, -2],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "SUARA KARYA: 'HABIBIE MENGALAH SEBELUM BERTANDING'<br><br>Kedutaan-kedutaan asing mungkin memuji ucapan selamat yang terburu-buru dari Presiden Habibie kepada Megawati Soekarnoputri sebagai sikap 'kenegarawanan,' namun di dalam markas besar Golkar di Slipi, langkah tersebut dikecam sebagai tindakan bunuh diri politik. Para ketua DPD senior yang menghabiskan waktu berbulan-bulan mempertahankan Pohon Beringin dari amukan massa jalanan di Jawa mengatakan kepada surat kabar ini bahwa Presiden secara efektif telah menyerahkan mandat moral kepada PDI-P bahkan sebelum satu kursi MPR pun dinegosiasikan. Sementara itu, Wakil Sekretaris Jenderal PDI-P Pramono Anung menepis uluran tangan tersebut dengan cemoohan dingin: 'Jika Pak Habibie benar-benar menghormati kemenangan kami, beliau bisa mulai mengemasi miniatur pesawatnya di Patra Kuningan ketimbang mengirim karangan bunga.'"
+      },
+      {
+        "text": "\"Angka-angka dari surat suara DPR menunjukkan satu hal, namun kursi kepresidenan, berdasarkan UUD 1945 yang menjadi landasan Republik ini, ditentukan pada bulan Oktober oleh 700 utusan di dalam MPR, bukan oleh keunggulan sepertiga suara pada bulan Juni. Saya meminta semua pihak untuk menahan diri dari kepastian yang prematur.\"",
+        "effects": {
+          "PC": [6, 10],
+          "pop": [-8, -4],
+          "stab": [-5, -3],
+          "golkar_akbar": [6, 10],
+          "pdip": [-8, -5],
+          "cendana": 2,
+          "golkar_habibie": 2
+        },
+        "reaction": "RAKYAT MERDEKA: 'KALAU KALAH YA KALAH SAJA! AKAL-AKALAN KONSTITUSI ALA HABIBIE'<br><br>Baru sepekan setelah 105 juta rakyat Indonesia berjemur di bawah terik matahari untuk mengubur Orde Baru di kotak suara, Pak Habibie sudah memamerkan trik sulap terbarunya! Menjelaskan kepada masyarakat bahwa pemilu sebenarnya tidak memilih presiden! Dengan bersembunyi di balik 700 kursi MPR (tempat 238 utusan militer, daerah, dan golongan yang ditunjuk duduk manis menunggu dilobi), Habibie telah memberi sinyal bahwa ia berniat membalikkan kemenangan telak Megawati melalui rekayasa di balik layar. 'Ini adalah legalisme klasik Soeharto yang diucapkan dengan istilah-istilah Aachen,' seru para pemimpin mahasiswa dari FORKOT di luar gerbang DPR kemarin, sembari memperingatkan bahwa jika Senayan membajak suara rakyat pada bulan Oktober, Jakarta akan terbakar lebih hebat daripada Mei 1998."
+      },
+      {
+        "text": "\"Tunggu hasil penghitungan suara luar Jawa dari Sulawesi, Sumatera, dan Nusa Tenggara sebelum membiarkan jaringan media Jakarta memahkotai seorang pemenang. Mesin daerah Golkar tetap menjadi tulang punggung nusantara, dan partai layak mendengar keyakinan tersebut langsung dari Istana.\"",
+        "effects": {
+          "PC": [3, 7],
+          "golkar_akbar": [6, 10],
+          "utusan_daerah": [4, 8],
+          "pop": [-7, -3],
+          "ref": [-7, -3],
+          "pdip": [-7, -3],
+          "cendana": 2,
+          "golkar_habibie": 1
+        },
+        "reaction": "MAJALAH TEMPO: 'MENGHITUNG KURSI DI ATAS POHON BERINGIN YANG RETAK'<br><br>Di dalam ruang-ruang rapat berpendingin udara di Bina Graha, Presiden beserta orang kepercayaannya asal Sulawesi, A.A. Baramuli, terhibur oleh peta yang menunjukkan Golkar menyapu bersih 60 persen suara di Bone, Parepare, dan Kupang. Namun di jalanan pulau Jawa, tempat dua pertiga rakyat Republik ini benar-benar tinggal, hitung-hitungan tersebut terdengar seperti delusi yang berbahaya. Dalam waktu empat puluh delapan jam setelah Istana menyombongkan bahwa bobot kursi luar Jawa akan mengimbangi kemenangan telak PDI-P di Jawa, kerumunan massa yang marah di Solo dan Surabaya melempari tiga kantor DPD Golkar dengan batu. Pengamat politik Andi Mallarangeng mencatat bahwa membenturkan bobot kursi luar Jawa melawan suara rakyat Jawa adalah perjudian nekat terhadap kohesi nasional semata-mata demi menyelamatkan jabatan satu orang."
+      },
+      {
+        "text": "\"Sebelum posisi masing-masing pihak mengeras menjadi kubu-kubu yang tak lagi bisa mundur, kirimkan seorang utusan tertutup kepada Taufik Kiemas dan lingkaran Diponegoro, bukan lewat konferensi pers, melainkan sekadar perbincangan awal mengenai bagaimana Republik ini akan dikelola pasca-Oktober.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "pdip": [4, 8],
+          "golkar_akbar": [-7, -3],
+          "stab": [3, 7],
+          "ref": [3, 7],
+          "cendana": -2,
+          "golkar_habibie": 1
+        },
+        "reaction": "THE JAKARTA POST: 'JALUR BELAKANG ISTANA KE DIPONEGORO TERBONGKAR SEBAGAI SINYAL KEPANIKAN'<br><br>Apa yang diniatkan sebagai pendekatan tengah malam secara rahasia kepada Taufik Kiemas di Jalan Kebagusan bocor ke telinga wartawan bahkan sebelum sedan utusan Istana tersebut keluar dari kawasan Jakarta Selatan. Meskipun Kiemas sendiri mendengarkan sang utusan sambil menyeruput kopi, kelompok garis keras nasionalis PDI-P tidak membuang waktu untuk menjadikan kunjungan itu sebagai bukti bahwa Habibie sadar pencalonannya sudah mati sebelum berkembang. Lebih buruk lagi, kabar mengenai pendekatan rahasia tersebut langsung memicu paranoia di dalam kubu Ketua Umum Golkar Akbar Tandjung, tempat para anggota DPR senior bertanya-tanya secara terbuka apakah Presiden sedang bersiap menggadaikan ambisi kursi ketua parlemen milik partainya sendiri demi membeli pengampunan pribadi dari Megawati."
+      }
+    ]
+  },
+  {
+    "date": "28 Juni 1999",
+    "id": "ev_press_freedom",
+    "title": "Kebebasan Pers & UU No. 40",
+    "image": "photo/events/2.png",
+    "desc": "Keputusan Anda tahun lalu yang menginstruksikan Menteri Penerangan Letjen Muhammad Yunus Yosfiah untuk menghapus pencabutan izin penerbitan SIUPP yang ditakuti, jerat favorit Orde Baru untuk membungkam jurnalisme independen, telah melepaskan ledakan media cetak dan penyiaran yang tak seorang pun di dalam birokrasi tahu cara membendungnya. Dalam waktu kurang dari dua belas bulan, jumlah penerbitan berizin telah meroket dari 289 menjadi lebih dari 1.600 media. Tabloid-tabloid, mingguan investigasi seperti Tempo (yang kembali terbit setelah pembredelan tahun 1994), dan acara bincang-bincang interaktif di radio kini mengejek suara Anda, gerak-gerik Anda, dan kabinet Anda setiap hari, secara rutin mencetak frasa 'bayang-bayang Soeharto yang masih gentayangan' seolah-olah itu adalah gelar resmi Anda. Yang lebih mengkhawatirkan bagi Cilangkap, risalah kabinet rahasia mengenai rekapitalisasi bank pemerintah serta telegram ABRI yang bocor mengenai pengerahan pasukan di Aceh dan Timor Timur muncul kata demi kata di halaman depan koran. Dengan Rancangan Undang-Undang Pers (RUU Pers) yang kini bergerak menuju lantai sidang DPR, para petinggi keamanan mendesak Anda untuk memasukkan kembali klausul pengendalian izin demi 'keamanan nasional' sebelum kebebasan pers terkunci secara permanen di dalam undang-undang.",
+    "options": [
+      {
+        "text": "\"Ketimbang harus menjadi wasit sengketa ruang redaksi minggu demi minggu di sisa masa jabatan saya, mari kita kodifikasikan penghapusan sensor ini untuk selamanya. Dorong pengesahan RUU Pers di DPR dengan larangan mutlak terhadap pembredelan surat kabar serta pembentukan Dewan Pers yang independen.\"",
+        "effects": {
+          "PC": [3, 7],
+          "ref": [8, 16],
+          "intl": [6, 10],
+          "pop": [4, 8],
+          "stab": [3, 5],
+          "mil": [-6, -3],
+          "abri": [-6, -3],
+          "utusan_golongan": [4, 8],
+          "cendana": [-4, -2],
+          "golkar_habibie": [2, 4]
+        },
+        "reaction": "MEDIA INDONESIA: 'UU PERS DIKEBUT DEMI SIMPATI OKTOBER: MONUMEN ATAU MANUVER?'<br><br>Meskipun para pemimpin redaksi di seluruh Jakarta menyambut baik percepatan pengesahan RUU Pers, yang secara permanen melarang <i>bredel</i> dan melucuti cambuk perizinan Departemen Penerangan, hanya sedikit wartawan di galeri pers yang menelan mentah-mentah pertobatan mendadak Istana menjadi penganut liberalisme Locke tersebut. 'Seorang presiden yang sedang tenggelam melemparkan pelampung kepada para jurnalis sambil berharap kita lupa bahwa ia menghabiskan dua puluh tahun duduk membisu di dalam kabinet Soeharto setiap kali Tempo, DeTIK, dan Sinar Harapan dicekik,' tulis kolumnis Goenawan Mohamad. Sementara itu, para jenderal senior di Cilangkap secara tertutup mengecam keras RUU tersebut sebagai tindakan pelucutan senjata institusional yang membuat rahasia negara tak lagi bertameng."
+      },
+      {
+        "text": "\"Saya tidak tertarik menghidupkan kembali pembredelan SIUPP lama, dan saya ingin hal itu dipahami dengan jelas. Namun ada perbedaan antara kebebasan dan kecerobohan, dan jamuan makan siang tertutup di Bina Graha bersama para pemimpin redaksi mungkin dapat menetapkan beberapa aturan dasar terkait kawat militer rahasia.\"",
+        "effects": {
+          "mil": [3, 6],
+          "stab": [3, 7],
+          "ref": [-7, -3],
+          "pop": [-8, -4],
+          "intl": [-4, -2],
+          "abri": [3, 6],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "MAJALAH TEMPO: 'KULIAH DUA JAM DI BINA GRAHA: BUDAYA TELEPON GAYA BARU'<br><br>Lima belas pemimpin redaksi dipanggil ke Bina Graha kemarin untuk menghadiri acara yang disebut sebagai 'jamuan makan siang informal,' namun justru harus mendengarkan monolog selama dua jam dari Presiden mengenai perbedaan antara 'kebebasan yang bertanggung jawab' dan 'anarki.' Menurut tiga pemimpin redaksi yang hadir, imbauan bertele-tele Habibie agar pers berhenti mencetak nota militer dan perbankan yang bocor terdengar sangat mirip dengan <i>budaya telepon</i> Orde Baru masa lalu, yang hanya diterjemahkan ke dalam jargon sopan ala insinyur Jerman. Aliansi Jurnalis Independen (AJI) merilis pernyataan pedas kurang dari satu jam setelah hidangan penutup disajikan, menegaskan bahwa pers bertanggung jawab kepada publik, bukan kepada undangan makan Istana."
+      },
+      {
+        "text": "\"Apa pun ketidaknyamanan pribadi yang ditimbulkan oleh karikatur-karikatur ini bagi saya, dan harus saya akui jumlahnya sangat banyak, Menteri Penerangan Yunus Yosfiah memegang dukungan penuh saya untuk membiarkan ruang-ruang redaksi sama sekali tidak disentuh, bahkan ketika mereka mencetak bocoran memo kabinet.\"",
+        "effects": {
+          "ref": [6, 10],
+          "pop": [4, 8],
+          "intl": [7, 13],
+          "mil": [-9, -5],
+          "stab": [-5, -3],
+          "abri": [-9, -5],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "FORUM KEADILAN: 'CILANGKAP GERAH: ISTANA BIARKAN RAHASIA NEGARA DITELANJANGI PERS'<br><br>Penolakan Presiden Habibie untuk menuntut surat-surat kabar yang memuat kawat operasional rahasia ABRI dari Aceh dan Timor Timur telah memicu pemberontakan diam-diam di tubuh intelijen militer. Para perwira senior di BAIS dan markas besar Cilangkap mengatakan kepada Forum pekan ini bahwa Istana sedang mengorbankan keamanan operasional di atas altar tepuk tangan diplomatik Barat. Lebih buruk lagi, membiarkan pers tabloid bebas tanpa kendali sama sekali tidak melunakkan pemberitaan mereka terhadap diri Presiden sendiri. Kios-kios koran pagi ini masih memajang karikatur Habibie sebagai boneka putar yang berputar lepas kendali sementara kementerian-kementeriannya sendiri saling membocorkan rahasia."
+      },
+      {
+        "text": "\"Berستكap diam tidak pernah memenangkan perdebatan di surat kabar. Instruksikan TVRI, RRI, dan Antara untuk meluncurkan kampanye kontra-informasi yang agresif guna menampilkan capaian ekonomi dan legislasi pemerintahan ini di hadapan masyarakat setiap petang.\"",
+        "effects": {
+          "PC": [3, 7],
+          "pop": [-5, -3],
+          "ref": [-7, -3],
+          "intl": [-4, -2],
+          "golkar_akbar": [4, 8],
+          "mil": [-3, -2],
+          "abri": [-3, -2],
+          "cendana": 2,
+          "golkar_habibie": -1
+        },
+        "reaction": "POS KOTA: 'WARGA BOSAN DONGENG TVRI: HARMOKO GANTI KACAMATA!'<br><br>Para pemirsa yang menyetel siaran <i>Dunia Dalam Berita</i> TVRI pukul 19.00 WIB pekan ini disuguhi kilas balik yang ganjil dari masa lalu Orde Baru. Tiga puluh menit siaran negara yang penuh puja-puji tanpa kritik atas statistik beras dan capaian legislasi kabinet. Alih-alih mengubah opini publik, gempuran media pemerintah tersebut justru menjadi bahan tertawaan di warung-warung kopi mulai dari Tanah Abang hingga Glodok. 'Kita sudah tahan tiga puluh dua tahun mendengar Harmoko memberi tahu kita bahwa harga cabai stabil padahal kantong kita kosong melompong; sekarang Habibie memutar pita kaset yang persis sama,' sindir pengamat media Veven Sp. Wardhana."
+      },
+      {
+        "text": "\"Instruksikan BAIS dan kepolisian untuk secara diam-diam mendatangi para pemimpin redaksi yang mencetak telegram pertahanan rahasia serta mengingatkan mereka bahwa pasal-pasal KUHP tentang rahasia negara dan penghinaan terhadap kepala negara masih berlaku.\"",
+        "effects": {
+          "PC": [6, 10],
+          "mil": [5, 9],
+          "abri": [5, 9],
+          "ref": [-23, -13],
+          "intl": [-16, -8],
+          "pop": [-16, -8],
+          "stab": [-7, -3],
+          "cendana": [2, 4],
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "RAKYAT MERDEKA: 'ORBA BANGKIT LAGI! INTEL DATANGI REDAKSI, PASAL HINA PRESIDEN DIPAKAI GEBUK PERS'<br><br>Topeng reformis terlepas dari wajah Istana Merdeka kemarin sore saat para petugas intelijen berpakaian preman dan penyidik Polri melakukan 'kunjungan silaturahmi' mendadak ke tiga ruang redaksi besar di Jakarta, sambil melambaikan pasal karet warisan kolonial <i>Haatzai Artikelen</i> (pasal penyebar kebencian) dan ketentuan KUHP tentang penghinaan terhadap kepala negara. Dalam hitungan jam, ratusan jurnalis dan mahasiswa UI memblokade gedung Departemen Penerangan di Jalan Medan Merdeka Barat dengan pita hitam menutup mulut mereka, meneriakkan slogan yang kini menggema di berbagai kantor berita asing: 'Habibie hanyalah Soeharto bergelar doktor Jerman!'"
+      }
+    ]
+  },
+  {
+    "date": "8 Juli 1999",
+    "id": "ev_aceh_insurgency",
+    "title": "Pertumpahan Darah di Aceh",
+    "image": "photo/events/3.png",
+    "desc": "Pencabutan status Daerah Operasi Militer (DOM) Aceh pada Agustus lalu, yang disusul dengan permohonan maaf pribadi Anda di Masjid Raya Baiturrahman di Banda Aceh pada bulan Maret, tadinya dimaksudkan untuk membuka jalan menuju rekonsiliasi. Namun sebaliknya, provinsi tersebut justru terperosok ke dalam lingkaran pemberontakan dan pembalasan yang jauh lebih berdarah. Gerilyawan Gerakan Aceh Merdeka (GAM) menyergap konvoi-konvoi militer di seluruh Pidie, Aceh Utara, dan Aceh Timur, sementara puluhan ribu warga desa mengungsi ke halaman-halaman masjid. Lebih buruk lagi, menyusul penembakan para pengunjuk rasa pada bulan Mei di Simpang KKA, Lhokseumawe, pasukan teritorial dan unit-unit Kostrad melancarkan penyisiran tanpa ampun di pelosok pedesaan, yang memuncak pada laporan mengenai penyerbuan militer brutal terhadap pesantren ulama kharismatik Teungku Bantaqiah di Beutong Ateuh.<br><br>Sementara para pemimpin mahasiswa SIRA menuntut referendum kemerdekaan bergaya Timor Timur di Banda Aceh, para komandan lapangan Jenderal Wiranto menuntut pemulihan wewenang darurat militer, dan para pegiat hak asasi manusia yang dipimpin oleh Amran Zamzami mendesak Anda untuk menandatangani Keputusan Presiden guna membentuk Komisi Independen Pengusutan Tindak Kekerasan di Aceh (KPTKA).",
+    "options": [
+      {
+        "text": "\"Tandatangani Keppres No. 88/1999 yang membentuk Komisi Independen Pengusutan Tindak Kekerasan di Aceh (KPTKA), dipadukan dengan jaminan otonomi khusus baru di bidang budaya dan agama. Jika ada prajurit yang melakukan kekejaman di Beutong Ateuh dan Simpang KKA, negara harus menyelidiki seragamnya sendiri.\"",
+        "effects": {
+          "PC": [3, 7],
+          "ref": [7, 13],
+          "intl": [6, 10],
+          "utusan_daerah": [6, 10],
+          "utusan_golongan": [4, 8],
+          "mil": [-9, -5],
+          "abri": [-9, -5],
+          "stab": [-4, -2],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "HARIAN WASPADA: 'KOMISI INDEPENDEN DIBENTUK, TAPI SIAPA BERANI ADILI JENDERAL?'<br><br>Penandatanganan Keppres No. 88/1999 oleh Presiden Habibie yang membentuk Komisi Independen Pengusutan Tindak Kekerasan di Aceh (KPTKA) beranggotakan 27 orang disambut dengan skeptisisme getir di Banda Aceh. Meskipun para pengacara hak asasi manusia menyambut baik mandat untuk menyelidiki pembantaian Simpang KKA dan Beutong Ateuh, koordinator KontraS Munir menunjuk kelemahan mencolok dalam keputusan Istana tersebut: KPTKA hanya memiliki wewenang untuk menyusun laporan, bukan menyeret satu pun perwira Kopassus atau Kostrad ke pengadilan sipil. Sementara itu, di dalam markas Cilangkap, para jenderal senior berang karena Jakarta mengumbar pelanggaran angkatan darat di depan umum saat para prajurit terus disergap setiap hari di sepanjang jalan raya Banda Aceh–Medan."
+      },
+      {
+        "text": "\"Permohonan maaf tidak ada artinya jika perilaku di lapangan tidak pernah berubah. Perintahkan penarikan segera unit-unit Kostrad dan Brimob non-organik dari Aceh Utara serta undang para ulama dan tokoh masyarakat Aceh secara langsung ke Istana Merdeka.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "ref": [8, 16],
+          "intl": [7, 13],
+          "mil": [-12, -8],
+          "stab": [-10, -6],
+          "abri": [-12, -8],
+          "utusan_daerah": [6, 10],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "SUARA PEMBARUAN: 'TENTARA DITARIK MENDADAK, ACEH UTARA JATUH KE TANGAN GAM'<br><br>Perintah mendadak Istana yang menarik batalion-batalion Kostrad dan Brimob non-organik keluar dari Pidie dan Aceh Utara telah memicu kekosongan keamanan seketika di sepanjang koridor industri provinsi tersebut. Dalam hitungan jam setelah truk-truk pasukan bergerak meninggalkan Lhokseumawe, gerilyawan GAM bersenjata mengibarkan bendera bulan bintang mereka di atas tiga kantor kecamatan dan memaksa kompleks LNG Arun memangkas kegiatan operasionalnya. Di markas besar ABRI di Cilangkap, para kolonel yang murka menuduh Habibie menikam prajurit dari belakang demi aksi pencitraan murahan yang bahkan sudah diejek oleh pucuk pimpinan GAM di pengasingan di Swedia sebagai tanda runtuhnya kendali Jakarta."
+      },
+      {
+        "text": "\"Uang semata tidak akan menghapus luka tahun-tahun DOM, namun provinsi yang dibiarkan lapar akan melahirkan pemberontakan. Percepat alokasi perimbangan keuangan baru bagi Aceh, dengan menjamin provinsi tersebut memperoleh 70% dari pendapatan minyak dan gasnya disertai bantuan rekonstruksi bagi Pidie dan Lhokseumawe.\"",
+        "effects": {
+          "ref": [3, 7],
+          "utusan_daerah": [8, 16],
+          "ppp": [3, 7],
+          "econ": [-8, -4],
+          "mil": [-4, -2],
+          "stab": [3, 7],
+          "abri": [-4, -2],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "MEDIA INDONESIA: 'HABIBIE COBA BELI LUKA ACEH DENGAN UANG GAS ARUN'<br><br>Dihadapkan pada kuburan-kuburan massal warisan era DOM dan spanduk-spanduk mahasiswa yang menuntut referendum di seluruh Banda Aceh, pemerintahan Habibie meraih satu-satunya alat yang tampaknya dipahami oleh para teknokrat: buku cek. Sementara para elit provinsi di DPRD Aceh dan kaukus Utusan Daerah di Jakarta dengan sigap mengantongi janji bagi hasil minyak dan gas sebesar 70 persen, para pemimpin mahasiswa SIRA membakar salinan paket fiskal tersebut di luar Masjid Raya Baiturrahman kemarin. 'Jakarta mengira sepuluh tahun penyiksaan militer dan para ibu yang menjanda bisa dilunasi layaknya tagihan gas yang jatuh tempo,' ujar Ketua SIRA Muhammad Nazar kepada para wartawan."
+      },
+      {
+        "text": "\"Jauhkan operasi penumpasan pemberontakan dari tajuk utama berita. Berikan wewenang Operasi Intelijen dan Kepolisian Gabungan (Operasi Sadar Rencong) untuk membidik sel-sel GAM secara diam-diam tanpa mendeklarasikan kembali Daerah Operasi Militer secara resmi.\"",
+        "effects": {
+          "PC": [3, 7],
+          "mil": [4, 7],
+          "abri": [4, 7],
+          "stab": [-5, -3],
+          "intl": [-7, -3],
+          "ref": [-10, -6],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "MAJALAH TEMPO: 'GANTI BAJU OPERASI MILITER: DARI JARING MERAH KE SADAR RENCONG'<br><br>Empat bulan setelah Presiden Habibie berdiri meneteskan air mata di Banda Aceh untuk memohon ampun atas satu dekade teror militer, teror tersebut kembali hadir di balik eufemisme birokrasi baru yang terdengar santun. Dengan mengizinkan <i>Operasi Sadar Rencong</i> yang secara di atas kertas berada di bawah lencana kepolisian sementara unit-unit intelijen militer BKO melakukan penyisiran tengah malam di seluruh Pidie dan Aceh Barat, Istana tidak berhasil mengelabui siapa pun. Kantor Lembaga Bantuan Hukum (LBH) setempat di Banda Aceh mendokumentasikan sembilan belas pembunuhan misterius dan pembakaran ruko sepanjang pekan ini saja, membuktikan bahwa permohonan maaf Habibie pada bulan Maret hanyalah tirai retoris bagi refleks keamanan lama ala Orde Baru."
+      },
+      {
+        "text": "\"Sikap menahan diri tidak lagi tampak seperti kebijaksanaan ketika kelompok separatis menyergap prajurit setiap hari. Berikan keleluasaan operasional penuh kepada para komandan Jenderal Wiranto untuk menghancurkan GAM dengan kekuatan senjata; sebuah Republik yang tidak mampu menjaga keutuhan perbatasannya tidak lagi memiliki apa-apa untuk diperintah.\"",
+        "effects": {
+          "PC": [6, 10],
+          "mil": [7, 14],
+          "abri": [7, 14],
+          "stab": [-8, -4],
+          "ref": [-16, -8],
+          "intl": [-13, -7],
+          "utusan_daerah": [-10, -6],
+          "ppp": [-8, -4],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "HARIAN WASPADA: 'SERAMBI MEKKAH KEMBALI MEMBARA, MOGOK MASSAL LUMPUHKAN BANDA ACEH'<br><br>Segala kepura-puraan tentang 'Paradigma Baru' menguap di Aceh pekan ini saat batalion-batalion tempur baru mengalir masuk ke Lhokseumawe, Pidie, dan Aceh Barat dengan wewenang penuh dari Istana Merdeka. Sebagai tanggapan atas ofensif militer yang kembali digelar tersebut, aksi mogok massal selama dua hari telah mengubah Banda Aceh menjadi kota mati sementara lebih dari 100.000 warga desa mengungsi ke kamp-kamp penampungan di dalam kompleks masjid. Di Jakarta, para legislator PPP dan tokoh masyarakat Aceh menuduh Habibie mencuci tangannya dengan darah rakyat Aceh semata-mata demi mengambil hati blok Jenderal Wiranto menjelang Sidang Umum MPR bulan Oktober."
+      }
+    ]
+  },
+  {
+    "date": "15 Juli 1999",
+    "id": "ev_timor_militia",
+    "title": "Teror Milisi di Timor Timur",
+    "image": "photo/events/4.png",
+    "desc": "Berdasarkan Kesepakatan New York tripartit yang ditandatangani pada 5 Mei oleh Menteri Luar Negeri Ali Alatas, Menteri Luar Negeri Portugal Jaime Gama, dan Sekretaris Jenderal PBB Kofi Annan, Misi Perserikatan Bangsa-Bangsa di Timor Timur (UNAMET) yang dipimpin Ian Martin dijadwalkan membuka pendaftaran pemilih besok di seluruh tiga belas kabupaten di Timor Timur. Namun alih-alih proses administratif yang tertib, milisi pro-integrasi (Aitarak pimpinan Eurico Guterres di Dili, Besi Merah Putih di Liquiçá, dan Mahidi di Ainaro) tengah melancarkan kampanye pembakaran dan teror, setelah sebelumnya menyerang kantor-kantor PBB di Maliana dan Viqueque.<br><br>Setiap kawat diplomatik kredibel yang tiba di meja Anda mengonfirmasi apa yang dikatakan secara terbuka oleh para pemantau PBB: milisi-milisi tersebut dipersenjatai, didanai, dan diarahkan oleh unsur-unsur Kodam IX/Udayana (Mayjen Adam Damiri) dan Korem 164/Wira Dharma (Kol. Tono Suratman) bersama para veteran Kopassus. Kofi Annan telah menunda pendaftaran pemilih selama tiga hari dan memperingatkan Jakarta bahwa seluruh pelaksanaan jajak pendapat berada dalam bahaya kecuali Indonesia memenuhi kewajiban 5 Mei-nya untuk menjaga perdamaian.",
+    "options": [
+      {
+        "text": "\"Perintahkan Jenderal Wiranto dan delegasi senior yang terdiri dari lima belas menteri kabinet, termasuk Ali Alatas dan Muladi, untuk terbang langsung ke Dili pekan ini, memeriksa keamanan UNAMET secara langsung, dan memperingatkan Korem 164 bahwa mata seluruh kabinet sedang mengawasi mereka.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [7, 13],
+          "stab": [3, 5],
+          "mil": [-4, -2],
+          "econ": [-4, -2],
+          "abri": [-4, -2],
+          "cendana": 1,
+          "golkar_habibie": 1
+        },
+        "reaction": "SYDNEY MORNING HERALD: 'FIFTEEN MINISTERS FLY TO DILI FOR FOUR-HOUR CHARADE'<br><br>President Habibie's much-hyped dispatch of General Wiranto, Foreign Minister Ali Alatas, and a dozen cabinet ministers to Dili yesterday lasted barely four hours on the tarmac and convinced not a single diplomat on the ground. While Wiranto promised UNAMET chief Ian Martin 'strict neutrality,' foreign television crews filmed Indonesian territorial troops standing idly by less than two kilometers away as armed Aitarak militiamen manned roadblocks in broad daylight. Western ambassadors in Jakarta privately described the ministerial fly-in as pathetic proof that Habibie can command air force VIP jets, but cannot command a single infantry colonel on the ground in Dili."
+      },
+      {
+        "text": "\"Keluarkan perintah langsung presiden untuk mencopot Kol. Tono Suratman dari komando di Dili dan memperingatkan setiap perwira teritorial di Kodam IX/Udayana bahwa siapa pun yang tertangkap memasok senjata kepada Aitarak atau Besi Merah Putih akan langsung dihadapkan ke mahkamah militer.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "ref": [7, 13],
+          "intl": [8, 16],
+          "mil": [-9, -5],
+          "abri": [-10, -6],
+          "stab": [-5, -3],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "FORUM KEADILAN: 'DICOPOT DI DILI, NAIK PANGKAT DI JAKARTA: SANDIWARA MUTASI TIMTIM'<br><br>Sementara negara-negara Barat memuji perintah Presiden Habibie yang mencopot Danrem 164 Kol. Tono Suratman menjelang pendaftaran pemilih UNAMET, orang-orang dalam di Cilangkap justru menertawakan kepolosan Istana. Jauh dari ancaman mahkamah militer atas serangan milisi di Liquiçá dan Maliana, Suratman justru sudah dijadwalkan mendapat promosi pangkat brigadir jenderal dan kursi bergengsi di Mabes ABRI. Sementara itu, Fraksi ABRI di Senayan mendidih melihat penghinaan terbuka Habibie terhadap para perwira lapangan yang mengklaim bahwa mereka hanya menjalankan perintah mempertahankan integrasi, sembari bersumpah bahwa Presiden akan membayar ketidaksetiaannya saat MPR melakukan pemungutan suara pada bulan Oktober."
+      },
+      {
+        "text": "\"Utus satuan tugas sipil permanen dari Jakarta (para diplomat dari Pejambon, pemantau Komnas HAM, dan Utusan Urusan Politik Dino Patti Djalal) untuk berkantor di Dili dan melaporkan pelanggaran milisi secara langsung ke Istana Merdeka, melewati saringan intelijen militer.\"",
+        "effects": {
+          "ref": [4, 8],
+          "intl": [4, 8],
+          "mil": [-5, -2],
+          "abri": [-5, -2],
+          "utusan_golongan": [3, 5],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "THE JAKARTA POST: 'UTUSAN SIPIL ISTANA TERKEPUNG DI HOTEL DILI OLEH KELOMPOK BERSENJATA'<br><br>Tidak ada yang menggambarkan ketidakberdayaan otoritas sipil Jakarta secara lebih gamblang selain nasib tim pemantau khusus Presiden Habibie di Dili pekan ini. Dikirim untuk melangkahi laporan intelijen militer yang bias, para diplomat Pejambon dan pemantau Komnas HAM tersebut praktis terkurung di dalam Hotel Mahkota oleh milisi Aitarak pimpinan Eurico Guterres, sementara kepolisian setempat berdalih mereka kekurangan bahan bakar untuk mengawal tim tersebut menuju Maliana."
+      },
+      {
+        "text": "\"Instruksikan Menteri Luar Negeri Ali Alatas untuk secara diam-diam meminta Kofi Annan mengundur pendaftaran pemilih dan pemungutan suara bulan Agustus selama beberapa minggu, guna memberi waktu bagi Uskup Belo, Xanana Gusmão, dan para pemimpin pro-integrasi untuk melaksanakan perundingan damai Dare II bulan Juni.\"",
+        "effects": {
+          "intl": [-7, -3],
+          "mil": [-3, -2],
+          "abri": [-3, -2],
+          "stab": [-4, -2],
+          "ref": [-5, -3],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "FAR EASTERN ECONOMIC REVIEW: 'JAKARTA'S CLUMSY FOOT-DRAGGING FOOLS NOBODY AT THE UN'<br><br>Foreign Minister Ali Alatas's plea for another delay in the East Timor consultation calendar was met with icy contempt in New York and Lisbon this week. While Kofi Annan conceded a brief technical postponement to August 30 to allow UNAMET to secure its registration posts, UN officials publicly blasted Jakarta for using militia terror of its own making as an excuse to stall the vote. Back home, neither camp is happy: ABRI generals complain that a two-week delay changes nothing, while reformists accuse Habibie of dithering over a crisis he recklessly started himself."
+      },
+      {
+        "text": "\"Tolak bias pemberitaan pers asing. Instruksikan Departemen Luar Negeri untuk menyatakan secara tegas bahwa bentrokan di Liquiçá dan Maliana adalah perselisihan komunal horizontal antara faksi-faksi Timor pro-integrasi dan pro-kemerdekaan, dan bahwa staf lokal rekrutan UNAMET sendirilah yang memiringkan keadilan di lapangan.\"",
+        "effects": {
+          "PC": [3, 7],
+          "mil": [6, 11],
+          "abri": [6, 11],
+          "golkar_akbar": [3, 7],
+          "intl": [-16, -8],
+          "ref": [-13, -7],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "KOMPAS: 'DIPLOMASI KEPALA DI DALAM PASIR: DUNIA TAK PERCAYA DONGENG KONFLIK HORIZONTAL'<br><br>Dengan membeo klaim usang Cilangkap bahwa pembantaian di Liquiçá dan serangan terhadap kantor-kantor PBB di Maliana hanyalah 'bentrokan antarsuku spontan' yang diprovokasi oleh staf UNAMET yang memihak, Istana Merdeka telah membakar habis sisa-sisa kredibilitas internasional yang dimilikinya. Para koresponden asing di Dili telah menerbitkan foto-foto anggota milisi Besi Merah Putih yang mengambil ransum dan amunisi langsung dari markas komando distrik militer. 'Mendengarkan juru bicara Habibie menyalahkan PBB atas kekerasan milisi rasanya seperti melihat pelaku pembakaran menggugat pemadam kebakaran karena kerusakan akibat semprotan air,' ujar pengacara hak asasi manusia Todung Mulya Lubis kemarin."
+      }
+    ]
+  },
+  {
+    "date": "22 Juli 1999",
+    "id": "ev_referendum_countdown",
+    "title": "Hitung Mundur Jajak Pendapat",
+    "image": "photo/events/5.png",
+    "desc": "Terlepas dari blokade-blokade jalan oleh milisi, 400 pusat pendaftaran UNAMET menyaksikan lonjakan luar biasa warga Timor Timur yang mendaftarkan diri untuk memilih menjelang jajak pendapat 30 Agustus. Di Jakarta, kesadaran bahwa Timor Timur mungkin benar-benar akan memilih lepas dari Republik telah memicu badai politik. Ingatlah bagaimana semua ini bermula pada bulan Januari: setelah menerima surat Perdana Menteri Australia John Howard pada bulan Desember yang menyarankan masa transisi panjang bergaya Kaledonia Baru yang diikuti pemungutan suara puluhan tahun kemudian, Anda mencoretkan catatan bersejarah di pinggir surat tersebut kepada Wiranto dan Alatas, mempertanyakan mengapa Indonesia harus terus memikul 'beban yang tak dihargai' selama sepuluh tahun lagi jika persoalannya dapat diselesaikan segera sebelum sidang MPR.<br><br>Kini, kalangan nasionalis PDI-P dan para purnawirawan jenderal menuduh Anda melampaui mandat presiden transisi dengan mempertaruhkan 'provinsi ke-27' tanpa persetujuan parlemen, sementara para kreditur Barat memperingatkan bahwa membatalkan pemungutan suara 30 Agustus akan memicu pembekuan finansial seketika.",
+    "options": [
+      {
+        "text": "\"Komitmen yang ditandatangani di New York atas nama Republik Indonesia bersifat mengikat. Kita telah menawarkan Otonomi Luas dengan iktikad baik, dan pemungutan suara tetap berjalan pada 30 Agustus sesuai jadwal; pemerintahan ini tidak akan dikenang karena mengingkari janjinya kepada dunia.\"",
+        "effects": {
+          "PC": [3, 7],
+          "ref": [7, 13],
+          "pop": [3, 5],
+          "intl": [10, 18],
+          "mil": [-10, -6],
+          "stab": [-8, -4],
+          "abri": [-10, -6],
+          "utusan_daerah": [-5, -3],
+          "cendana": -2,
+          "golkar_habibie": [2, 4]
+        },
+        "reaction": "SUARA KARYA: 'HABIBIE PERTARUHKAN NYAWA POLITIKNYA DI KOTAK SUARA TIMTIM'<br><br>Bahkan para sekutu terdekat Presiden Habibie di dalam tubuh Golkar menyaksikan dengan ngeri saat ia mengikatkan seluruh kelangsungan hidup politiknya pada tiang kapal pemungutan suara Timor Timur 30 Agustus. Dalam rapat kaukus tertutup yang memanas di Senayan kemarin, para legislator dari Golkar maupun PDI-P mempertanyakan atas hak konstitusional apa seorang pejabat presiden transisi yang tidak dipilih melalui pemilu mempertaruhkan sebuah provinsi tempat 20.000 prajurit Indonesia gugur tanpa meminta persetujuan MPR terlebih dahulu. 'Beliau mengambil keputusan ini secara impulsif setelah membaca surat dari John Howard, dan ketika Timor Timur memilih lepas bulan depan, memo itu akan menjadi surat kematian politiknya,' ujar seorang ahli strategi senior Golkar."
+      },
+      {
+        "text": "\"Pindahkan pemimpin CNRT Xanana Gusmão dari Penjara Cipinang ke rumah tahanan khusus di Salemba agar ia dapat bertemu langsung dengan UNAMET, Uskup Belo, dan para pemimpin pro-integrasi guna meredakan ketegangan menjelang 30 Agustus.\"",
+        "effects": {
+          "intl": [7, 13],
+          "ref": [6, 10],
+          "stab": [3, 5],
+          "mil": [-7, -5],
+          "abri": [-7, -5],
+          "cendana": -1,
+          "golkar_habibie": 2
+        },
+        "reaction": "RAKYAT MERDEKA: 'XANANA DISERVIS BAK TAMU AGUNG DI SALEMBA, JENDERAL PENSIUNAN NGAMUK!'<br><br>Sementara para veteran penyandang cacat <i>Operasi Seroja</i> berjuang menyambung hidup dengan uang pensiun militer yang tak seberapa, komandan pemberontak Fretilin Xanana Gusmão kini menerima para diplomat asing dan utusan PBB di rumah negara berpendingin udara di Jalan Percetakan Negara VII atas kemurahan hati Presiden Habibie! Para purnawirawan jenderal yang dipimpin oleh Try Sutrisno serta anggota DPR nasionalis dari PDI-P meledak dalam kemarahan kemarin, menuduh Istana menggelar karpet merah bagi seorang pemimpin separatis yang secara terang-terangan sedang menyiapkan pawai kemenangannya bahkan sebelum surat suara 30 Agustus dicoblos."
+      },
+      {
+        "text": "\"Buat taruhannya menjadi sangat jelas baik bagi Jakarta maupun Dili: jika rakyat Timor Timur menolak tawaran Otonomi Luas kita, saya akan meminta MPR pada bulan Oktober untuk mencabut ketetapan integrasi tahun 1978 agar Indonesia dan Timor Timur dapat berpisah secara baik-baik sebagai tetangga.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [4, 8],
+          "mil": [-9, -5],
+          "abri": [-9, -5],
+          "golkar_akbar": [-7, -3],
+          "pop": [-5, -3],
+          "cendana": 1,
+          "golkar_habibie": 1
+        },
+        "reaction": "KOMPAS: 'KETIKA PRESIDEN BICARA PELEPASAN WILAYAH BAGAI MEMUTUS KONTRAK DAGANG'<br><br>Pernyataan lugas Presiden Habibie bahwa Indonesia akan 'berpisah baik-baik sebagai sahabat' dengan Timor Timur jika otonomi ditolak pada 30 Agustus telah mengejutkan para pakar hukum tata negara dan memancing kemurkaan kalangan nasionalis di seluruh spektrum politik. Para penulis tajuk rencana mencatat bahwa Presiden berbicara tentang pelepasan sebuah provinsi dengan sikap enteng layaknya seorang eksekutif dirgantara yang menutup anak perusahaan yang merugi. 'Seorang kepala negara disumpah untuk mempertahankan keutuhan wilayah Republik, bukan mengangkat bahu dan membukakan pintu keluar berdasarkan catatan pinggir yang ia tulis pada bulan Januari,' kecam politikus PDI-P Kwik Kian Gie kemarin."
+      },
+      {
+        "text": "\"Jelaskan realitas fiskal kepada masyarakat Indonesia bahwa Timor Timur menyedot miliaran rupiah subsidi setiap tahunnya sembari membebani kita dengan isolasi diplomatik yang melumpuhkan dan gesekan dengan IMF di saat jutaan rakyat Indonesia membutuhkan pangan dan lapangan kerja.\"",
+        "effects": {
+          "econ": [4, 8],
+          "intl": [3, 7],
+          "pop": [-8, -4],
+          "ref": [-4, -2],
+          "mil": [-5, -2],
+          "abri": [-5, -2],
+          "cendana": 1,
+          "golkar_habibie": 1
+        },
+        "reaction": "MEDIA INDONESIA: 'LOGIKA KALKULATOR HABIBIE: TIMTIM DIANGGAP BEBAN, DARAH PRAJURIT DILUPAKAN'<br><br>Dalam pidato yang terdengar lebih mirip laporan kurator kepailitan ketimbang amanat kepresidenan, B.J. Habibie menceramahi bangsa ini kemarin tentang bagaimana Timor Timur hanyalah 'batu dan kerikil' yang menguras subsidi anggaran yang tak lagi mampu ditanggung Jakarta. Meskipun para ekonom IMF mengangguk setuju secara diam-diam, pernyataan tersebut memicu kemarahan dari kedua ujung spektrum politik: kelompok-kelompok hak asasi manusia mencatat bahwa pidato itu mengabaikan dua puluh empat tahun kekerasan negara terhadap warga Timor Timur, sementara perhimpunan purnawirawan ABRI berang karena sosok yang pernah mengucurkan miliaran dolar ke proyek pesawat IPTN yang gagal kini menceramahi prajurit tentang penghematan fiskal."
+      },
+      {
+        "text": "\"Putar haluan kembali ke formula awal John Howard bulan Desember. Instruksikan Ali Alatas untuk mengusulkan penangguhan pemungutan suara menang-kalah 30 Agustus demi masa otonomi sementara selama lima hingga sepuluh tahun sebelum pemungutan suara akhir diadakan.\"",
+        "effects": {
+          "PC": [-10, -6],
+          "intl": [-16, -8],
+          "mil": [6, 11],
+          "stab": [3, 5],
+          "ref": [-13, -7],
+          "econ": [-8, -4],
+          "abri": [6, 11],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "THE JAKARTA POST: 'KEPRESIDENAN ZIG-ZAG: HABIBIE COBA MUNDUR DARI PERJUDIAN TIMOR TIMURNYA SENDIRI'<br><br>Enam bulan setelah menolak usulan Perdana Menteri Australia John Howard untuk masa transisi otonomi sepuluh tahun dan bersikeras menggelar referendum segera pada tahun 1999, Presiden Habibie mendadak panik di menit-menit terakhir dan mencoba memutar balik haluan. Hasil yang memalukan ini adalah kondisi terburuk dari kedua sisi: Washington, PBB, dan IMF langsung menolak segala upaya mundur dari jadwal pemungutan suara 30 Agustus, sementara para pengkritik di Senayan menunjuk bahwa sikap plin-plan amatir Habibie telah menjadikan Indonesia bahan tertawaan dunia tanpa menyelamatkan Timor Timur."
+      }
+    ]
+  },
+  {
+    "date": "Akhir Juli 1999",
+    "id": "ev_islamic_concessions",
+    "title": "Kaukus Islam",
+    "image": "photo/events/6.png",
+    "desc": "Dengan rekapitulasi suara KPU yang mengonfirmasi bahwa PDI-P memenangkan 153 kursi berbanding 120 kursi milik Golkar, matematika parlemen untuk bulan Oktober kini telah mengerucut. Baik Megawati maupun Golkar tidak dapat mencapai ambang batas 351 suara di dalam 700 kursi MPR sendirian. Menyadari kebuntuan ini lebih dulu, Ketua Umum PAN Amien Rais mulai melontarkan gagasan pembentukan 'Poros Tengah', sebuah aliansi partai-partai Islam yang menjembatani sekat modernis dan tradisionalis, sementara delegasi dari PPP pimpinan Hamzah Haz (58 kursi), PBB pimpinan Yusril Ihza Mahendra (13 kursi), dan Partai Keadilan pimpinan Nur Mahmudi Ismail (7 kursi) terus berdatangan ke Istana Merdeka membawa tuntutan-tuntutan legislasi yang nyata.<br><br>Yang paling utama di antaranya adalah pengesahan segera RUU Penyelenggaraan Ibadah Haji dan RUU Pengelolaan Zakat, disertai kesepahaman tertutup bahwa ICMI dan partai-partai Islam akan memegang portofolio kunci jika mereka berhasil menghadang Megawati pada bulan Oktober.",
+    "options": [
+      {
+        "text": "\"Percepat pengesahan Undang-Undang Penyelenggaraan Ibadah Haji (UU No. 17/1999) dan Undang-Undang Pengelolaan Zakat (UU No. 38/1999) melalui DPR segera, menghadirkan reformasi nyata bagi umat tanpa membuka kembali perdebatan konstitusional yang memecah-belah mengenai Piagam Jakarta.\"",
+        "effects": {
+          "PC": [3, 7],
+          "poros_tengah": [6, 10],
+          "ppp": [7, 13],
+          "pkb": [4, 8],
+          "other_parties": [4, 8],
+          "pop": [3, 5],
+          "ref": [3, 5],
+          "golkar_habibie": [2, 4],
+          "cendana": -1
+        },
+        "reaction": "REPUBLIKA: 'UU HAJI DAN ZAKAT DISAHKAN, POROS TENGAH TETAP ENGGAN JADI STEMPEL HABIBIE'<br><br>Meskipun organisasi-organisasi Islam di seluruh nusantara menyambut baik pengesahan cepat UU No. 17/1999 tentang Penyelenggaraan Ibadah Haji dan UU No. 38/1999 tentang Pengelolaan Zakat, para analis politik di Senayan memperingatkan bahwa Presiden Habibie keliru besar jika mengira konsesi undang-undang akan membelikannya kesetiaan tanpa syarat dari Poros Tengah yang tengah terbentuk. Berbicara kepada para wartawan seusai salat Jumat, Ketua Umum PAN Amien Rais memuji undang-undang tersebut sebagai langkah yang sudah lama dinantikan, sebelum menambahkan secara tajam bahwa 'umat membutuhkan kepemimpinan nasional baru yang bersih, bukan sekadar beberapa undang-undang keagamaan yang ditandatangani oleh petahana yang sedang terjepit.'"
+      },
+      {
+        "text": "\"Melangkah lebih jauh di balik pintu tertutup bersama para pemimpin PPP dan PBB. Berikan sinyal keterbukaan terhadap peraturan daerah bernuansa syariah dan janjikan kementerian-kementerian kunci di bidang agama serta ekonomi pada bulan Oktober sebagai imbalan atas barisan bersama yang tegas untuk menghadang Megawati.\"",
+        "effects": {
+          "poros_tengah": [7, 13],
+          "ppp": [8, 16],
+          "other_parties": [6, 10],
+          "pdip": [-12, -7],
+          "pkb": [-10, -6],
+          "intl": [-10, -6],
+          "ref": [-7, -3],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "SUARA PEMBARUAN: 'POLITIK DAGANG SAPI SEKTARIAN DI ISTANA DEMI JEGAL MEGAWATI'<br><br>Rincian pertemuan tertutup di Istana Merdeka antara lingkaran dalam Presiden Habibie dan para negosiator partai Islam garis keras telah memicu kemarahan di kalangan komunitas nasionalis dan minoritas. Dengan mengiming-imingi portofolio kementerian dan dukungan tersirat terhadap fatwa sektarian yang menolak presiden perempuan semata-mata demi menjegal keunggulan 34 persen suara PDI-P, Habibie dituduh bermain-main dengan api primordial. Bahkan Ketua Umum PBNU Abdurrahman Wahid mengecam keras manuver tersebut kemarin, memperingatkan bahwa para politisi yang memperalat agama demi mempertahankan kursi kekuasaan sedang menyeret Republik ini ke jurang sektarian yang berbahaya."
+      },
+      {
+        "text": "\"Beberapa fondasi konstitusional tidak tersedia untuk dipertukarkan dalam dagang sapi politik, seperti apa pun dinamika sidang bulan Oktober nanti. Tegaskan kembali Pancasila sebagai satu-satunya dasar negara non-sektarian dan rangkul baik para kiai NU yang pluralis maupun kalangan nasionalis sekuler.\"",
+        "effects": {
+          "pdip": [4, 8],
+          "pkb": [4, 8],
+          "utusan_golongan": [4, 8],
+          "intl": [4, 8],
+          "poros_tengah": [-10, -6],
+          "ppp": [-13, -7],
+          "other_parties": [-8, -4],
+          "cendana": -1,
+          "golkar_habibie": 2
+        },
+        "reaction": "FORUM KEADILAN: 'DITINGGAL KANAN, DITOLAK KIRI: DILEMA HABIBIE USAI TOLAK TUNTUTAN PARTAI ISLAM'<br><br>Penolakan Presiden Habibie untuk meladeni tuntutan konsesi dari PPP dan kaukus Islam modernis telah memicu kecaman pedas di kalangan jaringan ICMI dan DDII sendiri yang dulunya mengusung beliau sebagai jagoan mereka di Istana. Para penceramah di Masjid Agung Al-Azhar menuduh Presiden mengkhianati umat demi menyenangkan kedutaan-kedutaan Barat dan kaum sekuler; namun pucuk pimpinan PDI-P di Jalan Diponegoro sama sekali tidak menunjukkan rasa terima kasih sebagai balasannya, sembari mencatat bahwa pelukan mendadak Habibie terhadap nasionalisme pluralis hanyalah kepanikan seseorang yang sedang menyaksikan hitung-hitungan koalisinya menguap."
+      },
+      {
+        "text": "\"Gunakan alokasi kursi pimpinan komisi DPR dan jabatan-jabatan penasihat untuk merayu PPP dan partai-partai Islam kecil secara langsung melalui para penggalang suara parlemen Golkar, agar mereka tetap terikat pada Istana ketimbang pada poros independen Amien Rais.\"",
+        "effects": {
+          "PC": [3, 7],
+          "ppp": [6, 10],
+          "other_parties": [4, 8],
+          "golkar_akbar": [3, 5],
+          "poros_tengah": [-5, -3],
+          "pdip": [-6, -3],
+          "cendana": 1
+        },
+        "reaction": "RAKYAT MERDEKA: 'BELUM APA-APA UDAH BAGI-BAGI KURSI! ISTANA OBRAL JABATAN KOMISI DPR'<br><br>Bahkan sebelum para anggota parlemen yang baru terpilih sempat mengukur jas resmi mereka, para makelar politik Bina Graha sudah menggelar lelang cuci gudang atas kursi-kursi ketua komisi DPR! Dalam upaya kasatmata untuk menyuap PPP pimpinan Hamzah Haz dan partai-partai Islam kecil agar menjauh dari Poros Tengah Amien Rais, para utusan Istana telah mengobral janji fasilitas parlemen menggunakan buku panduan patronase yang persis sama dengan yang dipakai Soeharto selama tiga puluh tahun. 'Mereka menerima fasilitasnya di siang hari dan tetap menemui Amien Rais di tengah malam, Habibie sedang diperas habis-habisan oleh para politisi ulung,' tawa seorang staf senior DPR."
+      },
+      {
+        "text": "\"Mainkan persaingan sejarah yang mendalam antara kalangan tradisionalis Nahdlatul Ulama (PKB) dan modernis Muhammadiyah (PAN) untuk mencegah Amien Rais dan Gus Dur bersatu di belakang satu calon alternatif tunggal.\"",
+        "effects": {
+          "poros_tengah": [-13, -7],
+          "ppp": [-7, -3],
+          "pkb": [-8, -4],
+          "pop": [-7, -3],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "KOMPAS: 'POLITIK ADU DOMBA ISTANA TERBACA, GUS DUR DAN AMIEN RAIS JUSTRU SEMAKIN RAPAT'<br><br>Upaya amatir para operator Istana untuk membisikkan peringatan anti-Muhammadiyah kepada para kiai PKB sembari menyebarkan desas-desus anti-NU kepada para kader PAN telah meledak hebat di wajah Presiden sendiri. Tampil berdampingan di hadapan para wartawan di Ciganjur kemarin, Abdurrahman Wahid dan Amien Rais secara terbuka menertawakan intrik 'adu domba kolonial' Istana tersebut. Jauh dari memecah-belah kubu tradisionalis dan modernis, campur tangan yang canggung itu justru memberi Gus Dur dan Amien Rais sasaran bersama, mempercepat konsolidasi Poros Tengah yang selama ini ditakuti Bina Graha."
+      }
+    ]
+  },
+  {
+    "date": "3 Agustus 1999",
+    "id": "ev_bank_bali",
+    "title": "Skandal Bank Bali Meledak",
+    "image": "photo/events/7.png",
+    "desc": "Sebuah bom politik telah meledak di halaman depan seluruh surat kabar di Jakarta. Pengamat hukum perbankan Pradjoto, berbekal bocoran catatan transfer bank sentral, mengungkap bahwa dana sebesar Rp546 miliar (80 juta dolar AS), hampir 60% dari tagihan piutang antarbank milik Bank Bali yang telah dinasionalisasi terhadap bank-bank beku operasi BDNI, BUN, dan Bank Tiara, telah dibayarkan sebagai 'komisi penagihan' luar biasa kepada PT Era Giat Prima (EGP), sebuah perusahaan swasta yang dijalankan oleh pengusaha Djoko S. Tjandra dan Wakil Bendahara Golkar Setya Novanto. Lebih buruk lagi, karena tagihan antarbank tersebut sebenarnya sudah dijamin penuh oleh pemerintah berdasarkan Keputusan Presiden No. 26/1998, jasa penagih swasta sama sekali tidak pernah diperlukan, yang berarti dana rekapitalisasi negara dari Badan Penyehatan Perbankan Nasional (BPPN) secara efektif disedot langsung ke dalam rekening EGP. Para anggota DPR oposisi dan wartawan investigasi telah menjulukinya 'Baligate,' menuduh bahwa dana taktis sebesar Rp546 miliar tersebut direkayasa oleh orang kepercayaan terdekat Anda, Ketua Dewan Pertimbangan Agung (DPA) A.A. Baramuli, serta Menteri Pendayagunaan BUMN Tanri Abeng untuk membeli suara para utusan MPR demi kampanye pemilihan kembali Anda pada bulan Oktober (<i>Tim Sukses</i>).",
+    "options": [
+      {
+        "text": "\"Tidak ada kepresidenan yang dapat bertahan dengan langkah setengah-setengah dalam menghadapi skandal sebesar ini. Perintahkan Ketua Badan Pemeriksa Keuangan (BPK) Billy Joedono dan Kepala BPPN Glenn Yusuf untuk segera membekukan rekening PT Era Giat Prima serta mengundang audit forensik internasional yang independen.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "pop": [7, 13],
+          "intl": [6, 10],
+          "econ": [4, 8],
+          "ref": [7, 13],
+          "golkar_akbar": [-19, -11],
+          "pdip": [3, 7],
+          "utusan_golongan": [4, 8],
+          "cendana": [-5, -3],
+          "golkar_habibie": 2
+        },
+        "reaction": "MAJALAH TEMPO: 'SENJATA MAKAN TUAN DI BANK BALI: HABIBIE KORBANKAN TIM SUKSES DEMI SELAMATKAN DIRI'<br><br>Terpojok oleh pengungkapan mengejutkan pengamat perbankan Pradjoto dan ancaman pembekuan dana IMF seketika, Presiden Habibie telah memerintahkan pembekuan rekening PT Era Giat Prima senilai Rp546 miliar serta membuka pintu bagi auditor forensik asing. Namun tak seorang pun di Jakarta percaya bahwa Istana hanyalah penonton yang tak berdosa: sebagaimana dicatat oleh Pradjoto kemarin, EGP dijalankan oleh Wakil Bendahara Golkar Setya Novanto dan disokong oleh pelobi utama Habibie sendiri, Ketua DPA A.A. Baramuli. Di dalam markas besar Golkar di Slipi, para petinggi partai yang berang menuduh Habibie menyerahkan tali gantungan kepada jaksa untuk menggantung para bendahara kampanyenya sendiri sembari berpura-pura tangannya bersih."
+      },
+      {
+        "text": "\"Minta Kepala BPPN Glenn Yusuf dan Rudy Ramli dari Bank Bali untuk secara diam-diam menempatkan dana Rp546 miliar yang disengketakan tersebut ke dalam rekening penampungan (escrow) yang dibekukan di Bank Indonesia, guna mengembalikan uang itu ke neraca negara sebelum skandal ini menyebar luas.\"",
+        "effects": {
+          "golkar_akbar": [3, 7],
+          "econ": [3, 7],
+          "pop": [-7, -3],
+          "ref": [-7, -3],
+          "intl": [-4, -2],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "KOMPAS: 'UANG RP 546 MILIAR MASUK ESCROW, TAPI SIAPA OTAK PENJARAHAN BANK BALI?'<br><br>Menjejalkan setengah triliun rupiah dana rekapitalisasi negara yang telah disunat ke dalam rekening penampungan Bank Indonesia setelah tertangkap basah sama sekali tidak menghapus tindak pidana kejahatan; itulah vonis lugas dari para pakar hukum dan anggota Komisi VIII DPR kemarin. 'Jika seorang copet mengembalikan dompet hanya setelah seluruh penumpang bus mencengkeram pergelangan tangannya, ia tetap harus masuk penjara,' tegas koordinator Indonesia Corruption Watch (ICW) Teten Masduki kepada wartawan. Dengan mencoba menyelesaikan perampokan Bank Bali layaknya salah ketik pembukuan biasa, Istana justru semakin meyakinkan publik bahwa jejak uang tersebut mengarah lurus ke Bina Graha."
+      },
+      {
+        "text": "\"Ciptakan jarak politik seketika antara Istana Merdeka dan para operator yang terseret: bubarkan secara terbuka tim kampanye informal 'Tim Sukses' dan instruksikan A.A. Baramuli untuk mundur dari seluruh operasi pelobian MPR.\"",
+        "effects": {
+          "PC": [-10, -6],
+          "pop": [3, 7],
+          "ref": [3, 7],
+          "golkar_akbar": [-10, -6],
+          "golkar_habibie": [-7, -3],
+          "stab": [-4, -2],
+          "cendana": -2
+        },
+        "reaction": "RAKYAT MERDEKA: 'CUCI TANGAN ALA HABIBIE: BARAMULI DIJADIKAN KAMBING HITAM SKANDAL BANK BALI!'<br><br>Setelah berbulan-bulan membiarkan Ketua DPA A.A. Baramuli dan 'Tim Sukses' bayangan berkeliaran di Senayan membawa koper-koper berisi janji kampanye, Presiden Habibie mendadak berpura-pura nyaris tidak mengenal orang-orang yang menjalankan pencalonan kembalinya sendiri! Para legislator oposisi di Komisi VIII DPR tertawa lepas mendengar pengumuman Istana yang membubarkan tim kampanye tersebut kemarin. 'Memangnya dana taktis Rp546 miliar itu disiapkan untuk memilih siapa, Baramuli atau Habibie?' tanya ekonom PDI-P Kwik Kian Gie, sementara di dalam kaukus Sulawesi, para loyalis Baramuli berang karena merasa dikorbankan."
+      },
+      {
+        "text": "\"Perlakukan hal ini sebagai sengketa perbankan teknis antara manajemen Rudy Ramli di Bank Bali dan PT Era Giat Prima. Serahkan peninjauannya sepenuhnya kepada Gubernur Bank Indonesia Sjahril Sabirin dan Menteri Keuangan Bambang Subianto di balik pintu tertutup.\"",
+        "effects": {
+          "PC": [3, 7],
+          "golkar_akbar": [7, 13],
+          "pop": [-18, -10],
+          "intl": [-13, -7],
+          "econ": [-10, -6],
+          "ref": [-18, -10],
+          "cendana": [2, 4],
+          "golkar_habibie": -2
+        },
+        "reaction": "MEDIA INDONESIA: 'KEBOHONGAN PUBLIK RP 546 MILIAR: ISTANA SEBUT PERAMPOKAN UANG RAKYAT CUMA SENGKETA KOMISI'<br><br>Di saat jutaan rakyat Indonesia mengantre beras bersubsidi dan BPPN menguras ratusan triliun rupiah obligasi pajak rakyat untuk merekapitalisasi bank-bank yang ambruk, Istana Merdeka punya nyali untuk menyebut komisi Rp546 miliar yang dibayarkan kepada perusahaan cangkang milik bendahara Golkar Setya Novanto sebagai 'sengketa komersial biasa.' Para pengunjuk rasa antikorupsi membakar patung orang-orangan Baramuli dan Djoko Tjandra di luar gedung Bank Indonesia kemarin, sementara para pejabat Bank Dunia memperingatkan bahwa upaya penutupan kasus secara terang-terangan oleh Jakarta akan membuat negara ini kehilangan setiap sen dari sisa dana talangan internasionalnya."
+      },
+      {
+        "text": "\"Lakukan serangan balik: dukung A.A. Baramuli dan Djoko Tjandra dalam mengajukan laporan pidana pencemaran nama baik terhadap Pradjoto dan surat-surat kabar, sembari mempertanyakan mengapa Rudy Ramli membocorkan catatan internal perbankan tepat menjelang sidang MPR.\"",
+        "effects": {
+          "PC": [6, 10],
+          "golkar_akbar": [13, 23],
+          "pop": [-26, -14],
+          "intl": [-23, -13],
+          "ref": [-26, -14],
+          "stab": [-13, -7],
+          "cendana": [3, 7],
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "MAJALAH TEMPO: 'MALING TERIAK MALING: PENYINGKAP SKANDAL BANK BALI DIPOLISIKAN ISTANA'<br><br>Dalam pameran ketidaktahuan malu otoriter yang bahkan akan membuat rezim Orde Baru tersipu, pemerintahan Habibie merespons skandal korupsi perbankan terbesar di era Reformasi ini dengan mengerahkan polisi untuk memburu sang penyingkap skandal Pradjoto beserta para jurnalis yang membongkarnya. Saat Setya Novanto, Djoko Tjandra, dan A.A. Baramuli berparade masuk ke Mabes Polri untuk melaporkan pencemaran nama baik alih-alih duduk di kursi pesakitan, para investor institusional asing melepas obligasi Indonesia dengan rasa muak, membuat Indeks Harga Saham Gabungan di Bursa Efek Jakarta anjlok 6 persen hanya dalam satu sore."
+      }
+    ]
+  },
+  {
+    "date": "12 Agustus 1999",
+    "id": "ev_imf_ultimatum",
+    "title": "Ultimatum IMF & Bank Dunia",
+    "image": "photo/events/8.png",
+    "desc": "Skandal Bank Bali dengan cepat meningkat dari krisis politik dalam negeri menjadi kebuntuan finansial internasional. Direktur Bank Dunia untuk Indonesia Mark Baird dan Direktur Asia-Pasifik IMF Hubert Neiss secara resmi telah memberi tahu Menko Ekuin Ginandjar Kartasasmita bahwa seluruh pencairan dana talangan yang tersisa (lebih dari 1,4 miliar dolar AS dalam bentuk dukungan anggaran IMF, Bank Dunia, dan Bank Pembangunan Asia) ditangguhkan hingga batas waktu yang tidak ditentukan. Syarat mereka untuk melanjutkan bantuan tidak dapat ditawar: firma akuntansi internasional PricewaterhouseCoopers (PwC) harus dikontrak untuk melakukan audit forensik tanpa batas atas transaksi Bank Bali, dengan wewenang penuh untuk melacak setiap rupiah yang mengalir keluar dari PT Era Giat Prima ke rekening-rekening pribadi para politisi, menteri, dan utusan MPR, serta temuan lengkapnya harus dibagikan kepada DPR dan para kreditur internasional.",
+    "options": [
+      {
+        "text": "\"Berikan akses forensik tanpa batas kepada PricewaterhouseCoopers untuk melacak aliran dana Bank Bali ke mana pun arahnya, dan kesampingkan segala keberatan kerahasiaan bank dari Bank Indonesia maupun BPPN. Memulihkan kepercayaan finansial internasional jauh lebih penting daripada melindungi individu mana pun.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "intl": [8, 16],
+          "econ": [7, 13],
+          "ref": [7, 13],
+          "utusan_golongan": [3, 7],
+          "golkar_akbar": [-13, -7],
+          "utusan_daerah": [-7, -3],
+          "cendana": [-4, -2],
+          "golkar_habibie": 2
+        },
+        "reaction": "BISNIS INDONESIA: 'DEMI PENCAIRAN DANA IMF, ISTANA SERAHKAN KUNCI BRANKAS BANK INDONESIA KE AUDITOR ASING'<br><br>Tersandera oleh tekanan Hubert Neiss dan Direktur Bank Dunia Mark Baird, Presiden Habibie telah menyerah tanpa syarat pada tuntutan Washington untuk mengadakan audit forensik tanpa batas oleh PricewaterhouseCoopers atas skandal Bank Bali. Meskipun para pedagang valuta asing menyambut baik langkah tersebut, para politisi dalam negeri di seluruh Senayan bereaksi dengan campuran rasa malu dan ketakutan: kalangan nasionalis mengecam pemerintah karena membiarkan akuntan asing memeriksa peladen bank sentral yang berdaulat, sementara para bendahara Golkar yang terseret dalam aliran dana EGP senilai Rp546 miliar sibuk menghancurkan dokumen secara panik sebelum tim PwC melangkah masuk."
+      },
+      {
+        "text": "\"Beri wewenang kepada Ketua Badan Pemeriksa Keuangan (BPK) Billy Joedono untuk menyewa PricewaterhouseCoopers di bawah naungan undang-undang BPK, memberikan PwC akses ke catatan perbankan sembari menjaga hak simpan hukum atas laporan akhirnya tetap berada di dalam lembaga Indonesia yang berdaulat.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [3, 7],
+          "econ": [3, 7],
+          "stab": [3, 5],
+          "golkar_akbar": [-4, -2],
+          "cendana": 1,
+          "golkar_habibie": 1
+        },
+        "reaction": "THE JAKARTA POST: 'ISTANA BERSEMBUNYI DI BALIK ATURAN KERAHASIAAN BPK DEMI KENDALIKAN AUDIT PWC'<br><br>Tak seorang pun di kalangan komunitas diplomatik tertipu oleh manuver hukum cerdik Bina Graha yang menempatkan audit PricewaterhouseCoopers di bawah pengawasan resmi Ketua Badan Pemeriksa Keuangan (BPK) Billy Joedono. Sebagaimana langsung ditunjuk oleh para legislator Komisi VIII DPR, menyalurkan kontrak tersebut melalui BPK memungkinkan pemerintah menggunakan Pasal 18 UU BPK serta Undang-Undang Rahasia Bank begitu laporan akhir PwC menyebutkan nama-nama lingkaran dalam Habibie. Hubert Neiss dari IMF memperingatkan secara lugas kemarin bahwa kecuali hasil audit lengkap tanpa sensor dipublikasikan, tidak satu dolar pun dari pencairan dana 1,4 miliar dolar AS yang dibekukan akan dilepas."
+      },
+      {
+        "text": "\"Mintalah tenggat waktu administratif selama enam puluh hari kepada Hubert Neiss dan Mark Baird agar BPK dan Kejaksaan Agung dapat menyelesaikan audit dalam negeri mereka sendiri sebelum firma akuntansi asing mana pun diberi wewenang pemeriksaan paksa atas bank-bank Indonesia.\"",
+        "effects": {
+          "intl": [-8, -4],
+          "econ": [-8, -4],
+          "stab": [-5, -3],
+          "golkar_akbar": [3, 5],
+          "cendana": 2,
+          "golkar_habibie": -1
+        },
+        "reaction": "ASIAN WALL STREET JOURNAL: 'HABIBIE PLAYS CALENDAR GAMES TO BURY BALIGATE PAST OCTOBER VOTE'<br><br>Even a primary school student in Jakarta can do the calendar math behind President Habibie's request for a 'sixty-day domestic review' of the Bank Bali scandal: sixty days from August 12 lands conveniently after the October 19 MPR presidential election. International creditors and opposition MPs alike dismissed the proposal as a transparent cover-up designed to shield the President's <i>Tim Sukses</i> until the ballots are cast. In response, the World Bank and IMF confirmed that the $1.4 billion aid freeze remains locked tight."
+      },
+      {
+        "text": "\"Utus Ginandjar Kartasasmita ke Tokyo dan para pengelola Inisiatif Miyazawa untuk mencari pinjaman talangan bilateral dari Jepang, guna melangkahi syarat-syarat politik IMF di Washington.\"",
+        "effects": {
+          "intl": [-10, -6],
+          "econ": [-7, -3],
+          "golkar_akbar": [4, 8],
+          "cendana": 2,
+          "golkar_habibie": -1
+        },
+        "reaction": "KOMPAS: 'MENGEMIS KE TOKYO DITOLAK MENTAH-MENTAH, JEPANG TUNDUK PADA SYARAT IMF'<br><br>Menko Ekuin Ginandjar Kartasasmita kembali dari Tokyo dengan tangan hampa dan raut malu yang tak tertutupi kemarin setelah para pejabat Kementerian Keuangan Jepang secara tegas menolak mencairkan pinjaman talangan Inisiatif Miyazawa Baru untuk menutupi pembekuan dana IMF akibat skandal Bank Bali. Ekonom Sri Mulyani Indrawati mengkritik misi gagal ke Tokyo tersebut sebagai 'aksi mengemis diplomatik yang memalukan,' sembari mencatat bahwa alih-alih membersihkan kebusukan Rp546 miliar di dalam lingkaran kampanyenya sendiri, Habibie justru mengirim menteri ekonomi utamanya ke luar negeri untuk mengemis dana talangan tanpa syarat dan mendapati pintu dibanting tepat di depan wajahnya."
+      },
+      {
+        "text": "\"Tolak ultimatum tersebut secara terbuka. Indonesia adalah republik berdaulat yang memiliki Badan Pemeriksa Keuangan (BPK) dan bank sentralnya sendiri; kita tidak akan menyerahkan catatan perbankan swasta kepada auditor asing seolah-olah kita adalah wilayah jajahan.\"",
+        "effects": {
+          "PC": [6, 10],
+          "stab": [3, 5],
+          "pop": [3, 5],
+          "econ": [-19, -11],
+          "intl": [-19, -11],
+          "utusan_daerah": [6, 10],
+          "golkar_akbar": [7, 13],
+          "cendana": [2, 4],
+          "golkar_habibie": -2
+        },
+        "reaction": "RAKYAT MERDEKA: 'SOK NASIONALIS DEMI TUTUPI KORUPSI! TOLAK AUDIT PWC, RUPIAH LANGSUNG TERJUN BEBAS'<br><br>Betapa kebetulannya bahwa Bina Graha baru menemukan 'kedaulatan ekonomi antikolonial' tepat ketika para auditor asing meminta izin memeriksa rekening bank milik para bendahara kampanye Golkar! Penolakan sambil menepuk dada oleh Presiden Habibie untuk mengizinkan PricewaterhouseCoopers masuk ke Bank Bali menuai tepuk tangan meriah dari para kroni A.A. Baramuli di Senayan, namun tagihan atas kesombongan itu langsung tiba di pasar valuta asing dalam waktu tiga puluh menit: IMF dan Bank Dunia membekukan bantuan anggaran senilai 1,4 miliar dolar AS tanpa batas waktu, pemodal asing melepas saham-saham di bursa Jakarta, dan rakyat biasa kembali harus membayar harga mahal untuk sebuah pidato kedaulatan yang dirancang guna menyembunyikan dana gelap Rp546 miliar."
+      }
+    ]
+  },
+  {
+    "date": "24 Agustus 1999",
+    "id": "ev_rupiah_plummets",
+    "title": "Rupiah Merosot Menuju 8.500",
+    "image": "photo/events/9.png",
+    "desc": "Bertemunya skandal Bank Bali, pembekuan bantuan IMF, dan laporan harian mengenai rentetan tembakan milisi di Timor Timur telah mematahkan penguatan finansial selama lima bulan yang tadinya Anda andalkan sebagai mahkota utama Pidato Pertanggungjawaban Anda pada bulan Oktober. Setelah sempat menguat dari Rp16.800 per dolar AS pada Juni 1998 menuju puncak pasca-pemilu di level Rp6.600 pada akhir Juni, nilai tukar rupiah kini kembali terjerembap di lantai bursa Singapura dan Jakarta, merosot melewati Rp8.000 menuju Rp8.500 per dolar hanya dalam hitungan hari. Berdasarkan Undang-Undang Bank Indonesia yang baru disahkan (UU No. 23/1999), Gubernur Sjahril Sabirin memegang independensi undang-undang atas kebijakan moneter, namun dengan harga beras impor, gandum, dan obat-obatan yang mengancam melonjak tepat saat MPR bersiap bersidang, tim ekonomi Anda di Bina Graha berselisih tajam mengenai cara menghentikan kemerosotan tersebut.",
+    "options": [
+      {
+        "text": "\"Lakukan koordinasi erat dengan Gubernur Bank Indonesia Sjahril Sabirin untuk menggelar sterilisasi valuta asing terarah dan kenaikan sementara suku bunga SBI, guna mempertahankan rentang Rp7.500–8.000 agar inflasi tetap mendekati nol menjelang bulan Oktober.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "econ": [7, 13],
+          "stab": [4, 8],
+          "pop": [2, 4],
+          "intl": [-4, -2],
+          "golkar_habibie": 2
+        },
+        "reaction": "BISNIS INDONESIA: 'BANK INDONESIA BAKAR CADANGAN DEVISA DEMI KOSMETIK PIDATO PERTANGGUNGJAWABAN'<br><br>Penjualan dolar secara agresif oleh Bank Indonesia di pasar spot kemarin berhasil menarik kembali nilai tukar rupiah ke bawah Rp7.900, namun para ekonom pasar memperingatkan adanya biaya tersembunyi yang sangat mahal. 'Pemerintah sedang membakar cadangan devisa yang langka bukan untuk memperbaiki kebusukan politik mendasar di balik skandal Bank Bali atau Timor Timur, melainkan sekadar untuk memoles etalase nilai tukar bagi pidato Habibie tanggal 14 Oktober di hadapan MPR,' tegas ekonom Faisal Basri, sembari mencatat bahwa menaikkan kembali suku bunga SBI akan mencekik kredit ke sektor riil tepat ketika pabrik-pabrik baru mulai mempekerjakan kembali buruhnya."
+      },
+      {
+        "text": "\"Tandatangani adendum darurat pada Letter of Intent IMF yang berkomitmen mempercepat penjualan aset BPPN dan tahapan restrukturisasi perbankan, guna membawa Hubert Neiss kembali ke meja perundingan untuk menenangkan para pedagang mata uang tanpa harus membakar cadangan devisa bank sentral.\"",
+        "effects": {
+          "econ": [5, 9],
+          "intl": [7, 13],
+          "pop": [-10, -6],
+          "ref": [-4, -2],
+          "utusan_daerah": [-8, -4],
+          "golkar_akbar": [-10, -6],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "MEDIA INDONESIA: 'OBRAL ASET BPPN KE PEMODAL ASING: HARGA PANIK PEMERINTAHAN HABIBIE'<br><br>Untuk menghentikan kemerosotan rupiah tanpa membuka pembukuan Bank Bali, kabinet Habibie kembali menandatangani komitmen yang merendahkan martabat dengan IMF, kali ini berjanji mempercepat lelang obral aset-aset korporasi yang dinasionalisasi di bawah penguasaan Badan Penyehatan Perbankan Nasional (BPPN). Di Senayan, para legislator baik dari PDI-P maupun Golkar menuduh tim ekonomi melelang miliaran dolar aset industri Indonesia seharga dua puluh sen per dolar kepada para pemodal asing pemburu barang murah semata-mata demi membeli ketenangan mata uang selama enam minggu menjelang sidang MPR."
+      },
+      {
+        "text": "\"Hormati independensi undang-undang Bank Indonesia berdasarkan UU No. 23/1999: biarkan rupiah mengambang bebas ketimbang membakar cadangan devisa yang berharga, dan instruksikan BULOG untuk melepas stok beras penyangga guna melindungi rumah tangga miskin dari lonjakan harga impor.\"",
+        "effects": {
+          "intl": [6, 10],
+          "ref": [3, 7],
+          "econ": [-8, -4],
+          "pop": [-7, -3],
+          "stab": [-5, -3],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "POS KOTA: 'DOLAR TEMBUS RP 8.500, HARGA SEMBAKO DAN OBAT LANGSUNG MELAMBUNG DI PASAR!'<br><br>Para bankir sentral dan ekonom buku teks asing mungkin memuji Istana karena membiarkan rupiah 'menemukan keseimbangan pasarnya' tanpa membakar cadangan dolar, namun di Pasar Senen dan Pasar Induk Kramat Jati kemarin, para ibu rumah tangga dan pedagang kecil sama sekali tidak berminat mendengar teori moneter. Saat nilai tukar rupiah terjerembap melewati Rp8.500 per dolar, para pedagang grosir langsung menaikkan harga kedelai impor, gula, tepung terigu, dan obat-obatan resep. 'Para menteri Habibie menyombongkan diri setiap minggu bahwa inflasi terkendali, tapi satu desas-desus saja dari Senayan langsung membuat uang belanja kami menguap jadi asap,' keluh seorang pedagang yang marah kepada <i>Pos Kota</i>."
+      },
+      {
+        "text": "\"Umumkan pembekuan penghematan seketika atas belanja kementerian yang tidak esensial, perjalanan dinas luar negeri, dan pembelian kendaraan dinas negara, lalu alihkan penghematannya ke program pekerjaan umum Padat Karya di perkotaan.\"",
+        "effects": {
+          "PC": [3, 7],
+          "pop": [4, 8],
+          "stab": [3, 7],
+          "econ": [-4, -2],
+          "golkar_akbar": [-5, -3],
+          "cendana": -1
+        },
+        "reaction": "KOMPAS: 'KOSMETIK PENGHEMATAN ISTANA TAK MAMPU OBATI KRISIS KEPERCAYAAN PASAR'<br><br>Meskipun perluasan proyek pembersihan selokan dan penyapuan jalan <i>Padat Karya</i> di Jakarta serta Surabaya memberikan upah harian yang disambut baik oleh sebagian kecil pengangguran kota, para analis keuangan menepis pembekuan perjalanan dinas menteri dan mobil sedan dinas oleh Istana sebagai sandiwara etalase belaka. 'Meja-meja valuta asing di Singapura tidak menjual pendek rupiah karena para menteri terlalu banyak minum kopi di Bina Graha; mereka menyerangnya karena Rp546 miliar lenyap di Bank Bali dan Dili berada di ambang perang,' ungkap ekonom INDEF Didik J. Rachbini dengan tajam."
+      },
+      {
+        "text": "\"Berlakukan pengendalian pelaporan administratif sementara bergaya Malaysia atas transaksi swap rupiah jangka pendek di luar negeri untuk menghukum para spekulan mata uang di Singapura secara langsung.\"",
+        "effects": {
+          "PC": [3, 7],
+          "econ": [-10, -6],
+          "intl": [-13, -7],
+          "stab": [-7, -3],
+          "golkar_akbar": [3, 5],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "FAR EASTERN ECONOMIC REVIEW: 'JAKARTA'S CLUMSY FLIRTATION WITH CAPITAL CONTROLS SPARKS PANIC EXODUS'<br><br>Attempting to imitate Mahathir Mohamad's capital controls without Malaysia's administrative discipline or foreign reserve cushion has blown up in Bina Graha's face within twenty-four hours. The moment rumors of offshore rupiah swap restrictions leaked from the Ministry of Finance, domestic conglomerates and foreign portfolio managers stampeded for the exits, wiring hundreds of millions of dollars to Singapore overnight and driving interbank overnight rates through the roof."
+      }
+    ]
+  },
+  {
+    "date": "30 Agustus 1999",
+    "id": "ev_timor_votes",
+    "title": "Timor Timur Memilih",
+    "image": "photo/events/10.png",
+    "desc": "Menentang intimidasi milisi selama berbulan-bulan, pembakaran desa-desa, dan blokade jalan bersenjata, sebanyak 98,6% dari 451.792 pemilih terdaftar di Timor Timur mengantre sebelum fajar menyingsing hari ini di 850 tempat pemungutan suara di seluruh Timor Timur dan pusat-pusat diaspora untuk memberikan suara mereka dalam jajak pendapat yang diselenggarakan PBB. Kepala UNAMET Ian Martin dan para pemantau parlemen internasional menggambarkan pemandangan keteguhan hati yang luar biasa hening saat para pemilih yang mengenakan pakaian terbaik hari Minggu mereka menunggu berjam-jam untuk menandai pilihan mereka antara menerima atau menolak otonomi khusus di dalam Indonesia. Namun saat kotak-kotak suara disegel dan diangkut di bawah pengawalan polisi PBB menuju pusat penghitungan suara di museum Dili, laporan-laporan buruk sudah mulai mengalir masuk: empat staf lokal UNAMET telah dibunuh di Ermera saat tempat pemungutan suara ditutup, dan laporan intelijen BAIS mengindikasikan bahwa milisi Eurico Guterres beserta unit-unit Korem 164 telah menempatkan drum-drum bahan bakar dan truk di seluruh penjuru Dili untuk menggelar 'Operasi Sapu Jagad' begitu kemenangan suara kemerdekaan dikonfirmasi.",
+    "options": [
+      {
+        "text": "\"Tampillah di televisi nasional malam ini untuk memuji tingkat partisipasi damai sebesar 98,6% tersebut dan nyatakan secara tegas tanpa keraguan bahwa apa pun putusan yang disahkan PBB dari kotak-kotak suara itu, Republik Indonesia akan menghormati tanda tangannya pada Kesepakatan 5 Mei.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [8, 16],
+          "ref": [7, 13],
+          "mil": [-10, -6],
+          "stab": [-8, -4],
+          "abri": [-10, -6],
+          "golkar_akbar": [-10, -6],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "MAJALAH TEMPO: 'TERTIPU LAPORAN ASAL BAPAK SENANG: ISTANA TERPANA MELIHAT ANTREAN 98,6 PERSEN'<br><br>Hingga tempat-tempat pemungutan suara ditutup pada pukul 16.00 kemarin, para petinggi intelijen militer dan pejabat Departemen Luar Negeri dengan penuh keyakinan telah menjamin kepada Presiden Habibie bahwa 'mayoritas diam' rakyat Timor Timur akan memilih mempertahankan bendera Merah Putih. Kini, saat setiap laporan lapangan dari Dili hingga Baucau menunjuk pada kemenangan telak bagi kemerdekaan, janji Presiden di televisi untuk menghormati hasil tersebut telah memicu gempa bumi di dalam tatanan elit politik Indonesia. Di ruang-ruang makan perwira di seluruh Cilangkap dan Kupang, para komandan yang murka menuduh Habibie berjalan membabi buta menuju penghinaan nasional bersejarah hanya berbekal angan-angan kosong."
+      },
+      {
+        "text": "\"Adakan sidang dewan rekonsiliasi darurat di Dili yang mempertemukan Uskup Carlos Filipe Ximenes Belo, perwakilan CNRT pimpinan Xanana Gusmão, dan para tokoh pro-integrasi di bawah Komisi Perdamaian dan Stabilitas sebelum hasil penghitungan suara diumumkan.\"",
+        "effects": {
+          "intl": [4, 8],
+          "ref": [4, 8],
+          "stab": [3, 7],
+          "mil": [-5, -2],
+          "abri": [-5, -2],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "THE JAKARTA POST: 'UPACARA PERDAMAIAN DI DILI SAAT MILISI MENIMBUN JERIKEN BENSIN'<br><br>Sementara para utusan Jakarta menggelar satu lagi sesi jabat tangan di depan kamera di Dili kemarin antara perwakilan CNRT dan tokoh-tokoh pro-integrasi, kenyataan di luar pintu ruang konferensi justru mencemooh jalannya acara tersebut. Orang-orang bersenjata Aitarak pimpinan Eurico Guterres secara terbuka memboikot sesi sore hari, dan polisi PBB melaporkan truk-truk militer sedang membongkar muatan drum bensin serta senjata otomatis di Becora dan Ermera. 'Jakarta sibuk mengorganisasi komite rekonsiliasi bergaya pesta koktail sementara aparat keamanannya sendiri bersiap membakar habis seluruh rumah,' ujar seorang diplomat Barat di Dili dengan getir."
+      },
+      {
+        "text": "\"Keluarkan perintah kontinjensi secara diam-diam kepada Jenderal Wiranto dan Kapolri Jenderal Roesmanhadi untuk menyiapkan angkutan laut dan udara guna mengevakuasi pegawai negeri sipil, guru, dan unit-unit keamanan secara tertib jika otonomi ditolak.\"",
+        "effects": {
+          "ref": [6, 10],
+          "intl": [6, 10],
+          "mil": [-12, -8],
+          "abri": [-12, -8],
+          "stab": [-8, -4],
+          "cendana": -2,
+          "golkar_habibie": 1
+        },
+        "reaction": "SUARA PEMBARUAN: 'BOCORNYA PERINTAH EVAKUASI PICU KEPANIKAN DAN AMUK MILISI DI DILI'<br><br>Kabar bahwa Istana Merdeka secara diam-diam telah menginstruksikan kapal-kapal penumpang Pelni dan kapal pendarat LST TNI AL untuk bersiaga melakukan evakuasi massal atas pegawai negeri sipil dan guru-guru Indonesia bocor ke seluruh Dili dalam hitungan jam kemarin, mengonfirmasi kepada milisi pro-integrasi bahwa Jakarta sudah tahu otonomi telah kalah telak di kotak suara. Jauh dari menjamin transisi yang tertib, bocornya perintah penarikan tersebut justru membuat gerombolan milisi bersenjata mengamuk karena merasa dikhianati, dengan para komandan Aitarak bersumpah melalui radio lokal untuk mengubah Dili menjadi abu sebelum menyerahkannya kepada Fretilin."
+      },
+      {
+        "text": "\"Pertahankan kabinet dalam sidang tertutup terus-menerus di Istana Merdeka dan tolak memberikan komentar publik apa pun hingga Kofi Annan dan Ian Martin mengesahkan hasil penghitungan akhir secara resmi.\"",
+        "effects": {
+          "stab": [-5, -3],
+          "intl": [-5, -3],
+          "mil": [-4, -2],
+          "abri": [-4, -2],
+          "pop": [-5, -3],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "DETIKCOM: 'ISTANA BUNGKAM SERIBU BAHASA SAAT EMPAT STAF LOKAL UNAMET TEWAS DI ERMERA'<br><br>Saat jaringan televisi dunia menyiarkan gambar 98,6 persen warga Timor Timur yang menentang ancaman mati demi memberikan suara, yang langsung disusul dengan pembunuhan empat staf lokal PBB di Ermera begitu tempat pemungutan suara ditutup, Istana Merdeka justru menutup rapat jendelanya dan menolak mengucapkan sepatah kata pun. Para wartawan yang berkemah di luar Bina Graha hingga tengah malam menyaksikan para menteri menyelinap keluar melalui pintu samping tanpa menjawab pertanyaan, meninggalkan kesan sebuah pemerintahan transisi yang lumpuh akibat menyadari bahwa perjudian referendumnya sendiri telah meledak."
+      },
+      {
+        "text": "\"Minta Departemen Luar Negeri mengajukan pengaduan resmi yang menuduh staf lokal UNAMET melakukan keberpihakan sistematis pro-kemerdekaan selama pemungutan suara, guna menyiapkan landasan untuk menggugat keabsahan hasil penghitungan jika otonomi kalah.\"",
+        "effects": {
+          "PC": [3, 7],
+          "mil": [6, 11],
+          "abri": [6, 11],
+          "golkar_akbar": [3, 7],
+          "intl": [-19, -11],
+          "econ": [-13, -7],
+          "ref": [-19, -11],
+          "pop": [-10, -6],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "SYDNEY MORNING HERALD: 'SORE LOSERS IN JAKARTA CRY FOUL OVER 98.6% TURNOUT'<br><br>Having failed to intimidate the East Timorese electorate into staying home through months of militia terror, Jakarta is now attempting the equally absurd tactic of claiming that UNAMET rigged a vote witnessed by hundreds of international parliamentary observers. UN Secretary-General Kofi Annan dismissed the Indonesian complaint out of hand last night, while even Jakarta's own independent election monitors (KIPP) noted that blaming UN translators for an impending four-to-one defeat makes the Habibie government look both dishonest and delusional."
+      }
+    ]
+  },
+  {
+    "date": "4 September 1999",
+    "id": "ev_dili_flames",
+    "title": "Dili Membara",
+    "image": "photo/events/11.png",
+    "desc": "Pada pukul 09.00 pagi ini di Dili (pukul 21.00 tanggal 3 September di Markas Besar PBB di New York), Kepala UNAMET Ian Martin dan Sekretaris Jenderal PBB Kofi Annan secara bersamaan mengumumkan hasil resmi jajak pendapat Timor Timur: 94.388 pemilih (21,5%) menerima otonomi khusus, sementara 344.580 pemilih (78,5%) menolaknya dan memilih kemerdekaan. Dalam hitungan jam setelah pengumuman tersebut, Timor Timur berubah menjadi neraka. Milisi pro-integrasi, yang beroperasi secara terang-terangan bersama prajurit teritorial dan polisi, telah melepaskan 'Operasi Sapu Jagad', membakar secara sistematis 70% bangunan di Dili, membantai warga sipil yang berlindung di kompleks Gereja Suai, menembaki kediaman peraih Nobel Perdamaian Uskup Carlos Belo, serta mengepung markas UNAMET tempat staf asing dan 1.500 pengungsi Timor Timur yang ketakutan terjebak di balik kawat berduri. Lebih dari 250.000 warga sipil digiring ke atas truk-truk militer dan kapal laut di bawah todongan senjata untuk dideportasi paksa ke Timor Barat. Kofi Annan menghubungi Anda melalui telepon dari New York menuntut tindakan seketika.",
+    "options": [
+      {
+        "text": "\"Tandatangani Keputusan Presiden No. 107/1999 yang memberlakukan Darurat Militer di seluruh Timor Timur, copot Kol. Tono Suratman dan Mayjen Adam Damiri dari kendali operasional, serta kerahkan Mayjen Kiki Syahnakri bersama batalion-batalion Kostrad baru untuk memulihkan ketertiban dalam waktu 48 jam.\"",
+        "effects": {
+          "PC": [3, 7],
+          "mil": [7, 14],
+          "abri": [7, 14],
+          "intl": [-16, -8],
+          "econ": [-10, -6],
+          "stab": [-8, -4],
+          "ref": [-13, -7],
+          "cendana": 2,
+          "golkar_habibie": -1
+        },
+        "reaction": "THE JAKARTA POST: 'DARURAT MILITER GAGAL HENTIKAN PEMBAKARAN DILI SAAT KEMARAHAN DUNIA MEMUNCAK'<br><br>Deklarasi Darurat Militer oleh Presiden Habibie melalui Keppres No. 107/1999 dan pengiriman Mayjen Kiki Syahnakri sama sekali tidak mampu membendung amuk bumi hangus yang melahap Timor Timur. Bahkan setelah Syahnakri mendarat di Dili, para saksi mata di dalam kompleks UNAMET yang terkepung melaporkan prajurit-prajurit Indonesia mengangkut lemari es hasil jarahan ke atas truk militer sementara milisi Aitarak membakar habis blok-blok kota hingga rata dengan tanah. Di Washington dan New York, para diplomat menepis dekrit darurat militer tersebut sebagai tindakan 'menyerahkan selang pemadam kepada para pelaku pembakaran,' sementara di Senayan, para anggota DPR dari PDI-P maupun Golkar sudah mengasah pisau mereka atas penghinaan kekalahan 78,5 persen tersebut."
+      },
+      {
+        "text": "\"Langkahilah ulur waktu para jenderal sepenuhnya: beri tahu Kofi Annan malam ini bahwa Indonesia tidak mampu mengendalikan unit-unit teritorial liarnya sendiri di Dili dan secara resmi undang pasukan penjaga perdamaian internasional untuk segera mendarat.\"",
+        "effects": {
+          "PC": [-13, -7],
+          "intl": [11, 21],
+          "pop": [3, 5],
+          "ref": [8, 16],
+          "mil": [-13, -9],
+          "stab": [3, 5],
+          "abri": [-13, -9],
+          "golkar_akbar": [-10, -6],
+          "cendana": [-4, -2],
+          "golkar_habibie": 2
+        },
+        "reaction": "RAKYAT MERDEKA: 'HABIBIE ANGKAT BENDERA PUTIH! UNDANG TENTARA ASING MASUK DILI TANPA RESTU DPR'<br><br>Kurang dari dua puluh empat jam setelah kekalahan referendum 78,5 persen diumumkan, Presiden Habibie telah bertekuk lutut pada tekanan Barat dan mengundang pasukan penjaga perdamaian asing masuk ke Timor Timur tanpa memberi waktu sehari pun kepada angkatan bersenjatanya sendiri untuk memulihkan ketertiban! Meskipun Kofi Annan memuji langkah tersebut dari New York, kemarahan nasionalis telah meledak di seluruh Jakarta: para purnawirawan jenderal dan legislator Komisi I DPR menuduh Presiden melakukan pengkhianatan tingkat tinggi terhadap kenangan para prajurit yang gugur, dan di dalam markas Cilangkap, para komandan senior secara terbuka menyatakan bahwa karier politik Habibie sudah tamat."
+      },
+      {
+        "text": "\"Tolak baik darurat militer maupun pasukan penjaga perdamaian asing: serahkan wewenang keamanan mutlak kepada struktur komando Jenderal Wiranto yang ada di Kodam IX/Udayana dan tegaskan bahwa laporan keterlibatan militer adalah rekayasa media Barat.\"",
+        "effects": {
+          "PC": [6, 10],
+          "mil": [11, 19],
+          "abri": [11, 19],
+          "intl": [-29, -15],
+          "econ": [-19, -11],
+          "ref": [-23, -13],
+          "stab": [-13, -7],
+          "pdip": [-10, -6],
+          "cendana": [2, 4],
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "SYDNEY MORNING HERALD: 'BLOODBATH IN SUAI AND DILI AS JAKARTA DENIES THE OBVIOUS'<br><br>With priests and hundreds of refugees slaughtered inside the Suai Church compound, Bishop Carlos Belo's home burned to the ground, and smoke rising over 70 percent of Dili in full view of satellite cameras, the Habibie government has plumbed new depths of moral bankruptcy by leaving Kodam IX/Udayana's commanders in place and blaming 'Western media fabrications.' The UN Security Council has convened in emergency session to draft Chapter VII sanctions, while the rupiah plunged 8 percent on panic selling in Singapore."
+      },
+      {
+        "text": "\"Perintahkan pengawalan militer seketika untuk mengevakuasi Uskup Carlos Belo, personel UNAMET, dan para jurnalis asing ke Darwin serta Baucau, sembari menginstruksikan tim KPP-HAM dari Komnas HAM untuk mendokumentasikan setiap kekejaman di lapangan.\"",
+        "effects": {
+          "intl": [4, 8],
+          "ref": [4, 8],
+          "utusan_golongan": [4, 8],
+          "pop": [-5, -3],
+          "mil": [-6, -3],
+          "stab": [-5, -3],
+          "abri": [-6, -3],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "MAJALAH TEMPO: 'SAKSI MATA DIUSIR DARI DILI SAAT OPERASI SAPU JAGAD BERLANSUNG'<br><br>Mengevakuasi peraih Nobel Perdamaian Uskup Carlos Belo dan para koresponden asing keluar dari Dili yang tengah terbakar menggunakan pesawat Hercules RAAF memang mencegah terjadinya pembantaian atas staf PBB, namun jaringan televisi global kini menyiarkan gambar yang menghancurkan hati sepanjang waktu: para ibu Timor Timur yang ketakutan menyerahkan bayi-bayi mereka melewati kawat berduri markas UNAMET saat personel asing diangkut pergi lewat udara, meninggalkan seluruh penduduk tertinggal dalam kegelapan bersama milisi. Di dalam negeri, para politisi nasionalis menyerang Habibie karena kehilangan provinsi tersebut, sementara para pegiat hak asasi manusia mengecamnya karena gagal menghentikan tentaranya sendiri."
+      },
+      {
+        "text": "\"Bebaskan Xanana Gusmão tanpa syarat dari tahanan rumahnya di Salemba ke Kedutaan Besar Inggris dan undang delegasi Dewan Keamanan PBB yang dipimpin oleh Duta Besar Martin Andjaba untuk terbang ke Jakarta serta Dili guna memeriksa situasi bersama Jenderal Wiranto.\"",
+        "effects": {
+          "ref": [6, 10],
+          "intl": [6, 10],
+          "stab": [3, 5],
+          "mil": [-7, -5],
+          "abri": [-7, -5],
+          "cendana": -1,
+          "golkar_habibie": 2
+        },
+        "reaction": "MEDIA INDONESIA: 'XANANA BEBAS KE KEDUBES INGGRIS, TIM DEWAN KEAMANAN PBB DATANG MENGHAKIMI JAKARTA'<br><br>Saat Dili terbakar dan 250.000 pengungsi diangkut dengan truk di bawah todongan senjata menuju Timor Barat, pembebasan Xanana Gusmão oleh Presiden Habibie ke Kedutaan Besar Inggris serta undangannya kepada lima duta besar Dewan Keamanan PBB untuk memeriksa Timor Timur tidak menyenangkan siapa pun di dalam negeri. Di Senayan, para anggota Komisi I DPR menyebut kunjungan Dewan Keamanan PBB tersebut sebagai 'tur inspeksi kolonial terhadap bangsa yang kalah,' sementara Duta Besar PBB Martin Andjaba menegaskan begitu mendarat di Halim bahwa basa-basi diplomatik tidak akan menyelamatkan Indonesia dari sanksi kecuali pasukan penjaga perdamaian asing segera diizinkan masuk."
+      }
+    ]
+  },
+  {
+    "date": "10 September 1999",
+    "id": "ev_intl_sanctions",
+    "title": "Ultimatum Sanksi Internasional",
+    "image": "photo/events/12.png",
+    "desc": "Pada KTT Para Pemimpin APEC di Auckland, yang Anda tolak untuk hadiri secara langsung dengan mengutus Menko Ekuin Ginandjar Kartasasmita dan Menteri Luar Negeri Ali Alatas sebagai pengganti Anda, para pemimpin dunia telah mengubah pertemuan puncak tersebut menjadi mahkamah darurat atas Timor Timur. Kemarin, Presiden AS Bill Clinton menangguhkan seluruh penjualan militer dan kerja sama Pentagon antara AS dan Indonesia, sembari memperingatkan secara lugas bahwa 'jika Indonesia tidak mengakhiri kekerasan tersebut, mereka harus mengundang komunitas internasional untuk membantu memulihkan keamanan.' Hari ini, Uni Eropa menjatuhkan embargo senjata, IMF membekukan jadwal misi bulan Septembernya ke Jakarta, dan Sekretaris Jenderal PBB Kofi Annan memberi Jakarta ultimatum empat puluh delapan jam untuk menerima pasukan multinasional pimpinan Australia atau menghadapi penegakan paksa Bab VII Dewan Keamanan PBB serta isolasi ekonomi. Besok pagi, Jenderal Wiranto akan terbang ke Dili mendampingi delegasi lima anggota Dewan Keamanan PBB yang dipimpin oleh Duta Besar Martin Andjaba.",
+    "options": [
+      {
+        "text": "\"Perintahkan Jenderal Wiranto untuk mendampingi para duta besar Dewan Keamanan PBB ke Dili besok pagi agar ia melihat kota yang terbakar dan kemarahan internasional dengan mata kepalanya sendiri, lalu adakan sidang kabinet bidang politik dan keamanan secara lengkap guna memaksa persetujuan Cilangkap atas masuknya pasukan penjaga perdamaian.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [7, 13],
+          "econ": [4, 8],
+          "stab": [3, 7],
+          "mil": [-7, -5],
+          "abri": [-7, -5],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "KOMPAS: 'PERTEMUAN TEGANG DI ISTANA USAI KUNJUNGAN DILI: HABIBIE DAN WIRANTO SALING LEMPAR TANGGUNG JAWAB'<br><br>Menyusuri puing-puing menghitam kota Dili bersama lima duta besar Dewan Keamanan PBB yang murka kemarin akhirnya memaksa Jenderal Wiranto menghadapi jurang diplomatik yang menganga di hadapan Indonesia, namun sidang kabinet tengah malam setelahnya di Istana Merdeka berlangsung jauh dari kata harmonis. Menurut dua menteri yang berada di dalam ruangan, para teknokrat sipil memperingatkan bahwa Indonesia hanya berjarak empat puluh delapan jam dari pembekuan perbankan internasional, sementara para komandan militer dengan getir menyalahkan keputusan impulsif referendum Habibie pada bulan Januari karena telah menempatkan angkatan bersenjata dalam posisi yang mustahil."
+      },
+      {
+        "text": "\"Instruksikan Ali Alatas di New York untuk melobi keterlibatan kuat negara-negara ASEAN (Thailand, Filipina, Malaysia, dan Singapura) di dalam pasukan PBB mana pun agar pengerahan tersebut tidak semata-mata menjadi pendudukan Inggris-Australia.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [4, 8],
+          "mil": [3, 5],
+          "abri": [3, 5],
+          "utusan_daerah": [3, 7],
+          "stab": [3, 7],
+          "golkar_habibie": 1
+        },
+        "reaction": "THE JAKARTA POST: 'ISTANA SIBUK CARI KEDOK ASEAN SAAT PASUKAN AUSTRALIA BERSIAGA DI DARWIN'<br><br>Lobi-lobi panik Menteri Luar Negeri Ali Alatas agar kontingen Thailand, Filipina, dan Malaysia bergabung ke dalam pasukan Timor Timur yang akan masuk telah memberi Istana Merdeka sehelai daun ara diplomatik tipis untuk dijual kepada publik di dalam negeri. Namun tak seorang pun di Canberra maupun Senayan tertipu mengenai siapa yang sebenarnya akan memegang kendali operasi tersebut: dengan 4.500 pasukan tempur Australia yang sudah bersiaga di Darwin di bawah komando Mayjen Peter Cosgrove, kalangan nasionalis DPR mencemooh kemasan 'penjaga perdamaian ASEAN' ala Istana sebagai sekadar menempelkan stiker bemper Asia Tenggara di atas iring-iringan tank Australia."
+      },
+      {
+        "text": "\"Tampillah di hadapan kamera untuk mengecam kemunafikan Washington dan Canberra, dengan menunjuk fakta bahwa kekuatan-kekuatan Barat mendukung aneksasi Indonesia pada tahun 1975 dan tidak berhak mengancam 210 juta rakyat Indonesia dengan kelaparan ekonomi sekarang.\"",
+        "effects": {
+          "PC": [6, 10],
+          "pop": [7, 13],
+          "mil": [6, 11],
+          "abri": [6, 11],
+          "golkar_akbar": [4, 8],
+          "intl": [-21, -11],
+          "econ": [-19, -11],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "BISNIS INDONESIA: 'PIDATO KONFRONTASI HABIBIE DISORAKI PENDEMO, TAPI PELABUHAN DAN PERBANKAN LUMPUH'<br><br>Pemuda dari Pemuda Pancasila dan barisan mahasiswa nasionalis bersorak-sorai di luar kedutaan besar AS dan Australia kemarin setelah Presiden Habibie mengecam 'kemunafikan' Barat di televisi. Namun di Pelabuhan Tanjung Priok dan di seluruh kawasan perbankan Jakarta, harga dari retorika tersebut sudah terasa menghancurkan: bank-bank koresponden internasional menolak menerima <i>letter of credit</i> Indonesia pagi ini, kapal-kapal kontainer memutar haluan ke Singapura, dan IMF memperingatkan bahwa Jakarta sedang meluncur cepat menuju status negara paria bergaya Yugoslavia."
+      },
+      {
+        "text": "\"Utus Menteri Luar Negeri Ali Alatas dalam penerbangan darurat ke Markas Besar PBB di New York untuk memohon waktu satu minggu lagi bagi penerapan darurat militer Indonesia di bawah komando Mayjen Kiki Syahnakri sebelum resolusi PBB apa pun dirancang.\"",
+        "effects": {
+          "intl": [-7, -3],
+          "stab": [-5, -3],
+          "econ": [-5, -3],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "MAJALAH TEMPO: 'MISI MUSTAHIL ALI ALATAS: MENJUAL DARURAT MILITER DI MARKAS PBB YANG MARAH'<br><br>Selama dua puluh empat tahun Menteri Luar Negeri veteran Ali Alatas harus membela kebijakan Timor Timur Indonesia di hadapan ruang-ruang sidang PBB yang skeptis, menyebutnya sebagai 'kerikil di dalam sepatu Indonesia.' Kemarin di New York, kerikil itu berubah menjadi batu besar yang menghimpit: Kofi Annan dan Dewan Keamanan secara tegas menolak permohonan Alatas untuk memberi waktu seminggu lagi bagi darurat militer Mayjen Kiki Syahnakri, sembari memberi tahu menteri yang tampak kelelahan itu bahwa Jakarta hanya punya waktu hingga Minggu malam untuk menerima pasukan penjaga perdamaian internasional tanpa syarat atau menghadapi penegakan paksa Bab VII."
+      },
+      {
+        "text": "\"Berikan pengarahan tertutup kepada para koresponden asing bahwa kepemimpinan sipil sebenarnya ingin segera mengundang pasukan penjaga perdamaian PBB, namun sedang disandera oleh para jenderal garis keras yang mengancam akan melakukan kudeta jika tentara asing mendarat.\"",
+        "effects": {
+          "PC": [-10, -6],
+          "ref": [6, 10],
+          "mil": [-12, -8],
+          "abri": [-12, -8],
+          "stab": [-13, -7],
+          "cendana": -1,
+          "golkar_habibie": -2
+        },
+        "reaction": "RAKYAT MERDEKA: 'PRESIDEN CURHAT KE WARTAWAN ASING TAKUT DIKUDETA: PANGLIMA TERTINGGI MACAM APA?'<br><br>Pengarahan tertutup oleh para staf Istana kepada kantor-kantor berita Barat yang mengklaim bahwa Presiden Habibie adalah 'tawanan para jenderalnya sendiri' menjadi bumerang dengan daya rusak luar biasa pagi ini ketika kutipan-kutipan tersebut terpampang di halaman depan seluruh koran di Jakarta. Alih-alih meraih simpati, bocoran itu justru membuat Habibie tampak sangat lemah di mata para utusan MPR sekaligus memicu kemarahan di Cilangkap, tempat Kapuspen ABRI Brigjen Sudrajat menyalak bahwa 'seorang Panglima Tertinggi yang memfitnah korps perwiranya sendiri kepada wartawan asing telah kehilangan wibawa moral untuk memimpin.'"
+      }
+    ]
+  },
+  {
+    "date": "12 September 1999",
+    "id": "ev_peacekeeper_decision",
+    "title": "Keputusan Pasukan Perdamaian 12 September",
+    "image": "photo/events/13.png",
+    "desc": "Ini adalah Minggu malam, 12 September 1999, malam paling menentukan sepanjang masa kepresidenan Anda. Delegasi Dewan Keamanan PBB baru saja bertemu dengan Anda di Istana Merdeka sepulangnya dari puing-puing kota Dili yang terbakar, dan tenggat waktu empat puluh delapan jam dari Kofi Annan berakhir malam ini. Di seberang meja kabinet duduk Jenderal Wiranto, Menteri Luar Negeri Ali Alatas, Menko Ginandjar Kartasasmita dan Feisal Tanjung, serta para kepala staf Angkatan Darat, Angkatan Laut, Angkatan Udara, dan Kapolri. Jika Anda menolak pasukan penjaga perdamaian internasional malam ini, Dewan Keamanan PBB akan menjatuhkan sanksi Bab VII besok, IMF akan menghentikan dana talangan Indonesia, dan perekonomian akan runtuh. Namun jika Anda menerimanya tanpa syarat melalui siaran langsung televisi, faksi-faksi nasionalis di seluruh MPR akan mencap Anda sebagai Presiden yang melepaskan Timor Timur dan mengundang sepatu lars asing menginjak tanah air.",
+    "options": [
+      {
+        "text": "\"Hubungi Kofi Annan secara pribadi melalui telepon untuk mengundang pasukan penjaga perdamaian bermandat PBB, lalu melangkahlah keluar menuju mikrofon Istana Merdeka pada pukul 19.30 WIB didampingi oleh Jenderal Wiranto dan seluruh jajaran kabinet untuk mengumumkan keputusan tersebut bersama-sama di siaran langsung televisi nasional.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [11, 19],
+          "econ": [7, 13],
+          "ref": [6, 10],
+          "stab": [3, 7],
+          "mil": [-7, -5],
+          "abri": [-7, -5],
+          "golkar_akbar": [-7, -3],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "KOMPAS: 'INDONESIA AKHIRNYA TERIMA PASUKAN PBB: WAJAH KAKU WIRANTO DI BELAKANG HABIBIE BUKA TABIR RETAKNYA ISTANA'<br><br>Pada pukul 19.30 tadi malam di Istana Merdeka, Presiden Habibie yang tampak sangat kelelahan tampil di hadapan kamera siaran langsung televisi untuk mengumumkan bahwa ia telah menelepon Sekretaris Jenderal PBB Kofi Annan guna mengundang pasukan penjaga perdamaian internasional masuk ke Timor Timur seketika. Meskipun keputusan tersebut menghindarkan negara dari sanksi ekonomi yang menghancurkan, tak seorang pemirsa pun di Indonesia melewatkan bahasa tubuh di belakang podium: Jenderal Wiranto berdiri dengan wajah membatu dan rahang mengeras, menatap lurus ke depan tanpa mengucapkan sepatah kata pun. Di Senayan pagi ini, baik kalangan nasionalis PDI-P maupun faksi Golkar kubu Akbar Tandjung menyebut siaran tersebut sebagai 'mars pemakaman bagi kampanye pemilihan kembali Habibie.'"
+      },
+      {
+        "text": "\"Umumkan undangan bagi pasukan penjaga perdamaian PBB seorang diri dari ruang kerja kepresidenan sebagai wujud panggilan nurani moral sipil, dan perintahkan penarikan sepihak seketika atas seluruh unit ABRI dari Timor Timur tanpa menunggu protokol serah terima bersama.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "intl": [11, 21],
+          "econ": [7, 13],
+          "ref": [8, 16],
+          "mil": [-14, -9],
+          "abri": [-14, -9],
+          "stab": [-8, -4],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "SUARA PEMBARUAN: 'HABIBIE TAMPIL SENDIRI SERAHKAN TIMTIM KE PBB, PARA JENDERAL BOIKOT SIARAN ISTANA'<br><br>Ketidakhadiran mencolok Jenderal Wiranto beserta para kepala staf angkatan dari Istana Merdeka saat siaran Minggu malam Presiden Habibie yang mengundang pasukan penjaga perdamaian PBB ke Timor Timur mengirimkan hawa dingin ke seluruh tatanan elit politik Jakarta. Di berbagai penjuru Jawa pagi ini, para pengunjuk rasa nasionalis membakar patung orang-orangan Habibie yang dipakaikan topi militer Australia, sementara di lorong-lorong MPR, para utusan ABRI dan Golkar secara terbuka menyatakan bahwa seorang Presiden yang mempermalukan angkatan bersenjata di siaran langsung televisi tidak akan pernah selamat melewati pemungutan suara pertanggungjawaban pada 19 Oktober."
+      },
+      {
+        "text": "\"Terima pasukan penjaga perdamaian PBB secara prinsip, namun padukan dengan pembatalan seketika atas Perjanjian Keamanan Australia-Indonesia tahun 1995 dan tuntut agar para komandan ASEAN berbagi kepemimpinan dalam pasukan yang akan masuk tersebut.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [4, 8],
+          "econ": [3, 7],
+          "pop": [4, 8],
+          "mil": [-4, -2],
+          "abri": [-4, -2],
+          "golkar_akbar": [3, 5],
+          "cendana": 1,
+          "golkar_habibie": 1
+        },
+        "reaction": "MEDIA INDONESIA: 'ROBEK PERJANJIAN KEAMANAN DENGAN AUSTRALIA: HIBURAN KECIL DI TENGAH KEHILANGAN PROVINSI KE-27'<br><br>Merobek perjanjian pertahanan bilateral tahun 1995 dengan Canberra pada malam yang sama ketika Jakarta tunduk pada ultimatum Dewan Keamanan PBB atas Timor Timur mungkin memberi kalangan nasionalis yang terluka sedikit hiburan simbolis, namun para pengamat segera menunjuk kehampaan langkah tersebut. 'Habibie membanting pintu di depan wajah John Howard tepat setelah menyerahkan kunci bandara Dili kepadanya,' sindir anggota Komisi I DPR Yasril Ananta Baharuddin dengan tajam."
+      },
+      {
+        "text": "\"Ancam di hadapan meja kabinet untuk mengundurkan diri dari kursi kepresidenan malam ini juga dan menyerahkan keruntuhan mata uang serta sanksi PBB langsung ke tangan Jenderal Wiranto jika angkatan bersenjata menolak menyetujui pengerahan pasukan penjaga perdamaian.\"",
+        "effects": {
+          "intl": [7, 13],
+          "econ": [3, 7],
+          "mil": [-6, -3],
+          "abri": [-6, -3],
+          "stab": [-10, -6],
+          "pop": [-8, -4],
+          "cendana": 1,
+          "golkar_habibie": -2
+        },
+        "reaction": "MAJALAH TEMPO: 'ANCAMAN MUNDUR DI MEJA KABINET: SENJATA TERAKHIR PRESIDEN YANG TERKEPUNG'<br><br>Menurut berbagai sumber kabinet, Presiden Habibie hanya berhasil memaksa tanda tangan para jenderal atas undangan pasukan penjaga perdamaian PBB kemarin malam dengan menggebrak meja Bina Graha dan mengancam akan mengundurkan diri di tempat, yang berdasarkan konstitusi akan langsung melimpahkan keruntuhan ekonomi seketika dan embargo PBB ke pangkuan triumvirat menteri. Meskipun ultimatum itu memaksa Wiranto berkedip, kabar bahwa Habibie sudah berbicara soal pengunduran diri telah menyebar bagai api di padang ilalang di seluruh Senayan, meyakinkan para utusan Golkar yang bimbang bahwa sang Presiden kini sudah habis masanya."
+      },
+      {
+        "text": "\"Lawan ultimatum Kofi Annan: tolak pasukan penjaga perdamaian asing secara mentah-mentah dan perintahkan komando darurat militer Mayjen Kiki Syahnakri untuk menutup rapat perbatasan Timor Timur dari pendaratan asing mana pun yang tidak berizin.\"",
+        "effects": {
+          "PC": [-13, -7],
+          "mil": [7, 14],
+          "abri": [7, 14],
+          "intl": [-33, -17],
+          "econ": [-26, -14],
+          "stab": [-16, -8],
+          "ref": [-19, -11],
+          "cendana": [2, 4],
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "ASIAN WALL STREET JOURNAL: 'INDONESIA PLUNGES INTO GLOBAL ISOLATION AS HABIBIE DEFIES UN SECURITY COUNCIL'<br><br>President Habibie's Sunday night refusal to admit UN peacekeepers into East Timor has triggered the worst diplomatic and financial catastrophe in modern Indonesian history. At midnight in New York, the UN Security Council began drafting binding Chapter VII economic sanctions; the IMF and World Bank suspended all operations in Jakarta; and the rupiah crashed past Rp 10,000 per dollar at the Monday morning open as panic-stricken citizens queued outside banks to withdraw their savings."
+      }
+    ]
+  },
+  {
+    "date": "20 September 1999",
+    "id": "ev_interfet_lands",
+    "title": "INTERFET Mendarat di Dili",
+    "image": "photo/events/14.png",
+    "desc": "Berdasarkan wewenang Resolusi Dewan Keamanan PBB 1264 lima hari lalu, Mayor Jenderal Australia Peter Cosgrove dan Wakil Komandan asal Thailand Mayor Jenderal Songkitti Jaggabatara telah mendarat di Bandara Comoro, Dili, memimpin 2.500 pasukan pertama International Force East Timor (INTERFET). Pasukan Indonesia di bawah komando Mayjen Kiki Syahnakri mulai menyerahkan kendali keamanan sektor demi sektor, meskipun para prajurit yang ditarik pergi dengan wajah murung membakar barak-barak dan menjarah perabotan saat kapal-kapal angkut mereka memuat barang di pelabuhan Dili. Di Jakarta dan Surabaya, tayangan televisi yang memperlihatkan tentara Australia menodongkan senapan ke arah anggota milisi yang dilucuti serta polisi Indonesia telah memicu ledakan kemarahan nasionalis yang terluka. Para pengunjuk rasa melepaskan tembakan ke arah Kedutaan Besar Australia di Jalan Rasuna Said, membakar bendera Australia di Medan dan Yogyakarta, sementara para anggota Komisi I DPR baik dari PDI-P maupun Golkar menuntut Anda mempertanggungjawabkan 'penghinaan terhadap Merah Putih.'",
+    "options": [
+      {
+        "text": "\"Instruksikan Mayjen Kiki Syahnakri untuk melaksanakan serah terima yang disiplin dan profesional kepada Mayjen Cosgrove dan Wakil Komandan Thailand Mayjen Songkitti, sembari menekankan secara terbuka bahwa Indonesia telah menghormati komitmen internasionalnya dan menyelamatkan bangsa dari kehancuran ekonomi.\"",
+        "effects": {
+          "PC": [3, 7],
+          "intl": [7, 13],
+          "econ": [4, 8],
+          "stab": [3, 5],
+          "mil": [2, 4],
+          "abri": [2, 4],
+          "pop": [-8, -4],
+          "golkar_akbar": [-8, -4],
+          "cendana": -1,
+          "golkar_habibie": 2
+        },
+        "reaction": "RAKYAT MERDEKA: 'TENTARA KITA DITODONG SEPATU LARS AUSTRALIA, ISTANA MASIH SEBUT SUKSES DIPLOMASI!'<br><br>Foto-foto di halaman depan seluruh surat kabar pagi ini yang memperlihatkan pasukan terjun payung INTERFET Australia berdiri mengangkangi anggota milisi Timor Timur yang diikat serta polisi Indonesia dengan todongan senapan Steyr telah mengirimkan gelombang rasa muak dan kemarahan di seluruh negeri. Ketika juru bicara Presiden Habibie mencoba menggambarkan serah terima di Bandara Comoro tersebut sebagai 'keberhasilan diplomatik yang tertib,' para legislator di Komisi I DPR meledak dalam cemoohan. 'Hanya B.J. Habibie yang bisa kehilangan satu provinsi utuh, menyaksikan tentara asing mempermalukan seragam kita di televisi dunia, lalu meminta tepuk tangan,' sembur legislator PDI-P Permadi."
+      },
+      {
+        "text": "\"Sahkan dana kemanusiaan dan pemukiman kembali seketika melalui Departemen Sosial dan Gubernur Nusa Tenggara Timur Piet Tallo untuk menampung serta memberi makan 250.000 pengungsi dan pegawai negeri sipil yang mengalir melintasi perbatasan menuju Atambua dan Kupang.\"",
+        "effects": {
+          "utusan_daerah": [7, 13],
+          "mil": [3, 6],
+          "abri": [3, 6],
+          "pop": [2, 4],
+          "econ": [-7, -3],
+          "intl": -2,
+          "cendana": 1
+        },
+        "reaction": "KOMPAS: 'ATAMBUA DAN KUPANG LUMPUH KEBANJIRAN 250.000 PENGUNGSI, DANA BANTUAN DISUNAT MILISI'<br><br>Meskipun Gubernur Nusa Tenggara Timur Piet Tallo menyambut baik pencairan dana darurat Jakarta bagi seperempat juta pengungsi yang berdesakan di kamp-kamp kumuh di seluruh Atambua, Belu, dan Kupang, para wartawan di lapangan melukiskan gambaran suram mengenai ke mana uang tersebut sebenarnya mengalir. Anggota milisi Aitarak dan Besi Merah Putih bersenjata yang melarikan diri melintasi perbatasan mendahului pendaratan INTERFET telah mengambil alih titik-titik distribusi kamp, mengintimidasi warga lokal NTT maupun keluarga-keluarga Timor Timur yang dideportasi di bawah todongan senjata dan kini ingin kembali ke kampung halaman mereka."
+      },
+      {
+        "text": "\"Salurkan kemarahan publik ke arah Canberra: batalkan secara resmi perjanjian pertahanan bilateral tahun 1995 dengan Australia, tarik pulang duta besar kita untuk berkonsultasi, dan layangkan protes atas perilaku pasukan Australia di PBB.\"",
+        "effects": {
+          "PC": [3, 7],
+          "pop": [7, 13],
+          "mil": [5, 9],
+          "abri": [5, 9],
+          "golkar_akbar": [3, 7],
+          "intl": [-13, -7],
+          "econ": [-5, -3],
+          "cendana": 1
+        },
+        "reaction": "THE JAKARTA POST: 'ISTANA TUNGGANGI GELOMBANG ANTI-AUSTRALIA UNTUK ALIHKAN KESALAHAN BENCANA TIMOR TIMUR'<br><br>Di tengah kerumunan massa nasionalis yang membakar bendera Australia di luar kedutaan besar di Jalan Rasuna Said dan menembaki kendaraan diplomatik, Istana Merdeka dengan bersemangat ikut bergabung mengecam arogansi 'wakil sheriff' Perdana Menteri John Howard. Namun para analis politik di Jakarta mencatat bahwa kemarahan anti-Canberra tersebut hanyalah pengalihan isu yang transparan: 'Bukan John Howard yang menandatangani keputusan kabinet 27 Januari yang menawarkan referendum tanpa menyiapkan militer di lapangan, melainkan B.J. Habibie,' tulis kolumnis Christianto Wibisono."
+      },
+      {
+        "text": "\"Beri wewenang kepada Komnas HAM untuk membentuk Komisi Penyelidik Pelanggaran Hak Asasi Manusia di Timor Timur (KPP-HAM), yang dipimpin oleh Albert Hasibuan, Todung Mulya Lubis, dan Munir, agar para penyelidik Indonesia sendiri, bukan mahkamah PBB asing, yang meminta pertanggungjawaban para pelaku.\"",
+        "effects": {
+          "ref": [8, 16],
+          "intl": [7, 13],
+          "utusan_golongan": [6, 10],
+          "mil": [-10, -6],
+          "abri": [-10, -6],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "FORUM KEADILAN: 'KPP-HAM TIMTIM DIBENTUK: PARA JENDERAL TUDING HABIBIE SERAHKAN LEHER TNI KE LSM'<br><br>Untuk menghadang pembentukan Mahkamah Kejahatan Perang PBB bergaya Yugoslavia dan Rwanda, Presiden Habibie telah memberi wewenang kepada Komnas HAM untuk membentuk komisi penyelidik independen dalam negeri (KPP-HAM) yang diisi oleh beberapa pengkritik paling keras militer, termasuk Munir, Albert Hasibuan, dan Todung Mulya Lubis. Di markas besar Cilangkap, pengumuman tersebut menghantam bagai bom: para jenderal senior yang namanya sudah tercantum dalam daftar saksi KPP-HAM atas pembantaian Suai dan Dili menuduh Habibie menjadikan korps perwira sebagai tameng hidup demi menyelamatkan reputasi internasionalnya sendiri."
+      },
+      {
+        "text": "\"Alihkan jadwal publik Istana sepenuhnya kembali ke agenda pemulihan ekonomi dalam negeri dan persiapan sidang MPR mendatang, sembari menolak seluruh pertanyaan pers lebih lanjut mengenai Timor Timur.\"",
+        "effects": {
+          "pop": [-7, -3],
+          "ref": [-7, -3],
+          "stab": [3, 5],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "POS KOTA: 'TIMTIM LEPAS, ISTANA PURA-PURA PIKUN!'<br><br>Saat tank-tank asing melindas jalanan Dili, sebuah kota yang dibangun selama dua puluh empat tahun dengan triliunan rupiah uang pajak rakyat Indonesia dan nyawa ribuan prajurit, biro pers Presiden Habibie mengumumkan kemarin bahwa Istana telah 'beralih fokus' ke agenda ekonomi dalam negeri dan tidak akan melayani pertanyaan lagi mengenai Timor Timur. Para kartunis di koran-koran pagi ini menggambarkan sang Presiden sedang bersiul melewati kompleks pemakaman dengan kedua jari menyumbat rapat telinganya, sementara para pimpinan fraksi MPR berjanji bahwa Timor Timur akan menjadi Pertanyaan Nomor Satu saat ia melangkah ke podium pada 14 Oktober nanti."
+      }
+    ]
+  },
+  {
+    "date": "24 September 1999",
+    "id": "ev_semanggi_ii",
+    "title": "Tragedi Semanggi II",
+    "image": "photo/events/15.png",
+    "desc": "Kemarin sore, di hari-hari terakhirnya sebelum bubar, DPR periode lama terburu-buru mengesahkan Rancangan Undang-Undang Penanggulangan Keadaan Bahaya (RUU PKB), sebuah undang-undang sapu jagat yang diusung oleh Menteri Pertahanan Jenderal Wiranto untuk menggantikan undang-undang keadaan bahaya tahun 1959, yang memberikan wewenang luas kepada Presiden dan para panglima militer daerah untuk menetapkan keadaan darurat sipil atau militer, melarang demonstrasi, menyadap komunikasi, dan menahan para tersangka. Memandang RUU tersebut sebagai reinkarnasi otoritarianisme Orde Baru, puluhan ribu mahasiswa dari UI, Trisakti, dan Atma Jaya telah menduduki Jalan Gatot Subroto dan Jembatan Semanggi di luar kompleks DPR/MPR. Selama dua puluh empat jam terakhir, aparat keamanan telah menembakkan gas air mata dan peluru tajam ke arah kerumunan massa: mahasiswa Fakultas Teknik Universitas Indonesia Yap Yun Hap tewas tertembak di dekat Semanggi, dan bentrokan berdarah di Jakarta, Lampung, serta Palembang telah menewaskan sebelas orang dan melukai lebih dari dua ratus lainnya. Dengan MPR yang akan bersidang dalam tujuh hari lagi, ibu kota berada di ambang ledakan besar.",
+    "options": [
+      {
+        "text": "\"Tolak menandatangani RUU Penanggulangan Keadaan Bahaya (RUU PKB) menjadi undang-undang dan umumkan penundaan pengesahannya tanpa batas waktu, guna mencabut kekuatan hukum RUU tersebut dan segera mematikan sumbu pergolakan mahasiswa sebelum MPR bersidang.\"",
+        "effects": {
+          "PC": [3, 7],
+          "pop": [8, 16],
+          "ref": [11, 19],
+          "stab": [7, 13],
+          "intl": [4, 8],
+          "utusan_golongan": [6, 10],
+          "poros_tengah": [6, 10],
+          "pdip": [3, 7],
+          "mil": [-10, -6],
+          "abri": [-10, -6],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "KOMPAS: 'SETELAH NYAWA YAP YUN HAP MELAYANG, BARU ISTANA TUNDA UU PENANGGULANGAN KEADAAN BAHAYA'<br><br>Mengapa selalu harus ada jasad mahasiswa yang terkapar di atas aspal Jalan Sudirman terlebih dahulu sebelum pemerintahan Habibie mau mendengarkan suara rakyatnya sendiri? Itulah pertanyaan getir yang dilontarkan oleh para mahasiswa Universitas Indonesia yang menangis di atas peti jenazah mahasiswa teknik Yap Yun Hap di kampus UI Salemba kemarin, beberapa jam setelah Istana mengumumkan penangguhan RUU Penanggulangan Keadaan Bahaya (RUU PKB) yang sangat dibenci tersebut. Meskipun pembekuan RUU itu mencegah pemberontakan skala penuh menjelang sidang MPR pekan depan, senat-senat mahasiswa menunjuk fakta bahwa para menteri Habibie sendirilah yang merancang dan mendorong RUU kejam tersebut melewati DPR sejak awal, sementara di dalam markas Cilangkap, jajaran staf Jenderal Wiranto berang karena merasa ditinggalkan di tengah jalan."
+      },
+      {
+        "text": "\"Tunda pemberlakuan RUU PKB DAN perintahkan Pangdam Jaya Mayjen Djaja Suparman beserta Kapolri Jenderal Roesmanhadi untuk mengidentifikasi serta menyeret ke mahkamah militer para personel yang menembakkan peluru tajam ke arah Yap Yun Hap dan para pengunjuk rasa.\"",
+        "effects": {
+          "pop": [10, 18],
+          "ref": [10, 18],
+          "stab": [4, 8],
+          "utusan_golongan": [6, 10],
+          "mil": [-12, -8],
+          "abri": [-12, -8],
+          "cendana": -2,
+          "golkar_habibie": 2
+        },
+        "reaction": "MAJALAH TEMPO: 'TUMBAL DI JEMBATAN SEMANGGI: PRAJURIT BAWAHAN DIKORBANKAN, PEMBERI KOMANDO AMAN'<br><br>Menangguhkan RUU PKB dan memerintahkan Polisi Militer untuk menangkap personel lapangan yang menembakkan peluru tajam pada tragedi Semanggi II telah mendinginkan barikade-barikade di sepanjang Jalan Gatot Subroto, namun baik kalangan mahasiswa maupun korps perwira sama-sama tidak puas. Di UI Salemba, para pemimpin mahasiswa mencatat bahwa para penembak di Trisakti (Mei 1998) dan Semanggi I (November 1998) dulu juga 'diselidiki' dengan cara serupa sementara para jenderal yang mengerahkan pasukan tempur berpeluru tajam tidak pernah tersentuh; di sisi lain, para komandan Kodam Jaya dan Brimob berang karena Istana mendorong anak buah mereka ke jalanan untuk membela RUU pemerintah lalu mengorbankan mereka begitu peluru meletus."
+      },
+      {
+        "text": "\"Terima delegasi pimpinan rektorat UI dan perwakilan mahasiswa di Istana Merdeka untuk menyampaikan belasungkawa kepada keluarga Yap Yun Hap serta membentuk tim pengkaji bersama sipil-mahasiswa atas undang-undang keadaan bahaya tersebut.\"",
+        "effects": {
+          "ref": [4, 8],
+          "pop": 2,
+          "stab": 2,
+          "mil": [-4, -2],
+          "abri": [-4, -2],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "RAKYAT MERDEKA: 'MAHASISWA DITEMBAK PELURU TAJAM, HABIBIE MALAH AJAK BIKIN TIM KAJIAN!'<br><br>Dengan sebelas pengunjuk rasa tewas di Jakarta, Lampung, dan Palembang serta lebih dari dua ratus mahasiswa terbaring di bangsal-bangsal Rumah Sakit St. Carolus dan Atma Jaya akibat luka tembak dan retak tulang tengkorak, tawaran Istana Merdeka untuk membentuk 'tim pengkaji akademik bersama' atas RUU PKB disambut dengan cemoohan di jalanan. Koalisi mahasiswa dari FORKOT, FAMRED, dan KB-UI memboikot undangan Istana tersebut secara mentah-mentah, membakar salinan RUU PKB di jalan layang Semanggi sembari meneriakkan bahwa mereka ingin undang-undang itu dikubur mati, bukan direvisi."
+      },
+      {
+        "text": "\"Sampaikan pidato televisi tanpa teks untuk memanjatkan doa pribadi bagi para korban di Semanggi dan Lampung sembari memohon kepada para mahasiswa agar kembali ke kampus masing-masing demi kelancaran Sidang Umum MPR secara damai.\"",
+        "effects": {
+          "pop": [-8, -4],
+          "ref": [-7, -3],
+          "stab": [-5, -3],
+          "mil": [-3, -2],
+          "abri": [-3, -2],
+          "cendana": 1,
+          "golkar_habibie": -1
+        },
+        "reaction": "POS KOTA: 'AIR MATA BUAYA DI LAYAR KACA TAK BISA HIDUPKAN KEMBALI YAP YUN HAP!'<br><br>Pidato televisi Presiden Habibie yang emosional dan bertele-tele tadi malam, yang memohon ketenangan namun menolak secara tegas membatalkan RUU Penanggulangan Keadaan Bahaya yang memicu pertumpahan darah tersebut, disambut dingin di seluruh ibu kota. Puluhan ribu pelayat yang berjalan mengiringi mobil jenazah Yap Yun Hap dari Salemba menuju Tanah Kusir mencemooh nama Presiden, menunjuk fakta bahwa kurang dari sebelas bulan setelah Semanggi I, aparat keamanan di bawah komandonya kembali memberondong mahasiswa tak bersenjata di atas bentangan aspal yang persis sama."
+      },
+      {
+        "text": "\"Tandatangani RUU Penanggulangan Keadaan Bahaya (UU PKB) menjadi undang-undang segera dan beri wewenang kepada Mayjen Djaja Suparman untuk menggunakan pasal-pasal daruratnya guna membersihkan Jalan Gatot Subroto sebelum para utusan MPR tiba pada 1 Oktober.\"",
+        "effects": {
+          "PC": [6, 10],
+          "mil": [7, 14],
+          "abri": [7, 14],
+          "golkar_akbar": [6, 10],
+          "stab": [-19, -11],
+          "pop": [-23, -13],
+          "ref": [-26, -14],
+          "intl": [-13, -7],
+          "utusan_golongan": [-16, -8],
+          "cendana": [2, 4],
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "MEDIA INDONESIA: 'JAKARTA DARURAT PERANG: HABIBIE TEKEN UU PKB DI ATAS DARAH MAHASISWA SEMANGGI'<br><br>Dengan menandatangani Undang-Undang Penanggulangan Keadaan Bahaya yang sangat dibenci itu tepat pada hari ketika mahasiswa Universitas Indonesia Yap Yun Hap dimakamkan, Presiden Habibie telah memutus benang terakhir legitimasi demokratisnya. Selama dua belas jam terakhir, kawasan pusat kota Jakarta telah berubah menjadi medan perang terbuka: asap hitam membubung dari pos-pos polisi yang dibakar di sepanjang Jalan Sudirman, kampus-kampus di Yogyakarta, Bandung, dan Surabaya mendeklarasikan mogok nasional, dan Amien Rais memperingatkan dari Senayan bahwa Presiden telah menyerahkan alasan paling mutlak kepada para lawannya untuk menolak Pidato Pertanggungjawabannya."
+      }
+    ]
+  },
+  {
+    "date": "28 September 1999",
+    "id": "ev_pwc_audit",
+    "title": "Audit PwC atas Bank Bali Bocor",
+    "image": "photo/events/16.png",
+    "desc": "Tiga hari sebelum MPR baru dilantik, laporan lengkap audit forensik PricewaterhouseCoopers (PwC) setebal 120 halaman atas skandal Bank Bali telah bocor seluruhnya ke tangan Komisi VIII DPR dan kalangan pers Jakarta. Meskipun Ketua Badan Pemeriksa Keuangan (BPK) Billy Joedono awalnya hanya membagikan ringkasan 41 halaman yang telah disterilkan tanpa mencantumkan nama-nama individu dengan alasan kerahasiaan bank, laporan lengkap PwC tanpa sensor yang bocor tersebut menyebutkan nama semua orang: dokumen itu memaparkan indikasi penipuan, kolusi, dan campur tangan politik yang melacak aliran dana Rp546 miliar dari Bank Bali melalui PT Era Giat Prima milik Djoko Tjandra dan Setya Novanto lurus menuju rekening-rekening yang terhubung dengan Ketua DPA A.A. Baramuli, Menteri Pendayagunaan BUMN Tanri Abeng, para pejabat BPPN, Gubernur BI Sjahril Sabirin, dan operasi pemenangan 'Tim Sukses' Anda sendiri. Para anggota Pansus DPR mengangkat tinggi-tinggi salinan halaman-halaman yang bocor tersebut di hadapan kamera televisi di Senayan.",
+    "options": [
+      {
+        "text": "\"Buka status rahasia dan serahkan laporan lengkap audit PwC setebal 120 halaman tanpa sensor tersebut kepada Pansus DPR, serta instruksikan Jaksa Agung dan Polri untuk memeriksa setiap pejabat yang disebutkan di dalamnya, termasuk A.A. Baramuli dan Setya Novanto.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "ref": [8, 16],
+          "intl": [8, 16],
+          "econ": [7, 13],
+          "pop": [7, 13],
+          "pdip": [6, 10],
+          "utusan_golongan": [6, 10],
+          "golkar_akbar": [-23, -13],
+          "cendana": [-7, -3],
+          "golkar_habibie": 2
+        },
+        "reaction": "MAJALAH TEMPO: 'AUDIT PWC BUKA BOROK TIM SUKSES: HABIBIE LEMPAR BARAMULI KE KANDANG SINGA DPR'<br><br>Hanya setelah fotokopi laporan audit forensik PricewaterhouseCoopers setebal 120 halaman tanpa sensor beredar luas di setiap ruang redaksi dan kedutaan besar di Jakarta, Istana Merdeka akhirnya tunduk pada kenyataan dan 'membuka rahasia' laporan tersebut. Dan betapa menghancurkannya isi dokumen itu: halaman demi halaman melacak pencairan dana Bank Bali senilai Rp546 miliar melalui PT Era Giat Prima milik Setya Novanto dan Djoko Tjandra lurus ke jantung mesin pemenangan Habibie sendiri (<i>Tim Sukses</i>). Di dalam tubuh Golkar, A.A. Baramuli yang murka mengancam akan menyeret jatuh semua orang bersamanya jika dituntut ke pengadilan, sementara kubu Akbar Tandjung secara terang-terangan bersiap meninggalkan kepresidenan yang tengah tenggelam dalam lumpur skandal ini."
+      },
+      {
+        "text": "\"Berdirilah di belakang penafsiran undang-undang Ketua BPK Billy Joedono: rilis ringkasan resmi setebal 41 halaman kepada publik sembari menjaga lampiran mentahnya tetap terbatas hanya untuk para penyidik penegak hukum berdasarkan undang-undang rahasia bank Indonesia.\"",
+        "effects": {
+          "golkar_akbar": [6, 10],
+          "ref": [-13, -7],
+          "intl": [-10, -6],
+          "econ": [-8, -4],
+          "pop": [-13, -7],
+          "cendana": 2,
+          "golkar_habibie": -1
+        },
+        "reaction": "RAKYAT MERDEKA: 'SENSOR SPIDOL HITAM BPK JADI BAHAN TERTAWAAN! FOTOKOPI AUDIT PWC DIJUAL DI LAMPU MERAH'<br><br>Ketua Badan Pemeriksa Keuangan (BPK) Billy Joedono dan Bina Graha menjadikan diri mereka bahan tertawaan nasional kemarin dengan secara khidmat menyerahkan 'ringkasan' laporan PwC Bank Bali setebal 41 halaman yang telah disterilkan dari seluruh nama politisi kepada para anggota DPR, tepat pada saat para pedagang asongan di lampu merah Kuningan dan Slipi menjajakan salinan bajakan audit lengkap 120 halaman tanpa sensor seharga Rp10.000 per bundel! 'Istana sedang mencoba menyembunyikan gajah di balik saputangan,' cemooh para rekan anggota Pansus DPR di ruang sidang."
+      },
+      {
+        "text": "\"Desak Gubernur Bank Indonesia Sjahril Sabirin dan Kepala BPPN Glenn Yusuf untuk memikul tanggung jawab institusional atas kegagalan pengawasan yang membiarkan klaim antarbank senilai Rp904 miliar tersebut dicairkan sejak awal.\"",
+        "effects": {
+          "econ": [-8, -4],
+          "stab": [-4, -2],
+          "golkar_akbar": [-4, -2],
+          "cendana": -1,
+          "golkar_habibie": 1
+        },
+        "reaction": "BISNIS INDONESIA: 'DITUDING ISTANA, GUBERNUR BI SJAHRIL SABIRIN MELAWAN DAN BONGKAR TEKANAN BARAMULI'<br><br>Upaya Presiden Habibie untuk menimpakan kesalahan skandal Bank Bali kepada Gubernur Bank Indonesia Sjahril Sabirin dan Kepala BPPN Glenn Yusuf menjadi bumerang hebat dalam rapat dengar pendapat DPR kemarin sore. Dilindungi oleh undang-undang independensi bank sentral yang ditandatangani oleh Habibie sendiri pada bulan Mei, Sabirin secara tegas menolak mengundurkan diri dan justru bersaksi di bawah sumpah bahwa ia hanya mengizinkan transfer Rp904 miliar tersebut setelah mendapat tekanan politik tanpa henti serta ancaman dari orang kepercayaan terdekat Habibie, Ketua DPA A.A. Baramuli."
+      },
+      {
+        "text": "\"Minta Menteri Pendayagunaan BUMN Tanri Abeng dan tim penasihat hukum Anda berargumen bahwa karena dana Rp546 miliar tersebut kini telah dibekukan di dalam rekening penampungan (escrow) di Bank Indonesia, kas negara sama sekali tidak mengalami kerugian finansial bersih.\"",
+        "effects": {
+          "PC": [3, 7],
+          "golkar_akbar": [4, 8],
+          "pop": [-13, -7],
+          "ref": [-13, -7],
+          "econ": [-5, -3],
+          "cendana": 2,
+          "golkar_habibie": -2
+        },
+        "reaction": "KOMPAS: 'LOGIKA ABSURD TANPA KERUGIAN NEGARA: PENJARAHAN BANK BALI BUKAN SEKADAR SOAL AKUNTANSI'<br><br>Pembelaan hukum terbaru Istana atas skandal Bank Bali, yang mengklaim bahwa karena dana Rp546 miliar tersebut akhirnya dibekukan di rekening escrow maka 'negara tidak mengalami kerugian dan oleh karena itu tidak ada korupsi yang terjadi', dicabik-cabik oleh para pakar hukum maupun pejabat IMF kemarin. 'Dengan logika seperti itu, seorang perampok bank yang menjatuhkan karung uangnya saat dikepung polisi di depan pintu tidak melakukan tindak kejahatan apa pun,' ujar pengamat perbankan Pradjoto kepada <i>Kompas</i>, sembari mencatat bahwa audit PwC membuktikan tanpa keraguan adanya pemufakatan jahat terencana untuk menjarah dana rekapitalisasi negara demi pemilihan presiden bulan Oktober."
+      },
+      {
+        "text": "\"Nyatakan bocornya dokumen PwC tersebut sebagai pelanggaran undang-undang rahasia negara dan perbankan, lalu perintahkan kepolisian untuk menggerebek kantor surat-surat kabar serta staf DPR yang mengedarkan halaman-halaman tanpa sensor tersebut.\"",
+        "effects": {
+          "PC": [3, 7],
+          "golkar_akbar": [10, 18],
+          "ref": [-23, -13],
+          "pop": [-23, -13],
+          "intl": [-19, -11],
+          "stab": [-13, -7],
+          "cendana": [3, 5],
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "THE JAKARTA POST: 'POLISI GEREBEK KANTOR DPR TERKAIT BOCORAN PWC SAAT IMF KECAM UPAYA PENUTUPAN KASUS'<br><br>Dalam tindakan bunuh diri politik yang mencengangkan hanya tujuh puluh dua jam sebelum MPR bersidang, pemerintahan Habibie telah mengirim para penyidik kepolisian ke Senayan untuk memburu para pembocor laporan audit PwC Bank Bali setebal 120 halaman alih-alih menangkap para pencuri yang namanya tercantum di dalamnya. Sebagai tanggapan, para pengunjuk rasa mahasiswa menempelkan cetakan raksasa halaman-halaman audit yang memperlihatkan aliran dana ke jaringan Setya Novanto dan Baramuli di sepanjang tembok kompleks DPR, sementara Direktur IMF Hubert Neiss mengumumkan dari Washington bahwa dana talangan Indonesia tetap dibekukan."
+      }
+    ]
+  },
+  {
+    "date": "1 Oktober 1999",
+    "id": "ev_assembly_convenes",
+    "title": "MPR Bersidang",
+    "image": "photo/events/17.png",
+    "desc": "Seluruh 700 anggota Majelis Permusyawaratan Rakyat (MPR), yang terdiri dari 462 wakil partai DPR terpilih, 38 perwira ABRI yang diangkat, 135 Utusan Daerah yang dipilih oleh 27 DPRD provinsi, dan 65 Utusan Golongan dari unsur masyarakat sipil serta fungsional, telah mengucapkan sumpah jabatan mereka di bawah atap kubah hijau kompleks Senayan. Sebelum Pidato Pertanggungjawaban Anda maupun pemilihan presiden dapat dilaksanakan, Majelis harus memilih dua pucuk pimpinan krusial: Ketua MPR (yang akan memimpin jalannya Sidang Umum dan menetapkan tata tertib pemungutan suara atas Pertanggungjawaban Anda) pada 3 Oktober, dan Ketua DPR pada 6 Oktober. Di kamar-kamar suite Hotel Hilton dan Hotel Mulia, pertandingan catur tiga penjuru berisiko tinggi tengah berlangsung antara Amien Rais, Ketua Umum PKB Matori Abdul Djalil (yang didukung oleh PDI-P pimpinan Megawati), dan Ketua Umum Golkar Akbar Tandjung.",
+    "options": [
+      {
+        "text": "\"Jalankan kesepakatan besar parlemen: instruksikan para penggalang suara Golkar untuk mendukung Amien Rais sebagai Ketua MPR mengalahkan calon PDI-P Matori Abdul Djalil pada 3 Oktober, dengan imbalan partai-partai Islam mendukung Akbar Tandjung sebagai Ketua DPR pada 6 Oktober.\"",
+        "effects": {
+          "PC": [6, 10],
+          "golkar_akbar": [8, 16],
+          "poros_tengah": [7, 13],
+          "ppp": [4, 8],
+          "pdip": [-10, -6],
+          "pkb": [-7, -3],
+          "stab": [3, 5],
+          "golkar_habibie": 2
+        },
+        "reaction": "KOMPAS: 'AMIEN RAIS KETUA MPR, AKBAR TANDJUNG KETUA DPR: KEMENANGAN TAKTIS YANG MENYIMPAN RANJAU BAGI HABIBIE'<br><br>Di atas kertas, pakta kamar hotel yang direkayasa antara Golkar dan partai-partai Islam merupakan kemenangan taktis yang jitu, berhasil mendudukkan Amien Rais sebagai Ketua MPR (unggul 305–279 atas Matori Abdul Djalil yang diusung PDI-P) dan menyerahkan kursi Ketua DPR kepada Akbar Tandjung dengan kemenangan telak (411 suara). Namun para politisi kawakan Senayan bertanya-tanya apakah Presiden Habibie baru saja mendirikan tiang gantungan bagi kepresidenannya sendiri: Amien Rais kini memegang palu sidang MPR untuk memuluskan langkah calon 'Poros Tengah'-nya sendiri, sementara Akbar Tandjung sudah mengamankan hadiah jabatan lima tahun yang paling ia incar, membuatnya tidak lagi memiliki insentif sedikit pun untuk ikut tenggelam bersama kapal Habibie pada 19 Oktober nanti."
+      },
+      {
+        "text": "\"Kerahkan dukungan penuh Istana di belakang Akbar Tandjung untuk merebut kursi Ketua DPR tanpa syarat, dengan menggalang kedua sayap Golkar dan para utusan daerah guna memamerkan kedisiplinan Pohon Beringin.\"",
+        "effects": {
+          "PC": [3, 7],
+          "golkar_akbar": [7, 13],
+          "utusan_daerah": [3, 7],
+          "pdip": [-8, -5],
+          "ref": [-5, -3],
+          "cendana": 2,
+          "golkar_habibie": 1
+        },
+        "reaction": "MAJALAH TEMPO: 'AKBAR TANDJUNG AMANKAN KURSI KETUA DPR, HABIBIE BELUM TENTU KEBAGIAN KURSI PRESIDEN'<br><br>Dengan para penggalang suara Istana yang mengantarkan blok utusan daerah dan Golkar secara serentak, Akbar Tandjung melenggang mulus menduduki kursi Ketua DPR kemarin dengan perolehan 411 suara. Namun di dalam kamar-kamar suite Hotel Hilton tempat para letnan politik eks-HMI (Himpunan Mahasiswa Islam) di kubu Akbar berkumpul hingga larut malam, suasananya sama sekali jauh dari rasa berhutang budi kepada Istana Merdeka. 'Habibie telah membayar tunai di muka untuk menjadikan Akbar orang paling berkuasa kedua di negeri ini, dan sekarang Akbar-lah yang memegang seluruh kartu truf untuk dua minggu ke depan,' amati pengamat politik Eep Saefulloh Fatah."
+      },
+      {
+        "text": "\"Ulurkan tangan menyeberangi lorong sidang ke arah Diponegoro: tawarkan dukungan Golkar bagi daftar paket pimpinan DPR dan MPR pilihan PDI-P sebagai imbalan atas kesediaan PDI-P melunakkan serangannya terhadap Pidato Pertanggungjawaban Anda mendatang.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "pdip": [8, 16],
+          "pkb": [4, 8],
+          "golkar_akbar": [-19, -11],
+          "poros_tengah": [-10, -6],
+          "stab": [3, 7],
+          "cendana": -2,
+          "golkar_habibie": 1
+        },
+        "reaction": "SUARA KARYA: 'MANUVER ISTANA DEKATI PDI-P PICU PEMBERONTAKAN FRAKSI GOLKAR DI SENAYAN'<br><br>Tawaran jalur belakang Presiden Habibie untuk menggadaikan klaim Golkar atas pucuk pimpinan parlemen demi ditukar dengan sikap PDI-P yang lebih lunak terhadap Pidato Pertanggungjawabannya memicu pemberontakan terbuka di dalam kaukus partainya sendiri kemarin. Menentang para utusan Bina Graha secara terang-terangan, 120 legislator DPR di bawah kendali Akbar Tandjung menjalin kesepakatan mereka sendiri dengan Amien Rais dan ABRI untuk tetap merebut kursi-kursi Ketua Parlemen, membuat Habibie terasing dari mesin partainya sendiri sementara PDI-P mengantongi konsesinya sambil tersenyum sinis."
+      },
+      {
+        "text": "\"Jamu 135 anggota Utusan Daerah dan 65 anggota Utusan Golongan di Istana Negara untuk mengorganisasi sebuah blok 'Fraksi Utusan' non-partisan yang mandiri dan setia langsung kepada Kepresidenan.\"",
+        "effects": {
+          "utusan_daerah": [7, 13],
+          "utusan_golongan": [4, 8],
+          "pop": [-8, -4],
+          "ref": [-8, -4],
+          "pdip": [-6, -3],
+          "cendana": 1
+        },
+        "reaction": "RAKYAT MERDEKA: 'JAMUAN KAVIAR DI ISTANA GAGAL! DPR BUBARKAN FRAKSI UTUSAN DAERAH ANDALAN HABIBIE'<br><br>Setelah menjamu mewah 200 utusan daerah dan golongan di Istana Negara dalam upaya kasatmata untuk membangun kembali mesin stempel 200 suara <i>Fraksi Utusan Daerah</i> warisan Soeharto, Bina Graha menelan kekalahan memalukan di lantai sidang MPR kemarin sore. Bersatu padu dalam tekad menghentikan Istana menggiring para utusan daerah layaknya ternak, PDI-P, PKB, PAN, dan bahkan Golkar kubu Akbar Tandjung memberikan suara untuk membatalkan pembentukan Fraksi Utusan Daerah yang berdiri penuh, memaksa sebagian utusan provinsi melebur ke dalam fraksi-fraksi partai yang ada!"
+      },
+      {
+        "text": "\"Hormati pemisahan kekuasaan secara ketat: jauhkan Istana Merdeka dari pemilihan Ketua MPR dan DPR serta biarkan ke-700 utusan memilih pimpinan sidang mereka sendiri.\"",
+        "effects": {
+          "ref": [4, 8],
+          "stab": [-5, -3],
+          "pop": [-4, -2],
+          "golkar_akbar": [-7, -3],
+          "golkar_habibie": -2
+        },
+        "reaction": "MEDIA INDONESIA: 'HABIBIE JADI PENONTON DI SENAYAN SAAT AMIEN RAIS DAN AKBAR BAGI-BAGI KEKUASAAN'<br><br>Sementara Amien Rais, Akbar Tandjung, Taufik Kiemas, dan Jenderal Wiranto menghabiskan tujuh puluh dua jam terakhir terkunci dalam dagang sapi maraton di kamar-kamar suite hotel Jakarta Pusat untuk membagi kursi Ketua MPR dan DPR, Istana Merdeka hanya duduk berpangku tangan sambil berkhotbah dengan saleh tentang 'pemisahan kekuasaan.' Hasilnya adalah jajaran pimpinan parlemen yang memperoleh palu sidang mereka sepenuhnya berkat kesepakatan di balik layar mereka sendiri dan sama sekali tidak berhutang apa pun kepada B.J. Habibie."
+      }
+    ]
+  },
+  {
+    "date": "7 Oktober 1999",
+    "id": "ev_central_axis",
+    "title": "Poros Tengah Mencalonkan Gus Dur",
+    "image": "photo/events/18.png",
+    "desc": "Baru saja terpilih sebagai Ketua MPR pada 3 Oktober, Amien Rais telah melancarkan langkah catur politik brilian yang menghancurkan pertarungan dua kuda antara Anda dan Megawati Soekarnoputri. Dalam konferensi pers yang penuh sesak hari ini, didampingi oleh para pemimpin Fraksi Reformasi (PAN dan PK), Ketua Umum PPP Hamzah Haz, Ketua Umum PKB Matori Abdul Djalil, dan Ketua Umum PBB Yusril Ihza Mahendra, koalisi 'Poros Tengah' yang baru terkonsolidasi secara resmi mencalonkan Abdurrahman Wahid (Gus Dur, ulama dengan gangguan penglihatan yang memimpin 40 juta warga Nahdlatul Ulama) sebagai kandidat Presiden Republik Indonesia. Meskipun Gus Dur sendiri sebelumnya sempat menyatakan simpati kepada Megawati, ia kini menerima pencalonan tersebut guna mencegah apa yang oleh para ulama disebut sebagai polarisasi merusak antara kalangan nasionalis sekuler dan Islam politik.<br><br><font color=\"#C0392B\">Amien Rais secara resmi telah mengonsolidasikan partai-partai Islam, melebur PPP, PKB, dan 20 utusan partai Islam kecil ke dalam koalisi 'Poros Tengah'. Langsung mengendalikan 163 Utusan MPR dan menjelma menjadi penentu utama (kingmaker) di Sidang Umum.</font>",
+    "options": [
+      {
+        "text": "\"Sambut pencalonan Gus Dur dengan lapang dada sebagai bukti kedewasaan demokrasi Indonesia, sembari mengingatkan Poros Tengah bahwa memecah suara umat Islam dan kalangan reformis berisiko menyerahkan kursi kepresidenan langsung kepada PDI-P kecuali kita berkoordinasi mengamankan Pemungutan Suara Pertanggungjawaban terlebih dahulu.\"",
+        "effects": {
+          "PC": [3, 7],
+          "ref": [6, 10],
+          "intl": [3, 7],
+          "poros_tengah": [6, 10],
+          "golkar_habibie": [2, 4],
+          "cendana": -1
+        },
+        "reaction": "REPUBLIKA: 'HABIBIE SAMBUT PENCALONAN GUS DUR, TAPI POROS TENGAH SIAPKAN SKENARIO TANPA HABIBIE'<br><br>Sambutan sopan Presiden Habibie atas pencalonan mengejutkan Abdurrahman Wahid sebagai presiden tidak mampu menutupi keringat dingin yang mengucur di dalam markas kampanyenya di Patra Kuningan. Selama berbulan-bulan, para ahli strategi Habibie berasumsi bahwa partai-partai Islam tidak akan punya pilihan selain mendukung sang pendiri ICMI demi menghentikan Megawati. Kini, dengan mencalonkan Gus Dur, Amien Rais telah memberi para utusan Muslim dan reformis pintu ketiga yang sangat meyakinkan; sebuah pintu yang hanya akan terbuka lebar jika Pidato Pertanggungjawaban Habibie ditolak pada 19 Oktober."
+      },
+      {
+        "text": "\"Temui Gus Dur dan Amien Rais secara tertutup untuk menawarkan paket pembagian kekuasaan besar: dukung pemilihan kembali Anda sebagai Presiden pada 20 Oktober dengan mengangkat Gus Dur atau Hamzah Haz ke kursi Wakil Presiden yang diperkuat secara konstitusional.\"",
+        "effects": {
+          "poros_tengah": [4, 8],
+          "pdip": [-10, -6],
+          "ref": [-4, -2],
+          "cendana": 1,
+          "golkar_habibie": 1
+        },
+        "reaction": "KOMPAS: 'DITAWARI KURSI WAPRES OLEH HABIBIE, GUS DUR BERSELOROH: NGAPAIN JADI WAKIL KALAU BISA JADI PRESIDEN?'<br><br>Abdurrahman Wahid hanya membutuhkan satu kalimat untuk mengempiskan balon uji coba terbaru Bina Graha kemarin sore. Ketika ditanya oleh para wartawan di luar kompleks Ciganjur mengenai tawaran Presiden Habibie untuk menjadikan dirinya atau Hamzah Haz sebagai Wakil Presiden dengan imbalan 163 suara Poros Tengah, ulama NU tersebut terkekeh: 'Buat apa saya melamar jadi pembantunya Pak Habibie kalau Pak Amien Rais saja sudah kerja lembur mau menjadikan saya penggantinya?' Para wartawan pun meledak dalam tawa, meskipun orang-orang dalam PPP secara tertutup mengakui bahwa mereka masih mendengarkan tawaran-tawaran dari Istana."
+      },
+      {
+        "text": "\"Langkahilah Amien Rais dan kirim utusan darurat kepada Megawati Soekarnoputri serta Taufik Kiemas: tawarkan kesepahaman nasionalis-teknokratis antara Golkar dan PDI-P untuk menghentikan Poros Tengah Amien Rais membajak hasil pemilu.\"",
+        "effects": {
+          "pdip": [8, 16],
+          "poros_tengah": [-16, -8],
+          "golkar_akbar": [-10, -6],
+          "stab": [6, 10],
+          "cendana": -2,
+          "golkar_habibie": 1
+        },
+        "reaction": "MAJALAH TEMPO: 'PANIK DIKEPUNG POROS TENGAH, ISTANA COBA MERAYU BANTENG YANG TERLUKA'<br><br>Politik memang kerap melahirkan teman tidur yang aneh, namun menyaksikan para utusan B.J. Habibie mengetuk pintu Jalan Diponegoro untuk memperingatkan Megawati Soekarnoputri tentang 'pengkhianatan' Amien Rais benar-benar layak mendapat piala tahun 1999. Meskipun sayap pragmatis Taufik Kiemas di dalam PDI-P sangat marah kepada Gus Dur karena meninggalkan aliansinya dengan Megawati dan bersedia mendengarkan utusan Istana tersebut, para utusan akar rumput PDI-P tetap bersikukuh bahwa mereka tidak akan pernah memilih menerima Pidato Pertanggungjawaban Habibie hanya demi membalas Amien Rais."
+      },
+      {
+        "text": "\"Fokuskan seluruh kekuatan pada Pohon Beringin dan daerah-daerah: abaikan manuver Poros Tengah dan pusatkan seluruh sumber daya Istana untuk mengunci rapat 120 kursi DPR milik Golkar, 38 kursi ABRI, dan 135 utusan dari Utusan Daerah.\"",
+        "effects": {
+          "PC": [3, 7],
+          "golkar_akbar": [7, 13],
+          "utusan_daerah": [7, 13],
+          "abri": [3, 5],
+          "poros_tengah": [-16, -8],
+          "pop": [-8, -4],
+          "cendana": 2
+        },
+        "reaction": "THE JAKARTA POST: 'ISTANA ANGGAP POROS TENGAH GERTAKAN SAMBEL, PERTARUHKAN SEMUANYA PADA SUARA GOLKAR DAN DAERAH'<br><br>Para ahli strategi kampanye di dalam <i>Tim Sukses</i> Habibie menepis pencalonan Gus Dur oleh Poros Tengah kemarin sebagai 'macan kertas yang akan melipat sendiri sebelum 20 Oktober,' sembari bersumpah akan melindas ruang sidang MPR mengandalkan suara Golkar, ABRI, dan para utusan luar Jawa. Namun para ahli matematika parlemen di Senayan tidak begitu terkesan: dengan meleburnya PPP, PKB, dan PAN menjadi blok 163 kursi di bawah kendali Ketua MPR Amien Rais, mengabaikan Poros Tengah membuat Habibie tidak lagi memiliki ruang kesalahan sedikit pun jika ada tiga puluh saja utusan Golkar yang membelot di balik tirai pemungutan suara tertutup."
+      },
+      {
+        "text": "\"Minta para juru bicara bayangan Istana mempertanyakan secara terbuka apakah seseorang yang telah mengalami dua kali stroke nyaris fatal dan tidak dapat membaca berkas pengarahan dengan mata kepalanya sendiri memenuhi syarat kesehatan jasmani berdasarkan Pasal 6 UUD 1945 untuk menjabat sebagai Presiden.\"",
+        "effects": {
+          "pop": [-19, -11],
+          "poros_tengah": [-26, -14],
+          "ref": [-13, -7],
+          "stab": [-13, -7],
+          "cendana": 2,
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "RAKYAT MERDEKA: 'HINA FISIK GUS DUR, JUTAAN WARGA NAHDLIYIN DAN BANSER NGAMUK KE ISTANA!'<br><br>Dari seluruh blunder yang dilakukan oleh para juru bicara Presiden Habibie tahun ini, mengejek kebutaan dan pemulihan stroke Abdurrahman Wahid secara terbuka sebagai alasan diskualifikasi konstitusional berdasarkan Pasal 6 mungkin terbukti sebagai tindakan paling bunuh diri. Dalam hitungan jam, pesantren-pesantren Nahdlatul Ulama di seluruh Jawa Timur dan Jawa Tengah meledak dalam kemarahan, barisan pemuda Banser membakar spanduk-spanduk kampanye Habibie di Surabaya dan Jombang, dan para utusan PKB serta PPP yang tadinya masih bimbang kini bersumpah akan mengubur Pidato Pertanggungjawaban Presiden pada 19 Oktober."
+      }
+    ]
+  },
+  {
+    "date": "11 Oktober 1999",
+    "id": "ev_suharto_probe",
+    "title": "SP3 Kasus Soeharto",
+    "image": "photo/events/19.png",
+    "desc": "Tiga hari sebelum Anda dijadwalkan melangkah ke podium MPR untuk menyampaikan Pidato Pertanggungjawaban Anda, Pelaksana Tugas Jaksa Agung Ismudjoko, yang menggantikan Letjen Andi Muhammad Ghalib pada bulan Juni setelah Indonesia Corruption Watch (ICW) membongkar aliran rekening bank mencurigakan serta bocornya rekaman sadapan telepon pribadi Anda kepada Ghalib ('Halo Andi...') yang mencemooh penyelidikan antikorupsi tersebut, telah melemparkan granat politik. Hari ini, 11 Oktober, Ismudjoko secara resmi menerbitkan SP3 (Surat Perintah Penghentian Penyidikan) yang menutup penyelidikan korupsi negara terhadap mantan Presiden Soeharto beserta tujuh yayasan amalnya (Dakab, Supersemar, Dharmais), dengan alasan 'kurangnya bukti hukum atas kerugian negara' serta dirawatnya Soeharto baru-baru ini di Rumah Sakit Pusat Pertamina. Dalam hitungan jam setelah pengumuman tersebut, ribuan mahasiswa yang murka bergerak menuju Jalan Cendana dan kantor Kejaksaan Agung di Blok M, meneriakkan bahwa seluruh 17 bulan masa kepresidenan Anda hanyalah sandiwara terencana untuk mengampuni mentor lama Anda.",
+    "options": [
+      {
+        "text": "\"Batalkan keputusan Plt. Jaksa Agung Ismudjoko seketika: cabut surat perintah SP3 tersebut, tempatkan rekening tujuh yayasan Soeharto di bawah penguasaan penuh kurator negara, dan berjanjilah di hadapan MPR bahwa penyelidikan korupsi akan dilanjutkan di bawah jaksa khusus yang independen.\"",
+        "effects": {
+          "PC": [-7, -3],
+          "pop": [11, 19],
+          "ref": [8, 16],
+          "intl": [4, 8],
+          "utusan_golongan": [6, 10],
+          "pdip": [4, 8],
+          "poros_tengah": [4, 8],
+          "stab": [-8, -4],
+          "golkar_akbar": [-21, -11],
+          "abri": [-7, -5],
+          "mil": [-7, -5],
+          "cendana": [-19, -11],
+          "golkar_habibie": [2, 4]
+        },
+        "reaction": "MEDIA INDONESIA: 'PANIK DIKEPUNG MAHASISWA, HABIBIE BATALKAN SP3 SOEHARTO H-3 PIDATO PERTANGGUNGJAWABAN'<br><br>Ketakutan bahwa penghentian penyidikan korupsi Soeharto oleh Plt. Jaksa Agung Ismudjoko pada 11 Oktober akan menyulut revolusi mahasiswa menjelang Pidato Pertanggungjawabannya, Presiden Habibie kalang kabut kemarin membatalkan SP3 tersebut dan menyita yayasan-yayasan Cendana. Meskipun para pegiat antikorupsi menyambut baik pembatalan itu, tak seorang pun di Senayan melewatkan oportunisme waktu pengumumannya: selama enam belas bulan Habibie mengulur-ulur penyelidikan, bahkan tertangkap basah dalam rekaman sadapan telepon sedang mengatur pemeriksaan bersama Andi Ghalib, lalu mendadak menemukan semangat anti-Soeharto hanya tujuh puluh dua jam sebelum MPR melakukan pemungutan suara atas nasib jabatannya. Sementara itu, para penyandang dana Jalan Cendana telah mendeklarasikan perang total terhadap pencalonan Habibie."
+      },
+      {
+        "text": "\"Pertahankan keputusan SP3 Jaksa Agung atas dasar hukum dan kemanusiaan, sembari mengingatkan bangsa bahwa Soeharto telah menyerahkan aset yayasan senilai Rp4 triliun kepada negara berdasarkan Keppres No. 133/1998 dan kini tengah sakit keras.\"",
+        "effects": {
+          "PC": [6, 10],
+          "golkar_akbar": [11, 19],
+          "mil": [6, 11],
+          "abri": [6, 11],
+          "stab": [4, 8],
+          "pop": [-19, -11],
+          "ref": [-19, -11],
+          "pdip": [-8, -5],
+          "utusan_golongan": [-13, -7],
+          "cendana": [7, 13],
+          "golkar_habibie": -2
+        },
+        "reaction": "RAKYAT MERDEKA: 'MURID BAKTI PADA SANG GURU! HABIBIE RESMIKAN SP3 SOEHARTO, REFORMASI DIKHIANATI'<br><br>Sandiwara yang bermula dari bocornya sadapan telepon <i>'Halo, Andi? Apa kabar?'</i> pada bulan Februari mencapai klimaks sinisnya kemarin sore saat Plt. Jaksa Agung Ismudjoko, dengan restu penuh Presiden Habibie, menerbitkan SP3 yang menggugurkan seluruh tuduhan korupsi terhadap mantan Presiden Soeharto hanya tiga hari sebelum Pidato Pertanggungjawaban MPR! Bom-bom molotov menghujani gerbang kantor Kejaksaan Agung di Blok M tadi malam saat ribuan mahasiswa bentrok dengan polisi anti-huru-hara, meneriakkan bahwa pria yang dulu menjuluki Soeharto 'Super Genius' itu memang dipasang pada Mei 1998 hanya untuk satu tujuan: mencuci bersih dosa-dosa sang guru."
+      },
+      {
+        "text": "\"Berikan klarifikasi melalui Menteri Kehakiman Muladi bahwa SP3 hanyalah penangguhan sementara selama Soeharto dirawat di Rumah Sakit Pertamina, dan tandatangani instruksi yang mempertahankan larangan bepergian ke luar negeri secara ketat terhadap Tommy Soeharto beserta keluarga Cendana.\"",
+        "effects": {
+          "golkar_akbar": [3, 5],
+          "econ": [3, 5],
+          "pop": [-7, -3],
+          "ref": [-7, -3],
+          "cendana": -2,
+          "golkar_habibie": 1
+        },
+        "reaction": "MAJALAH TEMPO: 'AKROBAT HUKUM MULADI: SP3 DISEBUT SEMENTARA, SOEHARTO TETAP LENGGANG KANGKUNG'<br><br>Menteri Kehakiman Muladi menghabiskan waktu dua jam kemarin mencoba meyakinkan para wartawan yang skeptis bahwa penghentian penyidikan korupsi Soeharto melalui SP3 pada 11 Oktober hanyalah 'jeda prosedural yang dapat dibuka kembali' selama sang mantan penguasa beristirahat di Rumah Sakit Pusat Pertamina. Ketua Yayasan Lembaga Bantuan Hukum Indonesia (YLBHI) Bambang Widjojanto menyebut penjelasan tersebut sebagai 'senam akrobat hukum yang menghina akal sehat, yang dirancang untuk menenangkan para kroni Cendana di dalam Golkar sembari membius para mahasiswa hingga pemungutan suara MPR pekan depan selesai.'"
+      },
+      {
+        "text": "\"Bersikeraslah pada prinsip non-intervensi peradilan secara ketat: nyatakan bahwa di dalam republik negara hukum, Presiden tidak dapat memerintahkan Jaksa Agung untuk mendakwa atau menggugurkan dakwaan terhadap warga negara mana pun, dan serahkan SP3 tersebut pada gugatan praperadilan.\"",
+        "effects": {
+          "pop": [-10, -6],
+          "ref": [-10, -6],
+          "stab": [-5, -3],
+          "cendana": [2, 4],
+          "golkar_habibie": -1
+        },
+        "reaction": "KOMPAS: 'MENDADAK HORMATI INDEPENDENSI KEJAKSAAN SETELAH REKAMAN TELEPON ANDI GHALIB'<br><br>Klaim saleh Presiden Habibie kemarin bahwa ia 'tidak dapat mencampuri penilaian hukum independen Plt. Jaksa Agung Ismudjoko' terkait SP3 Soeharto disambut dengan tawa cemoohan di seluruh Senayan. Setiap pembaca koran di Indonesia masih ingat betul transkrip kata demi kata percakapan telepon pribadi Habibie kepada mantan Jaksa Agung Andi Ghalib awal tahun ini, di mana sang Presiden mengatur skenario pemeriksaan tiga jam terhadap Soeharto hingga ke hitungan menitnya. Berpura-pura menjadi penonton yang netral sekarang tidak akan menipu satu jiwa pun."
+      },
+      {
+        "text": "\"Perintahkan aparat keamanan untuk menempatkan Jalan Cendana di bawah penjagaan pengawasan 24 jam yang terlihat jelas dan bekukan sisa pencairan dana yayasan Supersemar serta Dakab sambil menunggu peninjauan panitia khusus MPR.\"",
+        "effects": {
+          "pop": [6, 10],
+          "ref": [4, 8],
+          "utusan_golongan": [3, 5],
+          "mil": [-5, -2],
+          "abri": [-5, -2],
+          "golkar_akbar": [-10, -6],
+          "cendana": [-7, -3],
+          "golkar_habibie": 1
+        },
+        "reaction": "POS KOTA: 'SANDIWARA JAGA JALAN CENDANA: TENTARA SENYUM HORMAT SAAT MOBIL KELUARGA CENDANA LEWAT!'<br><br>Untuk mengalihkan kemarahan publik atas terbitnya SP3 Jaksa Agung yang menghentikan penyidikan Soeharto, Bina Graha mengumumkan kemarin bahwa para prajurit telah disiagakan di sekitar Jalan Cendana No. 8 dan rekening yayasan keluarga tersebut dibekukan untuk ditinjau MPR. Namun para fotografer <i>Pos Kota</i> yang berjaga di Jalan Cendana sepanjang sore mengamati kenyataan yang sangat berbeda: para penjaga langsung mengambil sikap sempurna dan memberi hormat setiap kali iring-iringan mobil Mercedes berkaca gelap milik Tutut dan Bambang Trihatmodjo meluncur keluar masuk kompleks tersebut."
+      }
+    ]
+  },
+  {
+    "date": "13 Oktober 1999",
+    "id": "ev_megawati_push",
+    "title": "Barikade di Senayan",
+    "image": "photo/events/21.png",
+    "desc": "Besok malam Anda akan berdiri di hadapan 700 utusan MPR untuk menyampaikan Pidato Pertanggungjawaban Anda. Di luar kompleks parlemen Senayan, suasana telah mencapai titik didih: lebih dari seratus ribu pendukung PDI-P, yang mengenakan ikat kepala merah dan mengibarkan bendera Banteng, telah menyatu dengan koalisi-koalisi mahasiswa di sepanjang Jalan Gatot Subroto, merangsek gulungan kawat berduri raksasa, meriam air, serta 30.000 pasukan Kostrad, Marinir, dan Brimob yang dikerahkan oleh Jenderal Wiranto. Sementara itu, di dalam kubu Anda sendiri di Patra Kuningan, para ahli strategi Anda mendesak langkah pendahuluan yang berani sebelum pidato besok malam: umumkan secara resmi Jenderal Wiranto sebagai calon Wakil Presiden pendamping Anda untuk tiket pemilihan 1999–2004, guna mengunci 38 kursi ABRI dan memaksa sayap nasionalis Golkar yang bimbang di bawah Akbar Tandjung tetap berada di dalam barisan.",
+    "options": [
+      {
+        "text": "\"Umumkan secara terbuka bahwa Anda telah meminta Jenderal Wiranto untuk mendampingi Anda sebagai calon Wakil Presiden periode 1999–2004, sembari menginstruksikan korps Marinir, yang dihormati oleh para mahasiswa, untuk menjaga garis depan di Senayan tanpa peluru tajam.\"",
+        "effects": {
+          "PC": [6, 10],
+          "mil": [6, 11],
+          "abri": [6, 11],
+          "golkar_akbar": [6, 10],
+          "stab": [4, 8],
+          "ref": [-5, -3],
+          "pop": -2,
+          "cendana": 1,
+          "golkar_habibie": 2
+        },
+        "reaction": "KOMPAS: 'LAMARAN TERBUKA HABIBIE KEPADA WIRANTO: MANUVER PUTUS ASA ATAU TIKET PENYELAMAT?'<br><br>Pada malam menjelang Pidato Pertanggungjawabannya, Presiden Habibie telah memainkan kartu truf terakhirnya dengan melamar Panglima TNI Jenderal Wiranto secara terbuka sebagai calon Wakil Presiden pendampingnya untuk periode 1999–2004. Namun meskipun pengerahan prajurit Marinir berbaret ungu berhasil meredakan ketegangan dengan para mahasiswa di sepanjang Jalan Gatot Subroto, tanggapan Wiranto sendiri terhadap lamaran politik tersebut terasa sangat dingin: alih-alih langsung menerima di tempat, sang jenderal memberi tahu wartawan bahwa ia 'perlu berkonsultasi dengan korps perwira dan menimbang kepentingan nasional terlebih dahulu', membiarkan Habibie menggantung di hadapan publik layaknya pelamar yang gelisah."
+      },
+      {
+        "text": "\"Kirim utusan pribadi kepada Megawati Soekarnoputri dan Taufik Kiemas malam ini: janjikan pemungutan suara yang bersih dan demokratis di MPR tanpa intimidasi militer, serta tawarkan koalisi pemerintahan bersama kepada PDI-P jika Pidato Pertanggungjawaban Anda diterima.\"",
+        "effects": {
+          "pdip": [10, 18],
+          "stab": [7, 13],
+          "ref": [4, 8],
+          "golkar_akbar": [-10, -6],
+          "cendana": -2,
+          "golkar_habibie": 1
+        },
+        "reaction": "SUARA PEMBARUAN: 'UTUSAN MALAM ISTANA KE KEBAGUSAN: MEGAWATI TENANGKAN MASSA, TAPI TOLAK KOMPROMI PIDATO'<br><br>Setelah kunjungan larut malam dari para utusan Istana yang menjanjikan pemungutan suara MPR tanpa kecurangan serta mengiming-imingi kabinet pembagian kekuasaan, Ketua Umum PDI-P Megawati Soekarnoputri menginstruksikan para komandan Satgas berbaju merahnya di luar Senayan untuk mundur dari kawat berduri dan menghindari bentrokan dengan Marinir. Namun di dalam ruang sidang, Ketua Fraksi PDI-P Dimyati Hartono menegaskan bahwa jalanan yang tenang tidak akan membelikan Habibie satu pun pengampunan di lantai sidang besok malam: 'Kami akan menjaga pendukung kami tetap tenang di luar agar seluruh dunia dapat menyaksikan kami menolak pidatonya secara bersih di dalam.'"
+      },
+      {
+        "text": "\"Tampillah di televisi dan radio nasional malam ini untuk menyapa langsung para mahasiswa dan warga di luar Senayan, mengingatkan mereka bahwa Anda berdiri di hadapan MPR besok di bawah aturan yang benar-benar demokratis untuk pertama kalinya dalam 44 tahun.\"",
+        "effects": {
+          "pop": [4, 8],
+          "stab": [4, 8],
+          "ref": [3, 7],
+          "pdip": [3, 5],
+          "utusan_golongan": [3, 7],
+          "golkar_habibie": 2
+        },
+        "reaction": "THE JAKARTA POST: 'HABIBIE MOHON KESEMPATAN ADIL SAAT 100.000 PENGUNJUK RASA KEPUNG SENAYAN'<br><br>Berbicara langsung ke arah kamera televisi tadi malam, Presiden Habibie mengingatkan bangsa bahwa <i>Pidato Pertanggungjawaban</i> besok malam menandai pertama kalinya sejak tahun 1955 seorang kepala negara Indonesia berdiri di hadapan parlemen tanpa skenario yang benar-benar memiliki wewenang untuk memecatnya. Meskipun kalangan intelektual sipil mengakui tonggak sejarah demokrasi tersebut, lautan pendukung Banteng berbaju merah dan barisan mahasiswa yang berkemah di sekitar Hotel Hilton Senayan menenggelamkan siaran di layar-layar raksasa luar ruangan itu dengan teriakan memekakkan telinga: <i>'Tolak! Tolak! Tolak!'</i>"
+      },
+      {
+        "text": "\"Pindahkan operasional kabinet eksekutif untuk sementara waktu ke Istana Bogor demi kesinambungan keamanan sementara cincin pengamanan Jenderal Wiranto menutup rapat kawasan Jakarta Pusat.\"",
+        "effects": {
+          "PC": [-10, -6],
+          "stab": [-10, -6],
+          "pop": [-13, -7],
+          "mil": [-5, -2],
+          "pdip": [-6, -3],
+          "abri": [-5, -2],
+          "cendana": 1,
+          "golkar_habibie": [-4, -2]
+        },
+        "reaction": "RAKYAT MERDEKA: 'BELUM DISIDANG SUDAH NGUNGSI KE BOGOR! NYALI ISTANA CIUT LIHAT LAUTAN MERAH DI SENAYAN'<br><br>Tidak ada yang memberi sinyal runtuhnya sebuah rezim lebih cepat daripada memindahkan perabotan keluar dari ibu kota. Kabar bahwa Bina Graha secara diam-diam telah menggeser operasional sekretariat eksekutif lima puluh kilometer ke selatan menuju Istana Bogor kemarin saat 100.000 pendukung PDI-P dan mahasiswa mengepung Senayan langsung memicu cemoohan di seluruh lantai sidang MPR. 'Soekarno pergi ke Bogor pada Maret 1966 tepat sebelum Supersemar, dan Soeharto ingin pergi ke Bogor pada Mei 1998; sekarang Habibie mengikuti peta pintu keluar yang persis sama,' bisik seorang pembangkang Golkar kepada wartawan di Hotel Mulia."
+      },
+      {
+        "text": "\"Perintahkan Kodam Jaya dan Brimob untuk membersihkan Jalan Gatot Subroto serta jalur-jalur pendekat Semanggi dengan kekuatan paksa malam ini agar para utusan MPR tidak perlu melewati satu pun bendera merah besok pagi.\"",
+        "effects": {
+          "mil": [5, 9],
+          "abri": [5, 9],
+          "stab": [-23, -13],
+          "pdip": [-18, -11],
+          "pop": [-23, -13],
+          "ref": [-19, -11],
+          "cendana": 2,
+          "golkar_habibie": [-7, -3]
+        },
+        "reaction": "POS KOTA: 'SENAYAN BANJIR DARAH DAN GAS AIR MATA H-1 PIDATO HABIBIE!'<br><br>Kawasan Jakarta Pusat tampak seperti zona perang saat fajar menyingsing hari ini setelah pasukan anti-huru-hara Brimob dan kendaraan meriam air lapis baja menyerbu perkemahan mahasiswa serta massa PDI-P di sepanjang Jalan Gatot Subroto dan jalan layang Semanggi atas perintah Istana. Lebih dari seratus pengunjuk rasa yang bersimbah darah digotong masuk ke Rumah Sakit Atma Jaya dan RS Jakarta sementara tabung-tabung gas air mata meledak hingga ke dalam halaman Hotel Hilton tempat para utusan MPR menginap, memastikan bahwa ketika Presiden Habibie melangkah masuk ke Ruang Sidang Paripurna malam ini, seluruh ruangan akan menunggunya dengan kemarahan membara."
+      }
+    ]
+  },
+  {
+    "date": "14 Oktober 1999",
+    "id": "ev_the_speech",
+    "title": "Pidato Pertanggungjawaban",
+    "image": "photo/events/22.png",
+    "desc": "Tepat setelah malam turun pada 14 Oktober 1999, Anda melangkah menuju mimbar Ruang Sidang Paripurna Majelis Permusyawaratan Rakyat saat Ketua MPR Amien Rais mengetukkan palu meminta ketertiban. Di hadapan Anda duduk 700 utusan, serta puluhan juta rakyat Indonesia yang menyaksikan secara langsung melalui layar televisi, untuk mendengarkan <i>Pidato Pertanggungjawaban</i> Anda, pertanggungjawaban konstitusional atas 512 hari masa jabatan Anda. Berbeda dengan tepuk tangan bulat terencana pada enam periode kekuasaan Soeharto, Anda disambut oleh paduan suara sorakan 'Huuuu!' dan interupsi lantai sidang dari para utusan PDI-P serta delegasi yang berafiliasi dengan mahasiswa bahkan sebelum Anda membaca halaman pertama Anda.<br><br>Selama hampir tiga jam, dan sekali lagi dalam tanggapan resmi Anda (<i>Jawaban Presiden</i>) setelah kesebelas fraksi MPR menyampaikan kritik tajam mereka sepanjang 15–17 Oktober, Anda harus membingkai narasi besar masa kepresidenan Anda. Apakah Anda akan menambatkan pembelaan Anda pada keajaiban makroekonomi yang menyelamatkan rupiah dari Rp16.800 kembali ke kisaran 7.000-an dan memangkas inflasi dari 77% menjadi 2%? Apakah Anda akan mengusung revolusi demokrasi berupa pembebasan tahanan politik, kemerdekaan pers, pengesahan otonomi daerah, dan penyelenggaraan pemilu Juni 1999? Ataukah Anda akan menghadapi dua titik terlemah Anda, Timor Timur dan Bank Bali, secara terbuka?<br><br><font color=\"#0000FF\">Pidato Anda malam ini memberikan suntikan langsung Modal Politik dan menentukan suasana bagi empat puluh delapan jam terakhir lobi-lobi kaukus di balik layar (Giliran 21–22), di mana seluruh Seruan Terakhir kepada Fraksi kini telah terbuka menjelang pemungutan suara 19 Oktober.</font>",
+    "options": [
+      {
+        "text": "\"Awali dengan rekam jejak Reformasi dan penyelamatan makroekonomi yang tak terbantahkan: ingatkan Majelis bahwa dalam 512 hari kita berhasil menarik kembali rupiah dari Rp16.800, menekan inflasi dari 77%, membebaskan tahanan politik, mengesahkan UU No. 22 & 25 tentang Otonomi Daerah, membebaskan pers, dan menyelenggarakan pemilu paling bebas sejak tahun 1955.\"",
+        "effects": {
+          "PC": [14, 26],
+          "ref": [6, 10],
+          "econ": [6, 10],
+          "stab": [7, 13],
+          "pop": [3, 7],
+          "golkar_habibie": [7, 13],
+          "golkar_akbar": [3, 7],
+          "utusan_daerah": [3, 7],
+          "utusan_golongan": [3, 7]
+        },
+        "reaction": "KOMPAS: 'TIGA JAM DI PODIUM MPR: ANGKA STATISTIK HABIBIE DIHADANG HUJATAN TIMTIM DAN BANK BALI'<br><br>Berdiri selama hampir tiga jam di bawah sorot lampu televisi sementara para utusan PDI-P berulang kali menyela pidatonya dengan teriakan <i>'Huuuu!'</i>, Presiden Habibie mengerahkan rentetan grafik makroekonomi dan statistik legislasi, mengingatkan ke-700 utusan bahwa pemerintahannya yang berusia 512 hari telah mengesahkan 39 undang-undang, memangkas inflasi dari 77 persen menjadi satu digit, dan menurunkan kurs dolar dari Rp16.800. Namun ketika kesebelas fraksi MPR bangkit satu per satu untuk menyampaikan <i>Pemandangan Umum</i> resmi mereka, bahkan juru bicara Golkar sendiri mengecam pidato tersebut karena memoles masalah Timor Timur, Bank Bali, dan SP3 Soeharto, sembari memperingatkan bahwa angka statistik semata tidak akan menyelamatkannya pada 19 Oktober."
+      },
+      {
+        "text": "\"Hadapi persoalan Timor Timur dan Bank Bali dengan kejujuran serta kerendahan hati: sampaikan permohonan maaf kepada bangsa atas kekurangan kabinet transisi Anda, jelaskan bahwa Timor Timur tidak pernah diakui oleh PBB dan telah menjadi luka berdarah yang menganga, serta janjikan penuntutan hukum penuh terhadap siapa pun yang terlibat dalam skandal Bank Bali.\"",
+        "effects": {
+          "PC": [6, 10],
+          "ref": [6, 10],
+          "intl": [7, 13],
+          "pop": [5, 9],
+          "stab": [6, 10],
+          "pdip": [3, 7],
+          "poros_tengah": [3, 7],
+          "utusan_golongan": [3, 7],
+          "golkar_habibie": [7, 13]
+        },
+        "reaction": "MAJALAH TEMPO: 'PERMINTAAN MAAF DI TENGAH MALAM: KETULUSAN NEGARAWAN ATAU TAKTIK MEREDAM PALU SIDANG?'<br><br>Dalam langkah yang sangat kontras dengan tiga dekade tradisi kepresidenan yang pantang mengaku salah, B.J. Habibie menundukkan kepalanya dari mimbar MPR saat membacakan <i>Jawaban Presiden</i> untuk meminta maaf secara langsung kepada rakyat Indonesia atas berbagai kekurangan masa transisi tujuh belas bulannya, sembari membela referendum Timor Timur sebagai satu-satunya jalan untuk membebaskan Indonesia dari jebakan paria internasional selama dua puluh empat tahun. Sikap rendah hati tersebut tampak berhasil menenangkan bangku-bangku PKB dan utusan golongan yang tadinya riuh mencemooh, meskipun kelompok garis keras nasionalis di dalam PDI-P dan ABRI langsung menyerang permohonan maaf itu sebagai pengakuan bersalah yang layak diganjar dengan penolakan mandatnya."
+      },
+      {
+        "text": "\"Sampaikan seruan berapi-api kepada keluarga besar Golkar, daerah-daerah luar Jawa, dan kaukus Islam: peringatkan Majelis bahwa menolak pidato Anda adalah kudeta terselubung yang dirancang untuk menghapus segala hal yang telah dibangun oleh ICMI, daerah, dan umat Islam reformis sejak Mei 1998.\"",
+        "effects": {
+          "PC": [11, 19],
+          "golkar_akbar": [7, 13],
+          "golkar_habibie": [11, 19],
+          "poros_tengah": [2, 4],
+          "utusan_daerah": [7, 13],
+          "other_parties": [3, 7],
+          "stab": [5, 9],
+          "pdip": [-10, -6]
+        },
+        "reaction": "SUARA PEMBARUAN: 'PIDATO PERTANGGUNGJAWABAN RASA KAMPANYE: HABIBIE GALANG SENTIMEN KEDAERAHAN DAN ISLAM'<br><br>Menanggalkan segala kepura-puraan sebagai laporan pertanggungjawaban konstitusional yang netral, Presiden Habibie mengubah pidato tiga jamnya di hadapan MPR menjadi rapat akbar kampanye agresif yang diarahkan langsung kepada para utusan luar Jawa, kader-kader setia Golkar, dan partai-partai Islam di dalam Poros Tengah. Sementara para loyalisnya dari Sulawesi dan bangku PBB meneriakkan sorak dukungan pada setiap kalimatnya, kalangan nasionalis sekuler dan pengamat independen menuduh Presiden sengaja mempolarisasi ruang sidang mengikuti garis patahan kedaerahan dan agama dalam upaya putus asa mengumpulkan 351 suara."
+      },
+      {
+        "text": "\"Ulurkan ranting zaitun konstitusional kepada seluruh anggota Majelis: tampilkan 17 bulan masa jabatan Anda sebagai jembatan menuju demokrasi penuh dan berjanjilah bahwa kabinet 1999–2004 akan menjadi Kabinet Pelangi Persatuan Nasional yang dibagi secara proporsional di antara PDI-P, Poros Tengah, Golkar, dan ABRI.\"",
+        "effects": {
+          "PC": [14, 26],
+          "stab": [8, 16],
+          "ref": [6, 10],
+          "pdip": [2, 4],
+          "poros_tengah": [3, 5],
+          "golkar_akbar": [2, 4],
+          "abri": [2, 4],
+          "other_parties": [3, 5],
+          "golkar_habibie": [4, 8]
+        },
+        "reaction": "MEDIA INDONESIA: 'JANJI KABINET PELANGI DARI PODIUM MPR: RAYUAN TERAKHIR SEBELUM KOTAK SUARA DIBUKA'<br><br>Menghadapi sebelas fraksi yang tengah mengasah belati mereka untuk pemungutan suara pertanggungjawaban 19 Oktober, Presiden Habibie memanfaatkan pidatonya di podium MPR untuk mengiming-imingi hadiah utama di hadapan setiap ketua umum partai di ruangan tersebut: sebuah 'Kabinet Pelangi Persatuan Nasional' proporsional di mana PDI-P, Poros Tengah, Golkar, dan militer semuanya akan mendapatkan jatah kue kekuasaan eksekutif jika pidatonya diterima. Di ruang-ruang minum kopi Senayan setelahnya, para anggota parlemen oposisi tersenyum sinis: 'Buat apa mengambil sepotong kue pelangi Habibie kalau besok kita bisa menolak pidatonya dan mengambil alih seluruh toko rotinya?'"
+      }
+    ]
+  },
+  {
+    "date": "18 Oktober 1999",
+    "id": "ev_eve_of_vote",
+    "title": "Malam Pisau Panjang",
+    "image": "photo/events/habibie_feisal_tanjung_wiranto.png",
+    "desc": "Ini adalah malam tanggal 18 Oktober 1999, kurang dari dua puluh empat jam sebelum MPR melakukan pemungutan suara secara tertutup untuk menerima atau menolak Pidato Pertanggungjawaban Anda. Di antara sebelas fraksi MPR, empat fraksi telah mengumumkan akan menerima (Reformasi/PAN-PK, PBB, PDU, dan F-KKI), empat fraksi telah mengumumkan akan menolak (PDI-P, PKB, KKI, dan PDKB), membuat seluruh kelangsungan hidup kepresidenan Anda bergantung pada tiga blok penentu: Golkar (120 kursi), PPP (58 kursi), dan ABRI (38 kursi), bersama 200 utusan daerah dan utusan golongan. Lalu, dua gempa politik menghantam secara beruntun dalam hitungan jam: pada pukul 15.30 sore ini, Jenderal Wiranto tampil di televisi untuk mengumumkan bahwa setelah berkonsultasi dengan korps perwira, ia menolak tawaran Anda untuk maju sebagai calon Wakil Presiden pendamping Anda; dan malam ini di Hotel Mulia, sebuah faksi pembangkang beranggotakan sekitar 40 utusan Golkar yang dipimpin oleh Akbar Tandjung dan Marzuki Darusman ('Golkar Putih') mengancam akan membelot dan mencoblos 'Tolak' besok di bilik suara rahasia kecuali Anda berhasil menarik kembali suara mereka ke dalam barisan di Patra Kuningan malam ini.",
+    "options": [
+      {
+        "text": "\"Panggil Akbar Tandjung, Marzuki Darusman, dan seluruh kaukus MPR Golkar ke Patra Kuningan malam ini: hadapi para pembelot 'Golkar Putih' tersebut secara empat mata dan tuntut disiplin partai di bawah naungan Pohon Beringin untuk pemungutan suara tertutup besok.\"",
+        "effects": {
+          "PC": [7, 13],
+          "golkar_akbar": [11, 19],
+          "golkar_habibie": [11, 19],
+          "utusan_daerah": [3, 7]
+        },
+        "reaction": "MAJALAH TEMPO: 'MALAM JAHANAM DI PATRA KUNINGAN: HABIBIE BENTAK AKBAR TANDJUNG DI DEPAN KADER GOLKAR'<br><br>Emosi meledak lewat tengah malam di kediaman pribadi Presiden Habibie di Jalan Patra Kuningan saat sang Presiden bersama A.A. Baramuli melabrak Ketua Umum Golkar Akbar Tandjung dan Marzuki Darusman terkait laporan bahwa hingga empat puluh legislator 'Golkar Putih' berniat menikam Habibie dari belakang dalam pemungutan suara tertutup besok. Para saksi mata menyebutkan teriakan keras menggema hingga ke halaman rumah saat para loyalis Sulawesi menuduh Akbar melakukan pengkhianatan; meskipun Akbar keluar pada pukul 02.00 dini hari sambil berjanji kepada wartawan bahwa 'garis resmi Golkar tetap menerima pidato,' tak seorang pun di Jakarta yakin apa yang sebenarnya akan dicoblos oleh para letnan politiknya begitu mereka melangkah masuk ke balik tirai bilik suara besok."
+      },
+      {
+        "text": "\"Putar haluan segera setelah penolakan Wiranto: undang Amien Rais, Hamzah Haz, dan Yusril Ihza Mahendra ke Patra Kuningan lalu tawarkan kursi Wakil Presiden secara langsung kepada Poros Tengah dan PPP sebagai imbalan atas suara bulat mereka besok.\"",
+        "effects": {
+          "PC": [7, 13],
+          "poros_tengah": [10, 18],
+          "other_parties": [8, 16],
+          "golkar_habibie": [4, 8]
+        },
+        "reaction": "REPUBLIKA: 'DITINGGAL WIRANTO SORE HARI, MALAM HARI HABIBIE TAWARKAN KURSI WAPRES KE POROS TENGAH'<br><br>Terhuyung-huyung akibat pengumuman televisi Jenderal Wiranto pada pukul 15.30 yang menolak maju sebagai calon Wakil Presidennya, Presiden Habibie memutar haluan dengan penuh keputusasaan tadi malam, memanggil Ketua Umum PPP Hamzah Haz dan para pemimpin Poros Tengah ke Patra Kuningan untuk menawari mereka kursi kosong orang nomor dua tersebut menjelang pemungutan suara besok. Meskipun 58 utusan PPP dan PBB pimpinan Yusril Ihza Mahendra menyambut hangat rayuan larut malam itu, para pengkritik mencemooh tontonan seorang Presiden yang sedang menjabat menjajakan kursi Wakil Presiden dari pintu ke pintu pada tengah malam layaknya tiket konser menit terakhir."
+      },
+      {
+        "text": "\"Kerahkan A.A. Baramuli, Fadel Muhammad, dan para penggalang suara Anda menyusuri kamar-kamar suite hotel tempat menginap 135 Utusan Daerah dan 65 Utusan Golongan malam ini untuk mengunci setiap suara daerah dan fungsional yang belum terikat.\"",
+        "effects": {
+          "PC": [7, 13],
+          "utusan_daerah": [10, 18],
+          "utusan_golongan": [8, 16],
+          "cendana": 2
+        },
+        "reaction": "RAKYAT MERDEKA: 'OPERASI FAJAR DI HOTEL MULIA DAN HILTON! BROKER ISTANA GERILYA BELI SUARA UTUSAN DAERAH'<br><br>Tidur menjadi hal yang mustahil di dalam Hotel Hilton, Mulia, dan Atlet Century Park tadi malam saat para operator dari <i>Tim Sukses</i> Presiden Habibie, yang dipimpin oleh A.A. Baramuli dan Fadel Muhammad, bergerak dari kamar ke kamar mengetuk pintu para utusan luar Jawa dan utusan golongan menjelang pemungutan suara tertutup hari ini. Para pemantau mahasiswa dari Forum Kota yang berkemah di lobi-lobi hotel menuduh para makelar Istana menenteng koper-koper berisi uang tunai dan janji proyek untuk membeli ambang batas 351 suara sebelum matahari terbit."
+      },
+      {
+        "text": "\"Adakan pertemuan empat mata darurat dengan Jenderal Wiranto dan pimpinan Fraksi ABRI di bawah Letjen Hari Sabarno untuk memastikan bahwa meskipun Wiranto menolak kursi Wapres, ke-38 utusan ABRI tetap memilih 'Terima' atas Pidato Pertanggungjawaban Anda.\"",
+        "effects": {
+          "PC": [7, 13],
+          "abri": [6, 11],
+          "mil": [5, 9],
+          "stab": [6, 10]
+        },
+        "reaction": "KOMPAS: 'WIRANTO TOLAK PINANGAN WAPRES, FRAKSI TNI/POLRI JADI KUNCI PENENTU NASIB HABIBIE HARI INI'<br><br>Konferensi pers sore yang dramatis dari Jenderal Wiranto yang menolak tawaran kursi Wakil Presiden dari Presiden Habibie telah mengguncang kubu Patra Kuningan, memaksa Habibie menggelar pertemuan tengah malam darurat dengan Wiranto dan Ketua Fraksi ABRI Letjen Hari Sabarno. Meskipun para jenderal meyakinkan Presiden bahwa langkah mundur dari tiket pencalonan tersebut semata-mata demi menjaga netralitas angkatan bersenjata dan bahwa blok militer berkekuatan 38 kursi akan 'menghormati kesinambungan konstitusional' hari ini, orang-orang dalam di Senayan mencatat bahwa Wiranto dengan sangat hati-hati telah melepaskan tali sekocinya sendiri dari lambung kapal Habibie hanya beberapa jam sebelum menabrak gunung es."
+      },
+      {
+        "text": "\"Tolak seluruh dagang sapi tengah malam di hotel-hotel: habiskan malam ini dengan tenang di Patra Kuningan bersama Ibu Ainun dan keluarga terdekat Anda, sembari mempercayakan kepada 700 utusan MPR untuk menilai 512 hari masa bakti Anda secara jujur.\"",
+        "effects": {
+          "PC": [7, 13],
+          "ref": [7, 13],
+          "stab": [7, 13],
+          "pop": [7, 13],
+          "utusan_golongan": [4, 8],
+          "golkar_habibie": [4, 8]
+        },
+        "reaction": "THE JAKARTA POST: 'SAAT PARA MAKELAR SENAYAN JUAL-BELI SUARA HINGGA FAJAR, PRESIDEN MENANTI DALAM SEPI DI KUNINGAN'<br><br>Sementara para pembangkang di kubu Akbar Tandjung, Poros Tengah pimpinan Amien Rais, dan para operator Taufik Kiemas menghabiskan malam dengan tawar-menawar sengit di kamar-kamar suite hotel Senayan menyusul pengumuman mengejutkan Jenderal Wiranto sore tadi, Presiden Habibie justru menarik mundur para penggalang suaranya dan menghabiskan malam yang tenang dengan berdoa bersama istrinya, Ainun, di Patra Kuningan. Bahkan para pengkritik paling kerasnya di galeri pers mengakui rasa hormat mereka atas penolakannya mengubah malam terakhir ini menjadi balai lelang uang tunai, meskipun di dalam kolam hiu MPR 1999, hati nurani yang bersih bernilai nol suara."
+      }
+    ]
+  },
+  {
+    "date": "19 Oktober 1999",
+    "id": "ev_timtim_merdeka",
+    "title": "TAP MPR No. V/1999",
+    "image": "photo/events/east_timor_free.png",
+    "desc": "Dua puluh satu tahun yang lalu, pada Juli 1978, MPR era Orde Baru mengesahkan Ketetapan No. VI (TAP MPR No. VI/MPR/1978), yang secara resmi memasukkan bekas koloni Portugis di Timor Timur ke dalam Republik Indonesia sebagai provinsi ke-27, sebuah aneksasi yang tidak pernah diakui oleh Perserikatan Bangsa-Bangsa. Hari ini, 19 Oktober 1999, sebagai tindakan terakhirnya sebelum membawa masuk kotak-kotak suara kayu ke lantai sidang untuk melakukan pemungutan suara tertutup atas Pidato Pertanggungjawaban Anda (TAP MPR No. III/MPR/1999), Majelis Permusyawaratan Rakyat membahas TAP MPR No. V/MPR/1999 tentang Penentuan Pendapat di Timor Timur.<br><br>Dengan nyaris tanpa perlawanan berarti di lantai sidang, Majelis secara resmi mencabut TAP MPR No. VI/1978, mengakui secara konstitusional hasil jajak pendapat 30 Agustus di mana 78,5% pemilih Timor Timur memilih kemerdekaan, serta membuka jalan hukum bagi Pemerintahan Transisi Perserikatan Bangsa-Bangsa di Timor Timur (UNTAET) untuk mengambil alih wewenang atas wilayah tersebut. Saat Ketua MPR Amien Rais bersiap memanggil ke-700 utusan maju satu per satu untuk memasukkan surat suara rahasia mereka atas nasib kepresidenan Anda, Anda menyampaikan kata penutup Anda atas berakhirnya babak sejarah Timor Timur.",
+    "options": [
+      {
+        "text": "\"Babak dua puluh empat tahun ini ditutup hari ini dengan martabat konstitusional ketimbang perang tanpa akhir. Kewajiban Indonesia di bawah Kesepakatan 5 Mei telah ditunaikan secara terhormat; semoga Indonesia dan Timor Lorosa'e yang merdeka dapat hidup berdampingan dengan damai.\"",
+        "effects": {
+          "intl": [11, 19],
+          "ref": [7, 13],
+          "stab": [4, 8]
+        },
+        "reaction": "KOMPAS: 'MPR CABUT TAP INTEGRASI TIMTIM, KINI 700 ANGGOTA DEWAN SIAP HAKIMI NASIB HABIBIE'<br><br>Dalam sebuah ironi sejarah yang getir, fraksi-fraksi MPR yang sama yang menghabiskan sepekan terakhir mencabik-cabik Presiden Habibie karena 'kehilangan provinsi ke-27' justru secara bulat memberikan suara sore ini untuk mengesahkan TAP MPR No. V/MPR/1999, mencabut secara resmi ketetapan integrasi tahun 1978 dan melepaskan Timor Timur tanpa satu pun suara penolakan. Setelah menggunakan isu Timor Timur untuk menghancurkan reputasi Habibie berkeping-keping, ke-700 utusan tersebut kini mencuci tangan mereka sendiri dari wilayah itu tepat pada waktunya untuk membuka kunci kotak-kotak suara kayu dan menjatuhkan vonis atas pria yang berani menggelar referendum tersebut."
+      },
+      {
+        "text": "\"Saya tidak akan berpura-pura bahwa ini adalah hasil yang saya harapkan ketika kita menawarkan Otonomi Luas, namun sebuah Republik yang menghormati suara bebas dari kotak suara, bahkan ketika hasilnya menyakitkan, membuktikan kepada dunia dan kepada dirinya sendiri bahwa Reformasi itu nyata.\"",
+        "effects": {
+          "intl": [11, 19],
+          "ref": [7, 13],
+          "stab": [4, 8]
+        },
+        "reaction": "MAJALAH TEMPO: 'BABAK TERAKHIR TIMOR TIMUR DITUTUP, PALU AMIEN RAIS MEMBUKA MALAM PENENTUAN'<br><br>Dengan ketukan palu Amien Rais yang mengesahkan TAP MPR No. V/MPR/1999, dua puluh empat tahun pertumpahan darah, isolasi internasional, dan janji-janji yang diingkari di Timor Timur berakhir secara konstitusional sore ini di Senayan. Namun saat para diplomat di balkon pengunjung bertepuk tangan menyambut kata-kata perpisahan Presiden Habibie mengenai kehormatan demokrasi, lantai sidang di bawah sudah mulai dikosongkan untuk acara puncak: pemanggilan nama satu per satu untuk pemungutan suara tertutup atas Pidato Pertanggungjawabannya telah dimulai, dan setiap politisi di dalam ruangan itu sudah siap menagih balasannya."
+      }
+    ]
+  }
+]

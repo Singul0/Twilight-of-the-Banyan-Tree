@@ -1,0 +1,145 @@
+{
+  "name": "Fraksi PPP<br>(Hamzah Haz)",
+  "short": "H. Haz",
+  "seats": 58,
+  "affinity": 30,
+  "image": "photo/haz.png",
+  "coverImage": "photo/faction/ppp.png",
+  "summary": "Dipimpin oleh politisi veteran anggaran Hamzah Haz yang penuh perhitungan, <font color=\"#1E6840\"><b>Partai Persatuan Pembangunan (PPP)</b></font> berdiri sebagai partai Islam tertua yang masih bertahan di Republik ini. Lahir dari fusi paksa empat partai Muslim oleh Soeharto pada tahun 1973, partai berlambang Ka'bah ini mematahkan prediksi bahwa para pendatang baru seperti <font color=\"#005500\"><b>PKB</b></font> dan <font color=\"#004488\"><b>PAN</b></font> akan merongrong basis suaranya, dengan meraup 10,71% suara nasional—11,3 juta pemilih dan lima puluh delapan kursi parlemen—untuk mengamankan posisi ketiga pada Juni 1999. Ketahanan tersebut bertumpu pada seperempat abad pengorganisasian tingkat akar rumput di Aceh, Jawa Barat, Kalimantan Selatan, Sumatera Barat, dan Madura, tempat para ulama setia dan pesantren pedesaan kembali merapatkan barisan di bawah panji Ka'bah yang dipulihkan.<p></p>Meskipun Hamzah Haz sempat mengabdi penuh selama setahun di dalam kabinet Anda sebagai Menteri Negara Investasi (BKPM) sebelum mundur pada Mei 1999 untuk memimpin kampanye <font color=\"#1E6840\"><b>PPP</b></font>, pengalaman tiga dekade bertahan hidup di parlemen Orde Baru telah melatihnya untuk tidak pernah mengikatkan partainya pada kapal yang tengah karam. Dewan klerikal <font color=\"#1E6840\"><b>PPP</b></font> menolak sekularisasi dan mengandalkan doktrin <i>fiqh</i> klasik untuk menolak presiden perempuan, mendirikan benteng ideologis antara Hamzah Haz dan Megawati Soekarnoputri. Kendati demikian, Hamzah mengetahui setiap kerangka rahasia di lemari administrasi Anda dan terus memposisikan fraksinya untuk siap beralih merapat ke <font color=\"#004488\"><b>Poros Tengah Amien Rais</b></font> jika perolehan suara Anda goyah. Menjaga ketertiban umum di daerah-daerah serta merawat dukungan luas rakyat memberikan Istana posisi tawar yang kuat atas para legislator berhati-hati di kubu PPP, yang sangat mengutuk kekacauan jalanan dan ciut nyali untuk mendukung presiden yang terisolasi.",
+  "biography": "Lahir di Ketapang, Kalimantan Barat, pada 15 Februari 1940, Hamzah Haz pernah mengajar sekolah, menyunting surat kabar di Pontianak, dan memimpin koperasi perbankan pedesaan sebelum melenggang ke DPRD Kalimantan Barat pada tahun 1968 di bawah panji Nahdlatul Ulama. Pindah ke Senayan pada tahun 1971, ia merasakan langsung terjangan 5 Januari 1973, ketika Orde Baru memaksa NU, Parmusi, PSII, dan PERTI melebur ke dalam <font color=\"#1E6840\"><b>PPP</b></font>. Selama seperempat abad berikutnya—bahkan setelah NU menarik diri dari politik praktis formal pada tahun 1984 dan undang-undang <i>Asas Tunggal</i> Soeharto melucuti landasan Islam serta lambang Ka'bah milik <font color=\"#1E6840\"><b>PPP</b></font>—Hamzah tetap bertahan di dalam parlemen, menguasai buku besar negara melalui Komisi APBN DPR.<p></p>Anda membawanya masuk ke dalam Kabinet Reformasi Pembangunan sebagai Menteri Investasi pada Mei 1998. Enam bulan berselang, pada Muktamar IV <font color=\"#1E6840\"><b>PPP</b></font> di Pondok Gede, para utusan memulihkan Islam sebagai landasan ideologis partai, mengembalikan lambang Ka'bah, dan memilih Hamzah Haz sebagai ketua umum menyisihkan A.M. Saefuddin. Ketika <font color=\"#7D6000\"><b>Golkar</b></font> menuntut para menteri dari partai pesaing untuk mundur menjelang kampanye Juni 1999, Hamzah melepaskan jabatannya tanpa rasa dendam dan mengemudikan <font color=\"#1E6840\"><b>PPP</b></font> meraih 58 kursi. Sebagai seorang akuntan bersahaja dalam pelatihan dan perangai, ia menimbang laporan pertanggungjawaban Anda layaknya neraca keuangan—siap memperpanjang kredit jika pemerintahan Anda tetap solven, atau menagih utang politiknya kepada Amien Rais dan Gus Dur apabila Istana menghadapi kebangkrutan.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Sejalan",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Bersahabat",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Netral",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Berhati-hati",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Menjaga Jarak",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Menentang",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Tak Terdamaikan",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "ppp_subsidies",
+      "text": "Amankan subsidi madrasah Departemen Agama dari pemangkasan pengetatan anggaran IMF",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 4,
+      "description": "Target penyesuaian struktural yang dirancang oleh IMF menyerukan pengurangan belanja sosial secara menyeluruh, yang mengancam pos hibah Departemen Agama (Depag) penyokong jaringan <i>Madrasah Diniyah</i> dan <i>pesantren</i> pedesaan yang menjadi basis pemilih <font color=\"#1E6840\"><b>PPP</b></font>. Berikan jaminan tertulis kepada Hamzah Haz dan penggalang suara parlemen Zarkasih Nur bahwa dana pendidikan keagamaan tidak akan disentuh sama sekali. Mengamankan hutang budi politik yang mengikat dari pimpinan PPP yang akan terbawa hingga ke dalam Poros Tengah.",
+      "effects": {
+        "ppp": [11, 19],
+        "ppp_favor": 1,
+        "poros_tengah": [3, 5],
+        "econ": [-5, -3],
+        "pop": [2, 4],
+        "ref": 1
+      },
+      "alertMsg": "Sebagai veteran Komisi APBN DPR, Hamzah Haz memeriksa sendiri tabel revisi anggaran Depag sebelum menganggukkan kepala tanda setuju. Dengan pendanaan madrasah pedesaan mereka yang terlindungi dari pisau bedah IMF, para legislator PPP melunakkan sikap mereka terhadap Bina Graha."
+    },
+    {
+      "id": "ppp_hamzah_role",
+      "text": "Janjikan jabatan Menteri Koordinator Bidang Ekonomi, Keuangan, dan Industri (Menko Ekuin) kepada Hamzah Haz",
+      "cost": 20,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Hamzah Haz menghabiskan waktu setahun mengelola Badan Koordinasi Penanaman Modal (BKPM) di kabinet Anda sebelum <font color=\"#7D6000\"><b>Golkar</b></font> memaksa para ketua umum partai melepas jabatan menteri mereka pada Mei 1999. Berikan janji kepadanya bahwa apabila pemerintahan Anda memenangkan mandat penuh pada bulan Oktober, ia akan kembali ke ruang kabinet dengan promosi jabatan sebagai Menteri Koordinator Bidang Ekonomi, Keuangan, dan Industri (<i>Menko Ekuin</i>). Mengikat pimpinan PPP dengan hutang budi politik jangka panjang yang berlanjut ke dalam Poros Tengah.",
+      "effects": {
+        "ppp": [11, 21],
+        "ppp_favor": 1,
+        "poros_tengah": [3, 5],
+        "golkar_akbar": -2,
+        "pop": 2,
+        "stab": 2
+      },
+      "alertMsg": "Hamzah Haz menerima tawaran tersebut dengan ketenangan bersahaja yang menjadi ciri khasnya. Setelah menghabiskan puluhan tahun menguasai anggaran negara dari bangku oposisi, prospek memimpin seluruh kabinet ekonomi Indonesia melunakkan postur fraksinya terhadap Istana."
+    },
+    {
+      "id": "ppp_gender_debate",
+      "text": "Kobarkan perdebatan fiqh klerikal mengenai kepemimpinan eksekutif perempuan",
+      "cost": 15,
+      "repeatable": true,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Sejak Kongres Umat Islam Indonesia (<i>KUII</i>) November 1998 serta pernyataan berapi-api dari menteri asal <font color=\"#1E6840\"><b>PPP</b></font> A.M. Saefuddin, para ulama konservatif di dalam Majelis Syariah <font color=\"#1E6840\"><b>PPP</b></font> berargumen bahwa yurisprudensi Islam melarang seorang perempuan menjabat sebagai kepala negara—sebuah fatwa yang diarahkan langsung untuk menjegal Megawati Soekarnoputri. Gunakan publikasi Islam yang terafiliasi dengan negara dan jaringan mimbar Jumat untuk menyebarluaskan fatwa klerikal tersebut.",
+      "effects": {
+        "ppp": [8, 16],
+        "poros_tengah": [3, 5],
+        "pdip": [-10, -6],
+        "ref": [-5, -3],
+        "stab": -2,
+        "utusan_golongan": -2
+      },
+      "alertMsg": "Risalah dan khotbah Jumat yang memperdebatkan kepemimpinan perempuan bermunculan di Jawa Barat, Madura, dan Kalimantan Selatan, mempertebal benteng teologis antara 58 utusan PPP dan kubu Megawati sekaligus memancing kemarahan PDI Perjuangan serta kaum feminis masyarakat sipil."
+    },
+    {
+      "id": "ppp_pesantren_visit",
+      "text": "Lakukan kunjungan kerja kepresidenan ke basis-basis pesantren utama PPP di Madura dan Rembang",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Bahkan setelah Gus Dur mendirikan <font color=\"#005500\"><b>PKB</b></font>, para kiai tradisionalis yang dihormati seperti K.H. Alawy Muhammad di Sampang, Madura, serta K.H. Maimun Zubair di Pesantren Al-Anwar di Sarang, Rembang, tetap menjaga kesetiaan para santrinya pada panji Ka'bah. Terbanglah dengan helikopter kepresidenan untuk memberikan penghormatan ke pesantren mereka, mengenakan peci hitam dan bergabung bersama para santri menunaikan salat Ashar berjemaah.",
+      "effects": {
+        "ppp": [6, 12],
+        "pkb": [3, 5],
+        "pop": [2, 4],
+        "ref": 1,
+        "stab": 2
+      },
+      "alertMsg": "Foto-foto Anda bersimpuh di samping para kiai sepuh Madura dan Rembang menghiasi halaman utama pers Islam. Para sesepuh Majelis Syariah PPP mengirimkan salam hangat kepada Hamzah Haz di Jakarta."
+    },
+    {
+      "id": "ppp_fusion_history",
+      "text": "Kecam secara terbuka fusi paksa partai tahun 1973 dan koersi Asas Tunggal Orde Baru",
+      "cost": 14,
+      "repeatable": false,
+      "maxTurn": 17,
+      "minTurn": 0,
+      "description": "Bagi para veteran <font color=\"#1E6840\"><b>PPP</b></font> seperti Hamzah Haz, Bachtiar Chamsyah, dan Aisyah Aminy, trauma fusi partai Soeharto tahun 1973—yang disusul oleh intervensi opo-intelijen Ali Moertopo serta undang-undang tahun 1984 yang memberangus lambang Ka'bah—tetap menyisakan kenangan pahit. Sampaikan pidato resmi yang mengakui bahwa penindasan Orde Baru terhadap <font color=\"#1E6840\"><b>PPP</b></font> merupakan bentuk penyalahgunaan kekuasaan negara.",
+      "effects": {
+        "ppp": [8, 16],
+        "poros_tengah": [2, 4],
+        "ref": [4, 8],
+        "golkar_akbar": [-4, -2],
+        "pop": 2,
+        "stab": 1
+      },
+      "alertMsg": "Para legislator senior Ka'bah yang menanggung dekade demi dekade pengawasan negara serta kudeta kepemimpinan paksa di bawah Orde Baru menyambut pernyataan Anda dengan emosi yang terlihat jelas, sementara para operator gaek Golkar berang atas kecaman terhadap arsitektur politik Soeharto."
+    }
+  ]
+}

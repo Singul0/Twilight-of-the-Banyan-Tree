@@ -1,0 +1,34 @@
+{
+  "_comment": "Lists every language and the flat key->text files loaded from data/language/<folder>/. 'files' holds TEXT files only (flat \"key\": \"text\"); data files such as events.json, actionphase/decrees.json, achievements.json or config.json are found by the game itself in the language folder and must not be listed. A language falls back to the default language for any text key (and any data file) it does not provide.",
+  "default": "en",
+  "files": [
+    "interface/ui.json",
+    "interface/gameplay.json",
+    "interface/stats_ui.json",
+    "interface/terms.json",
+    "interface/loading_messages.json",
+    "texts/epilogue.json",
+    "texts/lore.json",
+    "tap_mpr.json"
+  ],
+  "languages": {
+    "en": {
+      "folder": "english",
+      "name": "English",
+      "htmlLang": "en",
+      "enabled": true
+    },
+    "id": {
+      "folder": "indonesian",
+      "name": "Bahasa Indonesia",
+      "htmlLang": "id",
+      "enabled": true
+    },
+    "zh": {
+      "folder": "cnsimplified",
+      "name": "简体",
+      "htmlLang": "zh-CN",
+      "enabled": false
+    }
+  }
+}

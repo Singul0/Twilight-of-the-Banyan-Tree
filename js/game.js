@@ -1,4 +1,6 @@
-// game.js: core game logic: state, stats and factions, asset loading, menus, events, action phase and turn flow.
+// SUMMARY: Core game logic. Holds the game state (stats, factions, turn, decrees, cooldowns), loads and localizes all data files and images,
+// builds the main menus (title, difficulty, situation, history, tutorial, credits), runs the event and action phases, decrees and faction actions,
+// the whip count and parliament hemicycle, horse-trading, end-of-turn economy, appearance helpers and the music player.
 
 // National metrics that give each faction its leverage over the president
 const FACTION_LEVERAGE_METRICS = {
@@ -24,8 +26,15 @@ function getHorseTradeCost(overtures) {
     return overtures >= HORSE_TRADE_BLOC_OVERTURES ? HORSE_TRADE_BLOC_COST : overtures * HORSE_TRADE_SINGLE_COST;
 }
 
+// PC cost of horse-trading with one faction (PDI-P's price climbs with the street mobilization)
+function horseCostFor(factionKey, overtures) {
+    const base = getHorseTradeCost(overtures);
+    if (factionKey !== 'pdip' || !window.OppositionEngine) return base;
+    return Math.max(base, Math.round(base * OppositionEngine.getPdipCostMult()));
+}
+
 // Horse-trading gain per overture = BASE x nationalMult x stanceMult x fatigue x jitter
-const HORSE_TRADE_BASE_GAIN = 0.20;
+const HORSE_TRADE_BASE_GAIN = 0.38;
 const HORSE_TRADE_NATIONAL_MIN = 0.50;
 const HORSE_TRADE_NATIONAL_RANGE = 1.00;
 const HORSE_TRADE_MOOD_PEAK = 0.45;
@@ -72,6 +81,15 @@ function deepClone(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+// Leverage tiers, strongest first (names and descriptions live in data/language: leverage.<id>.name / .desc)
+const LEVERAGE_TIERS = [
+    { id: 'absolute',    min: 80,        color: '#006400', costMult: 0.75, gainMult: 1.50 },
+    { id: 'strong',      min: 60,        color: '#009000', costMult: 0.85, gainMult: 1.25 },
+    { id: 'moderate',    min: 40,        color: '#B8860B', costMult: 1.00, gainMult: 1.10 },
+    { id: 'weak',        min: 20,        color: '#FF4500', costMult: 1.15, gainMult: 0.90 },
+    { id: 'nonexistent', min: -Infinity, color: '#8B0000', costMult: 1.30, gainMult: 0.75 }
+];
+
 // Compute a faction's leverage over the president from its metrics
 function getFactionLeverage(factionKey) {
     if (window.OppositionEngine) {
@@ -83,8 +101,8 @@ function getFactionLeverage(factionKey) {
     if (!metrics) {
         return {
             val: 50,
-            text: 'Moderate',
-            desc: 'Standard negotiating terms',
+            text: LOC('leverage.moderate.name'),
+            desc: LOC('leverage.default.desc'),
             color: '#B8860B',
             costMult: 1.0,
             gainMult: 1.0
@@ -97,100 +115,46 @@ function getFactionLeverage(factionKey) {
     }
     const avg = Math.round(sum / metrics.length);
 
-    if (avg >= 80) {
-        return {
-            val: avg,
-            text: "Absolute",
-            desc: "Greatly reduces lobbying costs & greatly boosts goodwill gained",
-            color: "#006400",
-            costMult: 0.75,
-            gainMult: 1.50
-        };
-    }
-    if (avg >= 60) {
-        return {
-            val: avg,
-            text: "Strong",
-            desc: "Moderately reduces lobbying costs & boosts goodwill gained",
-            color: "#009000",
-            costMult: 0.85,
-            gainMult: 1.25
-        };
-    }
-    if (avg >= 40) {
-        return {
-            val: avg,
-            text: "Moderate",
-            desc: "Standard lobbying costs & slightly improved goodwill",
-            color: "#B8860B",
-            costMult: 1.00,
-            gainMult: 1.10
-        };
-    }
-    if (avg >= 20) {
-        return {
-            val: avg,
-            text: "Weak",
-            desc: "Moderately increases lobbying costs & dampens goodwill gained",
-            color: "#FF4500",
-            costMult: 1.15,
-            gainMult: 0.90
-        };
-    }
+    const tier = LEVERAGE_TIERS.find(t => avg >= t.min);
+    // Continuous multipliers: 0 metric = 1.30x cost / 0.75x gain, 100 metric = 0.75x cost / 1.50x gain (tiers only drive the label)
+    const t01 = Math.max(0, Math.min(100, avg)) / 100;
     return {
         val: avg,
-        text: "Nonexistent",
-        desc: "Significantly increases lobbying costs & severely dampens goodwill",
-        color: "#8B0000",
-        costMult: 1.30,
-        gainMult: 0.75
+        text: LOC(`leverage.${tier.id}.name`),
+        desc: LOC(`leverage.${tier.id}.desc`),
+        color: tier.color,
+        costMult: Math.round((1.30 - 0.55 * t01) * 1000) / 1000,
+        gainMult: Math.round((0.75 + 0.75 * t01) * 1000) / 1000
     };
 }
 
-// Display names of the stats used in effect text
-const EFFECT_DISPLAY_NAMES = {
-    'PC': 'Political Capital',
-    'pop': 'Popularity',
-    'mil': 'Military Support',
-    'ref': 'Reformasi Credibility',
-    'econ': 'Economic Health',
-    'intl': 'International Standing',
-    'stab': 'National Stability',
-    'cendana': 'Cendana Influence',
-    'pdip': 'PDI-P Loyalty',
-    'golkar_akbar': 'Golkar (Akbar) Loyalty',
-    'golkar_habibie': 'Loyalist Golkar Loyalty',
-    'poros_tengah': 'PAN / Central Axis Loyalty',
-    'ppp': 'PPP Loyalty',
-    'pkb': 'PKB Loyalty',
-    'abri': 'ABRI Loyalty',
-    'utusan_daerah': 'Utusan Daerah Loyalty',
-    'utusan_golongan': 'Utusan Golongan Loyalty',
-    'other_parties': 'Minor Parties Loyalty'
-};
+// Display names of the stats used in effect text (text lives in data/language: effect_name.<key>)
+const EFFECT_DISPLAY_NAMES = new Proxy({}, {
+    get(_t, key) {
+        return (typeof key === 'string' && LOC.has('effect_name.' + key)) ? LOC('effect_name.' + key) : undefined;
+    },
+    has(_t, key) { return typeof key === 'string' && LOC.has('effect_name.' + key); }
+});
 
 // Turn a numeric change into a word (Slightly to Greatly)
 function getQualitativeMagnitude(absVal) {
-    if (absVal <= 3) return "Slightly";
-    if (absVal <= 8) return "Moderately";
-    if (absVal <= 14) return "Significantly";
-    return "Greatly";
+    if (absVal <= 3) return LOC('magnitude.slightly');
+    if (absVal <= 8) return LOC('magnitude.moderately');
+    if (absVal <= 14) return LOC('magnitude.significantly');
+    return LOC('magnitude.greatly');
 }
 
 // Look up the descriptive tier name for a stat value
 function getPlainStatTierName(statKey, val) {
     const statTiers = dashboardStats[statKey];
-    if (!statTiers || statTiers.length === 0) return "a stable level";
+    if (!statTiers || statTiers.length === 0) return LOC('stat.tier_fallback');
     for (let i = 0; i < statTiers.length; i++) {
         if (val >= statTiers[i].min) return statTiers[i].text;
     }
     return statTiers[statTiers.length - 1].text;
 }
 
-function getNationalBetrayalPressure() {
-    return window.OppositionEngine ? OppositionEngine.getBetrayalPressure() : 0;
-}
-
+// Asks the opposition engine for a faction's secret-ballot defection rate (0 when it is not loaded).
 function getFactionDefectionRate(key, effAff) {
     return window.OppositionEngine ? OppositionEngine.getDefectionRate(key, effAff) : 0;
 }
@@ -211,8 +175,9 @@ function getWhipMargin() {
         if (!f || f.seats <= 0 || bannedFactions[key]) continue;
 
         activeTotalSeats += f.seats;
+        if (window.OppositionEngine && OppositionEngine.isVoteLocked(key)) continue;
         const favorBonus = (f.favor || 0) * 8;
-        const advAdj = window.AdversaryEngine ? AdversaryEngine.affinityAdjust(key) : 0;
+        const advAdj = window.OppositionEngine ? OppositionEngine.affinityAdjust(key) : 0;
         const effAff = clampFaction(key, f.affinity + favorBonus + stabilityFloorMod - cendanaSabotage + advAdj);
 
         let baselineTurnout = 0;
@@ -225,12 +190,11 @@ function getWhipMargin() {
             baselineTurnout = effAff / 100;
         }
 
-        // Hotfix 0.1.2
         const defectionRate = getFactionDefectionRate(key, effAff);
         const actualVoteRate = Math.max(0, baselineTurnout - defectionRate);
 
         estVotes += f.seats * actualVoteRate;
-        if (window.AdversaryEngine) estVotes -= AdversaryEngine.taintLoss(key, actualVoteRate);
+        if (window.OppositionEngine) estVotes -= OppositionEngine.taintLoss(key, actualVoteRate);
     }
 
     const majorityMark = Math.floor(activeTotalSeats / 2) + 1;
@@ -240,13 +204,13 @@ function getWhipMargin() {
 // Qualitative Palace Whip Projection for the MPR Dashboard (No Raw Numbers)
 function getVagueWhipProjection() {
     const margin = getWhipMargin();
-    if (margin === null) return `<font color=\"#555555\">Assembly Not Yet Convened</font>`;
+    if (margin === null) return `<font color=\"#555555\">${LOC('whip.not_convened')}</font>`;
 
-    if (margin >= 65) return `<font color=\"#006400\"><b>We might have a commanding lead</b></font>`;
-    if (margin >= 15) return `<font color=\"#009000\"><b>We are leading</b></font>`;
-    if (margin >= -20) return `<font color=\"#B8860B\"><b>This is too close to call</b></font>`;
-    if (margin >= -85) return `<font color=\"#FF4500\"><b>Our influence is waning</b></font>`;
-    return `<font color=\"#8B0000\"><b>We are very unpopular among the delegates</b></font>`;
+    if (margin >= 65) return `<font color=\"#006400\"><b>${LOC('whip.commanding')}</b></font>`;
+    if (margin >= 15) return `<font color=\"#009000\"><b>${LOC('whip.leading')}</b></font>`;
+    if (margin >= -20) return `<font color=\"#B8860B\"><b>${LOC('whip.too_close')}</b></font>`;
+    if (margin >= -85) return `<font color=\"#FF4500\"><b>${LOC('whip.waning')}</b></font>`;
+    return `<font color=\"#8B0000\"><b>${LOC('whip.very_unpopular')}</b></font>`;
 }
 
 // Small arrow showing which way the whip projection moved since the last refresh
@@ -255,14 +219,14 @@ function getWhipTrendHTML() {
     let html = '';
     if (m !== null && typeof window.lastWhipMargin === 'number') {
         const d = m - window.lastWhipMargin;
-        if (d >= 0.5) html = ' <span title="Support has improved since your last move" style="color:#006400;">&#9650;</span>';
-        else if (d <= -0.5) html = ' <span title="Support has slipped since your last move" style="color:#8B0000;">&#9660;</span>';
+        if (d >= 0.5) html = ' <span title="' + escapeAttr(LOC('whip.trend_up')) + '" style="color:#006400;">&#9650;</span>';
+        else if (d <= -0.5) html = ' <span title="' + escapeAttr(LOC('whip.trend_down')) + '" style="color:#8B0000;">&#9660;</span>';
     }
     window.lastWhipMargin = m;
     return html;
 }
 
-// GAME STATE & CONFIGURATION
+// Core campaign state: current turn, turn limit, phase flag, game-started flag, global malus, loaded data tables, difficulty, option-effect display and music switch.
 let currentTurn = 1;
 let MAX_TURNS = 20;
 let isActionPhase = false;
@@ -270,46 +234,67 @@ let gameStarted = false;
 let globalMalus = 0;
 let libraryData = [];
 let tutorialPages = [];
-let historyPages = [];
 let creditsData = {};
 let gameConfig = {};
 let selectedDifficulty = 'historical';
 let showOptionEffects = false;
 let musicEnabled = true;
+// Give an object text properties that are looked up in the language files when read (so they follow the language)
+function localizedFields(obj, idPrefix, fields) {
+    fields.forEach(f => Object.defineProperty(obj, f, {
+        enumerable: true,
+        configurable: true,
+        get() { return LOC(`${idPrefix}.${f}`); }
+    }));
+    return obj;
+}
+
 // Appearance = three independent settings: window style, color scheme, CRT scanlines
+// (display names live in data/language: window_style.<id>.label and color_scheme.<id>.label)
 const WINDOW_STYLES = {
-    default: { label: 'Default Win95', css: null },
-    win98:   { label: 'Windows 98',    css: 'css/windows98/styles.css' },
-    macos8:  { label: 'Mac OS 8',      css: 'css/macos8/styles.css' }
+    default: localizedFields({ css: null }, 'window_style.default', ['label']),
+    win98:   localizedFields({ css: 'css/windows98/styles.css' }, 'window_style.win98', ['label']),
+    macos8:  localizedFields({ css: 'css/macos8/styles.css' }, 'window_style.macos8', ['label'])
 };
-// Available color schemes with their swatches and groups
-const COLOR_SCHEMES = {
-    standard: { label: 'Standard', swatch: '#000080', group: 'light' },
-    cherry: { label: 'Cherry Blossom', swatch: '#F29BB8', group: 'light' },
-    exusiai: { label: 'Exusiai', swatch: '#A3171F', group: 'light' },
-    mint: { label: 'Mint Soda', swatch: '#6CC3A0', group: 'light' },
-    sky: { label: 'Sky Blue', swatch: '#6FB1E6', group: 'light' },
-    peach: { label: 'Peach Sorbet', swatch: '#F2A36B', group: 'light' },
-    brick: { label: 'Brick', swatch: '#7A1F1F', group: 'light' },
-    desert: { label: 'Desert', swatch: '#5E5A2B', group: 'light' },
-    lilac: { label: 'Lilac', swatch: '#4B3A7A', group: 'light' },
-    marine: { label: 'Marine', swatch: '#003B5C', group: 'light' },
-    rose: { label: 'Rose', swatch: '#7A2646', group: 'light' },
-    slate: { label: 'Slate', swatch: '#2F3E5C', group: 'light' },
-    spruce: { label: 'Spruce', swatch: '#1F4D2B', group: 'light' },
-    wheat: { label: 'Wheat', swatch: '#6B4A12', group: 'light' },
-    dark: { label: 'Dark', swatch: '#2B2B2B', group: 'dark' },
-    midnight: { label: 'Midnight', swatch: '#0B1E5B', group: 'dark' },
-    obsidian: { label: 'Obsidian (black)', swatch: '#3A3A52', group: 'dark' },
-    nord: { label: 'Nord', swatch: '#5E81AC', group: 'dark' },
-    amethyst: { label: 'Amethyst', swatch: '#8A5FD6', group: 'dark' },
-    forest: { label: 'Forest', swatch: '#3E9A66', group: 'dark' },
-    darkcherry: { label: 'Dark Cherry', swatch: '#C0507A', group: 'dark' },
-    exusiainight: { label: 'Exusiai Night', swatch: '#D17A2A', group: 'dark' },
-    amber: { label: 'Amber Terminal', swatch: '#B87800', group: 'dark' },
-    greenterm: { label: 'Green Phosphor', swatch: '#1F9940', group: 'dark' },
-    contrast: { label: 'High Contrast', swatch: '#FFFF00', group: 'dark' }
+// Available color schemes: [swatch, group]
+const COLOR_SCHEME_DEFS = {
+    standard: ['#000080', 'light'],
+    cherry: ['#F29BB8', 'light'],
+    exusiai: ['#A3171F', 'light'],
+    mint: ['#6CC3A0', 'light'],
+    sky: ['#6FB1E6', 'light'],
+    peach: ['#F2A36B', 'light'],
+    brick: ['#7A1F1F', 'light'],
+    desert: ['#5E5A2B', 'light'],
+    lilac: ['#4B3A7A', 'light'],
+    marine: ['#003B5C', 'light'],
+    rose: ['#7A2646', 'light'],
+    slate: ['#2F3E5C', 'light'],
+    spruce: ['#1F4D2B', 'light'],
+    wheat: ['#6B4A12', 'light'],
+    merahputih: ['#A80F1B', 'light'],
+    rainbow: ['linear-gradient(135deg, #D7263D, #E8710A, #E8C400, #2E9E4F, #1F7AD1, #4B3FC4, #9B3FC8)', 'light'],
+    rainbowswirl: ['conic-gradient(#D7263D, #E8710A, #E8C400, #2E9E4F, #1F7AD1, #4B3FC4, #9B3FC8, #D7263D)', 'light'],
+    dark: ['#2B2B2B', 'dark'],
+    midnight: ['#0B1E5B', 'dark'],
+    obsidian: ['#3A3A52', 'dark'],
+    nord: ['#5E81AC', 'dark'],
+    amethyst: ['#8A5FD6', 'dark'],
+    forest: ['#3E9A66', 'dark'],
+    darkcherry: ['#C0507A', 'dark'],
+    exusiainight: ['#D17A2A', 'dark'],
+    amber: ['#B87800', 'dark'],
+    greenterm: ['#1F9940', 'dark'],
+    twilight: ['#D9702E', 'dark'],
+    solarized: ['#268BD2', 'dark'],
+    kopi: ['#9C6B4A', 'dark'],
+    contrast: ['#FFFF00', 'dark']
 };
+const COLOR_SCHEMES = {};
+Object.keys(COLOR_SCHEME_DEFS).forEach(id => {
+    COLOR_SCHEMES[id] = localizedFields(
+        { swatch: COLOR_SCHEME_DEFS[id][0], group: COLOR_SCHEME_DEFS[id][1] }, `color_scheme.${id}`, ['label']);
+});
 // Current appearance selections
 let windowStyle = 'default';
 let colorScheme = 'standard';
@@ -317,18 +302,9 @@ let crtEnabled = false;
 let crtIntensity = 30;
 
 // Effects: independent switches (Settings > Effects). 'crt' is crtEnabled; the rest live in effectsOn.
-const EFFECTS = [
-    { id: 'crt',        label: 'CRT Scanlines',
-      desc: 'Fine horizontal scanlines across the whole screen.' },
-    { id: 'glow',       label: 'Phosphor Glow &amp; Bloom',
-      desc: 'Text gets a soft glowing halo and the screen a faint bloom of light.' },
-    { id: 'flicker',    label: 'Screen Flicker &amp; Static',
-      desc: 'A faint brightness flicker, moving static noise and a slow rolling bar. Flickering can bother people who are sensitive to flashing light.' },
-    { id: 'curve',      label: 'Curved Glass Vignette (Curvature)',
-      desc: 'Darkened edges, rounded glass corners and a hint of glare, like a curved tube.' },
-    { id: 'aberration', label: 'RGB Chromatic Aberration (Glitch Effect)',
-      desc: 'Text splits into red and cyan fringes, with a brief glitch shake every few seconds.' }
-];
+// (labels and descriptions live in data/language: fx.<id>.label and fx.<id>.desc)
+const EFFECTS = ['crt', 'glow', 'flicker', 'curve', 'aberration'].map(id =>
+    localizedFields({ id: id }, `fx.${id}`, ['label', 'desc']));
 // Current on/off state of each effect
 let effectsOn = { glow: false, flicker: false, curve: false, aberration: false };
 let textScale = 110;
@@ -342,6 +318,8 @@ let factionCooldowns = {};
 let factionUsageCount = {};
 let turnExecutiveUsed = false;
 let turnFactionUsed = false;
+// Faction engagements held this turn. Before the Accountability Speech they are unlimited but each one raises the cost of the next.
+let turnFactionCount = 0;
 let prevStatsSnapshot = null;
 let lastRenderedPortraitSignature = "";
 
@@ -366,31 +344,39 @@ let portraitFactions = [...INITIAL_PORTRAIT_FACTIONS];
 // Tally Speed, Military Lock & Mobile Touch State
 window.tallySpeed = 1;
 window.activeTallyInterval = null;
-window.wirantoLocked = true;
-window.wirantoStrain = 0;
 window.mobileSelectedParliamentFaction = null;
 window.lastElectionSummary = null;
-// Hotfix 1
-// Cendana is now active
+
+// Cendana influence at the end of the previous turn (starts at 95; kept in sync by the opposition engine).
 window.lastTurnCendana = 95;
 
+// GOVERNMENT STABILITY WORDING (desktop panel + mobile status bar); words live in data/language: gov.<id>
+const GOV_TIERS = [
+    { id: 'secure',     min: 80,        color: '#006400' },
+    { id: 'stable',     min: 60,        color: '#009000' },
+    { id: 'precarious', min: 40,        color: '#B8860B' },
+    { id: 'unstable',   min: 20,        color: '#FF4500' },
+    { id: 'collapsing', min: -Infinity, color: '#8B0000' }
+];
 
-
-// GOVERNMENT STABILITY WORDING (desktop panel + mobile status bar)
-const GOV_WORD_COLORS = {
-    SECURE: '#006400', STABLE: '#009000', PRECARIOUS: '#B8860B', UNSTABLE: '#FF4500', COLLAPSING: '#8B0000'
-};
+// The tier ({ id, color }) of the current Government Stability
+function getGovStabilityTier() {
+    const g = getGovStability();
+    return GOV_TIERS.find(t => g >= t.min);
+}
 
 // Word describing the current Government Stability
 function getGovStabilityWord() {
-    const g = getGovStability();
-    if (g >= 80) return "SECURE";
-    if (g >= 60) return "STABLE";
-    if (g >= 40) return "PRECARIOUS";
-    if (g >= 20) return "UNSTABLE";
-    return "COLLAPSING";
+    return LOC('gov.' + getGovStabilityTier().id);
 }
 
+// Displayed word -> color (mobile.js looks colors up by the word it shows, so this follows the language)
+const GOV_WORD_COLORS = new Proxy({}, {
+    get(_t, word) {
+        const t = GOV_TIERS.find(tier => LOC('gov.' + tier.id) === word);
+        return t ? t.color : undefined;
+    }
+});
 
 // MENU NAVIGATION: one place decides where "Back" goes
 window.electionPanelSnapshot = null;
@@ -398,10 +384,9 @@ window.electionPanelSnapshot = null;
 // Call at the top of every full-panel menu; returns false when the menu must not open (vote tally running)
 window.enterMenuView = function() {
     if (window.activeTallyInterval) {
-        showCustomAlert('The roll call is still in progress. Let it finish, or press SKIP ANIMATION first.', null);
+        showCustomAlert(LOC('menu.roll_call_in_progress'), null);
         return false;
     }
-    // A finished election screen is built once by runElection(); remember it so Back can restore it.
     const mainPanel = document.getElementById('main-panel');
     if (gameStarted && mainPanel && mainPanel.querySelector('#election-result-container')) {
         window.electionPanelSnapshot = mainPanel.innerHTML;
@@ -424,7 +409,6 @@ window.returnToPreviousView = function() {
     }
     if (isActionPhase) showActionMenu(); else renderEventMenu();
 };
-
 
 // Show or hide the side panels to match the game state
 function syncSidebarVisibility() {
@@ -470,17 +454,24 @@ const fallbackConfig = {
         lowStatThreshold: 40, highStatThreshold: 60,
         malusMultiplier: 0.45, malusDecayNormal: 0.5, malusDecayHigh: 1.5, maxGlobalMalus: 10.0,
         bonusMultiplier: 0.3, maxBonusDrift: 2.0,
-        loyalistDrainMitigation: 0.35, routineRepeatDecay: 0.15
+        loyalistDrainMitigation: 0.35, routineRepeatDecay: 0.15,
+        routineEffectDecay: 0.06, routineEffectFloor: 0.6,
+        factionRepeatDecay: 0.2, factionRepeatFloor: 0.5,
+        factionEngageSurcharge: 5,
+        maxStatFloor: 90, maxFactionFloor: 85,
+        floorEnactGrant: 5, factionFloorEnactGrant: 8,
+        floorRampStat: 4, floorRampFaction: 5
     },
     difficultySettings: {
-        easy: { name: "Easy", pc: 75, statMod: 15, cendana: 40, malusCap: 0.0, actionCostMod: -5, passivePCMod: 2, description: "Highly forgiving experience." },
-        medium: { name: "Medium", pc: 50, statMod: 5, cendana: 60, malusCap: 0.35, actionCostMod: 0, passivePCMod: 1, description: "Standard action costs and moderate metrics." },
-        high: { name: "High", pc: 35, statMod: 0, cendana: 75, malusCap: 0.75, actionCostMod: 0, passivePCMod: 0, description: "The standard difficult experience." },
-        historical: { name: "Historical", pc: 20, statMod: 0, cendana: 95, malusCap: 1.25, actionCostMod: 5, passivePCMod: 0, description: "A nightmare. RECOMMENDED WAY TO PLAY." }
+        easy: { name: "difficulty.easy.name", pc: 75, statMod: 15, cendana: 40, malusCap: 0.0, actionCostMod: -3, costPct: -10, decreeCostPct: -10, passivePCMod: 2, eventNegMult: 0.75, eventPosMult: 1.1, gainMult: 1.15, maxFavor: 4, factionDrift: 0, cendanaRegen: 0, cooldownBonus: 0, description: "difficulty.easy.desc" },
+        medium: { name: "difficulty.medium.name", pc: 50, statMod: 5, cendana: 60, malusCap: 0.35, actionCostMod: 0, costPct: 0, decreeCostPct: 0, passivePCMod: 1, eventNegMult: 1, eventPosMult: 1.08, gainMult: 1.15, maxFavor: 3, factionDrift: 0.1, cendanaRegen: 0, cooldownBonus: 0, description: "difficulty.medium.desc" },
+        high: { name: "difficulty.high.name", pc: 35, statMod: 0, cendana: 75, malusCap: 0.75, actionCostMod: 0, costPct: 5, decreeCostPct: 3, passivePCMod: 0, eventNegMult: 1.05, eventPosMult: 1, gainMult: 1, maxFavor: 3, factionDrift: 0.15, cendanaRegen: 0.25, cooldownBonus: 0, description: "difficulty.high.desc" },
+        ucn: { name: "Ultimate Custom Night", description: "", pc: 20, statMod: -1, cendana: 95, malusCap: 3.25, actionCostMod: 2, costPct: 15, decreeCostPct: 8, passivePCMod: 0, eventNegMult: 1.1, eventPosMult: 0.95, gainMult: 0.95, maxFavor: 2, factionDrift: 0.4, cendanaRegen: 1, cooldownBonus: 1 },
+        historical: { name: "difficulty.historical.name", pc: 20, statMod: -1, cendana: 95, malusCap: 3.25, actionCostMod: 2, costPct: 15, decreeCostPct: 8, passivePCMod: 0, eventNegMult: 1.1, eventPosMult: 0.95, gainMult: 0.95, maxFavor: 2, factionDrift: 0.4, cendanaRegen: 1, cooldownBonus: 1, description: "difficulty.historical.desc" }
     }
 };
 
-// PARALLELIZED INITIALIZATION & AUTOMATIC ENGLISH FALLBACK
+// Fetches a JSON file and returns the fallback value if it is missing or invalid.
 async function fetchJSONSafe(url, fallbackVal = null) {
     try {
         const res = await fetch(url);
@@ -492,19 +483,29 @@ async function fetchJSONSafe(url, fallbackVal = null) {
     }
 }
 
-// Fetches files in data/*, but if the current language is Indonesian, it will first try to fetch from data/id/* and fall back to English if that fails. Returns fallbackVal if both fail.
+// Fetch a localized data file. Tries data/language/<current language>/<url>, then the default language's folder,
+// then the legacy flat location data/<url>, so files can be moved into the language folders one at a time.
+// Returns fallbackVal if none of them exist.
 async function fetchLocalizedJSON(url, fallbackVal = null) {
-    if (currentLang === 'id') {
+    const candidates = [LOC.root + LOC.folder(currentLang) + '/' + url];
+    const defaultPath = LOC.root + LOC.defaultFolder() + '/' + url;
+    if (candidates.indexOf(defaultPath) === -1) candidates.push(defaultPath);
+    candidates.push('data/' + url);
+
+    for (const path of candidates) {
         try {
-            const locRes = await fetch(`data/id/${url}`);
-            if (locRes.ok) {
-                return await locRes.json();
+            const res = await fetch(path);
+            if (res.ok) {
+                const data = await res.json();
+                // Fall back to default language if a localized JSON file is an empty stub array
+                if (Array.isArray(data) && data.length === 0 && path !== candidates[candidates.length - 1]) continue;
+                return data;
             }
         } catch (e) {
-            // Silently fall back to the default English file below
         }
     }
-    return await fetchJSONSafe(`data/${url}`, fallbackVal);
+    console.log(`${url} missing or invalid, using fallback.`);
+    return fallbackVal;
 }
 
 // Persistent cache so the browser never garbage-collects decoded images mid-campaign
@@ -565,7 +566,53 @@ function preloadSingleImage(src) {
 }
 
 // Load all localized JSON data with an English fallback
+// DATA TEXT: data files (events, decrees, routine actions, ...) keep a language key wherever there is text, e.g.
+//   "title": "event.ev_post_election.title"
+// and the text itself lives in data/language/<language>/*_text.json. These helpers swap every key for the text in the
+// current language when the data is loaded, so the rest of the game only ever sees plain text. Plain text left in a
+// data file keeps working (LOC.r leaves anything that is not a key alone).
+function resolveTextFields(obj, fields) {
+    if (obj) fields.forEach(f => { if (typeof obj[f] === 'string') obj[f] = LOC.r(obj[f]); });
+    return obj;
+}
+
+// Resolves language keys inside every event of a list into display text.
+function resolveEventText(list) {
+    list.forEach(ev => {
+        resolveTextFields(ev, ['date', 'title', 'desc']);
+        (ev.options || []).forEach(opt => resolveTextFields(opt, ['text', 'reaction']));
+    });
+    return list;
+}
+
+// Resolves language keys inside every decree of a list into display text.
+function resolveDecreeText(list) {
+    list.forEach(dec => resolveTextFields(dec, ['text', 'description', 'alertMsg']));
+    return list;
+}
+
+// Resolves language keys inside every routine action of a list into display text.
+function resolveRoutineText(list) {
+    list.forEach(act => {
+        resolveTextFields(act, ['text', 'short_name', 'description', 'alertMsg']);
+        (act.conditionalEffects || []).forEach(c => resolveTextFields(c, ['alertMsg']));
+        resolveTextFields(act.alertMsgs, ['success', 'failure']);
+    });
+    return list;
+}
+
+// Resolves language keys and inline $key$ references in one faction (stance names, summary, biography, interactions).
+function resolveFactionText(fac) {
+    if (!fac) return fac;
+    resolveTextFields(fac, ['summary', 'biography']);
+    (fac.moods || []).forEach(m => resolveTextFields(m, ['text']));
+    (fac.interactions || []).forEach(i => resolveTextFields(i, ['text', 'description', 'alertMsg']));
+    return fac;
+}
+
+// Loads the current language and every localized data file in parallel (events, decrees, routines, factions, library, stats, config), reporting progress, and populates the game data tables.
 async function loadLocalizedAssets(onStepProgress) {
+    if (LOC.lang() !== currentLang) await LOC.load(currentLang);
     const step = (typeof onStepProgress === 'function') ? onStepProgress : () => {};
     const trackedFetch = (url, fallback) => fetchLocalizedJSON(url, fallback).then(res => {
         step();
@@ -574,7 +621,7 @@ async function loadLocalizedAssets(onStepProgress) {
 
     const [
         cfgData, achvData, evData, routData, decData,
-        tutData, histData, libData, persData, stData, credData, updData, advData,
+        tutData, libData, persData, presData, stData, credData, updData,
         ...factionResults
     ] = await Promise.all([
         trackedFetch('config.json', fallbackConfig),
@@ -582,20 +629,20 @@ async function loadLocalizedAssets(onStepProgress) {
         trackedFetch('events.json', []),
         trackedFetch('actionphase/routine.json', []),
         trackedFetch('actionphase/decrees.json', []),
-        trackedFetch('localization/tutorial.json', []),
-        trackedFetch('localization/history.json', []),
-        trackedFetch('localization/library.json', []),
-        trackedFetch('localization/persons.json', []),
+        trackedFetch('texts/tutorial.json', []),
+        trackedFetch('texts/library.json', []),
+        trackedFetch('texts/persons.json', []),
+        trackedFetch('texts/presidents.json', []),
         trackedFetch('stats.json', {}),
-        trackedFetch('credits.json', {}),
+        trackedFetch('texts/credits.json', {}),
         trackedFetch('updates.json', null),
-        fetchJSONSafe('data/language/english/opposition.json', null).then(res => { step(); return res; }),
-        ...INITIAL_PORTRAIT_FACTIONS.map(key => trackedFetch(`fraksi/${key}.json`, null))
+        ...INITIAL_PORTRAIT_FACTIONS.map(key => trackedFetch(`factions/${key}.json`, null))
     ]);
 
     gameConfig = cfgData || fallbackConfig;
     gameConfig.systemModifiers = Object.assign({}, fallbackConfig.systemModifiers, gameConfig.systemModifiers || {});
     ACHIEVEMENTS = achvData || [];
+    if (window.UCN) UCN.ensureDef();
 
     const formatFactionNames = (obj) => {
         if (!obj || !obj.name) return;
@@ -612,11 +659,19 @@ async function loadLocalizedAssets(onStepProgress) {
             const fac = factionResults[idx];
             formatFactionNames(fac);
             if (fac.transformed) formatFactionNames(fac.transformed);
+            resolveFactionText(fac);
+            if (fac.transformed) resolveFactionText(fac.transformed);
             loadedFactions[key] = fac;
         }
     });
 
-    events = evData || [];
+    const prevShuffled = events.map(e => e && e.shuffledIndices);
+    events = resolveEventText(evData || []);
+    events.forEach((ev, idx) => {
+        if (prevShuffled[idx] && prevShuffled[idx].length === (ev.options || []).length) {
+            ev.shuffledIndices = prevShuffled[idx];
+        }
+    });
     MAX_TURNS = events.length + 1;
     const maxTurnEl = document.getElementById('max-turn-display');
     if (maxTurnEl) maxTurnEl.innerText = events.length;
@@ -655,22 +710,35 @@ async function loadLocalizedAssets(onStepProgress) {
     initialFactionsSnapshot = deepClone(loadedFactions);
     if (!gameStarted) {
         factions = deepClone(loadedFactions);
+    } else {
+        // Update localized text fields in-place when switching language mid-game without resetting campaign state
+        for (const key in loadedFactions) {
+            const live = factions[key];
+            const fresh = loadedFactions[key];
+            if (!live || !fresh) continue;
+            const src = (live.hasMerged && fresh.transformed) ? fresh.transformed : fresh;
+            live.name = src.name;
+            live.portraitName = src.portraitName || src.name;
+            if (fresh.short) live.short = fresh.short;
+            live.summary = src.summary;
+            live.biography = src.biography;
+            live.moods = src.moods;
+            live.interactions = src.interactions;
+            if (fresh.transformed) live.transformed = fresh.transformed;
+        }
     }
 
     actionsData = {
-        routine: routData || [],
-        decrees: decData || []
+        routine: resolveRoutineText(routData || []),
+        decrees: resolveDecreeText(decData || [])
     };
     tutorialPages = tutData || [];
-    historyPages = histData || [];
-    libraryData = [...(libData || []), ...(persData || [])];
+    libraryData = [...(libData || []), ...(persData || []), ...(presData || [])];
     dashboardStats = stData || {};
+    Object.keys(dashboardStats).forEach(k => (dashboardStats[k] || []).forEach(t => resolveTextFields(t, ['text'])));
     creditsData = credData || {};
     updatesData = updData || null;
-    window.advTextData = advData || null;   // opposition moves + historical background news (adversaries.js)
     lastRenderedPortraitSignature = "";
-    window.oppLocData = advData || null;
-    window.advTextData = advData || null;
 }
 
 // Preload and decode every referenced image behind the loading screen
@@ -682,19 +750,19 @@ async function preloadAllAssetsWithWin95Modal(titleOverride) {
     const barEl = document.getElementById('win95-loader-bar-fill');
     const fileEl = document.getElementById('win95-loader-file');
 
-    if (titleEl) titleEl.innerText = titleOverride || 'LOADING ASSETS';
+    if (titleEl) titleEl.innerText = titleOverride || LOC('loader.default_title');
     if (pctEl) pctEl.innerText = '0%';
     if (barEl) barEl.style.width = '0%';
-    if (fileEl) fileEl.innerText = 'Loading...';
+    if (fileEl) fileEl.innerText = LOC('loader.loading');
     if (overlay) overlay.style.display = 'flex';
 
-    const loadingMeta = await fetchJSONSafe('data/loading.json', null);
+    const loadingMeta = await fetchLocalizedJSON('loading.json', null);
     const messages = (loadingMeta && loadingMeta.messages && loadingMeta.messages[currentLang])
         || (loadingMeta && loadingMeta.messages && loadingMeta.messages.en)
-        || ['Loading...'];
+        || [LOC('loader.loading')];
     const fakeFiles = (loadingMeta && Array.isArray(loadingMeta.files) && loadingMeta.files.length > 0)
         ? loadingMeta.files
-        : ['Loading...'];
+        : [LOC('loader.loading')];
 
     let fileTick = 0;
     const updateModalUI = (fraction) => {
@@ -714,21 +782,19 @@ async function preloadAllAssetsWithWin95Modal(titleOverride) {
         if (fileEl && fakeFiles[fIdx]) fileEl.innerText = fakeFiles[fIdx];
     };
 
-    // STAGE 1: Load all JSON data files (0% -> 25% of progress bar)
-    const totalJsonCount = 13 + INITIAL_PORTRAIT_FACTIONS.length + 1;
+    const totalJsonCount = 12 + INITIAL_PORTRAIT_FACTIONS.length + 1;
     let loadedJsonCount = 0;
     const onJsonStep = () => {
         loadedJsonCount++;
         updateModalUI((loadedJsonCount / totalJsonCount) * 0.25);
     };
 
-    const [_, musData] = await Promise.all([
+    const [, musData] = await Promise.all([
         loadLocalizedAssets(onJsonStep),
         fetchJSONSafe('audio/music.json', []).then(res => { onJsonStep(); return res; })
     ]);
     musicTracks = musData || [];
 
-    // STAGE 2: Harvest every image path referenced across UI & JSON data (25% -> 100%)
     const imageUrlSet = new Set([
         'photo/icon.png',
         'photo/habibi.png',
@@ -738,18 +804,22 @@ async function preloadAllAssetsWithWin95Modal(titleOverride) {
         'photo/routine.png',
         'photo/decree.png',
         'photo/victory.png',
-        'photo/defeat.png'
+        'photo/defeat.png',
+        'photo/icons/book.png',
+        'photo/icons/trophy.png',
+        'photo/icons/settings.png',
+        'photo/icons/info.png'
     ]);
 
     collectAllGameImageUrls(gameConfig, imageUrlSet);
-    collectAllGameImageUrls(ACHIEVEMENTS, imageUrlSet);
     collectAllGameImageUrls(events, imageUrlSet);
     collectAllGameImageUrls(actionsData, imageUrlSet);
     collectAllGameImageUrls(tutorialPages, imageUrlSet);
-    collectAllGameImageUrls(historyPages, imageUrlSet);
     collectAllGameImageUrls(libraryData, imageUrlSet);
     collectAllGameImageUrls(factions, imageUrlSet);
     collectAllGameImageUrls(updatesData, imageUrlSet);
+    collectAllGameImageUrls(musicTracks, imageUrlSet);
+;
 
     const allImages = Array.from(imageUrlSet).filter(Boolean);
     const totalImages = allImages.length;
@@ -775,10 +845,11 @@ async function preloadAllAssetsWithWin95Modal(titleOverride) {
 async function initGame() {
     try {
         loadUserSettings();
+        currentLang = await LOC.load(currentLang);
         setupMobileLeftPanelToggle();
         wireMusicStateEvents();
 
-        await preloadAllAssetsWithWin95Modal('LOADING ASSETS');
+        await preloadAllAssetsWithWin95Modal();
 
         if (musicTracks.length > 0) setupMusicPlayer();
 
@@ -789,9 +860,9 @@ async function initGame() {
         const overlay = document.getElementById('win95-loader-overlay');
         if (overlay) overlay.style.display = 'none';
         document.getElementById('main-panel').innerHTML =
-            `<h3>Fatal Error Loading Assets</h3>
+            `<h3>${LOC('error.fatal_title')}</h3>
              <p style="font-family: MS Sans Serif, sans-serif; font-size: 12px; color: red;">
-             Failed to fetch local JSON files. Check the console for missing files or syntax errors.
+             ${LOC('error.fatal_body')}
              </p>`;
     }
 }
@@ -799,114 +870,7 @@ async function initGame() {
 // Run initGame when the page loads
 window.addEventListener('load', initGame);
 
-// Audio player: Play/Pause button and taskbar speaker are driven by the audio element's own events
-window.syncMusicUI = function() {
-    const audio = document.getElementById('bg-music');
-    const btn = document.getElementById('play-pause-btn');
-    if (btn && audio) btn.innerText = (audio.paused || !musicEnabled) ? "\u23F5 Play" : "\u23F8 Pause";
-    if (typeof updateWin95Taskbar === 'function') updateWin95Taskbar();
-};
-
-// Keep the music buttons in sync with the audio element's events
-function wireMusicStateEvents() {
-    const audio = document.getElementById('bg-music');
-    if (!audio || audio.dataset.wired) return;
-    audio.dataset.wired = '1';
-    ['play', 'pause', 'emptied'].forEach(evt => audio.addEventListener(evt, window.syncMusicUI));
-    window.syncMusicUI();
-}
-
-// Set up the music player and its track list
-function setupMusicPlayer() {
-    if (musicTracks.length === 0) return;
-    const select = document.getElementById('music-select');
-    const audio = document.getElementById('bg-music');
-
-    select.innerHTML = '';
-    musicTracks.forEach((track) => {
-        const opt = document.createElement('option');
-        opt.value = track.file;
-        opt.text = track.title;
-        select.appendChild(opt);
-    });
-
-    audio.src = musicTracks[0].file;
-    if (!window.volumeUserSet) audio.volume = 0.3;
-
-    audio.onended = function() {
-        if (musicTracks.length > 1) {
-            const currentIndex = select.selectedIndex;
-            let nextIndex = currentIndex;
-            while (nextIndex === currentIndex) {
-                nextIndex = Math.floor(Math.random() * musicTracks.length);
-            }
-            select.selectedIndex = nextIndex;
-            audio.src = musicTracks[nextIndex].file;
-            audio.play().catch(() => {});
-        } else if (musicTracks.length === 1) {
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
-        }
-    };
-
-    if (!musicEnabled) {
-        audio.pause();
-        window.syncMusicUI();
-        return;
-    }
-
-    window.syncMusicUI();
-}
-
-// Start the background music the first time a campaign begins or is resumed
-let musicAutoStarted = false;
-function startBackgroundMusic() {
-    if (musicAutoStarted) return;
-    const audio = document.getElementById('bg-music');
-    if (!audio || !musicEnabled || musicTracks.length === 0) return;
-    musicAutoStarted = true;
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(() => {
-            window.syncMusicUI();
-            const unlockAudio = () => {
-                if (audio.paused && musicEnabled) {
-                    audio.play().catch(() => {});
-                }
-                document.removeEventListener('click', unlockAudio);
-                document.removeEventListener('keydown', unlockAudio);
-                document.removeEventListener('touchstart', unlockAudio);
-            };
-            document.addEventListener('click', unlockAudio);
-            document.addEventListener('keydown', unlockAudio);
-            document.addEventListener('touchstart', unlockAudio);
-        });
-    }
-}
-
-// Switch to the selected music track
-window.changeMusic = function() {
-    const select = document.getElementById('music-select');
-    const audio = document.getElementById('bg-music');
-
-    audio.src = select.value;
-    if (gameStarted) audio.play().catch(() => {});
-};
-
-// Play or pause the music
-window.toggleMusic = function() {
-    const audio = document.getElementById('bg-music');
-    // Respect "Enable Music Player" and a missing track list (taskbar speaker also calls this)
-    if (!audio || !musicEnabled || musicTracks.length === 0) return;
-
-    if (audio.paused) {
-        if (gameStarted) audio.play().catch(() => {});
-    } else {
-        audio.pause();
-    }
-};
-
-// CLAMPING & CALCULATION HELPERS
+// Clamps Political Capital to the 0-100 range.
 function clampPC(val) {
     return Math.max(0, Math.min(100, Math.round(val)));
 }
@@ -941,23 +905,58 @@ function getStabilityCostModifier() {
     return 0;
 }
 
+// Current difficulty definition and numeric lookups (difficulty value or default; system modifier or default)
+function getDiffDef() {
+    return (gameConfig.difficultySettings && gameConfig.difficultySettings[selectedDifficulty]) || {};
+}
+function diffNum(key, dflt) {
+    const v = getDiffDef()[key];
+    return (typeof v === 'number' && !isNaN(v)) ? v : dflt;
+}
+function sysMod(key, dflt) {
+    const v = gameConfig.systemModifiers ? gameConfig.systemModifiers[key] : undefined;
+    return (typeof v === 'number' && !isNaN(v)) ? v : dflt;
+}
+
+// Tells whether a numeric change is good for the player (Cendana is the one stat where up is bad)
+function isGoodDelta(key, v) {
+    return (key === 'cendana') ? (v < 0) : (v > 0);
+}
+
+// Scales an already-rolled effects object: good changes by goodMult, bad ones by badMult (favor keys untouched, never shrinks a change below 1)
+function scaleEffects(eff, goodMult, badMult) {
+    if (!eff) return eff;
+    const out = {};
+    for (const key in eff) {
+        const v = eff[key];
+        if (typeof v !== 'number' || v === 0 || key.endsWith('_favor')) { out[key] = v; continue; }
+        const m = isGoodDelta(key, v) ? goodMult : badMult;
+        out[key] = (m === 1) ? v : Math.sign(v) * Math.max(1, Math.round(Math.abs(v) * m));
+    }
+    return out;
+}
+
 // Final PC cost of a decree after difficulty and stability modifiers
 function computeDecreeCost(baseCost) {
-    const diffMod = gameConfig.difficultySettings[selectedDifficulty].actionCostMod || 0;
+    const diffFlat = diffNum('actionCostMod', 0);
+    const pct = 1 + diffNum('decreeCostPct', 0) / 100;
     const stabMod = getStabilityCostModifier();
-    return Math.max(5, Math.round(baseCost + diffMod + stabMod));
+    return Math.max(5, Math.round(baseCost * pct + diffFlat + stabMod));
 }
 
 // Final PC cost of a faction action, including leverage
 function computeFactionActionCost(factionKey, baseCost) {
-    if (baseCost <= 0) return 0;
-    const diffMod = gameConfig.difficultySettings[selectedDifficulty].actionCostMod || 0;
+    const surcharge = getFactionSurcharge();
+    if (baseCost <= 0) return surcharge;
+    const diffFlat = diffNum('actionCostMod', 0);
+    const pct = 1 + diffNum('costPct', 0) / 100;
     const stabMod = getStabilityCostModifier();
     const leverage = getFactionLeverage(factionKey);
-    return Math.max(3, Math.round((baseCost + diffMod + stabMod) * leverage.costMult));
+    const streetMult = (factionKey === 'pdip' && window.OppositionEngine) ? OppositionEngine.getPdipCostMult() : 1;
+    return Math.max(3, Math.round((baseCost * pct * leverage.costMult + diffFlat + stabMod) * streetMult)) + surcharge;
 }
 
-// VAGUE EFFECT FORMATTER FOR TOOLTIPS (NO NUMBERS OR PERCENTAGES)
+// Builds the readable effect text (with colours) for an effects object, merging military and ABRI changes.
 function formatEffectString(effects) {
     if (!effects) return "";
     const parts = [];
@@ -971,7 +970,7 @@ function formatEffectString(effects) {
         if (statKey.endsWith('_favor')) {
             const facKey = statKey.replace('_favor', '');
             const facName = (factions[facKey] && factions[facKey].short) ? factions[facKey].short : (EFFECT_DISPLAY_NAMES[facKey] || facKey);
-            parts.push(`<span style="color: #0000FF;">Grants a Favor with ${facName}</span>`);
+            parts.push(`<span style="color: #0000FF;">${LOC('outcome.grants_favor', { FACTION: facName })}</span>`);
             continue;
         }
 
@@ -991,28 +990,28 @@ function formatEffectString(effects) {
 
         let label = EFFECT_DISPLAY_NAMES[statKey] || statKey;
         if (hasBothMilAndAbri && (statKey === 'mil' || statKey === 'abri')) {
-            label = 'Military (ABRI) Support';
+            label = LOC('effect_name.mil_abri');
             skipKeys['mil'] = true;
             skipKeys['abri'] = true;
         }
 
         const adverb = getQualitativeMagnitude(Math.abs(numVal));
-        const verb = numVal > 0 ? "increases" : "reduces";
+        const verb = LOC(numVal > 0 ? 'outcome.verb.increases' : 'outcome.verb.reduces');
 
         const isGood = (statKey === 'cendana') ? (numVal < 0) : (numVal > 0);
         const color = isGood ? "#006400" : "#8B0000";
 
-        parts.push(`<span style="color: ${color};">${adverb} ${verb} ${label}</span>`);
+        parts.push(`<span style="color: ${color};">${LOC('outcome.change', { ADVERB: adverb, VERB: verb, LABEL: label })}</span>`);
     }
 
     if (parts.length === 0) return "";
     return `<br><span style="font-size: 10px; font-family: MS Sans Serif; font-weight: normal;">[ ${parts.join(" &bull; ")} ]</span>`;
 }
 
-// CORE LOGIC FUNCTIONS (WITH QUALITATIVE TREND ARROWS)
+// Returns a coloured, vague description of a stat (tier text, no numbers) for the given value.
 function getVagueStatText(statKey, val) {
     const statTiers = dashboardStats[statKey];
-    let baseHTML = `<font color="#8B0000">Unknown</font>`;
+    let baseHTML = `<font color="#8B0000">${LOC('stat.unknown')}</font>`;
     if (statTiers) {
         for (let i = 0; i < statTiers.length; i++) {
             if (val >= statTiers[i].min) {
@@ -1029,7 +1028,7 @@ function getVagueStatText(statKey, val) {
             const isGood = (statKey === 'cendana') ? !isUp : isUp;
             const arrowColor = isGood ? "#006400" : "#8B0000";
             const arrowChar = isUp ? "&#9650;" : "&#9660;";
-            baseHTML += ` <span style="font-size: 9px; color: ${arrowColor};" title="Recent shift">${arrowChar}</span>`;
+            baseHTML += ` <span style="font-size: 9px; color: ${arrowColor};" title="${escapeAttr(LOC('stat.recent_shift'))}">${arrowChar}</span>`;
         }
     }
     return baseHTML;
@@ -1039,7 +1038,7 @@ function getVagueStatText(statKey, val) {
 function getMoodData(factionKey, aff) {
     const f = factions[factionKey];
     if (!f || !f.moods || f.moods.length === 0) {
-        return { overlay: "rgba(139, 0, 0, 0.25)", text: "Unknown", color: "#8B0000" };
+        return { overlay: "rgba(139, 0, 0, 0.25)", text: LOC('stat.unknown'), color: "#8B0000" };
     }
     for (let i = 0; i < f.moods.length; i++) {
         if (aff >= f.moods[i].min) return f.moods[i];
@@ -1047,22 +1046,28 @@ function getMoodData(factionKey, aff) {
     return f.moods[f.moods.length - 1];
 }
 
-// MPR DASHBOARD TABS & PARLIAMENT HEMICYCLE
+// Which tab of the MPR dashboard is open.
 let mprDashboardTab = 'factions';
 
 // Historical party swatch color for each faction
 const FACTION_HISTORICAL_COLORS = {
-    'pdip':            { fill: '#C0392B', border: '#FF7777', label: 'PDI-P' },
-    'utusan_golongan': { fill: '#7F8C8D', border: '#BDC3C7', label: 'U. Golongan' },
-    'pkb':             { fill: '#006400', border: '#55CC55', label: 'PKB' },
-    'poros_tengah':    { fill: '#0055A4', border: '#66B2FF', label: 'PAN / Poros Tengah' },
-    'ppp':             { fill: '#2E8B57', border: '#77DDAA', label: 'PPP' },
-    'other_parties':   { fill: '#00838F', border: '#66E0EB', label: 'Other Parties' },
-    'utusan_daerah':   { fill: '#6E6E6E', border: '#B0B0B0', label: 'U. Daerah' },
-    'golkar_habibie':  { fill: '#D49B00', border: '#FFE066', label: 'Golkar (Iramasuka)' },
-    'golkar_akbar':    { fill: '#F1C40F', border: '#FFFF99', label: 'Golkar (DPP Slipi)' },
-    'abri':            { fill: '#556B2F', border: '#A3C266', label: 'ABRI' }
+    'pdip':            { fill: '#C0392B', border: '#FF7777' },
+    'utusan_golongan': { fill: '#7F8C8D', border: '#BDC3C7' },
+    'pkb':             { fill: '#006400', border: '#55CC55' },
+    'poros_tengah':    { fill: '#0055A4', border: '#66B2FF' },
+    'ppp':             { fill: '#2E8B57', border: '#77DDAA' },
+    'other_parties':   { fill: '#00838F', border: '#66E0EB' },
+    'utusan_daerah':   { fill: '#6E6E6E', border: '#B0B0B0' },
+    'golkar_habibie':  { fill: '#D49B00', border: '#FFE066' },
+    'golkar_akbar':    { fill: '#F1C40F', border: '#FFFF99' },
+    'abri':            { fill: '#556B2F', border: '#A3C266' }
 };
+
+// Party short labels follow the language (data/language: faction_label.<id>)
+Object.keys(FACTION_HISTORICAL_COLORS).forEach(k => localizedFields(FACTION_HISTORICAL_COLORS[k], 'faction_label.' + k, []) &&
+    Object.defineProperty(FACTION_HISTORICAL_COLORS[k], 'label', {
+        enumerable: true, configurable: true, get() { return LOC('faction_label.' + k); }
+    }));
 
 // Order in which factions are seated in the hemicycle
 const PARLIAMENT_SEATING_ORDER = [
@@ -1079,17 +1084,29 @@ window.switchMPRTab = function(tabName) {
     updateUI();
 };
 
+let parliamentHoverClearTimer = null;
+let currentHoveredParliamentFaction = null;
+
 // Highlight one faction's seats in the hemicycle
 window.highlightParliamentFaction = function(factionKey, isMobileTap = false) {
+    if (parliamentHoverClearTimer) {
+        clearTimeout(parliamentHoverClearTimer);
+        parliamentHoverClearTimer = null;
+    }
+    if (!isMobileTap && currentHoveredParliamentFaction === factionKey) return;
+    currentHoveredParliamentFaction = factionKey;
+
     const f = factions[factionKey];
     if (!f) return;
     const mood = getMoodData(factionKey, f.affinity);
     const infoBar = document.getElementById('mpr-parliament-hover-info');
     if (infoBar) {
+        const moodHTML = `<font color="${mood.color}"><b>${mood.text}</b></font>`;
         if (isMobileTap) {
-            infoBar.innerHTML = `<b>${f.name}</b> (${f.seats} Seats) &bull; <font color="${mood.color}"><b>${mood.text}</b></font> &nbsp;<button style="width: auto; display: inline-block; --py: 2px; --px: 8px; margin: 0; font-size: 11px; " onclick="openFactionMenu('${factionKey}')">Negotiate</button>`;
+            const negotiateBtn = `<button style="width: auto; display: inline-block; --py: 2px; --px: 8px; margin: 0; font-size: 11px; " onclick="openFactionMenu('${factionKey}')">${LOC('parliament.negotiate')}</button>`;
+            infoBar.innerHTML = LOC('parliament.info_mobile', { NAME: f.name, SEATS: f.seats, MOOD: moodHTML, BUTTON: negotiateBtn });
         } else {
-            infoBar.innerHTML = `<b>${f.name}</b> &mdash; <b>${f.seats} Delegates</b> &bull; Current Stance: <font color="${mood.color}"><b>${mood.text}</b></font> <i>(Click to negotiate)</i>`;
+            infoBar.innerHTML = LOC('parliament.info_desktop', { NAME: f.name, SEATS: f.seats, MOOD: moodHTML });
         }
     }
     const container = document.getElementById('mpr-dashboard-hemicycle');
@@ -1106,18 +1123,23 @@ window.highlightParliamentFaction = function(factionKey, isMobileTap = false) {
     });
 };
 
-// Remove the hemicycle highlight
+// Remove the hemicycle highlight (debounced so moving between adjacent seats never flickers)
 window.clearParliamentHighlight = function() {
     if (window.innerWidth <= 820 && window.mobileSelectedParliamentFaction) return;
-    const infoBar = document.getElementById('mpr-parliament-hover-info');
-    if (infoBar) {
-        infoBar.innerHTML = `Hover or tap any seat block or legend item to inspect caucus strength &bull; Click to initiate negotiations.`;
-    }
-    const container = document.getElementById('mpr-dashboard-hemicycle');
-    if (!container) return;
-    container.querySelectorAll('.mpr-seat-dot').forEach(d => {
-        d.classList.remove('seat-faction-hover', 'seat-faction-dim');
-    });
+    if (parliamentHoverClearTimer) clearTimeout(parliamentHoverClearTimer);
+    parliamentHoverClearTimer = setTimeout(() => {
+        parliamentHoverClearTimer = null;
+        currentHoveredParliamentFaction = null;
+        const infoBar = document.getElementById('mpr-parliament-hover-info');
+        if (infoBar) {
+            infoBar.innerHTML = LOC('parliament.hover_default');
+        }
+        const container = document.getElementById('mpr-dashboard-hemicycle');
+        if (!container) return;
+        container.querySelectorAll('.mpr-seat-dot').forEach(d => {
+            d.classList.remove('seat-faction-hover', 'seat-faction-dim');
+        });
+    }, 45);
 };
 
 // Handle a tap or click on a hemicycle seat
@@ -1147,7 +1169,7 @@ function renderParliamentHemicycleTab() {
     let html = `<div class="mpr-chamber-box" style="margin-top: 6px; margin-bottom: 4px;">`;
 
     html += `<div id="mpr-parliament-hover-info" class="mpr-parliament-readout">
-        Hover or tap any seat block or legend item to inspect caucus strength &bull; Click to initiate negotiations.
+        ${LOC('parliament.hover_default')}
     </div>`;
 
     html += `<div id="mpr-dashboard-hemicycle" class="mpr-hemicycle-wrap">`;
@@ -1157,9 +1179,9 @@ function renderParliamentHemicycleTab() {
         const f = factions[key];
         if (!f || bannedFactions[key] || f.seats <= 0) return;
 
-        const col = FACTION_HISTORICAL_COLORS[key] || { fill: '#808080', border: '#CCCCCC' };
+        const col = getFactionColors(key) || { fill: '#808080', border: '#CCCCCC' };
         const mood = getMoodData(key, f.affinity);
-        const seatTitle = escapeAttr(`${f.name} (${f.seats} Delegates) — ${mood.text}`);
+        const seatTitle = escapeAttr(LOC('parliament.seat_title', { NAME: f.name, SEATS: f.seats, MOOD: mood.text }));
 
         for (let s = 0; s < f.seats && seatCursor < hemicycleCoords.length; s++) {
             const pt = hemicycleCoords[seatCursor++];
@@ -1173,20 +1195,19 @@ function renderParliamentHemicycleTab() {
         }
     });
 
-    html += `<div class="mpr-rostrum">MPR ROSTRUM</div>`;
+    html += `<div class="mpr-rostrum">${LOC('parliament.rostrum')}</div>`;
     html += `</div>`;
 
-    // Interactive Faction Legend below the Hemicycle
     html += `<div class="mpr-parliament-legend">`;
     activeOrder.forEach(key => {
         const f = factions[key];
         if (!f) return;
-        const col = FACTION_HISTORICAL_COLORS[key] || { fill: '#808080', border: '#CCCCCC', label: f.short };
+        const col = getFactionColors(key) || { fill: '#808080', border: '#CCCCCC', label: f.short };
         const isBanned = bannedFactions[key] === true || f.seats <= 0;
         const mood = getMoodData(key, f.affinity);
 
         if (isBanned) {
-            html += `<div class="mpr-legend-item mpr-legend-banned" title="${escapeAttr(f.name + ' — Dissolved')}">
+            html += `<div class="mpr-legend-item mpr-legend-banned" title="${escapeAttr(LOC('parliament.legend_dissolved', { NAME: f.name }))}">
                 <span class="mpr-legend-swatch" style="background-color: #555555;"></span>
                 <span style="text-decoration: line-through; color: #777;">${f.short} (0)</span>
             </div>`;
@@ -1195,7 +1216,7 @@ function renderParliamentHemicycleTab() {
                 onmouseenter="highlightParliamentFaction('${key}')"
                 onmouseleave="clearParliamentHighlight()"
                 onclick="handleParliamentSeatClick('${key}')"
-                title="${escapeAttr('Click to interact with ' + f.name + ' (' + mood.text + ')')}">
+                title="${escapeAttr(LOC('parliament.legend_click', { NAME: f.name, MOOD: mood.text }))}">
                 <span class="mpr-legend-swatch" style="background-color: ${col.fill};"></span>
                 <span><b>${f.short}</b> (${f.seats}) &bull; <font color="${mood.color}">${mood.text}</font></span>
             </div>`;
@@ -1232,12 +1253,8 @@ function updateUI() {
     const govStabElement = uiEl('val-gov-stab');
     if (govStabElement) {
         if (gameStarted) {
-            const govStability = getGovStability();
-            if (govStability >= 80) govStabElement.innerHTML = `<div style="color: #006400;">SECURE</div>`;
-            else if (govStability >= 60) govStabElement.innerHTML = `<div style="color: #009000;">STABLE</div>`;
-            else if (govStability >= 40) govStabElement.innerHTML = `<div style="color: #B8860B;">PRECARIOUS</div>`;
-            else if (govStability >= 20) govStabElement.innerHTML = `<div style="color: #FF4500;">UNSTABLE</div>`;
-            else govStabElement.innerHTML = `<div style="color: #8B0000;">COLLAPSING</div>`;
+            const govTier = getGovStabilityTier();
+            govStabElement.innerHTML = `<div style="color: ${govTier.color};">${LOC('gov.' + govTier.id)}</div>`;
         } else {
             govStabElement.innerHTML = `<div style="color: #000;">-</div>`;
         }
@@ -1257,18 +1274,17 @@ function updateUI() {
         if (currentTurn <= events.length) {
             uiEl('date-display').innerText = events[currentTurn - 1].date;
         } else {
-            uiEl('date-display').innerText = "Oct 19, 1999 (General Session)";
+            uiEl('date-display').innerText = LOC('date.general_session');
         }
     } else {
         uiEl('turn-display').innerText = "-";
-        uiEl('date-display').innerText = "June 1999";
+        uiEl('date-display').innerText = LOC('date.title_screen');
     }
 
     const isParliamentTab = (mprDashboardTab === 'parliament');
     const currentSignature = `${mprDashboardTab}||` + portraitFactions.map(k => {
         const f = factions[k];
         const banned = bannedFactions[k] === true || !f || f.seats <= 0;
-        // The parliament view shows mood text, so it must rebuild when a mood changes
         const moodKey = (isParliamentTab && f && !banned) ? getMoodData(k, f.affinity).text : '';
         return `${k}:${banned ? 'B' : 'A'}:${f ? f.seats : 0}:${f ? f.name : ''}:${moodKey}`;
     }).join('|');
@@ -1278,7 +1294,6 @@ function updateUI() {
     const sameView = portraitsArea && lastRenderedPortraitSignature === currentSignature && portraitsArea.children.length > 0;
 
     if (sameView && isParliamentTab) {
-        // Nothing visible changed: keep the 700-seat hemicycle (and any hover highlight) as it is
     } else if (sameView && mprDashboardTab === 'factions') {
         for (let i = 0; i < portraitFactions.length; i++) {
             const key = portraitFactions[i];
@@ -1291,7 +1306,7 @@ function updateUI() {
             const moodEl = uiEl(`p-mood-${key}`);
 
             if (overlayEl) overlayEl.style.backgroundColor = mood.overlay;
-            if (seatsEl) seatsEl.innerText = `${f.seats} Delegates`;
+            if (seatsEl) seatsEl.innerText = LOC('dash.delegates', { COUNT: f.seats });
             if (moodEl) moodEl.innerHTML = `<font color="${mood.color}"><b>${mood.text}</b></font>`;
         }
     } else if (portraitsArea) {
@@ -1300,10 +1315,10 @@ function updateUI() {
 
         let pHTML = `<div class="mpr-view-tabs">
             <button class="mpr-tab-btn ${isFacTab ? 'is-selected' : ''}" onclick="switchMPRTab('factions')">
-                Faction View
+                ${LOC('dash.faction_view')}
             </button>
             <button class="mpr-tab-btn ${isParlTab ? 'is-selected' : ''}" onclick="switchMPRTab('parliament')">
-                Parliament View
+                ${LOC('dash.parliament_view')}
             </button>
         </div>`;
 
@@ -1326,27 +1341,27 @@ function updateUI() {
                 const displayPortraitName = f.portraitName || f.name;
 
                 if (isBanned) {
-                    pHTML += '<td width="' + cellWidth + '" valign="top" class="portrait-cell portrait-banned" title="This faction has been dissolved and stripped of its MPR seats.">';
+                    pHTML += '<td width="' + cellWidth + '" valign="top" class="portrait-cell portrait-banned" title="' + escapeAttr(LOC('dash.dissolved_tooltip')) + '">';
                     pHTML += '<div class="portrait-container" style="filter: grayscale(100%); opacity: 0.45;">';
-                    pHTML += '<span>[ PHOTO:<br>' + f.short.toUpperCase() + ' ]</span>';
+                    pHTML += '<span>' + LOC('dash.photo_placeholder', { NAME: f.short.toUpperCase() }) + '</span>';
                     pHTML += '<img src="' + f.image + '" class="portrait-img" alt="[' + f.short + ']">';
                     pHTML += '<div class="portrait-overlay" style="background-color: rgba(40, 40, 40, 0.55); display: flex; align-items: center; justify-content: center;">';
-                    pHTML += '<span class="portrait-dissolved-stamp">DISSOLVED</span>';
+                    pHTML += '<span class="portrait-dissolved-stamp">' + LOC('dash.dissolved_stamp') + '</span>';
                     pHTML += '</div>';
                     pHTML += '</div>';
                     pHTML += '<div class="portrait-name" style="color: #777; text-decoration: line-through;">' + displayPortraitName + '</div>';
-                    pHTML += '<div class="portrait-seats" style="color: #888;">0 Delegates</div>';
-                    pHTML += '<div class="portrait-mood"><font color="#666666"><b>Banned / Dissolved</b></font></div>';
+                    pHTML += '<div class="portrait-seats" style="color: #888;">' + LOC('dash.delegates', { COUNT: 0 }) + '</div>';
+                    pHTML += '<div class="portrait-mood"><font color="#666666"><b>' + LOC('dash.banned_mood') + '</b></font></div>';
                     pHTML += '</td>';
                 } else {
                     pHTML += '<td width="' + cellWidth + '" valign="top" class="portrait-cell" onclick="openFactionMenu(\'' + key + '\')">';
                     pHTML += '<div class="portrait-container">';
-                    pHTML += '<span>[ PHOTO:<br>' + f.short.toUpperCase() + ' ]</span>';
+                    pHTML += '<span>' + LOC('dash.photo_placeholder', { NAME: f.short.toUpperCase() }) + '</span>';
                     pHTML += '<img src="' + f.image + '" class="portrait-img" alt="[' + f.short + ']">';
                     pHTML += '<div id="p-overlay-' + key + '" class="portrait-overlay" style="background-color: ' + mood.overlay + ';"></div>';
                     pHTML += '</div>';
                     pHTML += '<div class="portrait-name">' + displayPortraitName + '</div>';
-                    pHTML += '<div id="p-seats-' + key + '" class="portrait-seats">' + f.seats + ' Delegates</div>';
+                    pHTML += '<div id="p-seats-' + key + '" class="portrait-seats">' + LOC('dash.delegates', { COUNT: f.seats }) + '</div>';
                     pHTML += '<div id="p-mood-' + key + '" class="portrait-mood"><font color="' + mood.color + '"><b>' + mood.text + '</b></font></div>';
                     pHTML += '</td>';
                 }
@@ -1387,7 +1402,7 @@ function rollEffectRanges(eff) {
     return resolved;
 }
 
-// PC INCOME/SPEND DEBUG LOGGER
+// Political Capital change log and the function that records each change.
 window.pcLog = [];
 // Record a PC change in the PC log
 function logPCChange(delta, reason) {
@@ -1409,6 +1424,7 @@ window.showPCLog = function() {
     console.table(byTurn);
 };
 
+// Applies a military-support change through the opposition engine, or directly to ABRI affinity if the engine is not loaded.
 function applyMilitaryDelta(delta) {
     if (window.OppositionEngine) {
         OppositionEngine.applyMilitaryDelta(delta);
@@ -1419,12 +1435,54 @@ function applyMilitaryDelta(delta) {
     stats.mil = Math.round(factions['abri'].affinity);
 }
 
+// Rounds a positive number up or down at random, so small amounts keep their expected value after being scaled.
+function stochRound(x) {
+    const f = Math.floor(x);
+    return f + (Math.random() < (x - f) ? 1 : 0);
+}
+
+// Gain shrinking. While the generals are angry (military meter) every good change from deals, decrees, actions and events shrinks,
+// Political Capital included. While the street is mobilized (PDI-P meter) gains of Political Capital, Popularity and Reformasi
+// Credibility shrink too, and PDI-P's own loyalty gains shrink further. ABRI's own loyalty is handled separately, and favors are left alone.
+function currentMilitaryResistance() {
+    return window.OppositionEngine ? OppositionEngine.getMilitaryResistance() : 0;
+}
+function currentPdipCut() {
+    return window.OppositionEngine ? OppositionEngine.getPdipCut() : 0;
+}
+// Share of a good change that survives for one stat key.
+function gainFactor(key) {
+    const mil = 1 - currentMilitaryResistance();
+    const raw = (key === 'PC' || key === 'pop' || key === 'ref')
+        ? mil * (1 - currentPdipCut())
+        : mil;
+    return Math.max(0.40, raw);
+}
+
+function pcGainFactor() { return gainFactor('PC'); }
+function applyMilitaryResistance(eff) {
+    if (!eff) return eff;
+    if (currentMilitaryResistance() <= 0 && currentPdipCut() <= 0 && !(window.OppositionEngine && OppositionEngine.getPdipTier() > 0)) return eff;
+    const out = {};
+    for (const key in eff) {
+        const v = eff[key];
+        if (typeof v !== 'number' || v === 0 || key === 'abri' || key === 'mil' || key.endsWith('_favor') || !isGoodDelta(key, v)) {
+            out[key] = v;
+            continue;
+        }
+        let f = gainFactor(key);
+        if (key === 'pdip' && window.OppositionEngine) f *= OppositionEngine.getPdipGainMult();
+        out[key] = (f >= 1) ? v : Math.sign(v) * stochRound(Math.abs(v) * f);
+    }
+    return out;
+}
+
 // Apply an effects object to stats and factions
 function applyEffects(eff, updateSnapshot = true) {
     if (!eff) return;
-    const advSnap = window.AdversaryEngine ? AdversaryEngine.beforeEffects() : null;
+    const advSnap = window.OppositionEngine ? OppositionEngine.beforeEffects() : null;
     if (updateSnapshot) prevStatsSnapshot = { ...stats };
-    eff = rollEffectRanges(eff);
+    eff = applyMilitaryResistance(rollEffectRanges(eff));
 
     if (eff.PC !== undefined) {
         const nextPC = clampPC(stats.PC + eff.PC);
@@ -1448,104 +1506,106 @@ function applyEffects(eff, updateSnapshot = true) {
         if (key.endsWith('_favor')) {
             const facKey = key.replace('_favor', '');
             if (factions[facKey] && !bannedFactions[facKey]) {
-                factions[facKey].favor = (factions[facKey].favor || 0) + eff[key];
+                factions[facKey].favor = Math.min(diffNum('maxFavor', 3), (factions[facKey].favor || 0) + eff[key]);
             }
         } else if (factions[key] && !bannedFactions[key]) {
+            const before = factions[key].affinity;
             factions[key].affinity = clampFaction(key, factions[key].affinity + eff[key]);
+            if (key === 'pdip' && window.OppositionEngine) OppositionEngine.onPdipDelta(factions[key].affinity - before);
         }
     }
 
     if (factions['abri']) {
         stats.mil = Math.round(factions['abri'].affinity);
     }
-    if (advSnap) AdversaryEngine.afterEffects(advSnap);
+    if (advSnap) OppositionEngine.afterEffects(advSnap);
 }
 
 // Show the credits screen
 window.showCredits = function() {
     if (!enterMenuView()) return;
     scrollMainPanelToTop();
-    let html = '<center><h2>CREDITS</h2></center>';
+    let html = '<center><h2>' + LOC('credits.title') + '</h2></center>';
     html += '<div class="faction-summary" style="text-align: center; margin-bottom: 16px;">';
 
     if (creditsData && creditsData.main) {
         creditsData.main.forEach(line => { html += `<p>${line}</p>`; });
     } else {
-        html += '<p>Credits data missing.</p>';
+        html += '<p>' + LOC('credits.missing') + '</p>';
     }
 
     html += '</div>';
     html += '<center>';
-    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showMusicCredits()">Music</button><br>';
-    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showSfxCredits()">Sound Effects</button><br>';
-    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showImageCredits()">Images &amp; Photography</button><br>';
-    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showSources()">Historical Sources</button><br>';
+    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showMusicCredits()">' + LOC('credits.btn.music') + '</button><br>';
+    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showSfxCredits()">' + LOC('credits.btn.sfx') + '</button><br>';
+    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showImageCredits()">' + LOC('credits.btn.images') + '</button><br>';
+    html += '<button style="width: 250px; text-align: center; margin-bottom: 8px;" onclick="showSources()">' + LOC('credits.btn.sources') + '</button><br>';
     html += '</center>';
 
     const returnFunc = gameStarted ? (isActionPhase ? 'showActionMenu()' : 'renderEventMenu()') : 'showStartMenu()';
-    html += `<center><button style="width: 250px; margin-top: 15px; background-color: #ff9999; text-align: center;" onclick="${returnFunc}">${gameStarted ? 'Back to Game' : 'Back'}</button></center>`;
+    html += `<center><button style="width: 250px; margin-top: 15px; background-color: #ff9999; text-align: center;" onclick="${returnFunc}">${gameStarted ? LOC('credits.btn.back_to_game') : LOC('common.back')}</button></center>`;
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Show the sound effect credits
 window.showSfxCredits = function() {
     scrollMainPanelToTop();
-    let html = '<center><h2>SOUND EFFECTS</h2></center>';
+    let html = '<center><h2>' + LOC('credits.sfx.title') + '</h2></center>';
     html += '<div class="faction-summary" style="text-align: left; margin-bottom: 20px;">';
     if (creditsData && creditsData.sfx) {
         creditsData.sfx.forEach(line => { html += `<p>${line}</p>`; });
     } else {
-        html += '<p>Sound effects credits data missing.</p>';
+        html += '<p>' + LOC('credits.sfx.missing') + '</p>';
     }
     html += '</div>';
-    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">Back</button></center>';
+    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">' + LOC('common.back') + '</button></center>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Show the image credits
 window.showImageCredits = function() {
     scrollMainPanelToTop();
-    let html = '<center><h2>IMAGES &amp; ARCHIVAL PHOTOGRAPHY</h2></center>';
+    let html = '<center><h2>' + LOC('credits.images.title') + '</h2></center>';
     html += '<div class="faction-summary" style="text-align: left; margin-bottom: 20px;">';
-    html += '<p><b>Press Archives, Photojournalism &amp; Visual Sources:</b></p><ul>';
+    html += '<p><b>' + LOC('credits.images.subtitle') + '</b></p><ul>';
     if (creditsData && creditsData.images) {
         creditsData.images.forEach(line => { html += `<li style="margin-bottom: 8px;">${line}</li>`; });
     } else {
-        html += '<li>Image credits data missing.</li>';
+        html += '<li>' + LOC('credits.images.missing') + '</li>';
     }
     html += '</ul></div>';
-    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">Back</button></center>';
+    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">' + LOC('common.back') + '</button></center>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Show the music credits
 window.showMusicCredits = function() {
     scrollMainPanelToTop();
-    let html = '<center><h2>MUSIC &amp; AUDIO</h2></center>';
+    let html = '<center><h2>' + LOC('credits.music.title') + '</h2></center>';
     html += '<div class="faction-summary" style="text-align: left; margin-bottom: 20px;">';
     if (creditsData && creditsData.music) {
         creditsData.music.forEach(line => { html += `<p>${line}</p>`; });
     } else {
-        html += '<p>Music credits data missing.</p>';
+        html += '<p>' + LOC('credits.music.missing') + '</p>';
     }
     html += '</div>';
-    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">Back</button></center>';
+    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">' + LOC('common.back') + '</button></center>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Show the sources screen
 window.showSources = function() {
     scrollMainPanelToTop();
-    let html = '<center><h2>HISTORICAL SOURCES</h2></center>';
+    let html = '<center><h2>' + LOC('credits.sources.title') + '</h2></center>';
     html += '<div class="faction-summary" style="text-align: left; margin-bottom: 20px;">';
-    html += '<p><b>Primary Memoirs, Academic Literature &amp; Archival Sources:</b></p><ul>';
+    html += '<p><b>' + LOC('credits.sources.subtitle') + '</b></p><ul>';
     if (creditsData && creditsData.sources) {
         creditsData.sources.forEach(line => { html += `<li style="margin-bottom: 8px;">${line}</li>`; });
     } else {
-        html += '<li>Sources data missing.</li>';
+        html += '<li>' + LOC('credits.sources.missing') + '</li>';
     }
     html += '</ul></div>';
-    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">Back</button></center>';
+    html += '<center><button style="width: 250px; background-color: #ff9999; text-align: center;" onclick="showCredits()">' + LOC('common.back') + '</button></center>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
@@ -1558,33 +1618,12 @@ window.toggleSettingsEffects = function() {
     }
 };
 
-// Enable or disable the music player
-window.toggleMusicEnabled = function() {
-    const cb = document.getElementById('settings-music-toggle');
-    if (cb) {
-        musicEnabled = cb.checked;
-        const player = document.querySelector('.music-player');
-        const audio = document.getElementById('bg-music');
-
-        if (musicEnabled) {
-            if (player) player.style.display = 'block';
-        } else {
-            if (player) player.style.display = 'none';
-            if (audio && !audio.paused) audio.pause();
-        }
-        window.syncMusicUI();
-        saveUserSettings();
-        showSettingsMenu(true);
-    }
-};
-
 // Applies all three appearance settings to the page. Safe to call repeatedly.
 window.applyAppearance = function() {
     const root = document.documentElement;
     root.setAttribute('data-wstyle', windowStyle);
     root.setAttribute('data-scheme', colorScheme);
 
-    // Window style = one extra stylesheet appended after news.css (so it wins); Default Win95 has none
     let link = document.getElementById('theme-css');
     const href = WINDOW_STYLES[windowStyle] && WINDOW_STYLES[windowStyle].css;
     if (!href) {
@@ -1599,14 +1638,12 @@ window.applyAppearance = function() {
         if (link.getAttribute('href') !== href) link.setAttribute('href', href);
     }
 
-    // CRT scanlines are an overlay, independent of the two above
     const overlay = document.getElementById('crt-overlay');
     if (overlay) {
         overlay.style.display = crtEnabled ? 'block' : 'none';
         overlay.style.opacity = crtIntensity / 100;
     }
 
-    // The other effects are pure CSS: data-fx lists the active ones (see css/effects.css)
     const active = EFFECTS.filter(e => isEffectOn(e.id)).map(e => e.id);
     if (active.length) root.setAttribute('data-fx', active.join(' '));
     else root.removeAttribute('data-fx');
@@ -1655,8 +1692,6 @@ window.setColorScheme = function(id) {
 };
 
 // Turn CRT scanlines on or off
-window.setCRT = function(on) { setEffect('crt', on); };
-
 // Apply the CRT intensity slider
 window.updateCRTIntensity = function() {
     const slider = document.getElementById('crt-slider');
@@ -1666,19 +1701,6 @@ window.updateCRTIntensity = function() {
         crtIntensity = Number(slider.value);
         overlay.style.opacity = crtIntensity / 100;
         if (display) display.innerText = crtIntensity + '%';
-        saveUserSettings();
-    }
-};
-
-// Apply the volume slider to the music
-window.updateVolume = function() {
-    const slider = document.getElementById('volume-slider');
-    const audio = document.getElementById('bg-music');
-    const display = document.getElementById('volume-display');
-    if (slider && audio) {
-        audio.volume = slider.value / 100;
-        window.volumeUserSet = true;
-        if (display) display.innerText = slider.value + '%';
         saveUserSettings();
     }
 };
@@ -1722,63 +1744,17 @@ window.updateTextScale = function() {
     }
 };
 
-// Show a page of the history screen
-window.showHistory = function(pageIndex) {
-    clearTallyInterval();
-    scrollMainPanelToTop();
-    if (!historyPages || historyPages.length === 0) {
-        showCustomAlert("Error: history.json not loaded.", showStartMenu);
-        return;
-    }
-
-    const pageData = historyPages[pageIndex];
-    const pageText = typeof pageData === 'string' ? pageData : pageData.text;
-    const pageTitle = (typeof pageData === 'object' && pageData.title)
-        ? pageData.title
-        : `Chapter ${pageIndex + 1} of ${historyPages.length}`;
-    const pageImg = (typeof pageData === 'object' && pageData.image) ? pageData.image : null;
-
-    let html = '<center><h2>HOW DID IT COME TO THIS?</h2></center>';
-
-    const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-    html += '<div style="text-align: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #808080;">';
-    html += '<span style="font-size: 11px; font-weight: bold; color: #000080; margin-right: 6px;">CHAPTER:</span>';
-    for (let i = 0; i < historyPages.length; i++) {
-        const isCur = (i === pageIndex);
-        const label = romanNumerals[i] || (i + 1);
-        const chapTitleAttr = escapeAttr((typeof historyPages[i] === 'object' && historyPages[i].title) ? historyPages[i].title : `Chapter ${i + 1}`);
-        html += `<button class="${isCur ? 'is-selected' : ''}" title="${chapTitleAttr}" style="width: 34px; display: inline-block; text-align: center; --py: 3px; --px: 0; margin: 2px; font-size: 11px; " onclick="showHistory(${i})">${label}</button>`;
-    }
-    html += '</div>';
-
-    html += `<h3 style="text-align: center; color: #000080; margin-bottom: 12px;">${pageTitle}</h3>`;
-
-    if (pageImg) {
-        html += `<center><img src="${pageImg}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(pageTitle)}"></center>`;
-    }
-
-    html += '<div class="faction-summary" style="padding: 15px; margin-bottom: 12px; min-height: 220px;">' + pageText + '</div>';
-
-    html += '<div style="text-align: center; margin-top: 10px;">';
-    if (pageIndex > 0) {
-        html += `<button style="width: 130px; text-align: center; display: inline-block; margin-right: 10px; " onclick="showHistory(${pageIndex - 1})">Previous</button>`;
-    }
-    html += `<span style="font-size: 12px; font-weight: bold; color: #333; margin: 0 8px;">${pageIndex + 1} / ${historyPages.length}</span>`;
-    if (pageIndex < historyPages.length - 1) {
-        html += `<button style="width: 130px; text-align: center; display: inline-block; margin-left: 10px; " onclick="showHistory(${pageIndex + 1})">Next</button>`;
-    }
-    html += '</div>';
-
-    html += '<center><button style="width: 250px; text-align: center; margin-top: 16px; background-color: #ff9999; " onclick="showStartMenu()">Back</button></center>';
-    document.getElementById('main-panel').innerHTML = html;
-};
+// Label for a chapter or topic button (numeral.<n> in the language files, or the plain number)
+function getNumeralLabel(n) {
+    return LOC.has('numeral.' + n) ? LOC('numeral.' + n) : n;
+}
 
 // Show a page of the tutorial
 window.showTutorial = function(pageIndex) {
     clearTallyInterval();
     scrollMainPanelToTop();
     if (!tutorialPages || tutorialPages.length === 0) {
-        showCustomAlert("Error: tutorial.json not loaded.", showStartMenu);
+        showCustomAlert(LOC('tutorial.load_error'), showStartMenu);
         return;
     }
 
@@ -1786,17 +1762,16 @@ window.showTutorial = function(pageIndex) {
     const pageText = typeof pageData === 'string' ? pageData : pageData.text;
     const pageTitle = (typeof pageData === 'object' && pageData.title)
         ? pageData.title
-        : `Topic ${pageIndex + 1} of ${tutorialPages.length}`;
+        : LOC('tutorial.topic_default_title', { N: pageIndex + 1, TOTAL: tutorialPages.length });
 
-    let html = '<center><h2>HOW TO PLAY</h2></center>';
+    let html = '<center><h2>' + LOC('tutorial.title') + '</h2></center>';
 
-    const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     html += '<div style="text-align: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #808080;">';
-    html += '<span style="font-size: 11px; font-weight: bold; color: #000080; margin-right: 6px;">HELP TOPIC:</span>';
+    html += '<span style="font-size: 11px; font-weight: bold; color: #000080; margin-right: 6px;">' + LOC('tutorial.topic_label') + '</span>';
     for (let i = 0; i < tutorialPages.length; i++) {
         const isCur = (i === pageIndex);
-        const label = romanNumerals[i] || (i + 1);
-        const topTitle = escapeAttr((typeof tutorialPages[i] === 'object' && tutorialPages[i].title) ? tutorialPages[i].title : `Topic ${i + 1}`);
+        const label = getNumeralLabel(i + 1);
+        const topTitle = escapeAttr((typeof tutorialPages[i] === 'object' && tutorialPages[i].title) ? tutorialPages[i].title : LOC('tutorial.topic_short', { N: i + 1 }));
         html += `<button class="${isCur ? 'is-selected' : ''}" title="${topTitle}" style="width: 36px; display: inline-block; text-align: center; --py: 3px; --px: 0; margin: 2px; font-size: 11px; " onclick="showTutorial(${i})">${label}</button>`;
     }
     html += '</div>';
@@ -1806,32 +1781,91 @@ window.showTutorial = function(pageIndex) {
 
     html += '<div style="text-align: center; margin-top: 10px;">';
     if (pageIndex > 0) {
-        html += `<button style="width: 130px; text-align: center; display: inline-block; margin-right: 10px; " onclick="showTutorial(${pageIndex - 1})">Previous</button>`;
+        html += `<button style="width: 130px; text-align: center; display: inline-block; margin-right: 10px; " onclick="showTutorial(${pageIndex - 1})">${LOC('common.previous')}</button>`;
     }
-    html += `<span style="font-size: 12px; font-weight: bold; color: #333; margin: 0 8px;">${pageIndex + 1} / ${tutorialPages.length}</span>`;
+    html += `<span style="font-size: 12px; font-weight: bold; color: #333; margin: 0 8px;">${LOC('common.page_of', { N: pageIndex + 1, TOTAL: tutorialPages.length })}</span>`;
     if (pageIndex < tutorialPages.length - 1) {
-        html += `<button style="width: 130px; text-align: center; display: inline-block; margin-left: 10px; " onclick="showTutorial(${pageIndex + 1})">Next</button>`;
+        html += `<button style="width: 130px; text-align: center; display: inline-block; margin-left: 10px; " onclick="showTutorial(${pageIndex + 1})">${LOC('common.next')}</button>`;
     }
     html += '</div>';
 
-    html += '<center><button style="width: 250px; text-align: center; margin-top: 16px; background-color: #ff9999; " onclick="showStartMenu()">Back</button></center>';
+    html += '<center><button style="width: 250px; text-align: center; margin-top: 16px; background-color: #ff9999; " onclick="showStartMenu()">' + LOC('common.back') + '</button></center>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
-// Switch the game language (locked to English)
-window.setLanguage = async function(lang) {
-    if (lang !== 'en' || currentLang === lang) return;
-    currentLang = 'en';
+
+// Built-in SVG flags so language buttons always render as small crisp flags even without external image files
+const BUILTIN_LANG_FLAGS = {
+    en: `<svg viewBox="0 0 60 40" width="24" height="16" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="7"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="3.5"/><path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="11"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6.5"/></svg>`,
+    id: `<svg viewBox="0 0 30 20" width="24" height="16" aria-hidden="true"><rect width="30" height="10" fill="#CE1126"/><rect y="10" width="30" height="10" fill="#FFFFFF"/></svg>`,
+    zh: `<svg viewBox="0 0 30 20" width="24" height="16" aria-hidden="true"><rect width="30" height="20" fill="#DE2910"/><polygon points="5,2.2 5.9,4.9 8.7,4.9 6.4,6.6 7.3,9.3 5,7.6 2.7,9.3 3.6,6.6 1.3,4.9 4.1,4.9" fill="#FFDE00"/><circle cx="10.5" cy="2.2" r="0.85" fill="#FFDE00"/><circle cx="12.2" cy="4.2" r="0.85" fill="#FFDE00"/><circle cx="12.2" cy="6.8" r="0.85" fill="#FFDE00"/><circle cx="10.5" cy="8.8" r="0.85" fill="#FFDE00"/></svg>`
+};
+
+// Renders the 4-button utility icon bar (Library, Achievements, Settings, Credits) using photo/icons/*.png
+window.renderUtilityIconsHTML = function(extraStyle = '') {
+    const libTitle = escapeAttr(LOC('title.library'));
+    const achTitle = escapeAttr(LOC('title.achievements'));
+    const setTitle = escapeAttr(LOC('title.settings'));
+    const crdTitle = escapeAttr(LOC('title.credits'));
+    return `<div class="utility-icon-row"${extraStyle ? ` style="${extraStyle}"` : ''}>
+        <button type="button" class="utility-icon-btn" onclick="showLibraryMenu()" title="${libTitle}" aria-label="${libTitle}">
+            <img src="photo/icons/book.png" alt="${libTitle}" draggable="false">
+        </button>
+        <button type="button" class="utility-icon-btn" onclick="showAchievementsMenu()" title="${achTitle}" aria-label="${achTitle}">
+            <img src="photo/icons/trophy.png" alt="${achTitle}" draggable="false">
+        </button>
+        <button type="button" class="utility-icon-btn" onclick="showSettingsMenu()" title="${setTitle}" aria-label="${setTitle}">
+            <img src="photo/icons/settings.png" alt="${setTitle}" draggable="false">
+        </button>
+        <button type="button" class="utility-icon-btn" onclick="showCredits()" title="${crdTitle}" aria-label="${crdTitle}">
+            <img src="photo/icons/info.png" alt="${crdTitle}" draggable="false">
+        </button>
+    </div>`;
+};
+
+// Renders the compact row of small flag buttons (used on the title screen and inside Settings)
+window.renderLanguageFlagsHTML = function(inSettings = false) {
+    let html = '<div class="lang-flag-row">';
+    LOC.languages().forEach(l => {
+        const nm = escapeAttr(l.name);
+        const isCur = (l.code === currentLang);
+        const visual = l.flag
+            ? `<img src="${escapeAttr(l.flag)}" alt="${nm}" draggable="false">`
+            : (BUILTIN_LANG_FLAGS[l.code] || `<span style="font-size:10px;padding:2px 4px;">${l.code.toUpperCase()}</span>`);
+        if (l.enabled) {
+            html += `<button type="button" class="lang-flag-btn ${isCur ? 'is-selected' : ''}" title="${nm}" aria-label="${nm}" onclick="setLanguage('${l.code}', ${Boolean(inSettings)})">${visual}</button>`;
+        } else {
+            const unavailTip = escapeAttr(LOC('language.unavailable_tooltip', { NAME: l.name }));
+            html += `<button type="button" class="lang-flag-btn" disabled title="${unavailTip}" aria-label="${nm}">${visual}</button>`;
+        }
+    });
+    html += '</div>';
+    return html;
+};
+
+// Switch the game language (works on the title screen and mid-game from Settings without resetting the campaign)
+window.setLanguage = async function(lang, stayInSettings = false) {
+    const info = LOC.languages().find(l => l.code === lang);
+    if (!info || !info.enabled || currentLang === lang) return;
+    currentLang = lang;
     saveUserSettings();
+    await LOC.load(lang);
     await loadLocalizedAssets();
+    lastRenderedPortraitSignature = "";
+    if (typeof window.syncMusicUI === 'function') window.syncMusicUI();
     updateUI();
-    showStartMenu();
+    if (stayInSettings && typeof showSettingsMenu === 'function') {
+        showSettingsMenu(true);
+    } else if (gameStarted) {
+        returnToPreviousView();
+    } else {
+        showStartMenu();
+    }
 };
 
 // Build the HTML for one update or announcement entry
-function renderUpdateEntry(u, isID) {
-    const versionLabel = isID ? 'Versi' : 'Version';
-    const meta = [u.version ? `${versionLabel} <b>${u.version}</b>` : '', u.date || ''].filter(Boolean).join(' &bull; ');
+function renderUpdateEntry(u) {
+    const meta = [u.version ? LOC('updates.version', { VERSION: u.version }) : '', u.date || ''].filter(Boolean).join(' &bull; ');
 
     let html = '<div class="update-entry">';
     if (meta) html += `<div class="update-notice-meta">${meta}</div>`;
@@ -1842,21 +1876,18 @@ function renderUpdateEntry(u, isID) {
 }
 
 // updates.json can be a list (newest first) or a single update object
-function renderUpdateNotice(isID) {
+function renderUpdateNotice() {
     const raw = Array.isArray(updatesData) ? updatesData : (updatesData ? [updatesData] : []);
     const list = raw.filter(u => u && Array.isArray(u.notes) && u.notes.length > 0);
     if (list.length === 0) return '';
 
-    const heading = isID ? 'Pembaruan Terbaru' : "What's New";
-    const olderLabel = isID ? 'Pembaruan sebelumnya' : 'Previous updates';
-
     let html = '<div class="update-notice">';
-    html += `<div class="update-notice-title">${heading}</div>`;
+    html += `<div class="update-notice-title">${LOC('updates.heading')}</div>`;
     html += '<div class="update-notice-body">';
-    html += renderUpdateEntry(list[0], isID);
+    html += renderUpdateEntry(list[0]);
     if (list.length > 1) {
-        html += `<details class="update-older"><summary>${olderLabel} (${list.length - 1})</summary>`;
-        html += list.slice(1).map(u => renderUpdateEntry(u, isID)).join('');
+        html += `<details class="update-older"><summary>${LOC('updates.previous', { COUNT: list.length - 1 })}</summary>`;
+        html += list.slice(1).map(u => renderUpdateEntry(u)).join('');
         html += '</details>';
     }
     html += '</div></div>';
@@ -1868,128 +1899,118 @@ window.showStartMenu = function() {
     clearTallyInterval();
     scrollMainPanelToTop();
     const savedRun = hasSavedCampaign();
-    const isID = (currentLang === 'id');
 
-    const btnStyle = 'width: 280px; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px;';
+    const btnStyle = 'width: 100%; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px;';
 
     const titleImg = (gameConfig && gameConfig.titleBannerImage) ? gameConfig.titleBannerImage : 'photo/title_banner.png';
     let html = `<div class="title-screen-banner">
         <div class="title-screen-banner-placeholder-text">
-            Why did it break nya.... :(<br>
-            <span style="font-size: 11px; font-weight: normal;">Kenapa gk bekerja ya?? :(((</span>
+            ${LOC('title.banner_fallback_1')}<br>
+            <span style="font-size: 11px; font-weight: normal;">${LOC('title.banner_fallback_2')}</span>
         </div>
         <img src="${titleImg}" alt="[Title Banner]" onerror="this.style.display='none'">
     </div>`;
     html += '<div class="start-menu-layout">';
 
-    // LEFT: update / announcement box
-    html += `<div class="start-menu-left">${renderUpdateNotice(isID)}</div>`;
+    html += `<div class="start-menu-left">${renderUpdateNotice()}</div>`;
 
-    // RIGHT: buttons (kept as a <center> so debug.js can still attach its button here)
-    html += '<center class="start-menu-right">';
+    html += '<div class="start-menu-right">';
 
     if (savedRun) {
         const savedTurn = savedRun.currentTurn || 1;
-        const savedDate = (events[savedTurn - 1] && events[savedTurn - 1].date) ? events[savedTurn - 1].date : `Turn ${savedTurn}`;
-        const savedPhase = savedRun.isActionPhase
-            ? (isID ? 'Fase Aksi Politik' : 'Action Phase')
-            : (isID ? 'Krisis Nasional' : 'Crisis Event');
-        const contLabel = isID ? 'Lanjutkan Permainan' : 'Continue Game';
-        const turnWord = isID ? 'Giliran' : 'Turn';
-        html += `<button style="width: 280px; text-align: center; margin-bottom: 10px; --py: 10px; --px: 10px; background-color: #d0e8d0; color: #004d00;" onclick="continueSavedCampaign()">${contLabel}<br><span style="font-size: 11px; font-weight: normal; color: #222;">(${turnWord} ${savedTurn} / ${events.length} &bull; ${savedDate} &bull; ${savedPhase})</span></button><br>`;
+        const savedDate = (events[savedTurn - 1] && events[savedTurn - 1].date)
+            ? events[savedTurn - 1].date
+            : LOC('title.saved_turn_fallback', { TURN: savedTurn });
+        const savedPhase = LOC(savedRun.isActionPhase ? 'title.phase_action' : 'title.phase_event');
+        const summary = LOC('title.continue_summary', { TURN: savedTurn, MAX: events.length, DATE: savedDate, PHASE: savedPhase });
+        html += `<button style="width: 100%; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px; background-color: #d0e8d0; color: #004d00;" onclick="continueSavedCampaign()">${LOC('title.continue')}<br><span style="font-size: 11px; font-weight: normal; color: #222;">${summary}</span></button>`;
     }
 
-    const playLabel = savedRun
-        ? (isID ? 'Permainan Baru' : 'New Game')
-        : (isID ? 'Main' : 'Play');
-    const tutLabel = isID ? 'Cara bermain' : 'How to play';
-    const histLabel = isID ? 'Bagaimana bisa sampai begini?' : 'How did it come to this?';
+    html += `<button style="${btnStyle}" onclick="showDifficultyMenu()">${LOC(savedRun ? 'title.new_game' : 'title.play')}</button>`;
+    html += `<button style="${btnStyle}" onclick="showTutorial(0)">${LOC('title.tutorial')}</button>`;
 
-    html += `<button style="${btnStyle}" onclick="showDifficultyMenu()">${playLabel}</button><br>`;
-    html += `<button style="${btnStyle}" onclick="showTutorial(0)">${tutLabel}</button><br>`;
-    html += `<button style="${btnStyle}" onclick="showHistory(0)">${histLabel}</button><br>`;
+    html += renderUtilityIconsHTML('margin-top: 4px; margin-bottom: 10px;');
 
-    // Menus that used to be reachable only from the in-game sidebar
-    html += `<button style="${btnStyle}" onclick="showLibraryMenu()">Library</button><br>`;
-    html += `<button style="${btnStyle}" onclick="showAchievementsMenu()">Achievements</button><br>`;
-    html += `<button style="${btnStyle}" onclick="showSettingsMenu()">Settings</button><br>`;
-    html += `<button style="${btnStyle}" onclick="showCredits()">Credits</button><br>`;
+    html += renderLanguageFlagsHTML(false);
 
-    const enActive = !isID;
-    const idActive = isID;
-    html += `<div style="width: 280px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px;">
-        <button class="is-selected" style="width: 100%; margin-bottom: 0; --py: 6px; --px: 4px; font-size: 11px; text-align: center;" onclick="setLanguage('en')">English</button>
-        <button disabled title="Bahasa Indonesia unnavailable." style="width: 100%; margin-bottom: 0; --py: 6px; --px: 4px; font-size: 11px; text-align: center; background-color: #ff9999; color: #660000; text-shadow: none; cursor: not-allowed; opacity: 0.85;">Bahasa Indonesia</button>
-    </div>`;
-    
-
-    html += '</center></div>';
-    html += '<div style="min-height: 80px;"></div>';
+    html += '</div></div>';
+    html += '<div style="min-height: 40px;"></div>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Render the difficulty selection menu
 window.showDifficultyMenu = function() {
     scrollMainPanelToTop();
-    let html = '<center><h2>SELECT DIFFICULTY</h2></center>';
-    html += '<div style="text-align:center; margin-bottom: 15px;">';
-    ['easy', 'medium', 'high', 'historical'].forEach(diff => {
+    let html = `<center><h2>${LOC('difficulty.title')}</h2></center>`;
+    html += '<div class="difficulty-row">';
+    if (selectedDifficulty === 'ucn' && !(window.UCN && UCN.unlocked())) selectedDifficulty = 'historical';
+    const diffList = ['easy', 'medium', 'high', 'historical'];
+    if (window.UCN) diffList.push('ucn');
+    diffList.forEach(diff => {
         const def = gameConfig.difficultySettings[diff];
-        const color = diff === 'historical' ? '#8B0000' : '#000000';
-        html += `<button class="${diff === selectedDifficulty ? 'is-selected' : ''}" style="width: 100px; color: ${color}; display:inline-block; margin: 0 5px;" onclick="selectDifficulty('${diff}')"><center>${def.name}</center></button>`;
+        if (!def) return;
+        const isUcn = diff === 'ucn';
+        if (isUcn && !UCN.unlocked()) {
+            html += `<button class="ucn-diff-btn is-locked" onclick="UCN.lockedHint()">${LOC('ucn.locked.label')}</button>`;
+            return;
+        }
+        const cls = [diff === selectedDifficulty ? 'is-selected' : '', isUcn ? 'ucn-diff-btn' : ''].filter(Boolean).join(' ');
+        const styleAttr = diff === 'historical' ? ' style="color: #8B0000;"' : '';
+        html += `<button class="${cls}"${styleAttr} onclick="selectDifficulty('${diff}')">${LOC.r(def.name)}</button>`;
     });
     html += '</div>';
 
     const selDef = gameConfig.difficultySettings[selectedDifficulty];
     if (selDef.image) {
-        html += `<center><img src="${selDef.image}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(selDef.name)} Difficulty"></center>`;
+        html += `<center><span class="glass-frame"><img src="${selDef.image}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(LOC('difficulty.image_alt', { NAME: LOC.r(selDef.name) }))}"></span></center>`;
     }
 
     html += '<div style="padding: 10px; background-color: #FFFFFF; border: none; margin-bottom: 15px; font-family: MS Sans Serif; font-size: 13px; line-height: 1.4; text-align: justify;">';
-    html += `${selDef.description}</div>`;
+    html += `${LOC.r(selDef.description)}</div>`;
+    if (selectedDifficulty === 'ucn' && window.UCN) html += UCN.renderPanel();
 
-    const toggleDisabled = selectedDifficulty === 'historical' ? 'disabled' : '';
-    const toggleChecked = (showOptionEffects && selectedDifficulty !== 'historical') ? 'checked' : '';
-    const toggleStyle = selectedDifficulty === 'historical' ? 'color: #888;' : 'color: #000;';
+    const forecastLocked = selectedDifficulty === 'historical' || (selectedDifficulty === 'ucn' && window.UCN && UCN.isForecastHidden());
+    const toggleDisabled = forecastLocked ? 'disabled' : '';
+    const toggleChecked = (showOptionEffects && !forecastLocked) ? 'checked' : '';
+    const toggleStyle = forecastLocked ? 'color: #888;' : 'color: #000;';
 
-    html += `<div style="text-align:center; margin-bottom: 25px; font-family: MS Sans Serif; font-size: 12px; ${toggleStyle}">`;
-    html += `<label style="cursor: pointer;"><input type="checkbox" id="effects-toggle" ${toggleChecked} ${toggleDisabled} onchange="toggleEffects()"> Enable Outcome Forecast Tooltips (Unavailable in Historical)</label>`;
-    html += `</div>`;
+    if (!(selectedDifficulty === 'ucn' && window.UCN)) {
+        html += `<div style="text-align:center; margin-bottom: 25px; font-family: MS Sans Serif; font-size: 12px; ${toggleStyle}">`;
+        html += `<label style="cursor: pointer;"><input type="checkbox" id="effects-toggle" ${toggleChecked} ${toggleDisabled} onchange="toggleEffects()"> ${LOC('difficulty.forecast_toggle')}</label>`;
+        html += `</div>`;
+    }
 
-    html += '<center><button style="width: 250px; font-size: 14px; --py: 10px; --px: 10px; text-align: center;" onclick="showSituation()">Continue</button></center>';
-    html += '<center><button style="width: 250px; margin-top: 10px; background-color: #ff9999; text-align: center;" onclick="showStartMenu()">Back</button></center>';
+    html += `<center><button style="width: 250px; font-size: 14px; --py: 10px; --px: 10px; text-align: center;" onclick="showSituation()">${LOC('common.continue')}</button></center>`;
+    html += `<center><button style="width: 250px; margin-top: 10px; background-color: #ff9999; text-align: center;" onclick="showStartMenu()">${LOC('common.back')}</button></center>`;
     document.getElementById('main-panel').innerHTML = html;
 };
 
-// Render the opening situation briefing
+// Render the opening situation briefing (paragraphs are situation.p1, situation.p2, ... in data/language/*/lore.json)
 window.showSituation = function() {
     scrollMainPanelToTop();
-    let html = '<center><h2>THE SITUATION</h2></center>';
+    let html = `<center><h2>${LOC('situation.title')}</h2></center>`;
     if (gameConfig && gameConfig.situationImage) {
-        html += `<center><img src="${gameConfig.situationImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="The Situation"></center>`;
+        html += `<center><span class="glass-frame"><img src="${gameConfig.situationImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(LOC('situation.image_alt'))}"></span></center>`;
     }
     html += '<div style="padding: 15px; margin-bottom: 20px; font-family: MS Sans Serif, sans-serif; font-size: 13px; line-height: 1.6; color: #333; text-align: justify;">';
-    html += '<b>Dear Mr. President,</b><br><br>';
-    html += 'The regime that ruled Indonesia for 32 years did not fall so much as it rotted through and gutted in the span of months by the <font color="#B22222"><b>Asian Financial Crisis</b></font> that hit in July 1997. On May 12, 1998, soldiers and police opened live rounds into a crowd of retreating Trisakti University students. <font color="#B22222"><b>Four were shot dead</b></font> in a university parking lot. They are <b>Elang Mulia Lesmana</b>, <b>Hery Hartanto</b>, <b>Hafidin Royan</b>, and <b>Hendriawan Sie</b>, none of them were armed, and all of them were shot dead within sight of their own campus gate.<br><br>';
-    html += 'For three days Jakarta, Medan, and Surakarta burned. Mobs formed spontaneously on the streets, whereas some others were trucked in and were a lot more unsettlingly organized. They torched more than 4,000 shops and homes, most of them belonging to <b>ethnic Chinese-Indonesians</b> publicly scapegoated for the crisis by both government officials deflecting the blame, and class resentment from the native population. People were trapped inside burning malls as the exits were blocked from outside; an upward of a thousand of the dead burned alive, many of them looters caught in fires they helped set. Chinese Indonesian women and girls were hunted down in their own homes and gang-raped in front of their families in numbers investigators place at close to 400 in Jakarta alone over those 3 days. Some mutilated afterward, <font color="#B22222"><b><u>not one perpetrator was ever convicted.</u></b></font> On May 18, students broke through the gates of the MPR/DPR complex and refused to leave until Suharto resigned. Three days later, at nine in the morning on May 21, 1998, he did. Within the hour, you, Bacharuddin Jusuf Habibie, a German-trained aeronautical engineer and Suharto\'s own handpicked protege, were sworn in as the third President of the Republic by the Chief Justice, inheriting a government most foreign observers gave little chance of surviving the year.<br><br>';
-    html += 'You inherited a currency in freefall and an economy being flayed alive in real time. The rupiah, worth roughly 2,400 to the US dollar before the crisis, had cratered to nearly 16,800 by mid-1998, a collapse of almost 85% that liquidated savings accounts overnight, bankrupted every import-dependent business in the archipelago, and forced Jakarta back to the <font color="#004C97"><b>IMF</b></font>, hat in hand, for a fourth bailout. Inflation tore past 60%. Cooking oil, rice, and medicine climbed out of reach for families who had spent a decade climbing into the middle class, and millions were shoved back into poverty inside a single year, the worst economic collapse Southeast Asia had seen in a generation, and you were the one left holding it.<br><br>';
-    html += 'In response, your nearly 13 months in office produced a pace of change the old regime would have crushed in its crib. You emptied prisons of political detainees held for years without ever facing a charge. You abolished the SIUPP licensing system that let a single minister shutter any newspaper on a whim, and let 48 parties register for a multi-party election the country had not held since 1955. You lifted the military\'s Darurat Operasi Militer (DOM) designation over Aceh and stood in Banda Aceh yourself to apologize, in person, for decades of army abuses whose mass graves were still being dug up as you spoke. And in January 1999, you agreed to let East Timor choose between autonomy and outright independence, a step so radical that no one in the New Order would have dared float it, let alone survive attempting it.<br><br>';
-    html += 'It is now June 1999. On the seventh of the month, more than 105 million voters turned out for the first free national election since 1955, and the count is not kind to you. <font color="#C0392B"><b>Megawati Sukarnoputri\'s PDI-P</b></font> has swept to a commanding plurality with roughly a third of the vote, and her red-shirted supporters are dancing in the streets, openly declaring the New Order dead and your presidency buried alongside it. The rupiah has clawed its way back to somewhere near 6,000 to 7,000 to the dollar, a shadow of its former strength, still one bad headline away from another slide into the abyss it just climbed out of.<br><br>';
-    html += 'None of the old wounds have closed, unfortunately, they have only scabbed over badly. In <font color="#FF0000"><b>Aceh</b></font>, GAM insurgents and army units are trading fire again despite your apology, and bodies are still turning up in rivers from operations everyone insists have stopped. In <font color="#FF0000"><b>East Timor</b></font>, pro-integration militias armed and shielded by local ABRI commanders are terrorizing the countryside ahead of the August 30 referendum you promised the world would be free and fair. And in the barracks, General Wiranto\'s officers watch you the way a creditor watches a debtor who has started asking too many questions. Uneasy that a president who never won a single vote for the office he holds might trade away the military\'s political privileges, its economic empire, or its immunity for 30 years of buried sins just to keep himself alive politically a few months longer.<br><br>';
-    html += 'You have perhaps four months. In 19 October, all 700 delegates of the People\'s Consultative Assembly (MPR) will convene in Senayan to hear and vote on your <i>Pidato Pertanggungjawaban</i>. The banyan tree that has shaded, and strangled, Indonesian politics for 32-years is dying with its roots still tangled through every institution in the country. What grows in its place, and whether you are still standing to see it, is not yet decided.';
+    html += `<b>${LOC('situation.salutation')}</b><br><br>`;
+    const paragraphs = [];
+    for (let i = 1; LOC.has('situation.p' + i); i++) paragraphs.push(LOC('situation.p' + i));
+    html += paragraphs.join('<br><br>');
     html += '</div>';
 
     html += '<center>';
-    html += '<button style="width: 300px; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px;" onclick="startGame()">My country is burning...</button><br>';
-    html += '<button style="width: 300px; text-align: center; background-color: #ff9999; --py: 10px; --px: 10px;" onclick="showDifficultyMenu()">Back</button>';
+    html += `<button style="width: 300px; text-align: center; margin-bottom: 8px; --py: 10px; --px: 10px;" onclick="startGame()">${LOC('situation.start')}</button><br>`;
+    html += `<button style="width: 300px; text-align: center; background-color: #ff9999; --py: 10px; --px: 10px;" onclick="showDifficultyMenu()">${LOC('common.back')}</button>`;
     html += '</center>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Select a difficulty and refresh the menu
 window.selectDifficulty = function(diff) {
+    if (diff === 'ucn' && !(window.UCN && UCN.unlocked())) { if (window.UCN) UCN.lockedHint(); return; }
     selectedDifficulty = diff;
-    if (diff === 'historical') showOptionEffects = false;
+    if (diff === 'historical' || (diff === 'ucn' && window.UCN && UCN.isForecastHidden())) showOptionEffects = false;
     saveUserSettings();
     showDifficultyMenu();
 };
@@ -2007,6 +2028,12 @@ window.toggleEffects = function() {
 window.startGame = function() {
     clearTallyInterval();
     startBackgroundMusic();
+    if (selectedDifficulty === 'ucn') {
+        if (window.UCN && UCN.unlocked()) UCN.startRun();
+        else selectedDifficulty = 'historical';
+    } else {
+        window.ucnActive = null;
+    }
     const def = gameConfig.difficultySettings[selectedDifficulty];
 
     clearCampaignSave();
@@ -2020,39 +2047,40 @@ window.startGame = function() {
     actionUsageCount = {};
     turnExecutiveUsed = false;
     turnFactionUsed = false;
+    turnFactionCount = 0;
     prevStatsSnapshot = null;
     lastRenderedPortraitSignature = "";
     minStats = { pop: 0, mil: 0, ref: 0, econ: 0, intl: 0, stab: 0 };
     maxCendana = 100;
     minFactions = {};
     window.tallySpeed = (window.extraSettings && window.extraSettings.defaultTallySpeed) || 1;
-    window.wirantoLocked = true;
-    window.wirantoStrain = 0;
     window.pcLog = [];
     window.lastElectionSummary = null;
     window.electionPanelSnapshot = null;
     window.resolvedEventTurn = 0;
     window.horseTradeCounts = {};
     window.lastHorseTradeTicker = "";
-    window.inFinalFloorPhase = false;
 
     factions = deepClone(initialFactionsSnapshot);
     portraitFactions = [...INITIAL_PORTRAIT_FACTIONS];
     events.forEach(ev => { delete ev.shuffledIndices; });
 
     stats.PC = clampPC(def.pc);
-    stats.pop = clampDashboard('pop', 30 + def.statMod);
-    stats.mil = clampDashboard('mil', 35 + def.statMod);
-    stats.ref = clampDashboard('ref', 40 + def.statMod);
-    stats.econ = clampDashboard('econ', 20 + def.statMod);
-    stats.intl = clampDashboard('intl', 30 + def.statMod);
-    stats.stab = clampDashboard('stab', 25 + def.statMod);
+    // Per-metric opening offsets exist only on the Ultimate Custom Night; every other difficulty uses one shared statMod.
+    const startMod = (k) => (def.startMods && typeof def.startMods[k] === 'number') ? def.startMods[k] : def.statMod;
+    stats.pop = clampDashboard('pop', 30 + startMod('pop'));
+    stats.mil = clampDashboard('mil', 35 + startMod('mil'));
+    stats.ref = clampDashboard('ref', 40 + startMod('ref'));
+    stats.econ = clampDashboard('econ', 20 + startMod('econ'));
+    stats.intl = clampDashboard('intl', 30 + startMod('intl'));
+    stats.stab = clampDashboard('stab', 25 + startMod('stab'));
     stats.cendana = clampDashboard('cendana', def.cendana);
 
     for (const key in factions) {
-        factions[key].affinity = clampFaction(key, factions[key].affinity + def.statMod);
+        factions[key].affinity = clampFaction(key, factions[key].affinity + (typeof def.affinityMod === 'number' ? def.affinityMod : def.statMod));
         factions[key].favor = 0;
-        if (key === 'abri') factions[key].affinity = 50;
+        if (key === 'abri') factions[key].affinity = clampFaction(key, 50 + ((def.startMods && def.startMods.mil) || 0));
+        factions[key].baseAffinity = factions[key].affinity;
     }
 
     if (factions['abri']) stats.mil = Math.round(factions['abri'].affinity);
@@ -2062,7 +2090,7 @@ window.startGame = function() {
     timorPromiseSteps = {};
     sp3UpheldWithHighCendana = false;
     helpedRaisSpeaker = false;
-    if (window.AdversaryEngine) AdversaryEngine.reset();
+    if (window.OppositionEngine) OppositionEngine.reset();
 
     gameStarted = true;
     syncSidebarVisibility();
@@ -2070,17 +2098,19 @@ window.startGame = function() {
     loadPhase();
 };
 
-// Show Habibie's biography
+// Show Habibie's biography (paragraphs are bio.habibie.p1, p2, ... in data/language/*/lore.json)
 window.showHabibieBio = function() {
     if (!enterMenuView()) return;
     scrollMainPanelToTop();
-    let html = '<h2>B.J. Habibie</h2>';
+    let html = `<h2>${LOC('bio.habibie.title')}</h2>`;
     if (gameConfig && gameConfig.habibieCoverImage) {
-        html += `<center><img src="${gameConfig.habibieCoverImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="B.J. Habibie"></center>`;
+        html += `<center><span class="glass-frame"><img src="${gameConfig.habibieCoverImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(LOC('bio.habibie.image_alt'))}"></span></center>`;
     }
-    html += '<div class="faction-summary"><p>Bacharuddin Jusuf Habibie was born on June 25, 1936, in Parepare, South Sulawesi, the fourth of eight children in a family of Gorontalese and Bugis descent. His father, an agricultural official, died of a heart attack in 1950 when Habibie was just 14, and his mother sold off family land to keep him in school. After a year studying mechanical engineering at Bandung Institute of Technology, he won a government scholarship in 1955 to study aviation in Europe. He had hoped to attend Delft in the Netherlands, but the ongoing dispute between Jakarta and The Hague over West New Guinea made that impossible, and he was redirected instead to RWTH Aachen in West Germany, where he would spend the next decade of his life.</p><p>Living on a strict budget through brutal German winters, Habibie earned his Diplom-Ingenieur in 1960 and his doctorate in 1965, graduating summa cum laude with a dissertation so highly rated it became something of a legend at the university. He joined the aircraft manufacturer Messerschmitt-Bolkow-Blohm, rising over the following years to vice president and head of its technology division. There he developed pioneering methods for calculating how cracks propagate through aircraft fuselages under structural stress, work still referenced in aviation engineering today and the origin of his lifelong nickname, Mr. Crack. In 1974, Suharto sent an emissary to Aachen to summon him home, and Habibie returned to lead Indonesia\'s fledgling aircraft industry, founding what would become PT Industri Pesawat Terbang Nusantara, IPTN, in 1976.</p><p>For the next two decades, from 1978 to 1998, he served as State Minister of Research and Technology, using that post and his chairmanship of the government\'s technology and strategic industries agencies to build an entire generation of Indonesian engineers and pour state funding into ambitious, sometimes extravagant projects, most famously the N-250 turboprop, which he watched fly for the first time on August 10, 1995, as living proof that Indonesia could compete with the developed world on its own terms. In 1990 he founded the Association of Indonesian Muslim Intellectuals, ICMI, with Suharto\'s blessing, and it quickly became both a genuine incubator for modernist Muslim technocrats and a political base that reached far beyond the world of engineering. Suharto named him Vice President on March 10, 1998, a choice international investors and reform activists alike treated with open skepticism. Barely ten weeks later, as the Asian Financial Crisis gutted the rupiah and students occupied the grounds of the DPR building demanding an end to three decades of authoritarian rule, Suharto resigned on May 21, 1998, and Habibie was sworn in as president that same afternoon, inheriting a government he had spent twenty years helping to build and now found himself tasked with dismantling from the inside, stabilizing an economy in freefall, and defending a mandate that neither the old guard nor the secular nationalist opposition ever fully accepted as legitimate.</p></div>';
+    let paragraphs = '';
+    for (let i = 1; LOC.has('bio.habibie.p' + i); i++) paragraphs += `<p>${LOC('bio.habibie.p' + i)}</p>`;
+    html += `<div class="faction-summary">${paragraphs}</div>`;
 
-    html += '<button style="background-color: #ff9999; text-align: center;" onclick="returnToPreviousView()">Back</button>';
+    html += `<button style="background-color: #ff9999; text-align: center;" onclick="returnToPreviousView()">${LOC('common.back')}</button>`;
     document.getElementById('main-panel').innerHTML = html;
 };
 
@@ -2090,10 +2120,10 @@ window.showFactionBio = function(factionKey) {
     const f = factions[factionKey];
     let html = '<h2> ' + f.name + '</h2>';
     if (f.coverImage) {
-        html += `<center><img src="${f.coverImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(f.name)} Biography"></center>`;
+        html += `<center><span class="glass-frame"><img src="${f.coverImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(LOC('faction.bio_alt', { NAME: f.name }))}"></span></center>`;
     }
     html += '<div class="faction-summary">' + f.biography + '</div>';
-    html += '<button style="background-color: #ff9999; text-align: center;" onclick="openFactionMenu(\'' + factionKey + '\')">Back</button>';
+    html += '<button style="background-color: #ff9999; text-align: center;" onclick="openFactionMenu(\'' + factionKey + '\')">' + LOC('common.back') + '</button>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
@@ -2110,6 +2140,22 @@ const FACTION_TEXT_COLORS = {
     'golkar_akbar':    '#7D6000',
     'abri':            '#3E5022'
 };
+
+// Once Poros Tengah has formed (the Central Axis merge) it is drawn in Islamic green instead of PAN blue.
+const POROS_TENGAH_MERGED_COLORS = { fill: '#0B7A3E', border: '#5FD08A', text: '#075E2E' };
+function isPorosTengahFormed(key) {
+    return key === 'poros_tengah' && typeof factions !== 'undefined' && Boolean(factions[key] && factions[key].hasMerged);
+}
+// Swatch colors of a faction (fill and border), with the merged Poros Tengah variant.
+function getFactionColors(key) {
+    const base = FACTION_HISTORICAL_COLORS[key];
+    if (!base) return undefined;
+    return isPorosTengahFormed(key) ? Object.assign({}, base, { fill: POROS_TENGAH_MERGED_COLORS.fill, border: POROS_TENGAH_MERGED_COLORS.border }) : base;
+}
+// Readable text color of a faction, with the merged Poros Tengah variant.
+function getFactionTextColor(key) {
+    return isPorosTengahFormed(key) ? POROS_TENGAH_MERGED_COLORS.text : FACTION_TEXT_COLORS[key];
+}
 
 // Decrees that change MPR composition, ban parties or rewrite rules are locked after the Accountability Speech
 const POST_SPEECH_LOCKED_DECREES = new Set([
@@ -2140,6 +2186,18 @@ function getSpeechTurnNumber() {
 // True from the Accountability Speech (Oct 14) onward — locks seat decrees & non-final faction actions
 function isPastAccountabilitySpeech() {
     return gameStarted && currentTurn >= getSpeechTurnNumber();
+}
+
+// True when no more faction engagements are allowed this turn. Before the Accountability Speech factions can be engaged
+// any number of times (each one adds a surcharge); from the speech onward (including the Final Appeals) it is one per turn.
+function isFactionLimitReached() {
+    return turnFactionUsed && (isPastAccountabilitySpeech() || isNightOfLongKnivesTurn());
+}
+
+// Flat PC surcharge on the next faction engagement: the step times the engagements already held this turn. Always 0 from the speech onward.
+function getFactionSurcharge() {
+    if (isPastAccountabilitySpeech() || turnFactionCount <= 0) return 0;
+    return Math.round(turnFactionCount * sysMod('factionEngageSurcharge', 5));
 }
 
 // True ONLY during the "Night of the Long Knives" (ev_eve_of_vote, Oct 18) turn
@@ -2186,7 +2244,7 @@ function isDecreeEventUnlocked(decree) {
 // Check a decree's faction-loyalty requirements, waiving factions that were banned or merged away
 function getDecreeFactionReqFailures(decree) {
     const fails = [];
-    if (window.AdversaryEngine) AdversaryEngine.getDecreeGateFailures(decree).forEach(r => fails.push(r));
+    if (window.OppositionEngine) OppositionEngine.getDecreeGateFailures(decree).forEach(r => fails.push(r));
     if (!decree || !Array.isArray(decree.reqFactions)) return fails;
     decree.reqFactions.forEach(req => {
         const f = factions[req.key];
@@ -2196,9 +2254,7 @@ function getDecreeFactionReqFailures(decree) {
         if (ok) return;
         const label = EFFECT_DISPLAY_NAMES[req.key] || req.key;
         const tier = getMoodData(req.key, req.val).text;
-        fails.push(op === '<='
-            ? `Requires ${label} to fall to '${tier}' or lower.`
-            : `Requires ${label} to reach at least '${tier}'.`);
+        fails.push(LOC(op === '<=' ? 'req.fall' : 'req.reach', { STAT: label, TIER: tier }));
     });
     return fails;
 }
@@ -2207,8 +2263,8 @@ function getDecreeFactionReqFailures(decree) {
 function renderColorCodedFactionTag(factionKey) {
     const f = factions[factionKey];
     if (!f) return '';
-    const col = FACTION_HISTORICAL_COLORS[factionKey] || { fill: '#808080' };
-    const textCol = FACTION_TEXT_COLORS[factionKey] || '#111111';
+    const col = getFactionColors(factionKey) || { fill: '#808080' };
+    const textCol = getFactionTextColor(factionKey) || '#111111';
     const cleanPartyName = (typeof stripLeaderParentheses === 'function')
         ? stripLeaderParentheses(f.name)
         : String(f.name).replace(/\s*\([^)]*\)/g, '').trim();
@@ -2224,15 +2280,15 @@ window.lobbyDelegatesWithPC = function(factionKey, pcToSpend = 1, returnView = '
     if (!gameStarted || !isActionPhase || !isNightOfLongKnivesTurn()) return;
     if (!factions[factionKey] || bannedFactions[factionKey] || factions[factionKey].seats <= 0) return;
 
-    // The second argument is now the number of overtures (1 or 5); the PC cost comes from getHorseTradeCost().
     const overtures = (Number(pcToSpend) >= HORSE_TRADE_BLOC_OVERTURES) ? HORSE_TRADE_BLOC_OVERTURES : 1;
-    const cost = getHorseTradeCost(overtures);
+    if (factionKey === 'pdip' && window.OppositionEngine && OppositionEngine.isPdipLocked()) return;
+    const cost = horseCostFor(factionKey, overtures);
     if (stats.PC < cost) {
-        showCustomAlert("Our Political Capital is exhausted. The floor whips have nothing left to trade tonight.", null);
+        showCustomAlert(LOC('horse.exhausted'), null);
         return;
     }
     if (factions[factionKey].affinity >= 100) {
-        showCustomAlert(`${factions[factionKey].name} is already completely committed to the Palace.`, null);
+        showCustomAlert(LOC('horse.maxed', { NAME: factions[factionKey].name }), null);
         return;
     }
 
@@ -2248,7 +2304,7 @@ window.lobbyDelegatesWithPC = function(factionKey, pcToSpend = 1, returnView = '
 
     for (let i = 0; i < overtures; i++) {
         const priorUses = window.horseTradeCounts[factionKey];
-        const fatigue = Math.max(0.45, 1 - (priorUses * 0.025));
+        const fatigue = Math.max(0.55, 1 - (priorUses * 0.015));
         const jitter = 0.9 + (Math.random() * 0.2);
         totalGain += HORSE_TRADE_BASE_GAIN * nationalMult * stanceMult * fatigue * jitter;
         window.horseTradeCounts[factionKey]++;
@@ -2257,6 +2313,11 @@ window.lobbyDelegatesWithPC = function(factionKey, pcToSpend = 1, returnView = '
     if (factionKey === 'abri') {
         applyMilitaryDelta(totalGain);
     } else {
+        totalGain *= (1 - currentMilitaryResistance());
+        if (factionKey === 'pdip' && window.OppositionEngine) {
+            totalGain *= OppositionEngine.getPdipGainMult();
+            OppositionEngine.onPdipDelta(totalGain);
+        }
         factions[factionKey].affinity = clampFaction(factionKey, factions[factionKey].affinity + totalGain);
     }
 
@@ -2273,11 +2334,8 @@ window.lobbyDelegatesWithPC = function(factionKey, pcToSpend = 1, returnView = '
 
 // Build the horse-trading desk HTML
 function renderHorseTradingDeskHTML(returnView = 'action') {
-    const tickerText = window.lastHorseTradeTicker
-        || "[HOTEL MULIA & SENAYAN FLOOR DESK] It is the final night before the ballot boxes open. Dispatch your floor whips from suite to suite to court wavering delegates (1 PC per overture).";
-
     let html = `<div class="horse-trade-box">
-        <div class="music-header">Night of the Long Knives</div>`;
+        <div class="music-header">${LOC('horse.title')}</div>`;
 
     for (let i = 0; i < portraitFactions.length; i++) {
         const key = portraitFactions[i];
@@ -2287,22 +2345,25 @@ function renderHorseTradingDeskHTML(returnView = 'action') {
         const tagHTML = renderColorCodedFactionTag(key);
         const recept = getHorseTradeReceptiveness(key, f.affinity);
         const maxed = f.affinity >= 100;
-        const canSpend1 = stats.PC >= HORSE_TRADE_SINGLE_COST && !maxed;
-        const canSpend5 = stats.PC >= HORSE_TRADE_BLOC_COST && !maxed;
+        const cost1 = horseCostFor(key, 1);
+        const cost5 = horseCostFor(key, HORSE_TRADE_BLOC_OVERTURES);
+        const streetLocked = key === 'pdip' && window.OppositionEngine && OppositionEngine.isPdipLocked();
+        const canSpend1 = stats.PC >= cost1 && !maxed && !streetLocked;
+        const canSpend5 = stats.PC >= cost5 && !maxed && !streetLocked;
 
         html += `<div class="horse-trade-row">
             <div class="horse-trade-info">
                 ${tagHTML}
                 <div style="font-size: 10.5px; color: #444; margin-top: 2px;">
-                    <b>${f.seats} Delegates</b> &bull; Stance: <font color="${recept.color}"><b>${recept.text}</b></font>
+                    ${LOC('horse.stance_line', { SEATS: f.seats, STANCE: `<font color="${recept.color}"><b>${recept.text}</b></font>` })}
                 </div>
             </div>
             <div class="horse-trade-actions">
                 <button type="button" class="horse-trade-btn" ${canSpend1 ? '' : 'disabled'} onclick="lobbyDelegatesWithPC('${key}', 1, '${returnView}')">
-                    A Quiet Word (${HORSE_TRADE_SINGLE_COST} PC)
+                    ${LOC('horse.btn_single', { COST: cost1 })}
                 </button>
                 <button type="button" class="horse-trade-btn" ${canSpend5 ? '' : 'disabled'} onclick="lobbyDelegatesWithPC('${key}', 5, '${returnView}')">
-                    Midnight Dinner (${HORSE_TRADE_BLOC_COST} PC)
+                    ${LOC('horse.btn_bloc', { COST: cost5 })}
                 </button>
             </div>
         </div>`;
@@ -2339,32 +2400,32 @@ function getPreVoteFactionStanceHTML() {
     const cendanaNote = window.OppositionEngine ? OppositionEngine.getCendanaWhipNoteHTML() : "";
 
     return `<div class="pre-vote-whip-box">
-        <div class="music-header">Senayan Floor Assessment</div>
+        <div class="music-header">${LOC('senayan.title')}</div>
         <div style="padding: 8px 10px; font-size: 12px; line-height: 1.55; background-color: #DFDFDF; box-shadow: var(--bevel-sunken);">
             <div style="margin-bottom: 6px; background-color: #FFFFFF; padding: 5px 8px; box-shadow: var(--bevel-status-well);">
-                As the Assembly prepares to vote, our floor managers assess that ${getVagueWhipProjection()}${window.whipTrendHTML || ''}.
+                ${LOC('senayan.summary', { PROJECTION: getVagueWhipProjection() + (window.whipTrendHTML || '') })}
             </div>
 
             <div class="whip-group-block">
-                <span class="whip-group-title" style="color: #006400;">&#9632; Caucuses Leaning Toward Accepting the Speech:</span>
-                ${backing.length > 0 ? backing.join(' ') : '<i style="color:#555;">No parliamentary caucuses are firmly in our column yet.</i>'}
+                <span class="whip-group-title" style="color: #006400;">&#9632; ${LOC('senayan.backing')}</span>
+                ${backing.length > 0 ? backing.join(' ') : `<i style="color:#555;">${LOC('senayan.backing_empty')}</i>`}
             </div>
 
             <div class="whip-group-block">
-                <span class="whip-group-title" style="color: #B8860B;">&#9632; Wavering &amp; Divided Caucuses in the Hotel Suites:</span>
-                ${hedging.length > 0 ? hedging.join(' ') : '<i style="color:#555;">No caucuses remain on the fence; lines have hardened across the hall.</i>'}
+                <span class="whip-group-title" style="color: #B8860B;">&#9632; ${LOC('senayan.wavering')}</span>
+                ${hedging.length > 0 ? hedging.join(' ') : `<i style="color:#555;">${LOC('senayan.wavering_empty')}</i>`}
             </div>
 
             <div class="whip-group-block" style="margin-bottom: 4px;">
-                <span class="whip-group-title" style="color: #8B0000;">&#9632; Caucuses Preparing to Reject the Speech:</span>
-                ${opposing.length > 0 ? opposing.join(' ') : '<i style="color:#555;">No caucuses are openly mobilizing against the speech.</i>'}
+                <span class="whip-group-title" style="color: #8B0000;">&#9632; ${LOC('senayan.opposing')}</span>
+                ${opposing.length > 0 ? opposing.join(' ') : `<i style="color:#555;">${LOC('senayan.opposing_empty')}</i>`}
             </div>
 
             <div style="border-top: 1px dotted #808080; margin-top: 6px; padding-top: 5px; font-size: 11.5px;">
-                <b>Backroom Commitments &amp; Past Goodwill:</b>
+                <b>${LOC('senayan.favors_title')}</b>
                 ${indebtedTags.length > 0
-                    ? `Floor managers report that past political accommodations are helping steady delegates within ${indebtedTags.join(' ')}.`
-                    : `<i style="color: #555;">No uncollected political obligations are currently anchoring the floor.</i>`}
+                    ? LOC('senayan.favors_some', { FACTIONS: indebtedTags.join(' ') })
+                    : `<i style="color: #555;">${LOC('senayan.favors_none')}</i>`}
             </div>
             ${cendanaNote}
         </div>
@@ -2379,14 +2440,12 @@ function renderEventMenu() {
     if (!ev) { returnToPreviousView(); return; }
     let html = '<h2>' + ev.title + '</h2>';
     if (ev.image) {
-        html += `<center><img src="${ev.image}" class="event-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(ev.title)}"></center>`;
+        html += `<center><span class="glass-frame"><img src="${ev.image}" class="event-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(ev.title)}"></span></center>`;
     }
 
-    // Strip any meta turn/mechanic references from event descriptions so the narrative stays purely in-universe
     const cleanDesc = String(ev.desc || '').replace(/<br><br><font color="#0000FF"><b>Your speech tonight grants[\s\S]*?<\/b><\/font>/i, '');
     html += '<p style="text-align: justify; font-family: MS Sans Serif, sans-serif; font-size: 13px; line-height: 1.5; color: #333;">' + cleanDesc + '</p><br>';
 
-    // Show the color-coded Bina Graha Whip Intelligence Report from the Accountability Speech onward
     if (currentTurn >= getSpeechTurnNumber()) {
         html += getPreVoteFactionStanceHTML();
     }
@@ -2423,16 +2482,16 @@ function loadPhase() {
     isActionPhase = false;
     turnExecutiveUsed = false;
     turnFactionUsed = false;
+    turnFactionCount = 0;
 
     for (const key in actionCooldowns) {
         if (actionCooldowns[key] > 0) actionCooldowns[key]--;
     }
-    
+
     for (const key in factionCooldowns) {
     if (factionCooldowns[key] > 0) factionCooldowns[key]--;
     }
 
-    // TRIGGER DYNAMIC FACTION CHANGE ON CENTRAL AXIS EVENT (WITH SEAT-WEIGHTED AFFINITY & BANNED GUARD)
     const ev = events[currentTurn - 1];
     if (ev && ev.id === 'ev_central_axis' && factions['poros_tengah'] && !bannedFactions['poros_tengah'] && !factions['poros_tengah'].hasMerged && factions['poros_tengah'].transformed) {
         factions['poros_tengah'].hasMerged = true;
@@ -2461,12 +2520,11 @@ function loadPhase() {
         factions['poros_tengah'].moods = t.moods;
         factions['poros_tengah'].interactions = t.interactions;
 
-        // Hotfix 1 Central Axis Nerf
         const pppFavors = (factions['ppp'] && !bannedFactions['ppp']) ? (factions['ppp'].favor || 0) : 0;
         const pkbFavors = (factions['pkb'] && !bannedFactions['pkb']) ? (factions['pkb'].favor || 0) : 0;
         const rawFavors = pppFavors + pkbFavors;
         const inheritedFavor = Math.min(2, Math.floor(rawFavors * 0.5));
-        factions['poros_tengah'].favor = Math.min(3, (factions['poros_tengah'].favor || 0) + inheritedFavor);
+        factions['poros_tengah'].favor = Math.min(diffNum('maxFavor', 3), (factions['poros_tengah'].favor || 0) + inheritedFavor);
 
         if (factions['ppp']) factions['ppp'].seats = 0;
         const pppIndex = portraitFactions.indexOf('ppp');
@@ -2493,12 +2551,10 @@ window.resolveEvent = function(optIndex) {
     if (!option) return;
     window.resolvedEventTurn = currentTurn;
 
-    // Hostile army: peaceful Timor / Aceh options backfire (see adversaries.js)
-    const advHook = window.AdversaryEngine ? AdversaryEngine.onEventChoice(ev, optIndex, option) : null;
+    const advHook = window.OppositionEngine ? OppositionEngine.onEventChoice(ev, optIndex, option) : null;
     const advSabotaged = Boolean(advHook && advHook.sabotaged);
     const advReaction = (option.reaction || '') + (advHook ? advHook.suffix : '');
 
-    // Track specific historical choices for achievements
     if (ev.id === 'ev_bank_bali' && optIndex === 0) bankBaliCleanSteps.frozeEGP = true;
     if (ev.id === 'ev_imf_ultimatum' && optIndex === 0) bankBaliCleanSteps.pwcAccess = true;
     if (ev.id === 'ev_imf_ultimatum' && optIndex === 4) bankBaliCleanSteps.defiedIMF = true;
@@ -2513,7 +2569,9 @@ window.resolveEvent = function(optIndex) {
         sp3UpheldWithHighCendana = true;
     }
 
-    applyEffects(advSabotaged ? advHook.effects : option.effects);
+    let evEffects = advSabotaged ? advHook.effects : option.effects;
+    if (evEffects) evEffects = scaleEffects(rollEffectRanges(evEffects), diffNum('eventPosMult', 1), diffNum('eventNegMult', 1));
+    applyEffects(evEffects);
     updateUI();
 
     if (currentTurn >= events.length) {
@@ -2526,10 +2584,41 @@ window.resolveEvent = function(optIndex) {
         saveCampaignState();
         showCustomAlert(advReaction, showActionMenu);
     }
-    if (window.AdversaryEngine) AdversaryEngine.flushPopups();
+    if (window.OppositionEngine) OppositionEngine.flushPopups();
 };
 
+// End-of-turn economy: computes the malus or bonus from government stability and difficulty, applies passive PC income and drifts stats and faction affinities.
+function rampDecreeFloors() {
+    if (!actionsData || !Array.isArray(actionsData.decrees)) return;
+    const statCap = sysMod('maxStatFloor', 90), facCap = sysMod('maxFactionFloor', 85);
+    const statRamp = sysMod('floorRampStat', 4), facRamp = sysMod('floorRampFaction', 5);
+    actionsData.decrees.forEach(d => {
+        if (!activeDecrees[d.id] || !d.locks) return;
+        if (d.locks.minStats) {
+            for (const stat in d.locks.minStats) {
+                if (stat === 'cendana' || stat === 'mil') continue;
+                const target = Math.min(statCap, d.locks.minStats[stat]);
+                if ((minStats[stat] || 0) < target) {
+                    minStats[stat] = Math.min(target, (minStats[stat] || 0) + statRamp);
+                    stats[stat] = clampDashboard(stat, stats[stat]);
+                }
+            }
+        }
+        if (d.locks.minFactions) {
+            for (const fac in d.locks.minFactions) {
+                if (!factions[fac] || bannedFactions[fac]) continue;
+                const target = Math.min(facCap, d.locks.minFactions[fac]);
+                if ((minFactions[fac] || 0) < target) {
+                    minFactions[fac] = Math.min(target, (minFactions[fac] || 0) + facRamp);
+                    factions[fac].affinity = clampFaction(fac, factions[fac].affinity);
+                }
+            }
+        }
+    });
+}
+
 function applyEndOfTurnEconomy() {
+    rampDecreeFloors();
     const mods = gameConfig.systemModifiers;
     const diffDef = gameConfig.difficultySettings[selectedDifficulty];
     const govStability = getGovStability();
@@ -2574,6 +2663,7 @@ function applyEndOfTurnEconomy() {
         }
     }
 
+    if (passivePC > 0) passivePC = stochRound(passivePC * pcGainFactor());
     if (passivePC !== 0) {
         const nextPC = clampPC(stats.PC + passivePC);
         logPCChange(nextPC - stats.PC, 'end-of-turn passive ledger');
@@ -2607,7 +2697,6 @@ function applyEndOfTurnEconomy() {
 
     for (const key in factions) {
         if (factions[key].seats <= 0 || bannedFactions[key]) continue;
-        if (key === 'abri' && window.wirantoLocked) continue;
 
         const noise = (Math.random() * 2.0) - 1.0;
         if (key === 'golkar_habibie' && netDrift < 0) {
@@ -2616,6 +2705,26 @@ function applyEndOfTurnEconomy() {
         } else {
             factions[key].affinity = clampFaction(key, factions[key].affinity + netDrift + noise);
         }
+    }
+
+    // Upkeep: support built far above a faction's starting stance slowly erodes unless it is maintained
+    const driftRate = diffNum('factionDrift', 0);
+    if (driftRate > 0) {
+        for (const key in factions) {
+            const f = factions[key];
+            if (f.seats <= 0 || bannedFactions[key] || key === 'golkar_habibie') continue;
+            if (typeof f.baseAffinity === 'number' && f.affinity > f.baseAffinity) {
+                f.affinity = clampFaction(key, f.affinity - Math.min(driftRate, f.affinity - f.baseAffinity));
+            }
+        }
+    }
+
+    // The old regime's networks quietly rebuild toward their starting strength
+    const regen = diffNum('cendanaRegen', 0);
+    if (regen > 0 && stats.cendana < (diffDef.cendana || 0) && stats.cendana < maxCendana) {
+        const whole = Math.floor(regen);
+        const bump = whole + (Math.random() < (regen - whole) ? 1 : 0);
+        if (bump > 0) stats.cendana = clampDashboard('cendana', stats.cendana + bump);
     }
 
     const gravityRate = 2;
@@ -2659,13 +2768,13 @@ function getStateGazetteHTML() {
 
     if (enactedList.length === 0) {
         return `<div class="state-gazette-box">
-            <div style="font-size: 11px; font-weight: bold; color: #000080; margin-bottom: 3px;">LEMBARAN NEGARA</div>
-            <div style="font-size: 11px; color: #555; font-style: italic;">No extraordinary decrees or omnibus bills have been signed into the State Gazette yet.</div>
+            <div style="font-size: 11px; font-weight: bold; color: #000080; margin-bottom: 3px;">${LOC('gazette.title')}</div>
+            <div style="font-size: 11px; color: #555; font-style: italic;">${LOC('gazette.empty')}</div>
         </div>`;
     }
 
     return `<div class="state-gazette-box">
-        <div style="font-size: 11px; font-weight: bold; color: #000080; margin-bottom: 4px;">LEMBARAN NEGARA</div>
+        <div style="font-size: 11px; font-weight: bold; color: #000080; margin-bottom: 4px;">${LOC('gazette.title')}</div>
         <div>${enactedList.join("")}</div>
     </div>`;
 }
@@ -2681,64 +2790,53 @@ window.showActionMenu = function(preserveScroll = false) {
     const isLongKnives = isNightOfLongKnivesTurn();
 
     let html = isLongKnives
-        ? '<h2>Night of the Long Knives</h2>'
-        : (pastSpeech ? '<h2>MPR General Session &mdash; Backroom Phase</h2>' : '<h2>Political Action Phase</h2>');
+        ? '<h2>' + LOC('horse.title') + '</h2>'
+        : ('<h2>' + LOC(pastSpeech ? 'action.title_session' : 'action.title_default') + '</h2>');
 
-    const execLine = !turnExecutiveUsed
-        ? `<font color="#006400"><b>We can enact an executive action or decree.</b></font>`
-        : `<font color="#8B0000"><b>We cannot enact another executive action or decree this turn.</b></font>`;
+    const goodLine = key => `<font color="#006400"><b>${LOC(key)}</b></font>`;
+    const badLine = key => `<font color="#8B0000"><b>${LOC(key)}</b></font>`;
 
-    let facLine = !turnFactionUsed
-        ? `<font color="#006400"><b>We can engage with a faction.</b></font>`
-        : `<font color="#8B0000"><b>We cannot engage with another faction this turn.</b></font>`;
+    const execLine = !turnExecutiveUsed ? goodLine('action.exec_available') : badLine('action.exec_used');
+
+    let facLine = turnFactionCount === 0
+        ? `<font color="#006400"><b>${LOC('action.faction_available', { STEP: sysMod('factionEngageSurcharge', 5) })}</b></font>`
+        : `<font color="#B8860B"><b>${LOC('action.faction_used', { COUNT: turnFactionCount, SURCHARGE: getFactionSurcharge() })}</b></font>`;
 
     if (isLongKnives) {
         facLine = !turnFactionUsed
-            ? `<font color="#006400"><b>Midnight floor horse-trading (1 PC) is active tonight, and we may deliver one Final Faction Appeal.</b></font>`
-            : `<font color="#000080"><b>Final Faction Appeal used; 1-PC midnight floor horse-trading remains open until you advance the turn.</b></font>`;
+            ? goodLine('action.longknives_available')
+            : `<font color="#000080"><b>${LOC('action.longknives_used')}</b></font>`;
     } else if (pastSpeech) {
-        facLine = !turnFactionUsed
-            ? `<font color="#006400"><b>We may deliver one Final Faction Appeal this turn.</b></font>`
-            : `<font color="#8B0000"><b>We have already delivered a Final Faction Appeal this turn.</b></font>`;
+        facLine = !turnFactionUsed ? goodLine('action.session_available') : badLine('action.session_used');
     }
 
+    const tipLine = (idPrefix, style) =>
+        `<span style="${style}">${LOC(idPrefix + '.line')}</span>`;
+
     const stabMod = getStabilityCostModifier();
-    let frictionTip = "The machinery of state is operating under normal conditions. Negotiating with factions and passing decrees requires the standard amount of Political Capital.";
-    let frictionLine = `<span style="color: #333333; cursor: help; border-bottom: 1px dotted #666666;" title="${frictionTip}" onclick="showMobileTooltipNote(this.title)">The machinery of state is operating normally.</span>`;
+    let frictionLine = tipLine('friction.normal', 'color: #333333;');
     if (stabMod > 0) {
-        frictionTip = "Unrest in the streets is making politicians nervous and hesitant to be seen with the Palace, driving up the Political Capital required to pass decrees or court factions.";
-        frictionLine = `<span style="color: #8B0000; font-weight: bold; cursor: help; border-bottom: 1px dotted #8B0000;" title="${frictionTip}" onclick="showMobileTooltipNote(this.title)">Unrest in the streets is making backroom negotiations costlier to secure.</span>`;
+        frictionLine = tipLine('friction.high', 'color: #8B0000; font-weight: bold;');
     } else if (stabMod < 0) {
-        frictionTip = "Calm across the country gives the Palace a stronger hand, reducing the Political Capital required to pass decrees or court factions.";
-        frictionLine = `<span style="color: #006400; font-weight: bold; cursor: help; border-bottom: 1px dotted #006400;" title="${frictionTip}" onclick="showMobileTooltipNote(this.title)">Calm across the country is smoothing the Palace's negotiations.</span>`;
+        frictionLine = tipLine('friction.low', 'color: #006400; font-weight: bold;');
     }
 
     const malusDrag = getCurrentPenaltyPreview();
-    let authorityTip = "Your cabinet is coherent, and routine executive directives are yielding their full share of Political Capital.";
-    let authorityLine = `<span style="color: #006400; cursor: help; border-bottom: 1px dotted #006400;" title="${authorityTip}" onclick="showMobileTooltipNote(this.title)">Cabinet authority across the ministries remains intact.</span>`;
+    let authorityLine = tipLine('authority.intact', 'color: #006400;');
     if (malusDrag >= 5) {
-        authorityTip = "Compounding national crises have paralyzed the bureaucracy, severely reducing the Political Capital gained from routine directives and drifting factions away.";
-        authorityLine = `<span style="color: #8B0000; font-weight: bold; cursor: help; border-bottom: 1px dotted #8B0000;" title="${authorityTip}" onclick="showMobileTooltipNote(this.title)">The administration is mired in deep institutional paralysis.</span>`;
+        authorityLine = tipLine('authority.paralysis', 'color: #8B0000; font-weight: bold;');
     } else if (malusDrag >= 3) {
-        authorityTip = "Mounting instability is eroding your authority, noticeably reducing the Political Capital gained from routine directives.";
-        authorityLine = `<span style="color: #FF4500; font-weight: bold; cursor: help; border-bottom: 1px dotted #FF4500;" title="${authorityTip}" onclick="showMobileTooltipNote(this.title)">Mounting crises are visibly eroding the Palace's authority.</span>`;
+        authorityLine = tipLine('authority.eroding', 'color: #FF4500; font-weight: bold;');
     } else if (malusDrag >= 1) {
-        authorityTip = "Lingering weaknesses in your administration are slightly blunting the Political Capital gained from routine directives.";
-        authorityLine = `<span style="color: #B8860B; cursor: help; border-bottom: 1px dotted #B8860B;" title="${authorityTip}" onclick="showMobileTooltipNote(this.title)">Whispers of doubt are beginning to slow the bureaucracy.</span>`;
+        authorityLine = tipLine('authority.doubt', 'color: #B8860B;');
     }
-
-    const abriLine = window.OppositionEngine ? OppositionEngine.getMilitaryStatusLineHTML() : '';
 
     html += `<div style="background-color: #E0DFE3; border: 2px inset #FFFFFF; padding: 10px 12px; margin-bottom: 14px; font-size: 12px; line-height: 1.65;">
         • ${execLine}<br>
         • ${facLine}<br>
         • ${frictionLine}<br>
         • ${authorityLine}<br>
-        • ${abriLine}
-        <div id="mobile-status-tooltip-box" class="mobile-tooltip-readout"></div>
     </div>`;
-
-   // if (window.AdversaryEngine) html += AdversaryEngine.renderNewsPanel();   // Recent News: opposition moves + background events
 
     const routineImg = (gameConfig && gameConfig.routineActionsImage) ? gameConfig.routineActionsImage : 'photo/routine.png';
     const decreesImg = (gameConfig && gameConfig.decreesImage) ? gameConfig.decreesImage : 'photo/decree.png';
@@ -2749,22 +2847,21 @@ window.showActionMenu = function(preserveScroll = false) {
     html += `<div class="action-image-cards-grid">
         <div class="action-image-card${disabledCls}" ${routineClick}>
             <div class="action-image-frame">
-                <span>[ PHOTO:<br>ROUTINE ACTIONS ]</span>
-                <img src="${routineImg}" class="portrait-img" alt="[Routine Executive Actions]">
+                <span>${LOC('dash.photo_placeholder', { NAME: LOC('action.routine_photo') })}</span>
+                <img src="${routineImg}" class="portrait-img" alt="[${LOC('action.routine_title')}]">
             </div>
-            <div class="action-image-title">Routine Executive Actions</div>
+            <div class="action-image-title">${LOC('action.routine_title')}</div>
         </div>
 
         <div class="action-image-card${disabledCls}" ${decreesClick}>
             <div class="action-image-frame">
-                <span>[ PHOTO:<br>EXTRAORDINARY DECREES ]</span>
-                <img src="${decreesImg}" class="portrait-img" alt="[Extraordinary Decrees]">
+                <span>${LOC('dash.photo_placeholder', { NAME: LOC('action.decrees_photo') })}</span>
+                <img src="${decreesImg}" class="portrait-img" alt="[${LOC('action.decrees_title')}]">
             </div>
-            <div class="action-image-title">Extraordinary Decrees</div>
+            <div class="action-image-title">${LOC('action.decrees_title')}</div>
         </div>
     </div>`;
 
-    // Show the 1-PC Horse-Trading Desk ONLY during the Night of the Long Knives turn
     if (isLongKnives) {
         html += renderHorseTradingDeskHTML('action');
     } else if (!pastSpeech) {
@@ -2774,7 +2871,7 @@ window.showActionMenu = function(preserveScroll = false) {
             if (f && f.seats > 0 && !bannedFactions[key] && f.interactions) {
                 for (let i = 0; i < f.interactions.length; i++) {
                     if (f.interactions[i].minTurn === currentTurn) {
-                        newFactions.push(f.name);
+                        newFactions.push(`<span style="color: ${getFactionTextColor(key) || '#000080'};">${f.name}</span>`);
                         break;
                     }
                 }
@@ -2782,24 +2879,17 @@ window.showActionMenu = function(preserveScroll = false) {
         }
 
         if (newFactions.length > 0) {
-            let factionListStr = "";
-            if (newFactions.length === 1) factionListStr = newFactions[0];
-            else if (newFactions.length === 2) factionListStr = newFactions.join(" and ");
-            else {
-                const lastFaction = newFactions.pop();
-                factionListStr = newFactions.join(", ") + ", and " + lastFaction;
-            }
-            html += `<p style="margin: 8px 0;"><font face="MS Sans Serif" size="2" color="#0000FF"><b class="flashing-text-blue">[!] New faction interactions for ${factionListStr} have become available this turn.</b></font></p>`;
+            const factionListStr = LOC.list(newFactions);
+            html += `<p style="margin: 8px 0;"><font face="MS Sans Serif" size="2" color="#0000FF"><b class="flashing-text-blue">${LOC('action.new_interactions', { NAME: factionListStr })}</b></font></p>`;
         }
     }
 
-    // Senayan floor assessment (returns '' unless it is the Night of the Long Knives); redrawn after every button press
     html += getPreVoteFactionStanceHTML();
     html += getStateGazetteHTML();
 
-    html += '<p style="margin-top: 10px; margin-bottom: 6px; text-align: center;"><font face="MS Sans Serif" size="2" color="#000080"><b>Select a delegate portrait below to initiate negotiations.</b></font></p>';
+    html += '<p style="margin-top: 10px; margin-bottom: 6px; text-align: center;"><font face="MS Sans Serif" size="2" color="#000080"><b>' + LOC('action.select_portrait') + '</b></font></p>';
 
-    html += `<center><button style="width: 300px; text-align: center; background-color: #d0e8d0; margin-top: 6px;" onclick="finishActionPhase()">NEXT TURN</button></center>`;
+    html += `<center><button style="width: 300px; text-align: center; background-color: #d0e8d0; margin-top: 6px;" onclick="finishActionPhase()">${LOC('action.next_turn')}</button></center>`;
 
     document.getElementById('main-panel').innerHTML = html;
 };
@@ -2807,57 +2897,64 @@ window.showActionMenu = function(preserveScroll = false) {
 // End the action phase and advance the turn
 window.finishActionPhase = function() {
     applyEndOfTurnEconomy();
-    if (window.AdversaryEngine) AdversaryEngine.onEndOfTurn();
+    if (window.OppositionEngine) OppositionEngine.onEndOfTurn();
     updateUI();
     nextTurn();
 };
 
 // Advance the turn automatically when no actions remain
 function checkAutoAdvanceTurn() {
-    // Do not auto-advance during the Night of the Long Knives if the player still has PC for horse-trading
     if (isNightOfLongKnivesTurn() && stats.PC > 0) {
         showActionMenu();
         return;
     }
     const autoAdvance = !window.extraSettings || window.extraSettings.autoAdvanceTurn;
-    if (turnExecutiveUsed && turnFactionUsed && autoAdvance) {
+    if (turnExecutiveUsed && isFactionLimitReached() && autoAdvance) {
         finishActionPhase();
     } else {
         showActionMenu();
     }
 }
 
+// Tab ids for the routine and decree menus (labels are category.<id> in the language files).
+// Older callers that pass the English label ('Economy', 'Civil Society', ...) still work.
+function normalizeActionTab(tab) {
+    const t = String(tab || '').toLowerCase().replace(/\s+/g, '_');
+    return t || 'economy';
+}
+
 // Render the routine actions menu
-window.showRoutineActions = function(activeTab = 'Economy') {
+window.showRoutineActions = function(activeTab = 'economy') {
+    activeTab = normalizeActionTab(activeTab);
     scrollMainPanelToTop();
     if (turnExecutiveUsed) {
         showActionMenu();
         return;
     }
 
-    let html = '<h2>Routine Executive Actions</h2>';
+    let html = '<h2>' + LOC('action.routine_title') + '</h2>';
 
     const categories = {
-        'Economy': [
+        economy: [
             'taipans', 'privatization', 'bureaucratic_squeeze', 'economy',
             'urban_relief_program', 'foreign_roadshow', 'diaspora_outreach',
             'jps_expansion', 'batam_technopark', 'seize_cendana_tolls',
             'dakab_supersemar_bailout'
         ],
-        'Civil Society': [
+        civil_society: [
             'clerics', 'student_dialogue', 'trisakti_semanggi_commemoration',
             'chinatown_reconciliation', 'sbkri_review', 'ciganjur_dialogue',
             'womens_commission', 'declassify_1965_files'
         ],
-        'Security': [
+        security: [
             'leak', 'military', 'kamra_deployment', 'kostrad_rotation',
             'maluku_peace_envoy', 'audit_kodam_foundations', 'mobilize_pam_swakarsa'
         ],
-        'Politics': [
+        politics: [
             'slushfund', 'campaign', 'address', 'icmi_caucus',
             'wednesday_cabinet', 'litsus_screening'
         ],
-        'Regional Affairs': [
+        regional_affairs: [
             'papua_dialogue', 'sultan_outreach', 'kalimantan_accord',
             'riau_kaltim_summit'
         ]
@@ -2865,12 +2962,12 @@ window.showRoutineActions = function(activeTab = 'Economy') {
 
     html += '<div style="margin-bottom: 15px; border-bottom: 2px solid #808080; padding-bottom: 5px; text-align: center;">';
     for (const cat in categories) {
-        html += `<button class="${activeTab === cat ? 'is-selected' : ''}" style="width: auto; display: inline-block; margin: 2px; --py: 5px; --px: 10px; text-align: center;" onclick="showRoutineActions('${cat}')">${cat}</button>`;
+        html += `<button class="${activeTab === cat ? 'is-selected' : ''}" style="width: auto; display: inline-block; margin: 2px; --py: 5px; --px: 10px; text-align: center;" onclick="showRoutineActions('${cat}')">${LOC('category.' + cat)}</button>`;
     }
     html += '</div>';
 
     let actionsInTabCount = 0;
-    const pcPenaltyPreview = getCurrentPenaltyPreview();
+    const pcPenaltyPreview = Math.floor(globalMalus * 0.75);
     const repeatDecay = gameConfig.systemModifiers.routineRepeatDecay || 0.15;
 
     if (actionsData && actionsData.routine) {
@@ -2881,15 +2978,16 @@ window.showRoutineActions = function(activeTab = 'Economy') {
                 const fatigueFactor = Math.max(0.4, 1 - (timesUsed * repeatDecay));
                 let estPC = 0;
                 if (action.dynamicPC) {
-                    estPC = Math.max(action.dynamicPC.min, Math.round((action.dynamicPC.base * fatigueFactor) - pcPenaltyPreview));
+                    const rawEst = Math.round((action.dynamicPC.base * fatigueFactor) - pcPenaltyPreview);
+                    estPC = Math.max(action.dynamicPC.min, rawEst > 0 ? Math.round(rawEst * pcGainFactor()) : rawEst);
                 }
 
-                let pcTierWord = "MODEST";
-                if (estPC >= 20) pcTierWord = "SUBSTANTIAL";
-                else if (estPC >= 12) pcTierWord = "MODERATE";
+                let pcTierWord = LOC('routine.pc_tier.modest');
+                if (estPC >= 20) pcTierWord = LOC('routine.pc_tier.substantial');
+                else if (estPC >= 12) pcTierWord = LOC('routine.pc_tier.moderate');
 
                 const pcBadge = action.dynamicPC
-                    ? ` <span style="color: #0000FF; font-weight: bold;"><font color="black">( grants</font> ${pcTierWord} PC${timesUsed > 0 ? ' &mdash; <font color="#FF5F15">Diminished by Repetition' : ''}</font><font color="black"> )</font></span>`
+                    ? ` <span style="color: #0000FF; font-weight: bold;">${LOC('routine.grants_pc', { TIER: pcTierWord, FATIGUE: timesUsed > 0 ? LOC('routine.diminished') : '' })}</span>`
                     : '';
 
                 let effectString = "";
@@ -2921,12 +3019,12 @@ window.showRoutineActions = function(activeTab = 'Economy') {
 
                 if (actionCooldowns[action.id] > 0) {
                     disabledState = "disabled";
-                    cooldownText = ` <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">[UNAVAILABLE FOR ${actionCooldowns[action.id]} TURN(S)]</span>`;
+                    cooldownText = ` <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">${LOC('routine.unavailable_for', { TURNS: actionCooldowns[action.id] })}</span>`;
                     btnStyle = "opacity: 0.5; cursor: not-allowed; filter: grayscale(100%);";
                 }
 
                 html += `<button ${disabledState} style="${btnStyle}" onclick="executeAction('${action.id}')">
-                    <b>${action.short_name || 'Action'}</b>${pcBadge}${cooldownText}<br><br>
+                    <b>${action.short_name || LOC('routine.default_name')}</b>${pcBadge}${cooldownText}<br><br>
                     <span style="font-weight:normal;">${action.description}</span>${effectString}
                 </button>`;
             }
@@ -2934,61 +3032,62 @@ window.showRoutineActions = function(activeTab = 'Economy') {
     }
 
     if (actionsInTabCount === 0) {
-        html += '<p><font face="MS Sans Serif" size="2"><i>No routine actions available in this category.</i></font></p>';
+        html += '<p><font face="MS Sans Serif" size="2"><i>' + LOC('routine.none') + '</i></font></p>';
     }
 
-    html += '<br><button style="background-color: #ff9999; text-align: center;" onclick="showActionMenu()">Back</button>';
+    html += '<br><button style="background-color: #ff9999; text-align: center;" onclick="showActionMenu()">' + LOC('common.back') + '</button>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Render the decrees menu
-window.showDecreesMenu = function(activeTab = 'Economy') {
+window.showDecreesMenu = function(activeTab = 'economy') {
+    activeTab = normalizeActionTab(activeTab);
     scrollMainPanelToTop();
     if (turnExecutiveUsed) {
         showActionMenu();
         return;
     }
 
-    let html = '<h2>Extraordinary Decrees &amp; Bills</h2>';
+    let html = '<h2>' + LOC('decrees.title') + '</h2>';
 
     if (isPastAccountabilitySpeech()) {
         html += `<div style="background-color: #FFF3CD; box-shadow: var(--bevel-sunken); padding: 8px 10px; align-items: justify; margin-bottom: 12px; font-size: 12px; color: #664D03;">
-            <b>Because the 700 delegates have already convened and heard the Accountability Speech, decrees that alter parliamentary seat counts, dissolve party caucuses, or rewrite constitutional election rules are now locked.
+            <b>${LOC('decrees.session_locked_notice')}</b>
         </div>`;
     }
 
     const categories = {
-        'Economy': [
+        economy: [
             'economic_bailout', 'currency_board', 'central_bank_independence',
             'ibra_extraordinary_powers', 'imf_fuel_subsidy', 'imf_bulog_deregulation',
             'imf_ibra_liquidation', 'anti_monopoly_law', 'peoples_economy_charter',
             'timor_national_car_seizure'
         ],
-        'Civil Society': [
+        civil_society: [
             'political_prisoner_release', 'human_rights_commission_powers',
             'chinese_cultural_ban_repeal', 'broadcast_liberalization',
             'reinstate_siupp_censorship', 'purge_utusan_golongan'
         ],
-        'Security': [
+        security: [
             'police_military_separation', 'civilian_defense_ministry',
             'ratify_kamra_militia_bill', 'abolish_kodam_territorial',
             'invoke_supersemar_ii'
         ],
-        'Politics': [
+        politics: [
             'anti_corruption', 'civil_service_neutrality',
             'direct_presidential_amendment', 'suharto_asset_seizure_tribunal',
             'abolish_abri_mpr_seats', 'dissolve_golkar_old_guard',
             'cendana_restoration_pact', 'ban_pdip_subversion',
             'enforce_asas_tunggal_ban', 'unify_golkar_slipi', 'rainbow_coalition_accord'
         ],
-        'Regional Affairs': [
+        regional_affairs: [
             'regional_autonomy', 'aceh_special_status_law', 'maluku_irja_division'
         ]
     };
 
     html += '<div style="margin-bottom: 15px; border-bottom: 2px solid #808080; padding-bottom: 5px; text-align: center;">';
     for (const cat in categories) {
-        html += `<button class="${activeTab === cat ? 'is-selected' : ''}" style="width: auto; display: inline-block; margin: 2px; --py: 5px; --px: 10px; text-align: center;" onclick="showDecreesMenu('${cat}')">${cat}</button>`;
+        html += `<button class="${activeTab === cat ? 'is-selected' : ''}" style="width: auto; display: inline-block; margin: 2px; --py: 5px; --px: 10px; text-align: center;" onclick="showDecreesMenu('${cat}')">${LOC('category.' + cat)}</button>`;
     }
     html += '</div>';
 
@@ -3023,7 +3122,7 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
                     let reqName = decree.reqDecree;
                     const found = actionsData.decrees.find(d => d.id === decree.reqDecree);
                     if (found) reqName = found.text;
-                    failReasons.push(`Requires we first enact '${reqName}'.`);
+                    failReasons.push(LOC('req.decree', { NAME: reqName }));
                 }
 
                 const statReqs = [];
@@ -3038,17 +3137,9 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
                     const tierLabel = getPlainStatTierName(sk, sv);
 
                     if (op === '>=' && stats[sk] < sv) {
-                        if (sk === 'cendana') {
-                            failReasons.push(`Requires ${statLabel} to be '${tierLabel}' or stronger.`);
-                        } else {
-                            failReasons.push(`Requires ${statLabel} to reach at least '${tierLabel}'.`);
-                        }
+                        failReasons.push(LOC(sk === 'cendana' ? 'req.cendana_strong' : 'req.reach', { STAT: statLabel, TIER: tierLabel }));
                     } else if (op === '<=' && stats[sk] > sv) {
-                        if (sk === 'cendana') {
-                            failReasons.push(`Requires ${statLabel} to be reduced to '${tierLabel}' or lower.`);
-                        } else {
-                            failReasons.push(`Requires ${statLabel} to fall to '${tierLabel}' or lower.`);
-                        }
+                        failReasons.push(LOC(sk === 'cendana' ? 'req.cendana_reduce' : 'req.fall', { STAT: statLabel, TIER: tierLabel }));
                     }
                 });
 
@@ -3062,12 +3153,12 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
                 }
 
                 if (isPassed || isMutexLocked || isSessionLocked) {
-                    const overlayText = isPassed ? "PASSED" : "LOCKED";
+                    const overlayText = LOC(isPassed ? 'overlay.passed' : 'overlay.locked');
                     const overlayBg = isPassed ? "rgba(0, 140, 0, 0.22)" : "rgba(220, 20, 60, 0.25)";
                     const textColor = isPassed ? "rgba(0, 80, 0, 0.9)" : "rgba(139, 0, 0, 0.9)";
-                    const flexLetters = overlayText.split('').map(char => `<span>${char}</span>`).join('');
+                    const flexLetters = Array.from(overlayText).map(char => `<span>${char}</span>`).join('');
                     const sessionNote = isSessionLocked
-                        ? `<div style="margin-top: 6px; color: #8B0000; font-size: 11px; font-weight: bold;">[MPR Session Underway: Delegate seats and party credentials are already ratified.]</div>`
+                        ? `<div style="margin-top: 6px; color: #8B0000; font-size: 11px; font-weight: bold;">${LOC('decrees.session_note')}</div>`
                         : '';
 
                     html += `<button disabled style="position: relative; cursor: not-allowed; text-align: left; overflow: hidden; margin-bottom: 8px; border-color: ${textColor};">
@@ -3077,7 +3168,7 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
                             </div>
                         </div>
                         <div style="opacity: 0.65; position: relative; z-index: 1;">
-                            <b>${decree.text}</b> (Cost: ${displayCost} PC)<br><br>
+                            <b>${decree.text}</b> ${LOC('common.cost', { COST: displayCost })}<br><br>
                             <span style="font-weight:normal;">${decree.description}</span>
                             ${sessionNote}
                         </div>
@@ -3086,7 +3177,7 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
                     allActiveInTab = false;
                     const reasonHtml = failReasons.map(r => `<li style="margin-bottom: 2px;">${r}</li>`).join('');
                     html += `<button disabled style="opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); text-align: left; margin-bottom: 8px;">
-                        <b>${decree.text}</b> (Cost: ${displayCost} PC) <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">[UNAVAILABLE]</span><br><br>
+                        <b>${decree.text}</b> ${LOC('common.cost', { COST: displayCost })} <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">${LOC('common.unavailable')}</span><br><br>
                         <span style="font-weight:normal;">${decree.description}</span>
                         <div style="margin-top: 8px; color: #8B0000; font-family: 'MS Sans Serif', sans-serif; font-size: 11px; font-weight: bold;">
                             <ul style="margin: 0; padding-left: 20px;">${reasonHtml}</ul>
@@ -3097,7 +3188,7 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
                     const canAfford = stats.PC >= displayCost;
                     const affordStyle = canAfford ? '' : 'opacity: 0.65;';
                     html += `<button style="${affordStyle}" onclick="executeDecree('${decree.id}')">
-                        <b>${decree.text}</b> (Cost: ${displayCost} PC)<br><br>
+                        <b>${decree.text}</b> ${LOC('common.cost', { COST: displayCost })}<br><br>
                         <span style="font-weight:normal;">${decree.description}</span>
                     </button>`;
                 }
@@ -3106,26 +3197,26 @@ window.showDecreesMenu = function(activeTab = 'Economy') {
     }
 
     if (decreesInTabCount === 0) {
-        html += '<p><font face="MS Sans Serif" size="2"><i>No decrees available in this category.</i></font></p>';
+        html += '<p><font face="MS Sans Serif" size="2"><i>' + LOC('decrees.none') + '</i></font></p>';
     } else if (allActiveInTab) {
-        html += '<p><font face="MS Sans Serif" size="2" color="#8B0000"><i>All available extraordinary measures in this category have been enacted or locked.</i></font></p>';
+        html += '<p><font face="MS Sans Serif" size="2" color="#8B0000"><i>' + LOC('decrees.all_done') + '</i></font></p>';
     }
 
-    html += '<br><button style="background-color: #ff9999; text-align: center;" onclick="showActionMenu()">Back</button>';
+    html += '<br><button style="background-color: #ff9999; text-align: center;" onclick="showActionMenu()">' + LOC('common.back') + '</button>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Render a faction's interaction menu
 window.openFactionMenu = function(factionKey, preserveScroll = false) {
     if (!gameStarted) {
-        showCustomAlert("Start the game first.", null);
+        showCustomAlert(LOC('faction.not_started'), null);
         return;
     }
     if (bannedFactions[factionKey] || (factions[factionKey] && factions[factionKey].seats <= 0)) {
         return;
     }
     if (!isActionPhase) {
-        showCustomAlert("Resolve the current crisis before interacting with the factions.", null);
+        showCustomAlert(LOC('faction.resolve_first'), null);
         return;
     }
 
@@ -3136,29 +3227,40 @@ window.openFactionMenu = function(factionKey, preserveScroll = false) {
     const leverage = getFactionLeverage(factionKey);
     const pastSpeech = isPastAccountabilitySpeech();
 
-    let favorDesc = "None banked";
-    if (favorCount === 1) favorDesc = "1 past political accommodation (Can be called in during a Final Appeal or held to steady delegates during the roll call)";
-    else if (favorCount > 1) favorDesc = `${favorCount} past political accommodations (Can be called in during a Final Appeal or held to steady delegates during the roll call)`;
+    let favorDesc = LOC('faction.favor_none');
+    if (favorCount === 1) favorDesc = LOC('faction.favor_one');
+    else if (favorCount > 1) favorDesc = LOC('faction.favor_many', { COUNT: favorCount });
 
-    let html = '<h2>Interact with ' + f.name + '</h2>';
+    let html = '<h2>' + LOC('faction.interact_title', { NAME: f.name }) + '</h2>';
     if (f.coverImage) {
-        html += `<center><img src="${f.coverImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(f.name)}"></center>`;
+        html += `<center><span class="glass-frame"><img src="${f.coverImage}" class="content-image" style="width: 400px; height: 200px; object-fit: cover; border: 3px inset #FFFFFF; background-color: #A9A9A9; margin-bottom: 15px;" alt="${escapeAttr(f.name)}"></span></center>`;
     }
 
-    html += '<p><font face="MS Sans Serif" size="2"><b>Delegates Controlled:</b> ' + f.seats + '<br>';
-    html += '<b>Current Faction Stance:</b> <font color="' + mood.color + '"><b>' + mood.text + '</b></font><br>';
+    html += '<p><font face="MS Sans Serif" size="2"><b>' + LOC('faction.label.delegates') + '</b> ' + f.seats + '<br>';
+    html += '<b>' + LOC('faction.label.stance') + '</b> <font color="' + mood.color + '"><b>' + mood.text + '</b></font><br>';
 
-    if (factionKey === 'pdip' && window.OppositionEngine) {
-        html += OppositionEngine.getPdipStreetStatusHTML(f.affinity);
+    html += '<b>' + LOC('faction.label.leverage') + '</b> <font color="' + leverage.color + '" title="' + escapeAttr(leverage.desc) + '"><b>' + leverage.text + '</b></font><br>';
+    html += '<b>' + LOC('faction.label.favor') + '</b> <font color="#0000FF">' + favorDesc + '</font></p>';
+
+    if (window.OppositionEngine) {
+        if (factionKey === 'abri') {
+            html += OppositionEngine.getMilitaryMeterHTML();
+            if (!OppositionEngine.getMilitaryMeter()) console.warn('The military meter needs js/oppositionAI/tni.js (add its script tag after opposition.js).');
+        } else {
+            if (factionKey === 'pdip') {
+                html += OppositionEngine.getPdipMeterHTML();
+                if (!OppositionEngine.getPdipMeter()) console.warn('The street mobilization meter needs js/oppositionAI/pdip.js (add its script tag after opposition.js).');
+            }
+            html += OppositionEngine.getMilitaryResistanceNoteHTML();
+        }
     }
-
-    html += '<b>Bargaining Leverage:</b> <font color="' + leverage.color + '"><b>' + leverage.text + '</b></font> <i>(' + leverage.desc + ')</i><br>';
-    html += '<b>Political Goodwill Owed:</b> <font color="#0000FF">' + favorDesc + '</font></p>';
 
     html += '<div class="faction-summary">' + f.summary + '</div>';
 
-    if (turnFactionUsed) {
-        html += '<p><font face="MS Sans Serif" size="2" color="#8B0000"><b>[!] You have already completed a formal Parliamentary Engagement this turn.</b></font></p>';
+    if (isFactionLimitReached()) {
+        html += '<p><font face="MS Sans Serif" size="2" color="#8B0000"><b>' + LOC('faction.already_engaged') + '</b></font></p>';
+    } else if (turnFactionCount > 0 && !pastSpeech) {
+        html += '<p><font face="MS Sans Serif" size="2" color="#B8860B"><b>' + LOC('faction.surcharge_note', { COUNT: turnFactionCount, SURCHARGE: getFactionSurcharge() }) + '</b></font></p>';
     }
 
     let availableInteractions = [];
@@ -3187,17 +3289,17 @@ window.openFactionMenu = function(factionKey, preserveScroll = false) {
             const meetsAffinity = interaction.minAffinity === undefined || f.affinity >= interaction.minAffinity;
             if (!meetsAffinity) {
                 const reqMood = getMoodData(factionKey, interaction.minAffinity);
-                failReasons.push(`Requires Faction Stance to be at least '${reqMood.text}'.`);
+                failReasons.push(LOC('req.stance', { TIER: reqMood.text }));
             }
 
             const meetsDecree = interaction.reqDecree === undefined || activeDecrees[interaction.reqDecree] === true;
             if (!meetsDecree) {
-                let reqDecreeName = "a specific decree";
+                let reqDecreeName = LOC('req.decree_unknown');
                 if (actionsData && actionsData.decrees) {
                     const foundDecree = actionsData.decrees.find(d => d.id === interaction.reqDecree);
                     if (foundDecree) reqDecreeName = foundDecree.text;
                 }
-                failReasons.push(`Requires we first enact '${reqDecreeName}'.`);
+                failReasons.push(LOC('req.decree', { NAME: reqDecreeName }));
             }
 
             let meetsStat = true;
@@ -3210,12 +3312,12 @@ window.openFactionMenu = function(factionKey, preserveScroll = false) {
                 if (statKey === 'cendana') {
                     if (stats[statKey] > statVal) {
                         meetsStat = false;
-                        failReasons.push(`Our ${displayStatName} is too entrenched (Must be reduced to '${reqTierName}' or lower).`);
+                        failReasons.push(LOC('req.stat_too_entrenched', { STAT: displayStatName, TIER: reqTierName }));
                     }
                 } else {
                     if (stats[statKey] < statVal) {
                         meetsStat = false;
-                        failReasons.push(`Our ${displayStatName} is too weak (Must reach at least '${reqTierName}').`);
+                        failReasons.push(LOC('req.stat_too_weak', { STAT: displayStatName, TIER: reqTierName }));
                     }
                 }
             }
@@ -3224,7 +3326,6 @@ window.openFactionMenu = function(factionKey, preserveScroll = false) {
             const isSided = !interaction.repeatable && completedInteractions[interaction.id];
             const isLocked = (interaction.mutexGroup && completedInteractions[interaction.mutexGroup] && !isSided) || isLockedByPostSpeech;
 
-            // Usage & cooldown tracking
             const actionKey = factionKey + ':' + interaction.id;
             const currentCooldown = (typeof factionCooldowns !== 'undefined' && factionCooldowns[actionKey]) ? factionCooldowns[actionKey] : 0;
             const timesUsed = (typeof factionUsageCount !== 'undefined' && factionUsageCount[actionKey]) ? factionUsageCount[actionKey] : 0;
@@ -3236,16 +3337,16 @@ window.openFactionMenu = function(factionKey, preserveScroll = false) {
             const isKiemasDulled = oppCheck.isKiemasDulled;
 
             if (isSided || isLocked || isThreatBurned) {
-                const overlayText = isThreatBurned ? "BURNED" : (isSided ? "COMMITTED" : "LOCKED");
+                const overlayText = LOC(isThreatBurned ? 'overlay.burned' : (isSided ? 'overlay.committed' : 'overlay.locked'));
                 const overlayBg = isSided ? "rgba(0, 160, 0, 0.25)" : "rgba(220, 20, 60, 0.25)";
                 const textColor = isSided ? "rgba(0, 80, 0, 0.9)" : "rgba(139, 0, 0, 0.9)";
-                const flexLetters = overlayText.split('').map(char => `<span>${char}</span>`).join('');
-                
+                const flexLetters = Array.from(overlayText).map(char => `<span>${char}</span>`).join('');
+
                 const burnedNote = isThreatBurned
-                    ? `<div style="margin-top: 6px; color: #8B0000; font-size: 11px; font-weight: bold;">[Akbar has called your bluff. This avenue of coercion is permanently closed.]</div>`
+                    ? `<div style="margin-top: 6px; color: #8B0000; font-size: 11px; font-weight: bold;">${LOC('faction.burned_note')}</div>`
                     : '';
                 const postSpeechNote = isLockedByPostSpeech
-                    ? `<div style="margin-top: 6px; color: #8B0000; font-size: 11px; font-weight: bold;">[Routine pre-session overtures are closed; only Last-Minute Appeals remain open.]</div>`
+                    ? `<div style="margin-top: 6px; color: #8B0000; font-size: 11px; font-weight: bold;">${LOC('faction.post_speech_note')}</div>`
                     : '';
 
                 html += `<button disabled style="position: relative; cursor: not-allowed; text-align: left; overflow: hidden; margin-bottom: 8px; border-color: ${textColor};">
@@ -3255,58 +3356,57 @@ window.openFactionMenu = function(factionKey, preserveScroll = false) {
                         </div>
                     </div>
                     <div style="opacity: 0.65; position: relative; z-index: 1;">
-                        <b>${interaction.text}</b> (Cost: ${displayCost} PC)<br><br>
-                        <span style="font-weight:normal;">${interaction.description}</span>
+                        <b>${interaction.text}</b> ${LOC('common.cost', { COST: displayCost })}<br><br>
+                        <span style="font-weight:normal; display:block; text-align:justify;">${interaction.description}</span>
                         ${burnedNote}
                         ${postSpeechNote}
                     </div>
                 </button>`;
             } else if (currentCooldown > 0) {
-                // Grayed-out cooldown button
                 html += `<button disabled style="opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); text-align: left; margin-bottom: 8px;">
-                    <b>${interaction.text}</b> (Cost: ${displayCost} PC) <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">[ON COOLDOWN: ${currentCooldown} TURN(S)]</span><br><br>
-                    <span style="font-weight:normal;">${interaction.description}</span>
+                    <b>${interaction.text}</b> ${LOC('common.cost', { COST: displayCost })} <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">${LOC('faction.cooldown', { TURNS: currentCooldown })}</span><br><br>
+                    <span style="font-weight:normal; display:block; text-align:justify;">${interaction.description}</span>
                 </button>`;
             } else if (!isConditionMet) {
                 const reasonHtml = failReasons.map(r => `<li style="margin-bottom: 2px;">${r}</li>`).join('');
                 html += `<button disabled style="opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); text-align: left; margin-bottom: 8px;">
-                    <b>${interaction.text}</b> (Cost: ${displayCost} PC) <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">[UNAVAILABLE]</span><br><br>
-                    <span style="font-weight:normal;">${interaction.description}</span>
+                    <b>${interaction.text}</b> ${LOC('common.cost', { COST: displayCost })} <span style="color: #8B0000; font-weight: bold; font-size: 10px; margin-left: 5px;">${LOC('common.unavailable')}</span><br><br>
+                    <span style="font-weight:normal; display:block; text-align:justify;">${interaction.description}</span>
                     <div style="margin-top: 8px; color: #8B0000; font-family: 'MS Sans Serif', sans-serif; font-size: 11px; font-weight: bold;">
                         <ul style="margin: 0; padding-left: 20px;">${reasonHtml}</ul>
                     </div>
                 </button>`;
             } else {
                 const isNew = (interaction.minTurn === currentTurn) || (pastSpeech && isFinalRequest);
-                const btnClass = (isNew && !turnFactionUsed) ? ' class="new-action-btn" onmouseenter="this.classList.remove(\'new-action-btn\')"' : '';
-                const disabledAttr = turnFactionUsed ? 'disabled style="opacity: 0.55; cursor: not-allowed;"' : '';
-                const dulledNotice = isKiemasDulled ? '<br><span style="color: #777; font-size: 11px;">Dinner pleasantries have run their course.</span>' : '';
+                const btnClass = (isNew && !isFactionLimitReached()) ? ' class="new-action-btn" onmouseenter="this.classList.remove(\'new-action-btn\')"' : '';
+                const disabledAttr = isFactionLimitReached() ? 'disabled style="opacity: 0.55; cursor: not-allowed;"' : '';
+                const dulledNotice = isKiemasDulled ? `<br><span style="color: #777; font-size: 11px;">${LOC('faction.dulled')}</span>` : '';
 
                 html += `<button${btnClass} ${disabledAttr} onclick="executeFactionAction('${factionKey}', '${interaction.id}', ${displayCost})">
-                    <b>${interaction.text}</b> (Cost: ${displayCost} PC)<br><br>
-                    <span style="font-weight:normal;">${interaction.description}</span>${dulledNotice}${effectString}
+                    <b>${interaction.text}</b> ${LOC('common.cost', { COST: displayCost })}<br><br>
+                    <span style="font-weight:normal; display:block; text-align:justify;">${interaction.description}</span>${dulledNotice}${effectString}
                 </button>`;
             }
         });
     } else {
-        html += '<p><font face="MS Sans Serif" size="2"><i>No formal negotiations are currently available with this faction at this time.</i></font></p>';
+        html += '<p><font face="MS Sans Serif" size="2"><i>' + LOC('faction.no_interactions') + '</i></font></p>';
     }
 
-    html += '<br><button onclick="showFactionBio(\'' + factionKey + '\')">Faction information</button>';
-    html += '<button style="background-color: #ff9999; text-align: center;" onclick="showActionMenu()">Back</button>';
+    html += '<br><button onclick="showFactionBio(\'' + factionKey + '\')">' + LOC('faction.btn_info') + '</button>';
+    html += '<button style="background-color: #ff9999; text-align: center;" onclick="showActionMenu()">' + LOC('common.back') + '</button>';
     document.getElementById('main-panel').innerHTML = html;
 };
 
 // Pay for and apply a faction interaction
 window.executeFactionAction = function(factionKey, interactionId, finalCost) {
-    if (turnFactionUsed) return;
+    if (isFactionLimitReached()) return;
     const isFinalAction = String(interactionId || '').includes('final');
     if (isPastAccountabilitySpeech() && !isFinalAction) {
-        showCustomAlert("The MPR General Session has already convened. Only Final Appeals may be used now.", null);
+        showCustomAlert(LOC('faction.session_closed'), null);
         return;
     }
     if (stats.PC < finalCost) {
-        showCustomAlert(`Insufficient Political Capital.`, null);
+        showCustomAlert(LOC('faction.insufficient_pc'), null);
         return;
     }
 
@@ -3314,12 +3414,15 @@ window.executeFactionAction = function(factionKey, interactionId, finalCost) {
     const interactionDef = f.interactions.find(i => i.id === interactionId);
     if (!interactionDef) return;
 
-    // Declare alertMsg right at the start so all checks can safely use it!
-    let alertMsg = interactionDef.alertMsg || "Negotiation completed.";
+    let alertMsg = interactionDef.alertMsg || LOC('faction.default_alert');
 
     stats.PC = clampPC(stats.PC - finalCost);
     logPCChange(-finalCost, 'faction:' + factionKey + ':' + interactionId);
     turnFactionUsed = true;
+    turnFactionCount++;
+    if (factionKey === 'abri' && window.OppositionEngine) OppositionEngine.onMilitaryInteraction();
+    if (factionKey === 'pdip' && window.OppositionEngine) OppositionEngine.onPdipInteraction();
+    const milResAtStart = (factionKey !== 'abri') ? currentMilitaryResistance() : 0;
 
     if (!interactionDef.repeatable) {
         completedInteractions[interactionId] = true;
@@ -3328,7 +3431,6 @@ window.executeFactionAction = function(factionKey, interactionId, finalCost) {
         completedInteractions[interactionDef.mutexGroup] = true;
     }
 
-    // Cooldown & usage tracking
     const actionKey = factionKey + ':' + interactionId;
     if (typeof factionUsageCount === 'undefined') window.factionUsageCount = {};
     if (typeof factionCooldowns === 'undefined') window.factionCooldowns = {};
@@ -3337,10 +3439,9 @@ window.executeFactionAction = function(factionKey, interactionId, finalCost) {
     const timesUsed = factionUsageCount[actionKey];
 
     if (interactionDef.repeatable) {
-        factionCooldowns[actionKey] = 3;
+        factionCooldowns[actionKey] = 3 + diffNum('cooldownBonus', 0);
     }
 
-    // Evaluate opposition pushback / coercion limits via OppositionEngine
     const oppEval = window.OppositionEngine
         ? OppositionEngine.evaluateFactionInteraction(factionKey, interactionId, timesUsed)
         : {
@@ -3365,10 +3466,14 @@ window.executeFactionAction = function(factionKey, interactionId, finalCost) {
             delete effectsToApply[factionKey];
         }
 
-        if (!isLineCrossed && effectsToApply[factionKey] && effectsToApply[factionKey] > 0) {
+        if (effectsToApply[factionKey] && effectsToApply[factionKey] > 0) {
             const originalVal = effectsToApply[factionKey];
-            const modifiedVal = Math.max(1, Math.round(originalVal * leverage.gainMult));
-            deltaFromLeverage = modifiedVal - originalVal;
+            const repeatMult = interactionDef.repeatable
+                ? Math.max(sysMod('factionRepeatFloor', 0.5), 1 - (timesUsed - 1) * sysMod('factionRepeatDecay', 0.2))
+                : 1;
+            const levMult = isLineCrossed ? 1.0 : leverage.gainMult;
+            const modifiedVal = Math.max(1, Math.round(originalVal * levMult * repeatMult * diffNum('gainMult', 1)));
+            if (!isLineCrossed) deltaFromLeverage = Math.round(originalVal * levMult) - originalVal;
             effectsToApply[factionKey] = modifiedVal;
         }
         applyEffects(effectsToApply);
@@ -3377,8 +3482,12 @@ window.executeFactionAction = function(factionKey, interactionId, finalCost) {
     let favorBonus = 0;
     if (isFinalAction && f.favor > 0) {
         favorBonus = Math.min(28, Math.round(Math.sqrt(f.favor) * 14));
+        if (factionKey === 'abri' && window.OppositionEngine) favorBonus = Math.round(favorBonus * OppositionEngine.getMilitaryGainMult());
+        else if (milResAtStart > 0) favorBonus = Math.round(favorBonus * (1 - milResAtStart));
+        if (factionKey === 'pdip' && window.OppositionEngine) favorBonus = Math.round(favorBonus * OppositionEngine.getPdipGainMult());
         f.favor = 0;
         f.affinity = clampFaction(factionKey, f.affinity + favorBonus);
+        if (factionKey === 'pdip' && window.OppositionEngine) OppositionEngine.onPdipDelta(favorBonus);
     }
 
     if (factions['abri']) {
@@ -3401,17 +3510,19 @@ window.executeFactionAction = function(factionKey, interactionId, finalCost) {
         return;
     }
 
-    // Deletes leverage note if line is crossed
     if (!isLineCrossed) {
         if (deltaFromLeverage > 0) {
-            alertMsg += `<br><br><font color="#006400"><b>Your strong bargaining leverage significantly amplified the impact of your overture!</b></font>`;
+            alertMsg += `<br><br><font color="#006400"><b>${LOC('faction.leverage_boost')}</b></font>`;
         } else if (deltaFromLeverage < 0) {
-            alertMsg += `<br><br><font color="#8B0000"><b>Your weak bargaining leverage blunted the effectiveness of your overture.</b></font>`;
+            alertMsg += `<br><br><font color="#8B0000"><b>${LOC('faction.leverage_blunt')}</b></font>`;
         }
     }
 
     if (favorBonus > 0) {
-        alertMsg += `<br><br><font color="#0000FF"><b>Past political commitments were redeemed during negotiations!</b></font>`;
+        alertMsg += `<br><br><font color="#0000FF"><b>${LOC('faction.favor_redeemed')}</b></font>`;
+    }
+    if (milResAtStart > 0) {
+        alertMsg += `<br><br><font color="#8B0000"><b>${LOC('military.blunted', { RES: Math.round(milResAtStart * 100) })}</b></font>`;
     }
 
     showCustomAlert(alertMsg, checkAutoAdvanceTurn);
@@ -3425,17 +3536,17 @@ window.executeDecree = function(type) {
     if (!decreeDef) return;
 
     if (isDecreeLockedBySession(decreeDef)) {
-        showCustomAlert("The MPR General Session is already underway and delegate credentials are ratified; this decree can no longer be enacted.", null);
+        showCustomAlert(LOC('decree.session_locked'), null);
         return;
     }
     if (!isDecreeEventUnlocked(decreeDef) || getDecreeFactionReqFailures(decreeDef).length > 0) {
-        showCustomAlert("The conditions for this decree have not been met.", null);
+        showCustomAlert(LOC('decree.conditions_unmet'), null);
         return;
     }
 
     const actionCost = computeDecreeCost(decreeDef.baseCost);
     if (stats.PC < actionCost) {
-        showCustomAlert(`Insufficient Political Capital to enact this decree.`, null);
+        showCustomAlert(LOC('decree.insufficient_pc'), null);
         return;
     }
 
@@ -3444,9 +3555,8 @@ window.executeDecree = function(type) {
     activeDecrees[type] = true;
     turnExecutiveUsed = true;
 
-    const advSeatSnap = window.AdversaryEngine ? AdversaryEngine.snapshotSeats() : null;
+    const advSeatSnap = window.OppositionEngine ? OppositionEngine.snapshotSeats() : null;
 
-    // 1. Handle Faction Bans & Dynamic Seat Redistribution
     if (Array.isArray(decreeDef.banFactions)) {
         let totalBannedSeats = 0;
         decreeDef.banFactions.forEach(fk => {
@@ -3458,7 +3568,10 @@ window.executeDecree = function(type) {
             }
         });
 
-        if (decreeDef.seatRecipients && totalBannedSeats > 0) {
+        const vacatedSeats = Math.max(0, Math.min(totalBannedSeats, Number(decreeDef.seatsVacated) || 0));
+        const transferableSeats = totalBannedSeats - vacatedSeats;
+
+        if (decreeDef.seatRecipients && transferableSeats > 0) {
             const recipientKeys = Object.keys(decreeDef.seatRecipients).filter(rk => factions[rk] && !bannedFactions[rk]);
             let weightTotal = 0;
             recipientKeys.forEach(rk => { weightTotal += decreeDef.seatRecipients[rk]; });
@@ -3466,9 +3579,9 @@ window.executeDecree = function(type) {
             let seatsDistributed = 0;
             recipientKeys.forEach((rk, idx) => {
                 if (idx === recipientKeys.length - 1) {
-                    factions[rk].seats += (totalBannedSeats - seatsDistributed);
+                    factions[rk].seats += (transferableSeats - seatsDistributed);
                 } else {
-                    const share = Math.round((decreeDef.seatRecipients[rk] / weightTotal) * totalBannedSeats);
+                    const share = Math.round((decreeDef.seatRecipients[rk] / weightTotal) * transferableSeats);
                     factions[rk].seats += share;
                     seatsDistributed += share;
                 }
@@ -3476,7 +3589,6 @@ window.executeDecree = function(type) {
         }
     }
 
-    // 2. Apply explicit fixed seatChanges if specified
     if (decreeDef.seatChanges) {
         for (const facKey in decreeDef.seatChanges) {
             if (factions[facKey] && !bannedFactions[facKey]) {
@@ -3485,9 +3597,8 @@ window.executeDecree = function(type) {
         }
     }
 
-    if (window.AdversaryEngine) AdversaryEngine.recordSeatTransfer(advSeatSnap, type);
+    if (window.OppositionEngine) OppositionEngine.recordSeatTransfer(advSeatSnap, type);
 
-    // 3. Apply Locks, Floors, Caps & Penalties
     const locks = decreeDef.locks;
     if (locks) {
         prevStatsSnapshot = { ...stats };
@@ -3499,7 +3610,10 @@ window.executeDecree = function(type) {
         }
         if (locks.minStats) {
             for (const stat in locks.minStats) {
-                minStats[stat] = Math.max(minStats[stat] || 0, locks.minStats[stat]);
+                // Soft floor: the guard starts close to the current value and ramps up each turn (see rampDecreeFloors)
+                const target = Math.min(sysMod('maxStatFloor', 90), locks.minStats[stat]);
+                const startFloor = Math.min(target, (stats[stat] || 0) + sysMod('floorEnactGrant', 5));
+                minStats[stat] = Math.max(minStats[stat] || 0, startFloor);
                 stats[stat] = clampDashboard(stat, Math.max(stats[stat], minStats[stat]));
             }
         }
@@ -3509,7 +3623,9 @@ window.executeDecree = function(type) {
         }
         if (locks.minFactions) {
             for (const fac in locks.minFactions) {
-                minFactions[fac] = Math.max(minFactions[fac] || 0, locks.minFactions[fac]);
+                const target = Math.min(sysMod('maxFactionFloor', 85), locks.minFactions[fac]);
+                const curAff = factions[fac] ? factions[fac].affinity : 0;
+                minFactions[fac] = Math.max(minFactions[fac] || 0, Math.min(target, curAff + sysMod('factionFloorEnactGrant', 8)));
                 if (factions[fac]) {
                     factions[fac].affinity = clampFaction(fac, Math.max(factions[fac].affinity, minFactions[fac]));
                 }
@@ -3521,13 +3637,13 @@ window.executeDecree = function(type) {
         stats.mil = Math.round(factions['abri'].affinity);
     }
 
-    if (window.AdversaryEngine) AdversaryEngine.onDecreeEnacted(type, decreeDef);
+    if (window.OppositionEngine) OppositionEngine.onDecreeEnacted(type, decreeDef);
 
     lastRenderedPortraitSignature = "";
     saveCampaignState();
     updateUI();
-    showCustomAlert(decreeDef.alertMsg || "Decree enacted.", checkAutoAdvanceTurn);
-    if (window.AdversaryEngine) AdversaryEngine.flushPopups();
+    showCustomAlert(decreeDef.alertMsg || LOC('decree.default_alert'), checkAutoAdvanceTurn);
+    if (window.OppositionEngine) OppositionEngine.flushPopups();
 };
 
 // Pay for and apply a routine action
@@ -3538,15 +3654,23 @@ window.executeAction = function(type) {
 
     turnExecutiveUsed = true;
     prevStatsSnapshot = { ...stats };
-    const pcPenalty = getCurrentPenaltyPreview();
+    const pcPenalty = Math.floor(globalMalus * 0.75);
     const timesUsed = actionUsageCount[type] || 0;
     const repeatDecay = gameConfig.systemModifiers.routineRepeatDecay || 0.15;
     const fatigueFactor = Math.max(0.4, 1 - (timesUsed * repeatDecay));
     actionUsageCount[type] = timesUsed + 1;
 
+    // Security routine outreach to the Armed Forces also steadies the generals' patience for the turn
+    if ((type === 'military' || type === 'kostrad_rotation') && window.OppositionEngine) {
+        OppositionEngine.onMilitaryInteraction();
+    }
+
     let alertMsg = actionDef.alertMsg || "";
 
-    if (actionDef.effects) applyEffects(actionDef.effects, false);
+    const effFatigue = Math.max(sysMod('routineEffectFloor', 0.55), 1 - timesUsed * sysMod('routineEffectDecay', 0.08));
+    const fatigued = (e) => (effFatigue < 1) ? scaleEffects(rollEffectRanges(e), effFatigue, 1) : e;
+
+    if (actionDef.effects) applyEffects(fatigued(actionDef.effects), false);
 
     if (actionDef.conditionalEffects) {
         for (const cond of actionDef.conditionalEffects) {
@@ -3556,7 +3680,7 @@ window.executeAction = function(type) {
             else if (cond.condition.operator === '<') isMatch = (statVal < cond.condition.value);
 
             if (isMatch) {
-                if (cond.effects) applyEffects(cond.effects, false);
+                if (cond.effects) applyEffects(fatigued(cond.effects), false);
                 if (cond.alertMsg) alertMsg = cond.alertMsg;
                 break;
             }
@@ -3579,7 +3703,9 @@ window.executeAction = function(type) {
     }
 
     if (actionDef.dynamicPC) {
-        const pcGained = Math.max(actionDef.dynamicPC.min, Math.round((actionDef.dynamicPC.base * fatigueFactor) - pcPenalty));
+        let rawPC = Math.round((actionDef.dynamicPC.base * fatigueFactor) - pcPenalty);
+        if (rawPC > 0) rawPC = stochRound(rawPC * pcGainFactor());
+        const pcGained = Math.max(actionDef.dynamicPC.min, rawPC);
         const nextPC = clampPC(stats.PC + pcGained);
         logPCChange(nextPC - stats.PC, 'routine:' + type);
         stats.PC = nextPC;
@@ -3588,15 +3714,13 @@ window.executeAction = function(type) {
         }
     }
 
-    actionCooldowns[type] = actionDef.cooldown || 2;
+    actionCooldowns[type] = (actionDef.cooldown || 2) + diffNum('cooldownBonus', 0);
 
-    if (window.AdversaryEngine) AdversaryEngine.onActionExecuted(type);
     saveCampaignState();
     updateUI();
     showCustomAlert(alertMsg, checkAutoAdvanceTurn);
-    if (window.AdversaryEngine) AdversaryEngine.flushPopups();
+    if (window.OppositionEngine) OppositionEngine.flushPopups();
 };
-
 
 // Advance to the next turn
 function nextTurn() {

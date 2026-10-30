@@ -1,0 +1,186 @@
+{
+  "systemModifiers": {
+    "lowStatThreshold": 40,
+    "highStatThreshold": 60,
+    "malusMultiplier": 0.45,
+    "malusDecayNormal": 0.5,
+    "malusDecayHigh": 1.5,
+    "maxGlobalMalus": 10.0,
+    "bonusMultiplier": 0.3,
+    "maxBonusDrift": 2.0,
+    "baseLobbyCost": 20,
+    "loyalistDrainMitigation": 0.35,
+    "routineRepeatDecay": 0.15,
+    "routineEffectDecay": 0.06,
+    "routineEffectFloor": 0.6,
+    "factionRepeatDecay": 0.2,
+    "factionRepeatFloor": 0.5,
+    "maxStatFloor": 90,
+    "maxFactionFloor": 85,
+    "floorEnactGrant": 5,
+    "factionFloorEnactGrant": 8,
+    "floorRampStat": 4,
+    "floorRampFaction": 5
+  },
+  "situationImage": "photo/images/situation.png",
+  "habibieCoverImage": "photo/faction/habibibe.png",
+  "victoryImage": "photo/images/win.png",
+  "defeatImage": "photo/images/defeat.png",
+  "difficultySettings": {
+    "easy": {
+      "image": "photo/difficulty/easy.png",
+      "name": "Mudah",
+      "pc": 75,
+      "statMod": 15,
+      "cendana": 40,
+      "malusCap": 0.0,
+      "passivePCMod": 2,
+      "actionCostMod": -3,
+      "costPct": -10,
+      "decreeCostPct": -10,
+      "eventNegMult": 0.75,
+      "eventPosMult": 1.1,
+      "gainMult": 1.15,
+      "maxFavor": 4,
+      "factionDrift": 0,
+      "cendanaRegen": 0,
+      "cooldownBonus": 0,
+      "opposition": {
+        "scale": 0.25,
+        "defectionMult": 0.6,
+        "drama": {
+          "moodSwing": 6,
+          "wildcardChance": 0.25,
+          "wildcardMin": 12,
+          "wildcardMax": 25,
+          "crossoverRate": 0.12
+        }
+      },
+      "description": "Versi tahun itu ketika segalanya tidak persis berjalan seperti yang dikenang semua orang. Istana memulai dari posisi yang sedikit lebih kokoh daripada yang mau diakui sejarah, cengkeraman rezim lama pada negara sedikit lebih longgar dari biasanya, dan <font color=\"#0000FF\"><b>akibat dari sebuah langkah keliru datang lebih lambat dan lebih ringan.</b></font> Ini tetap 1999. Hanya saja, untuk sekali ini, tahun yang sedikit lebih ramah. <p></p>• <font color=\"#0000FF\"><b>Modal Politik</b></font> awal yang jauh lebih tinggi dan angin buritan pasif yang stabil. <p></p>• Statistik nasional awal dan sikap fraksi meningkat banyak. <p></p>• <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> awal adalah $tier.cendana.contained$, dan tidak pernah merangkak kembali. <p></p>• Tidak ada <font color=\"#B22222\"><b>penalti</b></font> pasif pada loyalitas fraksi. <p></p>• Aksi dan dekrit jauh lebih murah, dan pendekatan ke fraksi membayar lebih baik. Hingga empat utang budi dapat disimpan. <p></p>• Kabar buruk dari peristiwa mendarat lebih lembut, kabar baik sedikit lebih kuat, dan dukungan yang Anda bangun tidak memudar. <p></p>• Tentara dan rezim lama menggerutu, tetapi jarang berbuat lebih dari itu, dan sedikit delegasi yang membelot dalam pemungutan suara rahasia."
+    },
+    "medium": {
+      "image": "photo/difficulty/medium.png",
+      "name": "Sedang",
+      "pc": 50,
+      "statMod": 5,
+      "cendana": 60,
+      "malusCap": 0.35,
+      "passivePCMod": 1,
+      "actionCostMod": 0,
+      "costPct": 0,
+      "decreeCostPct": 0,
+      "eventNegMult": 1.0,
+      "eventPosMult": 1.08,
+      "gainMult": 1.15,
+      "maxFavor": 3,
+      "factionDrift": 0.1,
+      "cendanaRegen": 0,
+      "cooldownBonus": 0,
+      "opposition": {
+        "scale": 0.6,
+        "defectionMult": 1.0,
+        "drama": {
+          "moodSwing": 8,
+          "wildcardChance": 0.35,
+          "wildcardMin": 15,
+          "wildcardMax": 35,
+          "crossoverRate": 0.2
+        }
+      },
+      "description": "Sesuatu yang lebih dekat ke jalan tengah antara apa yang benar-benar terjadi dan apa yang mungkin terjadi dalam keadaan yang sedikit lebih baik. <font color=\"#0000FF\"><b>Anda mewarisi posisi yang tidak murah hati dan tidak pula terlalu kejam.</b></font> Pemerintahan ini masih terjerat urusan rezim lama sampai tingkat yang pada akhirnya akan terasa. <p></p>• <font color=\"#0000FF\"><b>Modal Politik</b></font> awal yang sedang dan angin buritan pasif yang ringan. <p></p>• Statistik nasional awal meningkat sedikit. <p></p>• <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> awal adalah $tier.cendana.subversive$. <p></p>• <font color=\"#B22222\"><b>penalti</b></font> pasif ringan dan bisa dikelola. <p></p>• Biaya aksi standar dan pendekatan fraksi standar. Hingga tiga utang budi dapat disimpan. <p></p>• Dukungan yang dibangun jauh di atas sikap awal fraksi memudar sangat lambat jika diabaikan. <p></p>• <font color=\"#B22222\"><b>Militer yang terasing</b></font> akan melawan sesekali."
+    },
+    "high": {
+      "image": "photo/difficulty/high.png",
+      "name": "Tinggi",
+      "pc": 35,
+      "statMod": 0,
+      "cendana": 75,
+      "malusCap": 0.75,
+      "passivePCMod": 0,
+      "actionCostMod": 0,
+      "costPct": 5,
+      "decreeCostPct": 3,
+      "eventNegMult": 1.05,
+      "eventPosMult": 1.0,
+      "gainMult": 1.0,
+      "maxFavor": 3,
+      "factionDrift": 0.15,
+      "cendanaRegen": 0.25,
+      "cooldownBonus": 0,
+      "opposition": {
+        "scale": 0.85,
+        "defectionMult": 1.15,
+        "drama": {
+          "moodSwing": 10,
+          "wildcardChance": 0.45,
+          "wildcardMin": 18,
+          "wildcardMax": 45,
+          "crossoverRate": 0.28
+        }
+      },
+      "description": "<font color=\"#0000FF\"><b>Anda mewarisi posisi yang berutang sangat sedikit pada keberuntungan dan lebih sedikit lagi pada kemurahan hati.</b></font> Dengan sidik jari rezim lama yang masih sangat terasa di tempat-tempat yang lebih disukai Istana tanpa sidik jari itu. Jika dibiarkan, masalah tertentu cenderung memperburuk masalah lain. Selebihnya, lebih baik Anda temukan sendiri, <font color=\"#B22222\"><b>seperti yang dialami Habibie.</b></font><p></p>• <font color=\"#0000FF\"><b>Modal Politik.</b></font> awal yang lebih rendah.<p></p>• <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> awal sangat $tier.cendana.entrenched$, dan perlahan pulih jika Anda memangkasnya. <p></p>• <font color=\"#B22222\"><b>penalti</b></font> pasif menggigit keras jika stabilitas goyah. <p></p>• Aksi dan dekrit sedikit lebih mahal, dan pendekatan ke fraksi membayar sedikit lebih kecil. <p></p>• Kabar buruk dari peristiwa menghantam lebih keras dari seharusnya. <p></p>• Dukungan yang telah Anda bangun memudar kecuali dirawat, dan delegasi lebih mungkin membelot dalam pemungutan suara rahasia. <p></p>• <font color=\"#B22222\"><b>Asingkan para jenderal</b></font> dan bersiaplah menghadapi sabotase di jalanan dan di Timor Timur."
+    },
+    "historical": {
+      "image": "photo/difficulty/historical.png",
+      "name": "Historis",
+      "pc": 20,
+      "statMod": -1,
+      "cendana": 95,
+      "malusCap": 3.25,
+      "passivePCMod": 0,
+      "actionCostMod": 2,
+      "costPct": 15,
+      "decreeCostPct": 8,
+      "eventNegMult": 1.1,
+      "eventPosMult": 0.95,
+      "gainMult": 0.95,
+      "maxFavor": 2,
+      "factionDrift": 0.4,
+      "cendanaRegen": 1,
+      "cooldownBonus": 1,
+      "opposition": {
+        "scale": 1.0,
+        "defectionMult": 1.3,
+        "drama": {
+          "moodSwing": 12,
+          "wildcardChance": 1.5,
+          "wildcardMin": 25,
+          "wildcardMax": 50,
+          "crossoverRate": 0.55
+        }
+      },
+      "description": "<font color=\"#B22222\"><b>Apa yang sebenarnya terjadi pada tahun itu.</b></font> Cengkeraman rezim lama pada negara nyaris tidak mengendur, dan masalah yang ditinggalkan Suharto cenderung menumpuk satu sama lain sebelum Anda sempat menyadarinya. Bahkan urusan memerintah sehari-hari terasa lebih mahal dari seharusnya. <b>CARA BERMAIN YANG DIREKOMENDASIKAN.</b> <p></p>• <font color=\"#0000FF\"><b>Modal Politik.</b></font> awal yang langka.<p></p>• <font color=\"#704d00\"><b>Pengaruh Cendana</b></font> awal adalah $tier.cendana.untouchable$, dan mereka memulihkan pengaruh lebih cepat. <p></p>• <font color=\"#B22222\"><b>penalti</b></font> pasif tanpa ampun saat negara goyah. <p></p>• Setiap aksi politik lebih mahal dari seharusnya, urusan rutin butuh waktu lebih lama untuk pulih, dan perundingan dengan fraksi lebih sulit membeli loyalitas. Hanya dua utang budi yang dapat disimpan. <p></p>• Peristiwa melukai lebih dalam daripada menyembuhkan. <p></p>• Delegasi membelot jauh lebih mudah. <p></p>• Militer yang <font color=\"#B22222\"><b>$tier.mil.alienated$</b></font> akan melakukan apa saja untuk menggulingkan Anda."
+    },
+    "ucn": {
+      "image": "photo/difficulty/ucn.png",
+      "name": "Ultimate Custom Night",
+      "pc": 20,
+      "statMod": -1,
+      "cendana": 95,
+      "malusCap": 3.25,
+      "passivePCMod": 0,
+      "actionCostMod": 2,
+      "costPct": 15,
+      "decreeCostPct": 8,
+      "eventNegMult": 1.1,
+      "eventPosMult": 0.95,
+      "gainMult": 0.95,
+      "maxFavor": 2,
+      "factionDrift": 0.4,
+      "cendanaRegen": 1,
+      "cooldownBonus": 1,
+      "opposition": {
+        "scale": 1.0,
+        "defectionMult": 1.3,
+        "drama": {
+          "moodSwing": 12,
+          "wildcardChance": 1.5,
+          "wildcardMin": 25,
+          "wildcardMax": 50,
+          "crossoverRate": 0.55
+        }
+      },
+      "description": "<font color=\"#B22222\"><b>Anda selamat dari yang asli. Sekarang Anda yang memilih seberapa buruk jadinya.</b></font> Dua puluh dua kenop, masing-masing dari 0 sampai 20, mengatur setiap hambatan dalam permainan: modal awal Anda, harga memerintah, seberapa berharga kabar baik, seberapa setia siapa pun, dan bagaimana para jenderal serta Majelis bersikap pada malam terakhir. Sepuluh di setiap kenop kira-kira Historis. <p></p>• Setiap statistik awal, niat baik setiap fraksi, dan biaya setiap aksi dapat diatur terpisah. <p></p>• Preset: semua 0, semua 10, semua 20, atau serahkan pada takdir. <p></p>• Pengaturan dikunci saat kampanye dimulai dan ikut tersimpan. <p></p>• <font color=\"#B22222\"><b>Menang dengan setiap kenop di 20 dan malam berakhir pukul 6 pagi.</b></font>"
+    }
+  }
+}

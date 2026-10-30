@@ -1,0 +1,73 @@
+[
+  {
+    "version": "0.2 <i>\"Rekayasa Politik\"</i>",
+    "date": "31 Oktober 2026",
+    "title": "Beta 0.2 \"Rekayasa Politik\"",
+    "notes": [
+      "Versi ini menghadirkan lokalisasi Bahasa Indonesia beserta perombakan besar pada tingkat kesulitan, mekanika oposisi, keseimbangan permainan, antarmuka (UI), pemutar musik, dan pembersihan kode.",
+
+      "<b>KONTEN BARU</b><ul><ul><li><b>SITUASI SIAGA SATU (SSS):</b> Menangkan tingkat kesulitan Historis untuk membuka papan krisis kustom berisi 24 kartu situasi. Menangkan Sidang Umum dengan seluruh kartu situasi pada Tingkat III untuk membuka pencapaian <i>Hak Pamer</i>.</li><li><b>OPOSISI PDI-P:</b> Menambahkan bar Mobilisasi Massa di layar fraksi PDI-P.</li><li><b>OPOSISI MILITER:</b> Menambahkan bar Kesabaran dan Kemarahan di layar fraksi Militer (TNI/ABRI).</li><li><b>PENCAPAIAN (ACHIEVEMENTS):</b> Diperluas menjadi 66 pencapaian (31 baru) yang mencakup jalur reformis, otoriter, statistik, dan manuver fraksi, serta memperbaiki pemicu pembuka pencapaian <i>Hak Pamer</i>.</li><li><b>PEMUTAR MUSIK:</b> Menambahkan filter genre (Lagu Kebangsaan, Kritik Sosial, Pop, Mancanegara) serta bilah durasi dan pengatur volume langsung di panel kiri.</li></ul></ul>",
+
+      "<b>TINGKAT KESULITAN</b><ul>Diperbarui dan dirombak ulang. Selain memodifikasi <font color=\"#0000FF\">Modal Politik (PC)</font> awal, <font color=\"#704d00\">Pengaruh Cendana</font>, <font color=\"#8B0000\">Penalti Stabilitas</font>, biaya tindakan <font color=\"#0000FF\">PC</font>, dan kemarahan militer, kini setiap tingkat kesulitan juga mengatur tingkat pembelotan delegasi, gejolak ruang sidang, hasil peristiwa, serta daya tawar (leverage) fraksi:<br><br><ul><li><b>Mudah (Easy):</b> 75 PC awal, +15 pada statistik awal, Cendana mulai di 40. Biaya dekrit dan kesepakatan fraksi 10% lebih murah, dampak buruk peristiwa 25% lebih ringan, dan kesepakatan fraksi memberi hasil 15% lebih besar.</li><li><b>Sedang (Medium):</b> 50 PC awal, +5 pada statistik awal, Cendana di 60, +1 PC/giliran. Hasil positif peristiwa 8% lebih kuat dan kesepakatan fraksi memberi hasil 15% lebih besar.</li><li><b>Tinggi (High):</b> 35 PC awal, tanpa bonus statistik, Cendana di 75. Biaya tindakan sedikit lebih mahal, peristiwa buruk menghantam 5% lebih keras, dan pengaruh Cendana perlahan tumbuh kembali.</li><li><b>Historis (Historical):</b> 20 PC awal, Cendana di 95, biaya tindakan +15% lebih mahal (+2 PC pada setiap kesepakatan fraksi). Peristiwa buruk menghantam 10% lebih keras, peristiwa baik 5% lebih lemah, utang budi (favor) dibatasi maksimal 2 per fraksi, dan waktu tunggu (cooldown) semua tindakan 1 giliran lebih lama.</li></ul></ul>",
+
+      "<b>MEKANIKA PERMAINAN (GAMEPLAY)</b><ul><ul><li><b>STATISTIK:</b> Dukungan fraksi di atas batas awal kini meluruh perlahan setiap giliran kecuali terus dirawat, statistik yang sangat tinggi perlahan turun mendekati titik netral (sementara statistik rendah terdorong naik pada tingkat Mudah/Sedang), dan Cendana tumbuh kembali menuju kekuatan awalnya.</li><li><b>SIDANG UMUM &amp; PEMILIHAN:</b> Menambahkan ayunan suasana ruang sidang, kejutan delegasi liar (wildcard), suara lintas fraksi, serta pembelotan pemungutan suara tertutup yang disesuaikan dengan tingkat kesulitan.</li><li><b>DAYA TAWAR (LEVERAGE):</b> Daya tawar terhadap fraksi kini mengubah pengali biaya dan perolehan secara bertahap, bukan lagi melompat kaku per tingkatan.</li><li><b>DEKRIT:</b> Batas minimum statistik dan loyalitas yang dijamin oleh dekrit kini naik bertahap setiap giliran, bukan langsung terkunci seketika.</li><li><b>TINDAKAN RUTIN:</b> Mengulang Tindakan Rutin atau Kesepakatan Fraksi yang sama terus-menerus kini menghasilkan PC yang makin kecil dan dampak yang makin lemah.</li><li><b>UTANG BUDI (FAVOR):</b> Jumlah utang budi yang dapat disimpan per fraksi kini dibatasi menurut tingkat kesulitan.</li></ul></ul>",
+
+      "<b>PENYEIMBANGAN ULANG (REBALANCE)</b><ul><ul><li><b>TINDAKAN &amp; PERISTIWA:</b> Merombak ulang Dekrit, Tindakan Rutin, Kesepakatan Fraksi, dan Peristiwa agar selaras dengan kurva kesulitan baru, memangkas opsi yang terlalu kuat, dan memperhalus tingkat kesulitan Sedang.</li><li><b>OPOSISI:</b> Menyeimbangkan dampak terhadap Militer dan PDI-P di seluruh peristiwa dan tindakan; dekrit ekstrem kini memberikan guncangan langsung pada kesabaran Militer, sementara loyalitas Militer yang tinggi memperlambat dan mengikis kemarahan mereka.</li><li><b>MODAL POLITIK (PC):</b> Membatasi pendapatan PC pasif maksimal 10 PC, mengubah penalti ketidakstabilan menjadi potongan proporsional terhadap perolehan PC tindakan rutin, serta membatasi potongan gabungan Militer/PDI-P agar tidak melebihi batas.</li></ul></ul>",
+
+      "<b>ANTARMUKA (UI) &amp; PEMBERSIHAN</b><ul><ul><li><b>VISUAL:</b> Menambahkan skema warna baru (Merah Putih, Rainbow, Rainbow Swirl, Twilight, Kopi, Solarized), efek kilau kaca pada gambar, memperbesar foto \"In Memoriam\", serta mengubah warna Poros Tengah menjadi hijau Islam setelah terbentuk.</li><li><b>TEKS &amp; PERINGATAN:</b> Memadatkan teks peristiwa, fraksi, dan dekrit menjadi maksimal dua paragraf, meratakan kanan-kiri (justify) deskripsi kesepakatan fraksi, menyeragamkan seluruh nama statistik, serta memberi kode warna pada teks meteran dan pemberitahuan interaksi baru.</li><li><b>DI BALIK LAYAR:</b> Merapikan format Pustaka (Library), menyatukan teks sikap fraksi dan tingkatan statistik untuk lokalisasi, menghapus kode layar muat/tooltip lama, serta memperbaiki berbagai bug kecil dan salah ketik.</li></ul></ul>",
+
+      "<b>DIHAPUS</b><ul><ul><li>Menghapus Pakta Cilangkap, gambar ikon pencapaian, serta baris status mobilisasi jalanan dan tooltip dari layar agenda kepresidenan.</li></ul></ul>"
+    ]
+  },
+  {
+    "version": "0.1.3 Hotfix",
+    "date": "21 Oktober 2026",
+    "title": "Beta 0.1.3 Hotfix",
+    "notes": [
+      "Militer kini berkoordinasi dengan fraksi lain untuk mendongkel Anda jika Anda membuat mereka murka, serta membiarkan kerusuhan dan pengambinghitaman minoritas terjadi.",
+      "PDI-P dan Poros Tengah enggan berada di dalam koalisi yang sama.",
+      "Membubarkan kursi fraksi memengaruhi kredibilitas Anda di mata para delegasi, dan sebagian kursi yang dialihkan dapat melakukan walkout saat pemungutan suara.",
+      "Merombak AI oposisi (fondasi awal untuk pembaruan berikutnya).<ul><li><font color='#ff0000'>Belum ada jendela pop-up khusus, tetapi Megawati, Amien Rais, dan Wiranto kini aktif menyabotase pemerintahan Anda di balik layar.</font></li></ul>",
+      "Menambahkan struktur awal untuk perombakan sistem lokalisasi.",
+      "Menulis ulang informasi fraksi agar lebih ringkas dan padat.",
+      "Mengganti potret loyalis Golkar menjadi A.A. Baramuli.",
+      "Mengubah nama faksi loyalis Golkar dari Irama Tersedak menjadi Iramasuka Nusantara (Irian Jaya, Maluku, Sumatra, Sulawesi, Kalimantan, dan Nusa Tenggara).",
+      "Memperbaiki tampilan antarmuka perhitungan suara Sidang Umum MPR.",
+      "Unduhan hasil akhir (State of the Republic) kini menampilkan daftar dekrit yang telah disahkan.",
+      "Penyeimbangan kecil pada angka permainan.",
+      "Merapikan menu Pengaturan dengan mengubah pilihan skema warna menjadi menu dropdown."
+    ]
+  },
+  {
+    "version": "0.1.2 Hotfix",
+    "date": "20 Oktober 2026",
+    "title": "Beta 0.1.2 Hotfix",
+    "notes": [
+      "Kesabaran Jenderal Wiranto tidak lagi tak terbatas: jika Cilangkap terus diabaikan, pasukan akan memilih diam di barak saat jalanan ibu kota terbakar.",
+      "Amien Rais dan Gus Dur kembali ingat bahwa mereka memegang 163 kursi dan bukan bawahan Anda.",
+      "Akbar Tandjung mulai kebal terhadap gertakan pemerasan mingguan Anda.",
+      "Taufik Kiemas sudah bosan dijamu kopi gratis terus-menerus.",
+      "Meningkatkan tingkat pembelotan pada pemungutan suara tertutup."
+    ]
+  },
+  {
+    "version": "0.1.1 Hotfix",
+    "date": "19 Oktober 2026",
+    "title": "Beta 0.1.1 Hotfix",
+    "notes": [
+      "<b>Amien Rais dan Gus Dur tidak lagi menyerahkan kursi kepresidenan secara cuma-cuma:</b> Utang budi koalisi kini dipangkas saat peleburan Poros Tengah, dan pencairan utang budi pada lobi terakhir memiliki batas hasil menurun (diminishing returns).",
+      "<b>Celah cetak PC tanpa batas telah ditambal:</b> Memangkas perolehan dasar Modal Politik (PC) pada tindakan rutin agar pemain tidak bisa mencetak 300+ PC seperti mesin ATM.",
+      "<b>PDI-P dapat melumpuhkan ibu kota jika terus dimusuhi:</b> Membiarkan kubu Megawati jatuh ke dalam permusuhan mendalam kini memicu demonstrasi besar-besaran kaos merah yang menguras Stabilitas Nasional dan membuat delegasi daerah panik.<ul><li>Menambahkan indikator 'Mobilisasi Massa' di layar PDI-P untuk memantau seberapa dekat massa Satgas dengan kerusuhan terbuka.</li></ul>",
+      "<b>Keluarga Cendana tidak lagi tinggal diam:</b> Menghantam pengaruh keluarga Soeharto terlalu drastis dalam satu giliran kini memicu pelarian modal dan sabotase jalanan.",
+      "Menyatukan kembali Golkar di bawah DPP Slipi kini menetapkan batas loyalitas minimum yang wajar, bukan langsung menjadikannya 100% setia selamanya."
+    ]
+  },
+  {
+    "version": "0.1",
+    "date": "19 Oktober 2026",
+    "title": "Rilis Beta \"Pidato Pertanggungjawaban\"",
+    "notes": [
+      "Masih terdapat beberapa bug dan fitur yang belum lengkap, namun permainan sudah dapat dimainkan sepenuhnya dengan seluruh mekanika inti.<br><font color='#ff0000'>Ini adalah rilis beta, silakan laporkan bug apa pun yang Anda temukan!<br>Catatan: <ul><li>Beberapa gambar masih berupa placeholder</li><li>Beberapa fitur masih dalam tahap pengujian</li><li>Penyesuaian tampilan di sejumlah ukuran layar</li></ul></font>"
+    ]
+  }
+]

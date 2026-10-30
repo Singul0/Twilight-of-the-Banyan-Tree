@@ -1,0 +1,50 @@
+{
+  "title.banner_fallback_1"     : "怎么坏掉了呢……:(",
+  "title.banner_fallback_2"     : "为什么不能用呀？？:(((",
+  "title.continue"              : "继续游戏",
+  "title.continue_summary"      : "（第 $TURN$ / $MAX$ 回合 | $DATE$ | $PHASE$）",
+  "title.saved_turn_fallback"   : "第 $TURN$ 回合",
+  "title.phase_action"          : "行动阶段",
+  "title.phase_event"           : "危机事件",
+  "title.new_game"              : "新游戏",
+  "title.play"                  : "开始游戏",
+  "title.tutorial"              : "玩法说明",
+  "title.history"               : "怎么会走到这一步？",
+  "title.library"               : "资料库",
+  "title.achievements"          : "成就",
+  "title.settings"              : "设置",
+  "title.credits"               : "制作名单",
+
+  "language.unavailable_tooltip": "$NAME$ 暂不可用。",
+
+  "updates.heading"             : "更新内容",
+  "updates.version"             : "版本 <b>$VERSION$</b>",
+  "updates.previous"            : "往期更新（$COUNT$）",
+
+  "difficulty.title"            : "选择难度",
+  "difficulty.easy.name"        : "简单",
+  "difficulty.easy.desc"        : "非常宽容的体验。",
+  "difficulty.medium.name"      : "中等",
+  "difficulty.medium.desc"      : "标准的行动花费。",
+  "difficulty.high.name"        : "困难",
+  "difficulty.high.desc"        : "标准的高难度体验。",
+  "difficulty.historical.name"  : "历史",
+  "difficulty.historical.desc"  : "一场噩梦。推荐的游玩方式。",
+  "difficulty.image_alt"        : "$NAME$难度",
+  "difficulty.forecast_toggle"  : "启用结果预测提示（历史难度下不可用）",
+
+  "situation.title"             : "当前局势",
+  "situation.image_alt"         : "当前局势",
+  "situation.start"             : "我的国家正在燃烧……",
+
+  "history.title"               : "怎么会走到这一步？",
+  "history.chapter_label"       : "章节：",
+  "history.chapter_default_title": "第 $N$ 章，共 $TOTAL$ 章",
+  "history.chapter_short"       : "第 $N$ 章",
+
+  "tutorial.title"              : "玩法说明",
+  "tutorial.topic_label"        : "帮助主题：",
+  "tutorial.topic_default_title": "第 $N$ 项，共 $TOTAL$ 项",
+  "tutorial.topic_short"        : "主题 $N$",
+  "tutorial.load_error"         : "错误：未能加载 tutorial.json。"
+}

@@ -1,4 +1,5 @@
-// news.js: newspapers, mini-browser and telex popups, plus the sound effects engine.
+// SUMMARY: Popup system and sound. Newspaper and browser-style popups for news dispatches, a queue for alerts, the sound-effects engine (Web Audio
+// with fallback) and the global click sound.
 
 // Popup state: pending callback, whether the popup is news, and queued alerts
 let alertCallback = null;
@@ -11,7 +12,7 @@ function isAlertOpen() {
     return Boolean(overlay && overlay.style.display === 'flex');
 }
 
-// MOBILE DETECTION HELPER
+// True on small screens or touch (coarse pointer) devices.
 function isMobileDevice() {
     return window.innerWidth <= 820 ||
         (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
@@ -66,7 +67,6 @@ async function preloadSfxBuffers() {
                 });
             }
         } catch (e) {
-            // Fallback for local file:// testing on desktop where fetch() may be blocked
             if (!isMobileDevice()) {
                 sfxFallbackElements[key] = new Audio(path);
             }
@@ -87,7 +87,6 @@ function playSfxByKey(key, volumeMultiplier = 1.3) {
         const vol = Math.min(1.0, baseVol * volumeMultiplier);
         if (vol <= 0) return;
 
-        // Keep ambient session active on mobile so external music never ducks
         if (typeof navigator !== 'undefined' && navigator.audioSession) {
             try { navigator.audioSession.type = 'ambient'; } catch (e) {}
         }
@@ -104,7 +103,6 @@ function playSfxByKey(key, volumeMultiplier = 1.3) {
             return;
         }
 
-        // Desktop-only fallback if Web Audio buffer isn't decoded yet
         if (!isMobileDevice()) {
             if (!sfxFallbackElements[key] && SFX_PATHS[key]) {
                 sfxFallbackElements[key] = new Audio(SFX_PATHS[key]);
@@ -143,7 +141,6 @@ window.playBlockedSfx = function() {
 
 // Play the click sound
 window.playClickSfx = function() {
-    // Do not play click sound on mobile devices
     if (isMobileDevice()) return;
     playSfxByKey('click', 1.0);
 };
@@ -160,171 +157,125 @@ document.addEventListener('click', function(e) {
     window.playClickSfx();
 }, true);
 
+// Popups that are really "you can't do that" warnings play the blocked sound instead of the chime.
+// They are recognised by the localized text of these keys, so detection works in every language.
+const BLOCKED_ALERT_KEYS = [
+    'faction.insufficient_pc', 'decree.insufficient_pc', 'faction.not_started',
+    'faction.resolve_first', 'settings.backup_invalid', 'news.blocked.write_message'
+];
+
 // Helper to detect if a popup message is an insufficient-PC or blocked-action alert
 function isBlockedAlertMessage(msg) {
     if (typeof msg !== 'string') return false;
-    return /Insufficient Political Capital|Start the game first|Resolve the current crisis|Invalid backup|Please write a brief message/i.test(msg);
+    const lower = msg.toLowerCase();
+    return BLOCKED_ALERT_KEYS.some(key => {
+        if (!LOC.has(key)) return false;
+        const text = LOC(key).replace(/[.\u3002]+$/, '').toLowerCase();
+        return text.length > 0 && lower.indexOf(text) !== -1;
+    });
 }
 
-// 1999 INDONESIAN & FOREIGN PRESS PROFILES
+// The structure (CSS classes, which source names match, the masthead layout) lives here.
+// Every piece of text is a key in data/language: newspaper.<id>.<field>
+// (window_title, dateline, left_meta, right_meta, footer, plus the masthead texts used below).
 const NEWSPAPER_PROFILES = [
     {
-        match: ['TEMPO'],
-        isBrowser: false,
-        windowTitle: "MAJALAH BERITA MINGGUAN TEMPO",
-        paperClass: "paper-tempo",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-tempo">
-            <div class="masthead-tempo-box">TEMPO</div>
-            <div class="masthead-tempo-motto">MAJALAH BERITA MINGGUAN &bull; ENAK DIBACA DAN PERLU</div>
-        </div>`,
-        leftMeta: "LAPORAN UTAMA // NASIONAL",
-        rightMeta: "HARGA RP 9.800,-",
-        datelinePrefix: "JAKARTA, TEMPO — ",
-        editionFooter: "ISSN 0126-4273 &bull; EDISI KHUSUS REFORMASI 1999"
+        id: 'tempo', match: ['TEMPO'], paperClass: 'paper-tempo', headlineClass: '',
+        masthead: n => `<div class="masthead-tempo">
+            <div class="masthead-tempo-box">${n('title')}</div>
+            <div class="masthead-tempo-motto">${n('motto')}</div>
+        </div>`
     },
     {
-        match: ['KOMPAS'],
-        isBrowser: false,
-        windowTitle: "HARIAN PAGI KOMPAS",
-        paperClass: "paper-broadsheet",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-kompas">
+        id: 'kompas', match: ['KOMPAS'], paperClass: 'paper-broadsheet', headlineClass: '',
+        masthead: n => `<div class="masthead-kompas">
             <div class="masthead-kompas-ears">
-                <span>TERBIT 24 HALAMAN</span>
-                <span>AMANAT HATI NURANI RAKYAT</span>
-                <span>EDISI NASIONAL</span>
+                <span>${n('ear1')}</span>
+                <span>${n('ear2')}</span>
+                <span>${n('ear3')}</span>
             </div>
-            <div class="masthead-kompas-title">KOMPAS</div>
-        </div>`,
-        leftMeta: "TAHUN XXXV &bull; HALAMAN 1",
-        rightMeta: "ECERAN RP 1.500,-",
-        datelinePrefix: "JAKARTA, KOMPAS — ",
-        editionFooter: "PT KOMPAS MEDIA NUSANTARA &bull; PALMERAH SELATAN, JAKARTA"
+            <div class="masthead-kompas-title">${n('title')}</div>
+        </div>`
     },
     {
-        match: ['RAKYAT MERDEKA'],
-        isBrowser: false,
-        windowTitle: "HARIAN POLITIK RAKYAT MERDEKA",
-        paperClass: "paper-tabloid",
-        headlineClass: "headline-screaming",
-        mastheadHTML: `<div class="masthead-rakyat-merdeka">
-            <div class="masthead-rm-title">RAKYAT MERDEKA</div>
-        </div>`,
-        leftMeta: "KORAN POLITIK PALING BERANI",
-        rightMeta: "ECERAN RP 1.000,-",
-        datelinePrefix: "JAKARTA, RM — ",
-        editionFooter: "EDISI PAGI &bull; SUARA TANPA SENSOR DARI SENAYAN"
+        id: 'rakyat_merdeka', match: ['RAKYAT MERDEKA'], paperClass: 'paper-tabloid', headlineClass: 'headline-screaming',
+        masthead: n => `<div class="masthead-rakyat-merdeka">
+            <div class="masthead-rm-title">${n('title')}</div>
+        </div>`
     },
     {
-        match: ['POS KOTA'],
-        isBrowser: false,
-        windowTitle: "HARIAN IBUKOTA POS KOTA",
-        paperClass: "paper-tabloid",
-        headlineClass: "headline-screaming",
-        mastheadHTML: `<div class="masthead-pos-kota">
-            <div class="masthead-pk-title">POS KOTA</div>
-        </div>`,
-        leftMeta: "HARIAN IBUKOTA &bull; SUARA ASPIRASI RAKYAT",
-        rightMeta: "ECERAN RP 1.000,-",
-        datelinePrefix: "JAKARTA, POS KOTA — ",
-        editionFooter: "JALAN GAJAH MADA NO. 98–100 &bull; JAKARTA BARAT"
+        id: 'pos_kota', match: ['POS KOTA'], paperClass: 'paper-tabloid', headlineClass: 'headline-screaming',
+        masthead: n => `<div class="masthead-pos-kota">
+            <div class="masthead-pk-title">${n('title')}</div>
+        </div>`
     },
     {
-        match: ['REPUBLIKA'],
-        isBrowser: false,
-        windowTitle: "HARIAN UMUM REPUBLIKA",
-        paperClass: "paper-broadsheet",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-republika">
-            <div class="masthead-republika-title">REPUBLIKA</div>
-            <div class="masthead-republika-motto">KORAN MASYARAKAT BARU</div>
-        </div>`,
-        leftMeta: "EDISI NASIONAL &bull; HALAMAN UTAMA",
-        rightMeta: "HARGA RP 1.500,-",
-        datelinePrefix: "JAKARTA, REPUBLIKA — ",
-        editionFooter: "PT ABDI BANGSA &bull; WARUNG BUNCIT RAYA, JAKARTA"
+        id: 'republika', match: ['REPUBLIKA'], paperClass: 'paper-broadsheet', headlineClass: '',
+        masthead: n => `<div class="masthead-republika">
+            <div class="masthead-republika-title">${n('title')}</div>
+            <div class="masthead-republika-motto">${n('motto')}</div>
+        </div>`
     },
     {
-        match: ['JAKARTA POST'],
-        isBrowser: false,
-        windowTitle: "THE JAKARTA POST",
-        paperClass: "paper-broadsheet",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-jakarta-post">
-            <div class="masthead-jp-title">The Jakarta Post</div>
-            <div class="masthead-jp-motto">The Journal of Indonesia Today</div>
-        </div>`,
-        leftMeta: "VOL. 17 &bull; FRONT PAGE",
-        rightMeta: "PRICE RP 2,500",
-        datelinePrefix: "JAKARTA (JP): ",
-        editionFooter: "PUBLISHED BY PT BINA MEDIA TENGGARA &bull; JAKARTA"
+        id: 'jakarta_post', match: ['JAKARTA POST'], paperClass: 'paper-broadsheet', headlineClass: '',
+        masthead: n => `<div class="masthead-jakarta-post">
+            <div class="masthead-jp-title">${n('title')}</div>
+            <div class="masthead-jp-motto">${n('motto')}</div>
+        </div>`
     },
     {
-        match: ['MEDIA INDONESIA'],
-        isBrowser: false,
-        windowTitle: "HARIAN UMUM MEDIA INDONESIA",
-        paperClass: "paper-broadsheet",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-media-indonesia">
-            <div class="masthead-mi-title">MEDIA INDONESIA</div>
-        </div>`,
-        leftMeta: "PEMBAWA SUARA RAKYAT",
-        rightMeta: "HARGA RP 1.500,-",
-        datelinePrefix: "JAKARTA, MI — ",
-        editionFooter: "KEDOYA, JAKARTA BARAT &bull; EDISI PAGI"
+        id: 'media_indonesia', match: ['MEDIA INDONESIA'], paperClass: 'paper-broadsheet', headlineClass: '',
+        masthead: n => `<div class="masthead-media-indonesia">
+            <div class="masthead-mi-title">${n('title')}</div>
+        </div>`
     },
     {
-        match: ['SUARA PEMBARUAN'],
-        isBrowser: false,
-        windowTitle: "HARIAN SORE SUARA PEMBARUAN",
-        paperClass: "paper-broadsheet",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-suara-pembaruan">
-            <div class="masthead-sp-title">SUARA PEMBARUAN</div>
-        </div>`,
-        leftMeta: "HARIAN SORE &bull; EDISI JAKARTA",
-        rightMeta: "HARGA RP 1.400,-",
-        datelinePrefix: "JAKARTA, SP — ",
-        editionFooter: "CAWANG, JAKARTA TIMUR &bull; KORAN SORE UTAMA"
+        id: 'suara_pembaruan', match: ['SUARA PEMBARUAN'], paperClass: 'paper-broadsheet', headlineClass: '',
+        masthead: n => `<div class="masthead-suara-pembaruan">
+            <div class="masthead-sp-title">${n('title')}</div>
+        </div>`
     },
     {
-        match: ['DETIK'],
-        isBrowser: true,
-        windowTitle: "detikcom: berita cepat & akurat - Microsoft Internet Explorer",
-        datelinePrefix: "detikcom - Jakarta, "
+        id: 'detik', match: ['DETIK'], isBrowser: true
     },
     {
-        match: ['SUARA KARYA'],
-        isBrowser: false,
-        windowTitle: "HARIAN SUARA KARYA",
-        paperClass: "paper-broadsheet",
-        headlineClass: "",
-        mastheadHTML: `<div class="masthead-suara-karya">
-            <div class="masthead-sk-title">SUARA KARYA</div>
-        </div>`,
-        leftMeta: "SUARA GOLONGAN KARYA",
-        rightMeta: "EDISI PAGI",
-        datelinePrefix: "SLIPI, SUARA KARYA — ",
-        editionFooter: "KANTOR PUSAT DPP GOLKAR / SLIPI &bull; JAKARTA"
+        id: 'suara_karya', match: ['SUARA KARYA'], paperClass: 'paper-broadsheet', headlineClass: '',
+        masthead: n => `<div class="masthead-suara-karya">
+            <div class="masthead-sk-title">${n('title')}</div>
+        </div>`
     }
 ];
+
+// Turn a profile definition into the object the renderers use, reading its text from the language files
+function buildNewspaperProfile(def) {
+    const n = field => LOC(`newspaper.${def.id}.${field}`);
+    const opt = field => LOC.has(`newspaper.${def.id}.${field}`) ? n(field) : undefined;
+    return {
+        isBrowser: Boolean(def.isBrowser),
+        windowTitle: n('window_title'),
+        paperClass: def.paperClass,
+        headlineClass: def.headlineClass,
+        mastheadHTML: def.masthead ? def.masthead(n) : undefined,
+        leftMeta: opt('left_meta'),
+        rightMeta: opt('right_meta'),
+        datelinePrefix: n('dateline'),
+        editionFooter: opt('footer')
+    };
+}
 
 // Pick the newspaper profile that matches a source name
 window.getNewspaperProfile = function(rawSource) {
     const s = (rawSource || '').toUpperCase();
 
     for (let i = 0; i < NEWSPAPER_PROFILES.length; i++) {
-        const p = NEWSPAPER_PROFILES[i];
-        if (p.match.some(keyword => s.includes(keyword))) {
-            return p;
+        const def = NEWSPAPER_PROFILES[i];
+        if (def.match.some(keyword => s.includes(keyword))) {
+            return buildNewspaperProfile(def);
         }
     }
 
     if (s.includes('FORUM') || s.includes('GAMMA') || s.includes('PANJI')) {
-        const magTitle = s.includes('GAMMA')
-            ? 'MAJALAH GAMMA'
-            : (s.includes('PANJI') ? 'PANJI MASYARAKAT' : 'FORUM KEADILAN');
+        const magTitle = LOC('newspaper.magazine.' + (s.includes('GAMMA') ? 'gamma' : (s.includes('PANJI') ? 'panji' : 'forum')));
         return {
             isBrowser: false,
             windowTitle: magTitle,
@@ -333,10 +284,10 @@ window.getNewspaperProfile = function(rawSource) {
             mastheadHTML: `<div class="masthead-forum">
                 <div class="masthead-forum-title">${magTitle}</div>
             </div>`,
-            leftMeta: "INVESTIGASI KHUSUS &bull; POLITIK &amp; HUKUM",
-            rightMeta: "EDISI 1999",
-            datelinePrefix: `JAKARTA, ${magTitle} — `,
-            editionFooter: `LAPORAN UTAMA ${magTitle} &bull; JAKARTA 1999`
+            leftMeta: LOC('newspaper.magazine.left_meta'),
+            rightMeta: LOC('newspaper.magazine.right_meta'),
+            datelinePrefix: LOC('newspaper.magazine.dateline', { TITLE: magTitle }),
+            editionFooter: LOC('newspaper.magazine.footer', { TITLE: magTitle })
         };
     }
 
@@ -349,15 +300,15 @@ window.getNewspaperProfile = function(rawSource) {
             mastheadHTML: `<div class="masthead-financial">
                 <div class="masthead-fin-title">${s}</div>
             </div>`,
-            leftMeta: "BURSA &amp; MONETER // KURS RUPIAH",
-            rightMeta: "FINANCIAL DESK",
-            datelinePrefix: `JAKARTA (${s}) — `,
-            editionFooter: "MARKET &amp; SOVEREIGN DEBT DESK &bull; 1999"
+            leftMeta: LOC('newspaper.financial.left_meta'),
+            rightMeta: LOC('newspaper.financial.right_meta'),
+            datelinePrefix: LOC('newspaper.financial.dateline', { SOURCE: s }),
+            editionFooter: LOC('newspaper.financial.footer')
         };
     }
 
     if (s.includes('WASPADA') || s.includes('SERAMBI')) {
-        const acehPaper = s.includes('SERAMBI') ? 'SERAMBI INDONESIA' : 'HARIAN WASPADA';
+        const acehPaper = LOC('newspaper.aceh.' + (s.includes('SERAMBI') ? 'serambi' : 'waspada'));
         return {
             isBrowser: false,
             windowTitle: acehPaper,
@@ -366,25 +317,26 @@ window.getNewspaperProfile = function(rawSource) {
             mastheadHTML: `<div class="masthead-waspada">
                 <div class="masthead-waspada-title">${acehPaper}</div>
             </div>`,
-            leftMeta: "DEMI KEBENARAN DAN KEADILAN",
-            rightMeta: "EDISI SUMATERA",
-            datelinePrefix: `BANDA ACEH / MEDAN — `,
-            editionFooter: `${acehPaper} &bull; BIRO SUMATERA UTARA &amp; ACEH`
+            leftMeta: LOC('newspaper.aceh.left_meta'),
+            rightMeta: LOC('newspaper.aceh.right_meta'),
+            datelinePrefix: LOC('newspaper.aceh.dateline'),
+            editionFooter: LOC('newspaper.aceh.footer', { TITLE: acehPaper })
         };
     }
 
+    const foreignTitle = s || LOC('newspaper.foreign.default_title');
     return {
         isBrowser: false,
-        windowTitle: s || "PRESS DISPATCH",
+        windowTitle: foreignTitle,
         paperClass: "paper-broadsheet",
         headlineClass: "",
         mastheadHTML: `<div class="masthead-foreign">
-            <div class="masthead-foreign-title">${s || "PRESS DISPATCH"}</div>
+            <div class="masthead-foreign-title">${foreignTitle}</div>
         </div>`,
-        leftMeta: "SPECIAL DISPATCH &bull; INDONESIA DESK",
-        rightMeta: "1999 EDITION",
-        datelinePrefix: "JAKARTA — ",
-        editionFooter: "INTERNATIONAL WIRE SERVICE &bull; SOUTHEAST ASIA BUREAU"
+        leftMeta: LOC('newspaper.foreign.left_meta'),
+        rightMeta: LOC('newspaper.foreign.right_meta'),
+        datelinePrefix: LOC('newspaper.foreign.dateline'),
+        editionFooter: LOC('newspaper.foreign.footer')
     };
 };
 
@@ -396,50 +348,48 @@ function buildDetikBrowserHTML(profile, curDate, headline, bodyText) {
         </div>
 
         <div class="detik-browser-menubar">
-            <span><u>F</u>ile</span>
-            <span><u>E</u>dit</span>
-            <span><u>V</u>iew</span>
-            <span><u>G</u>o</span>
-            <span><u>F</u>avorites</span>
-            <span><u>H</u>elp</span>
+            <span>${LOC('news.browser.menu.file')}</span>
+            <span>${LOC('news.browser.menu.edit')}</span>
+            <span>${LOC('news.browser.menu.view')}</span>
+            <span>${LOC('news.browser.menu.go')}</span>
+            <span>${LOC('news.browser.menu.favorites')}</span>
+            <span>${LOC('news.browser.menu.help')}</span>
         </div>
 
         <div class="detik-browser-toolbar">
-            <span class="detik-tool-btn">&#9664; Back</span>
-            <span class="detik-tool-btn">&#9654; Forward</span>
-            <span class="detik-tool-btn">&#10006; Stop</span>
-            <span class="detik-tool-btn">&#8635; Refresh</span>
-            <span class="detik-tool-btn">&#8962; Home</span>
+            <span class="detik-tool-btn">${LOC('news.browser.tool.back')}</span>
+            <span class="detik-tool-btn">${LOC('news.browser.tool.forward')}</span>
+            <span class="detik-tool-btn">${LOC('news.browser.tool.stop')}</span>
+            <span class="detik-tool-btn">${LOC('news.browser.tool.refresh')}</span>
+            <span class="detik-tool-btn">${LOC('news.browser.tool.home')}</span>
         </div>
 
         <div class="detik-browser-addressbar">
-            <span class="detik-addr-label">Address</span>
-            <div class="detik-addr-input">http://www.detik.com/berita-utama/1999/nasional.shtml</div>
+            <span class="detik-addr-label">${LOC('news.browser.address_label')}</span>
+            <div class="detik-addr-input">${LOC('news.browser.address_url')}</div>
         </div>
 
         <div class="detik-browser-viewport">
             <div class="detik-portal-banner">
                 <div class="detik-portal-logo"><font color="#CC0000">detik</font><font color="#003399">com</font></div>
-                <div class="detik-portal-tagline">berita cepat &amp; akurat &bull; real-time online news</div>
+                <div class="detik-portal-tagline">${LOC('news.browser.tagline')}</div>
             </div>
 
             <div class="detik-portal-grid">
                 <div class="detik-portal-sidebar">
-                    <div class="detik-nav-header">KANAL</div>
-                    <div class="detik-nav-item active">&raquo; Berita Utama</div>
-                    <div class="detik-nav-item">&raquo; Nasional</div>
-                    <div class="detik-nav-item">&raquo; Sidang MPR</div>
-                    <div class="detik-nav-item">&raquo; Ekonomi/Kurs</div>
-                    <div class="detik-nav-item">&raquo; Kolom &amp; Opini</div>
+                    <div class="detik-nav-header">${LOC('news.browser.nav_header')}</div>
+                    <div class="detik-nav-item active">${LOC('news.browser.nav.top')}</div>
+                    <div class="detik-nav-item">${LOC('news.browser.nav.national')}</div>
+                    <div class="detik-nav-item">${LOC('news.browser.nav.mpr')}</div>
+                    <div class="detik-nav-item">${LOC('news.browser.nav.economy')}</div>
+                    <div class="detik-nav-item">${LOC('news.browser.nav.opinion')}</div>
                     <div class="detik-kurs-box">
-                        <b>KURS RUPIAH</b><br>
-                        USD 1 = Rp 6.850<br>
-                        IHSG: 542.10
+                        ${LOC('news.browser.kurs_box')}
                     </div>
                 </div>
 
                 <div class="detik-portal-main">
-                    <div class="detik-timestamp">${curDate} &bull; 14:22 WIB</div>
+                    <div class="detik-timestamp">${LOC('news.browser.timestamp', { DATE: curDate })}</div>
                     <div class="detik-article-headline">${headline}</div>
                     <div class="detik-article-body">
                         <b>${profile.datelinePrefix}</b>${bodyText}
@@ -449,8 +399,8 @@ function buildDetikBrowserHTML(profile, curDate, headline, bodyText) {
         </div>
 
         <div class="detik-browser-footer">
-            <div class="detik-status-well">&#10003; Done &mdash; Connected via TelkomNet@Instan (28.8 kbps)</div>
-            <button type="button" class="detik-continue-btn" onclick="closeCustomAlert()">CONTINUE</button>
+            <div class="detik-status-well">${LOC('news.browser.status')}</div>
+            <button type="button" class="detik-continue-btn" onclick="closeCustomAlert()">${LOC('news.continue')}</button>
         </div>
     </div>`;
 }
@@ -467,7 +417,7 @@ function buildVerticalNewspaperHTML(profile, curDate, headline, bodyText) {
             <span>${profile.rightMeta}</span>
         </div>
 
-        <div class="newspaper-headline ${profile.headlineClass}">&ldquo;${headline}&rdquo;</div>
+        <div class="newspaper-headline ${profile.headlineClass}">${LOC('news.headline_quote', { HEADLINE: headline })}</div>
 
         <div class="newspaper-subrule"></div>
 
@@ -478,8 +428,8 @@ function buildVerticalNewspaperHTML(profile, curDate, headline, bodyText) {
         <div class="newspaper-fold-crease"></div>
 
         <div class="newspaper-sheet-footer">
-            <div class="newspaper-edition-meta">${profile.editionFooter || 'ARSIP KLIPING PERS ISTANA // JAKARTA 1999'}</div>
-            <button type="button" class="newspaper-continue-btn" onclick="closeCustomAlert()">CONTINUE</button>
+            <div class="newspaper-edition-meta">${profile.editionFooter || LOC('news.default_footer')}</div>
+            <button type="button" class="newspaper-continue-btn" onclick="closeCustomAlert()">${LOC('news.continue')}</button>
         </div>
     </div>`;
 }
@@ -491,7 +441,6 @@ window.showCustomAlert = function(msg, callback) {
         return;
     }
 
-    // Play blocked.wav if this alert is an insufficient PC / blocked warning, otherwise notification.mp3
     if (isBlockedAlertMessage(msg)) {
         window.playBlockedSfx();
     } else {
@@ -500,7 +449,7 @@ window.showCustomAlert = function(msg, callback) {
 
     const curDate = (typeof gameStarted !== 'undefined' && gameStarted && typeof currentTurn !== 'undefined' && typeof events !== 'undefined' && currentTurn <= events.length && events[currentTurn - 1])
         ? events[currentTurn - 1].date
-        : "Jakarta, 1999";
+        : LOC('news.default_date');
 
     const alertBox = document.getElementById('custom-alert-box');
     const titleBar = document.getElementById('custom-alert-titlebar');
@@ -534,7 +483,7 @@ window.showCustomAlert = function(msg, callback) {
         if (alertBox) alertBox.className = '';
         if (titleBar) {
             titleBar.style.display = 'flex';
-            titleBar.innerHTML = `<span>EXECUTIVE DISPATCH</span><button type="button" class="win95-close-btn" onclick="closeCustomAlert()" title="Close">&#10005;</button>`;
+            titleBar.innerHTML = `<span>${LOC('news.dispatch_title')}</span><button type="button" class="win95-close-btn" onclick="closeCustomAlert()" title="${escapeAttr(LOC('news.close_tooltip'))}">&#10005;</button>`;
         }
         if (defaultBtn) defaultBtn.style.display = 'block';
 
@@ -542,7 +491,7 @@ window.showCustomAlert = function(msg, callback) {
             msgElem.className = '';
             msgElem.innerHTML = `<div class="telex-dispatch">
                 <div class="telex-header">
-                    <span>PRESIDENTIAL DISPATCH</span>
+                    <span>${LOC('news.telex_header')}</span>
                     <span>${curDate.toUpperCase()}</span>
                 </div>
                 <div style="text-align: justify; line-height: 1.55;">${msg}</div>

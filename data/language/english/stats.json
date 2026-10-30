@@ -1,0 +1,62 @@
+{
+  "pop": [
+    { "min": 90, "text": "tier.pop.tolerated", "color": "#006400" },
+    { "min": 75, "text": "tier.pop.grudging_acceptance", "color": "#009000" },
+    { "min": 60, "text": "tier.pop.ambivalent", "color": "#4682B4" },
+    { "min": 45, "text": "tier.pop.distrusted", "color": "#2F4F4F" },
+    { "min": 30, "text": "tier.pop.resented", "color": "#FF8C00" },
+    { "min": 15, "text": "tier.pop.despised", "color": "#FF4500" },
+    { "min": 0,  "text": "tier.pop.universally_hated", "color": "#8B0000" }
+  ],
+  "mil": [
+    { "min": 75, "text": "tier.mil.supporting_habibie", "color": "#006400" },
+    { "min": 50, "text": "tier.mil.accommodating", "color": "#4682B4" },
+    { "min": 30, "text": "tier.mil.guarded", "color": "#FF8C00" },
+    { "min": 0,  "text": "tier.mil.alienated", "color": "#8B0000" }
+  ],
+  "ref": [
+    { "min": 90, "text": "tier.ref.cautiously_credible", "color": "#006400" },
+    { "min": 75, "text": "tier.ref.reform_minded", "color": "#009000" },
+    { "min": 60, "text": "tier.ref.ambiguous", "color": "#4682B4" },
+    { "min": 45, "text": "tier.ref.questionable", "color": "#2F4F4F" },
+    { "min": 30, "text": "tier.ref.reactionary", "color": "#FF8C00" },
+    { "min": 15, "text": "tier.ref.authoritarian", "color": "#FF4500" },
+    { "min": 0,  "text": "tier.ref.new_order_crony", "color": "#8B0000" }
+  ],
+  "econ": [
+    { "min": 90, "text": "tier.econ.precarious_stability", "color": "#006400" },
+    { "min": 75, "text": "tier.econ.fragile_recovery", "color": "#009000" },
+    { "min": 60, "text": "tier.econ.stagnant", "color": "#4682B4" },
+    { "min": 45, "text": "tier.econ.struggling", "color": "#2F4F4F" },
+    { "min": 30, "text": "tier.econ.severe_recession", "color": "#FF8C00" },
+    { "min": 15, "text": "tier.econ.in_freefall", "color": "#FF4500" },
+    { "min": 0,  "text": "tier.econ.bankruptcy", "color": "#8B0000" }
+  ],
+  "intl": [
+    { "min": 90, "text": "tier.intl.cautiously_engaged", "color": "#006400" },
+    { "min": 75, "text": "tier.intl.tolerated_partner", "color": "#009000" },
+    { "min": 60, "text": "tier.intl.watched_closely", "color": "#4682B4" },
+    { "min": 45, "text": "tier.intl.distrusted", "color": "#2F4F4F" },
+    { "min": 30, "text": "tier.intl.isolated", "color": "#FF8C00" },
+    { "min": 15, "text": "tier.intl.sanctioned", "color": "#FF4500" },
+    { "min": 0,  "text": "tier.intl.pariah_state", "color": "#8B0000" }
+  ],
+  "stab": [
+    { "min": 90, "text": "tier.stab.uneasy_calm", "color": "#006400" },
+    { "min": 75, "text": "tier.stab.fragile_peace", "color": "#009000" },
+    { "min": 60, "text": "tier.stab.simmering_tension", "color": "#4682B4" },
+    { "min": 45, "text": "tier.stab.tense", "color": "#2F4F4F" },
+    { "min": 30, "text": "tier.stab.sporadic_riots", "color": "#FF8C00" },
+    { "min": 15, "text": "tier.stab.widespread_chaos", "color": "#FF4500" },
+    { "min": 0,  "text": "tier.stab.civil_unrest", "color": "#8B0000" }
+  ],
+  "cendana": [
+    { "min": 90, "text": "tier.cendana.untouchable", "color": "#8B0000" },
+    { "min": 75, "text": "tier.cendana.entrenched", "color": "#FF4500" },
+    { "min": 60, "text": "tier.cendana.subversive", "color": "#FF8C00" },
+    { "min": 45, "text": "tier.cendana.persistent", "color": "#2F4F4F" },
+    { "min": 30, "text": "tier.cendana.contained", "color": "#4682B4" },
+    { "min": 15, "text": "tier.cendana.weakened", "color": "#009000" },
+    { "min": 0,  "text": "tier.cendana.dormant", "color": "#006400" }
+  ]
+}

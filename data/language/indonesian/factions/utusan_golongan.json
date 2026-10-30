@@ -1,0 +1,145 @@
+{
+  "name": "Fraksi Utusan Golongan",
+  "short": "U. Golongan",
+  "seats": 65,
+  "affinity": 35,
+  "image": "photo/usdar.png",
+  "coverImage": "photo/faction/usdar.png",
+  "summary": "<font color=\"#555555\"><b>Fraksi Utusan Golongan</b></font> mendudukkan enam puluh lima perwakilan non-partisan yang ditarik dari serikat buruh independen, koalisi perempuan, badan-badan akademis, koperasi agraris, dan kelompok minoritas keagamaan. Selama tiga dekade di bawah Orde Baru, Soeharto menggunakan organisasi payung korporatis—seperti monopoli buruh negara SPSI, asosiasi istri pegawai negeri Dharma Wanita, dan front pemuda didikan rezim—untuk mengisi kursi-kursi ini dengan para utusan penurut yang membabi buta mengesahkan dekrit presiden atas nama keharmonisan organik negara.<p></p>Namun di bawah aturan reformasi UU No. 4/1999, Komisi Pemilihan Umum (KPU) yang independen mencabut wewenang penunjukan dari lembaga kepresidenan dan menyerahkan 65 mandat tersebut kepada organisasi masyarakat sipil yang otonom. Kelas <font color=\"#555555\"><b>Utusan Golongan</b></font> ini membawa para pengacara hak asasi manusia, aktivis perempuan, pimpinan sinode Protestan dan Katolik, perwakilan Buddha dan Hindu, serta kaum buruh independen melenggang langsung ke lantai sidang Senayan. Memandang diri mereka sebagai nurani moral MPR, mereka menolak amplop patronase di balik layar. Memamerkan kredibilitas reformasi yang sejati di dalam negeri serta meraih penghargaan dari lembaga pemantau buruh dan HAM internasional memberikan Istana posisi tawar yang kuat atas kaukus yang berprinsip teguh ini.",
+  "biography": "Berakar dari ketentuan UUD 1945 mengenai perwakilan golongan masyarakat di dalam MPR, kursi-kursi <font color=\"#555555\"><b>Utusan Golongan</b></font> disetir selepas tahun 1965–1966 untuk menjadi instrumen korporatisme negara Orde Baru. Menyusul pembersihan kaum buruh kiri federasi <i>SOBSI</i>, aparat keamanan Soeharto menggiring para buruh pabrik perkotaan ke dalam Serikat Pekerja Seluruh Indonesia (SPSI) yang dipolisi oleh negara, sementara para pengorganisasi independen seperti Muchtar Pakpahan dan Dita Indah Sari dijebloskan ke dalam penjara dan pemimpin aksi mogok Jawa Timur yang dibunuh, Marsinah, menjelang pahlawan martir bagi gerakan buruh bawah tanah.<p></p>Runtuhnya rezim Soeharto pada Mei 1998 menghancurkan monopoli korporatis tersebut. Dalam beberapa minggu setelah menjabat, kabinet Anda membebaskan Muchtar Pakpahan dari Penjara Cipinang, meratifikasi Konvensi ILO No. 87 tentang kebebasan berserikat, serta membuka proses pencalonan <font color=\"#555555\"><b>Utusan Golongan</b></font> bagi LSM independen, Koalisi Perempuan Indonesia (KPI), para peneliti LIPI, serta dewan-dewan lintas agama (PGI, KWI, PHDI, dan Walubi). Kendati berterima kasih atas kelonggaran ruang bernapas dari pencairan politik pasca-1998 ini, ke-65 utusan tersebut tetap waspada terhadap setiap tanda-tanda kembalinya impunitas militer atau otoritarianisme Orde Baru.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Mendukung",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Bersahabat",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Mengamati",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Skeptis",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Pengkritik Vokal",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Memprotes",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Tak Terdamaikan",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "golongan_rights",
+      "text": "Keluarkan perlindungan eksekutif bagi pengacara LBH YLBHI, investigator KontraS, dan LSM agraria",
+      "cost": 18,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Di berbagai daerah, komando militer regional (<i>Kodam</i>) dan kepolisian setempat masih kerap melecehkan para pengacara publik dari Lembaga Bantuan Hukum (YLBHI), para penyelidik orang hilang di KontraS, serta para pejuang hak atas tanah petani. Tandatangani instruksi presiden yang melarang aparat keamanan mengintervensi LSM bantuan hukum, perempuan, dan agraria yang terdaftar secara resmi.",
+      "effects": {
+        "utusan_golongan": [10, 18],
+        "ref": [4, 8],
+        "mil": [-6, -3],
+        "abri": [-5, -2],
+        "pop": 2,
+        "intl": 2
+      },
+      "alertMsg": "Para pegiat hak asasi manusia di YLBHI dan para utusan sipil di dalam MPR memuji arahan presiden tersebut, sementara para panglima teritorial di Cilangkap mengeluh bahwa pengacara LSM telah mengikat tangan para perwira di lapangan."
+    },
+    {
+      "id": "golongan_komnas",
+      "text": "Berikan wewenang pemanggilan paksa (subpoena) dan otonomi anggaran bagi penyelidikan HAM Komnas HAM",
+      "cost": 18,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Komisi Nasional Hak Asasi Manusia (Komnas HAM)—yang digawangi oleh tokoh-tokoh seperti Marzuki Darusman, Asmara Nababan, dan Saparinah Sadli—tengah menyelidiki berbagai pelanggaran mulai dari penculikan aktivis 1997–1998 hingga kuburan massal di Aceh dan kekerasan milisi di Timor Timur. Berikan wewenang penuh kepresidenan di belakang tim penyelidik Komnas HAM serta perluas anggaran independen mereka. Mendatangkan komitmen politik yang abadi dari kaukus Utusan Golongan, sekaligus memicu kemarahan jajaran petinggi ABRI.",
+      "effects": {
+        "utusan_golongan": [11, 21],
+        "utusan_golongan_favor": 1,
+        "ref": [5, 9],
+        "mil": [-6, -3],
+        "abri": [-5, -2],
+        "intl": [3, 5],
+        "pop": 2
+      },
+      "alertMsg": "Para utusan sipil dan keagamaan di dalam Fraksi Utusan Golongan menyambut dukungan kepresidenan bagi Komnas HAM sebagai bukti bahwa era impunitas negara telah berakhir, bahkan ketika para jenderal di Cilangkap meradang melihat para penyelidik sipil memanggil para perwira aktif."
+    },
+    {
+      "id": "golongan_ilo_labor",
+      "text": "Tegakkan Konvensi ILO No. 87 dan berikan hak berunding bersama bagi serikat buruh independen",
+      "cost": 16,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Meskipun Menteri Tenaga Kerja Fahmi Idris telah meratifikasi Konvensi ILO No. 87 pada Juni 1998, para pengusaha pabrik dan komandan keamanan lokal masih menganakemaskan monopoli serikat buruh korporatis warisan Orde Baru (FSPSI) guna meredam aksi mogok di Tangerang, Bekasi, dan Surabaya. Keluarkan peraturan menteri yang mengikat yang mewajibkan kawasan-kawasan industri untuk mengakui federasi buruh independen di meja perundingan. Mengamankan hutang budi politik yang besar dari para utusan buruh dan masyarakat sipil di dalam MPR.",
+      "effects": {
+        "utusan_golongan": [11, 21],
+        "utusan_golongan_favor": 1,
+        "intl": [6, 10],
+        "pop": [3, 7],
+        "ref": [3, 7],
+        "econ": -2,
+        "abri": [-4, -2]
+      },
+      "alertMsg": "Para pemimpin serikat buruh independen dan pemantau Organisasi Perburuhan Internasional (ILO) di Jenewa memuji peraturan tersebut sebagai lonceng kematian bagi kontrol buruh korporatis Orde Baru, memperkokoh iktikad baik di bangku Utusan Golongan."
+    },
+    {
+      "id": "golongan_pakpahan",
+      "text": "Undang pimpinan serikat buruh SBSI yang baru dibebaskan, Muchtar Pakpahan, ke Istana Merdeka untuk merumuskan RUU Ketenagakerjaan",
+      "cost": 10,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Empat hari setelah mengucapkan sumpah jabatan pada Mei 1998, Anda menandatangani amnesti yang membebaskan pendiri Serikat Buruh Sejahtera Indonesia (SBSI) Muchtar Pakpahan dari Penjara Cipinang, tempat jaksa penuntut Soeharto menjeratnya atas tuduhan subversi. Sambut Pakpahan dan para utusan buruh independen di Istana Merdeka guna membantu menyusun RUU Serikat Pekerja yang baru.",
+      "effects": {
+        "utusan_golongan": [8, 16],
+        "pop": [3, 5],
+        "ref": [3, 5],
+        "intl": [2, 4],
+        "abri": [-3, -2]
+      },
+      "alertMsg": "Foto-foto mantan tahanan politik tersebut meninjau draf legislasi bersama Anda di Istana Merdeka menghiasi media massa nasional, menuai pujian dari kalangan buruh dan delegasi masyarakat sipil di Senayan."
+    },
+    {
+      "id": "golongan_final_appeal",
+      "text": "Sampaikan seruan jujur kepada 65 utusan masyarakat sipil dan kelompok minoritas sebelum pemungutan suara",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Berbeda dengan mesin-mesin partai yang memperjualbelikan kursi kabinet di suite hotel, ke-65 sarjana, pengorganisasi buruh, aktivis perempuan, dan tokoh lintas agama dari <font color=\"#555555\"><b>Fraksi Utusan Golongan</b></font> menilai pemerintahan Anda berdasarkan rekam jejak reformasinya: kebebasan pers, pembebasan tahanan politik, komisi Komnas Perempuan, dan pemilu demokratis. Temui kaukus mereka di Senayan sebelum pemungutan suara dimulai dan mintalah mereka menimbang 16 bulan reformasi Anda secara objektif. Mencairkan setiap komitmen reformasi dan hutang budi politik yang ditabung bersama kaukus masyarakat sipil.",
+      "effects": {
+        "utusan_golongan": [13, 23],
+        "ref": [3, 5],
+        "pop": 2,
+        "intl": 2
+      },
+      "alertMsg": "Para sarjana, kaum buruh, dan tokoh lintas agama dari Fraksi Utusan Golongan mendengarkan seruan Anda dengan keseriusan yang penuh pertimbangan. Setelah menimbang undang-undang yang Anda sahkan dibandingkan dengan sistem otoriter yang Anda warisi, para sekutu Anda di dalam kaukus bangkit untuk menggalang dukungan rekan-rekan mereka sebelum kotak suara dibuka."
+    }
+  ]
+}

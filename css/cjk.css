@@ -1,0 +1,59 @@
+/* ==========================================================================
+   CJK TEXT SUPPORT  (css/cjk.css)
+   --------------------------------------------------------------------------
+   Load this AFTER css/news.css and css/default/styles.css (see index.html).
+
+   The game's style sheets force retro fonts (MS Sans Serif, Tahoma, Charcoal,
+   Georgia, Times New Roman) with !important. None of them contains Chinese
+   characters, so on a device without a lucky automatic fallback the text turns
+   into empty boxes. This file keeps the same retro fonts for Latin letters and
+   digits and simply appends Chinese fonts, which the browser only uses for
+   characters the first fonts do not have. Nothing changes for English.
+
+   Fonts are listed Windows -> Mac/iOS -> Android/Linux. To guarantee the same
+   look everywhere, a font file can be added later with @font-face and put at
+   the front of --cjk-sans / --cjk-serif.
+   ========================================================================== */
+:root {
+    --cjk-sans:  "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB",
+                 "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "WenQuanYi Micro Hei", "SimHei";
+    --cjk-serif: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC",
+                 "Source Han Serif SC", "FangSong";
+}
+
+/* Everything: Win95 / Win98 stack + Chinese fonts.
+   (specificity 0,0,1 beats the old "*" rules but still loses to the specific class rules below) */
+html * {
+    font-family: "MS Sans Serif", "Tahoma", "Geneva", var(--cjk-sans), sans-serif !important;
+}
+html:where([data-wstyle="macos8"]) * {
+    font-family: "Charcoal", "Chicago", "Geneva", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, var(--cjk-sans), sans-serif !important;
+}
+
+/* Serif text: newspapers and the TAP MPR decree */
+.newspaper-headline,
+.newspaper-body {
+    font-family: Georgia, "Times New Roman", Times, var(--cjk-serif), serif !important;
+}
+.tap-mpr-document * {
+    font-family: "Times New Roman", Times, var(--cjk-serif), serif !important;
+}
+.newspaper-lead-city {
+    font-family: "MS Sans Serif", Tahoma, var(--cjk-sans), sans-serif !important;
+}
+.newspaper-headline.headline-screaming {
+    font-family: Impact, "Arial Black", var(--cjk-sans), sans-serif !important;
+}
+
+/* ---------- Chinese only (<html lang="zh-CN">, set by localization.js) ---------- */
+/* Pixel-style "no smoothing" makes Chinese strokes break up; Chinese also has no italic (browsers fake a slant) */
+html[lang^="zh"] * {
+    -webkit-font-smoothing: antialiased;
+    font-smooth: auto;
+    font-style: normal;
+}
+/* No spaces between Chinese words: allow breaking anywhere so long lines never overflow a button */
+html[lang^="zh"] body {
+    overflow-wrap: break-word;
+    line-break: normal;
+}

@@ -1,0 +1,202 @@
+{
+  "name": "Fraksi PDI Perjuangan<br>(Megawati)",
+  "short": "Megawati",
+  "seats": 153,
+  "affinity": -10,
+  "image": "photo/megawati.png",
+  "coverImage": "photo/faction/pdip.png",
+  "summary": "<font color=\"#9E1F14\"><b>Partai Demokrasi Indonesia Perjuangan (PDI Perjuangan)</b></font>, yang dipimpin oleh sosok Megawati Soekarnoputri yang tenang dan tabah, memegang komando atas blok tunggal terbesar di parlemen serta kesetiaan mutlak dari massa nasionalis-sekuler di jalanan. Setelah berhasil merebut 33,74% suara nasional—lebih dari 35,6 juta surat suara—dan 153 kursi dalam pemilihan umum Juni 1999, partai berlambang Banteng Moncong Putih ini unggul hampir dua belas persen di atas <font color=\"#7D6000\"><b>Golkar</b></font> di posisi kedua. Bagi lingkaran dalamnya di Jalan Kebagusan dan jutaan <i>wong cilik</i> yang menjaga <i>Posko Gotong Royong</i> di pelosok Jawa dan Bali, pemilu tersebut bukan sekadar penghitungan kursi legislatif; melainkan sebuah plebisit rakyat tentang siapa yang berhak duduk di Istana Merdeka. Logika mereka sederhana, mengakar di hati, dan nyaris mustahil dibantah di ruang publik: rakyat telah memilih, <font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> telah menang, dan setiap minggu Anda bertahan di Bina Graha adalah minggu yang dicuri dari mandat yang tidak pernah Anda menangkan di kotak suara.<p></p>Bagi para kader Diponegoro, pemerintahan Anda adalah sisa-sisa Orde Baru yang tidak sah—sebuah kepresidenan transisi yang diwariskan melalui pengunduran diri sepihak Soeharto, bukan melalui kedaulatan rakyat—dan setumpuk dekrit reformis sebanyak apa pun tidak akan pernah menghapus dosa asal tersebut. Lebih buruk lagi bagi Istana, barisan paramiliter Satgas berbaju merah dan massa <i>arus bawah</i> Megawati memberi partai ini kekuatan jalanan yang tak tertandingi oleh fraksi mana pun, sebuah kekuatan mudah meledak yang selalu siap menyemut di gerbang Senayan dan Jembatan Semanggi setiap kali berembus kabar miring tentang <i>rekayasa politik</i> di balik layar. Merayu fraksi ini melalui dagang sapi Senayan yang biasa nyaris sia-sia selama massa di jalanan masih mencium bau darah. Hanya jika popularitas dan kredibilitas reformasi Anda menjadi tak terbantahkan di mata publik, para politisi pragmatis mereka akan berani melunakkan permusuhan mereka—dan bahkan saat itu pun, mereka tidak akan pernah lupa bahwa merekalah yang keluar sebagai juara pertama pada bulan Juni, bukan Anda. Jika syarat itu tak terpenuhi, <i>lebih baik jangan mengusik sang banteng.</i>",
+  "biography": "Diah Permata Megawati Setiawati Soekarnoputri adalah putri sulung presiden pertama sekaligus proklamator Indonesia, Soekarno, dan menghabiskan masa mudanya menyaksikan Orde Baru secara sistematis melucuti nama besar ayahnya, mengurungnya dalam tahanan rumah di Wisma Yaso hingga wafatnya pada tahun 1970, dan mengasingkan keluarganya ke belantara politik. Masuk ke panggung legislatif secara tenang pada tahun 1987 untuk menghidupkan kembali Partai Demokrasi Indonesia (PDI) yang mati suri, ia menghancurkan konsensus rekayasa rezim pada Desember 1993 ketika para utusan arus bawah pada Musyawarah Nasional Luar Biasa (<i>Munaslub</i>) di Surabaya menentang intimidasi militer untuk memilihnya sebagai Ketua Umum partai. Hampir dalam semalam, ia menjelma menjadi muara hidup bagi segala keresahan rakyat yang tak lagi mampu dibendung oleh kekuasaan tiga puluh dua tahun Soeharto.<p></p>Khawatir akan prospek seorang keturunan Soekarno menantang kursi kepresidenan pada tahun 1998, Cendana dan <font color=\"#3E5022\"><b>ABRI</b></font> merancang kongres tandingan di Medan pada Juni 1996 di bawah kendali Panglima ABRI Feisal Tanjung dan Kassospol Syarwan Hamid untuk mendudukkan kembali Soerjadi yang penurut. Ketika para loyalis Megawati menolak mengosongkan kantor pusat DPP di Jalan Diponegoro No. 58 dan menggelar <i>Mimbar Bebas</i> setiap malam, truk-truk berisi preman binaan aparat dan pasukan keamanan di bawah komando Pangdam Jaya Sutiyoso menyerbu kompleks tersebut saat fajar menyingsing pada 27 Juli 1996. Penyerbuan Kudatuli tersebut menewaskan sedikitnya lima orang, melukai 149 orang, dan menyebabkan dua puluh tiga aktivis hilang, memicu kerusuhan terburuk di Jakarta dalam dua dekade. Namun penindasan itu justru menjadi bumerang: penolakan Megawati untuk tunduk dalam diam mengubah sengketa internal partai menjadi kemartiran suci. Mengubah nama gerakannya menjadi <font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> pasca-Mei 1998 dan mengadopsi lambang banteng bulat bermoncong putih yang menantang pada Kongres Bali Oktober 1998, ia menunggangi gelombang pasang kesetiaan rakyat menuju peringkat pertama pada Juni 1999. Kini, dari kediamannya di Kebagusan, ia menunggu dengan keheningannya yang khas hingga MPR mengesahkan apa yang oleh jutaan pengikutnya dianggap sebagai hak sejarahnya.",
+  "moods": [
+    {
+      "min": 80,
+      "text": "Mitra yang Enggan",
+      "color": "#006400",
+      "overlay": "rgba(0, 255, 0, 0.15)"
+    },
+    {
+      "min": 60,
+      "text": "Terbuka untuk Dialog",
+      "color": "#009000",
+      "overlay": "rgba(0, 191, 255, 0.10)"
+    },
+    {
+      "min": 50,
+      "text": "Ambivalen",
+      "color": "#4682B4",
+      "overlay": "rgba(0, 0, 255, 0.10)"
+    },
+    {
+      "min": 40,
+      "text": "Waspada",
+      "color": "#2F4F4F",
+      "overlay": "rgba(255, 140, 0, 0.10)"
+    },
+    {
+      "min": 30,
+      "text": "Skeptis",
+      "color": "#FF4500",
+      "overlay": "rgba(255, 69, 0, 0.15)"
+    },
+    {
+      "min": 20,
+      "text": "Agresif",
+      "color": "#FF0000",
+      "overlay": "rgba(255, 0, 0, 0.15)"
+    },
+    {
+      "min": 0,
+      "text": "Sangat Bermusuhan",
+      "color": "#8B0000",
+      "overlay": "rgba(139, 0, 0, 0.25)"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "pdip_cabinet",
+      "text": "Janjikan secara diam-diam portofolio kunci ekonomi dan hukum kepada para teknokrat PDI Perjuangan dalam kabinet persatuan",
+      "cost": 30,
+      "minStat": {
+        "key": "cendana",
+        "val": 40
+      },
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Selama tiga puluh dua tahun, Orde Baru memperlakukan PDI sebagai oposisi pajangan semata, mengunci rapat para intelektualnya dari kursi pemerintahan eksekutif. Padahal jajaran Badan Penelitian dan Pengembangan (<i>Litbang</i>) Megawati—tokoh-tokoh seperti Kwik Kian Gie dan Laksamana Sukardi—adalah para ekonom dan bankir serius yang berhasrat membongkar monopoli kroni lama. Kirimkan pesan melalui Taufik Kiemas bahwa jika pemerintahan Anda selamat melewati bulan Oktober, kementerian-kementerian utama di bidang ekonomi dan hukum dalam kabinet persatuan nasional akan diserahkan kepada nama-nama yang mereka tunjuk. Mengamankan hutang budi politik jangka panjang dari pucuk pimpinan Diponegoro, meskipun barisan tua Golkar dan Cilangkap akan memandang tawaran ini sebagai pengkhianatan.",
+      "effects": {
+        "pdip_favor": 1,
+        "pdip": [13, 23],
+        "golkar_akbar": [-16, -8],
+        "mil": [-7, -5],
+        "abri": [-7, -5],
+        "poros_tengah": [-7, -3],
+        "other_parties": [-5, -3],
+        "pkb": [-5, -3],
+        "ppp": [-5, -3],
+        "utusan_daerah": [-5, -3],
+        "ref": [7, 13],
+        "cendana": [-8, -4],
+        "intl": [3, 5],
+        "stab": 2
+      },
+      "alertMsg": "Kwik Kian Gie dan Laksamana Sukardi menimbang tawaran tersebut dengan kepala dingin, sangat menyadari betapa berbahayanya pakta terbuka dengan Bina Graha di mata massa berbaju merah di jalanan. Namun demikian, janji kewenangan nyata atas restrukturisasi ekonomi terlalu substansial untuk ditolak mentah-mentah. Para juru bicara PDI Perjuangan tampak mulai menurunkan nada serangan harian mereka, sementara kubu Akbar Tandjung di Golkar berang karena merasa disingkirkan."
+    },
+    {
+      "id": "pdip_regional",
+      "text": "Perintahkan Depdagri untuk menghentikan penghambatan birokrasi terhadap mayoritas DPRD lokal milik PDI Perjuangan",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Seiring dengan pemungutan suara parlemen nasional, pemilihan DPRD Tingkat I &amp; II di seluruh Jawa, Bali, dan Sumatera Utara turut mengantarkan <font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> meraih kursi mayoritas lokal. Namun para birokrat warisan <font color=\"#7D6000\"><b>Golkar</b></font> di dalam Departemen Dalam Negeri (<i>Depdagri</i>), yang sudah terbiasa dengan manipulasi administratif puluhan tahun era Yogie S. Memet, secara diam-diam memperlambat pelantikan para ketua DPRD dan bupati dari kubu Banteng. Instruksikan kementerian Syarwan Hamid untuk segera mengesahkan hasil-hasil daerah tersebut.",
+      "effects": {
+        "pdip": [6, 10],
+        "golkar_akbar": [-8, -4],
+        "utusan_daerah": -2,
+        "ref": [3, 5],
+        "stab": [2, 4],
+        "pop": [2, 4],
+        "intl": 2,
+        "golkar_habibie": 1
+      },
+      "alertMsg": "Begitu instruksi dari Bina Graha mendarat di meja Direktur Jenderal di Depdagri, surat-surat keputusan daerah yang sempat mandek langsung ditandatangani dalam waktu empat puluh delapan jam. Sekretaris Jenderal Alex Litaay dan Sutjipto mencatat langkah tersebut tanpa tepuk tangan terbuka—dalam pandangan mereka, Istana hanya mengembalikan apa yang memang sudah dimenangkan di kotak suara—namun gesekan antara pengurus daerah PDI Perjuangan dan Jakarta mulai mereda."
+    },
+    {
+      "id": "pdip_kudatuli",
+      "text": "Bentuk tim penyelidik negara dan dana restitusi untuk penyerbuan Kudatuli 27 Juli 1996",
+      "cost": 24,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Bagi jajaran kader dan simpatisan Megawati, penyerbuan fajar di Jalan Diponegoro No. 58 pada 27 Juli 1996—Peristiwa Kudatuli—tetap menjadi luka menganga yang belum terbalaskan. Sementara pengadilan Orde Baru menimpakan kesalahan pada PRD yang radikal dan memenjarakan keluarga para korban, para jenderal dan kaki tangan Soerjadi yang merancang penyerbuan tersebut melenggang bebas. Keluarkan permohonan maaf resmi negara, kembalikan hak milik gedung Diponegoro yang dirampas, dan sahkan pembentukan Tim Gabungan Pencari Fakta (<i>TGPF</i>) atas penyerbuan tersebut. Mengikat pucuk pimpinan PDI Perjuangan dengan hutang kehormatan yang mendalam, dengan risiko memancing kemurkaan barisan tua Golkar dan para petinggi Cilangkap yang terlibat dalam penindasan 1996.",
+      "effects": {
+        "pdip": [11, 21],
+        "pdip_favor": 1,
+        "ref": [7, 13],
+        "golkar_akbar": [-13, -7],
+        "mil": [-7, -5],
+        "abri": [-7, -5],
+        "stab": -2,
+        "intl": [3, 5],
+        "pop": [4, 8],
+        "cendana": [-8, -4],
+        "golkar_habibie": 2,
+        "utusan_golongan": [3, 5]
+      },
+      "alertMsg": "Karangan bunga diletakkan di luar tembok Jalan Diponegoro No. 58 yang penuh bekas luka saat pengakuan resmi Istana dibacakan dengan lantang. Para kader Megawati memperlakukan restitusi tersebut sebagai keadilan yang telah lama tertunda alih-alih kemurahan hati presiden, namun bobot emosional dari langkah tersebut tak terbantahkan. Di penjuru lain ibu kota, para purnawirawan jenderal Orde Baru dan tokoh-tokoh lama Golkar yang terlibat dalam Kongres Medan serta penyerbuan 27 Juli bereaksi dengan kemarahan dingin."
+    },
+    {
+      "id": "pdip_kiemas",
+      "text": "Utus seorang kurir khusus untuk bersantap malam secara tertutup dengan Taufik Kiemas",
+      "cost": 12,
+      "repeatable": true,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Jika Megawati memperlakukan politik sebagai urusan prinsip, keheningan, dan takdir sejarah sang ayah, suaminya Taufik Kiemas—sesama mantan aktivis GMNI asal Sumatera Selatan yang pernah merasakan dinginnya sel penjara Orde Baru—berperan sebagai jembatan pragmatis di dalam rumah tangga Kebagusan. Lewati para tokoh garis keras ideologis di jajaran pengurus pusat partai dan salurkan pendekatan diam-diam melalui Kiemas agar jalur komunikasi antara Bina Graha dan Teuku Umar tetap terbuka.",
+      "effects": {
+        "pdip": [5, 9],
+        "ref": 2,
+        "pop": 1,
+        "stab": 2
+      },
+      "alertMsg": "Ditemani hidangan makan malam pempek Palembang dan kepulan rokok kretek yang jauh dari sorotan kamera televisi di Senayan, Taufik Kiemas mendengarkan dengan pragmatisme yang ramah dan luwes. Ia tidak mengumbar janji atas nama istrinya, namun setuju untuk menahan para kader berdarah panas di fraksi parlemen agar tidak membakar habis seluruh jembatan komunikasi menuju Istana."
+    },
+    {
+      "id": "pdip_pansus_bankbali",
+      "text": "Perintahkan Bank Indonesia dan BPPN menyerahkan berkas lengkap Bank Bali tanpa sensor kepada Pansus DPR",
+      "mutexGroup": "bank_bali_audit",
+      "locksGroup": true,
+      "cost": 22,
+      "repeatable": false,
+      "maxTurn": 16,
+      "minTurn": 7,
+      "description": "Panitia Khusus DPR (<i>Pansus Hak Angket Bank Bali</i>) telah menghabiskan waktu berminggu-minggu menuntut rincian jejak aliran dana tanpa sensor yang menghubungkan komisi Rp546 miliar milik PT Era Giat Prima dengan orang-orang dalam di sekitar <font color=\"#7D6000\"><b>Golkar</b></font> dan tim pemenangan Anda sendiri. Para penyelidik <font color=\"#9E1F14\"><b>PDI Perjuangan</b></font> di Komisi IX memimpin langsung gempuran tersebut. Langkahilah birokrasi dan perintahkan setiap kementerian, BPPN, serta bank sentral untuk menyerahkan berkas lengkapnya kepada panitia khusus. Menutup segala upaya di balik layar untuk membantu Golkar mengubur hasil audit tersebut, sekaligus meraih hutang budi politik yang besar dari penggalang suara parlemen PDI Perjuangan.",
+      "effects": {
+        "pdip": [11, 21],
+        "pdip_favor": 1,
+        "golkar_akbar": [-16, -8],
+        "cendana": [-16, -8],
+        "ref": [7, 13],
+        "intl": [7, 13],
+        "econ": [2, 4],
+        "pop": [4, 8],
+        "utusan_golongan": [3, 7]
+      },
+      "alertMsg": "Kardus-kardus berisi bukti kliring tanpa sensor dari Bank Indonesia dan BPPN didorong langsung masuk ke ruang sidang Pansus di Senayan. Para legislator PDI Perjuangan memuji keterbukaan tersebut sebagai kemenangan pengawasan parlemen, membuat sikap mereka melunak secara signifikan terhadap kantor Anda bahkan ketika para bendahara Golkar yang terseret dalam jejak dokumen tersebut kalang kabut mencari perlindungan hukum."
+    },
+    {
+      "id": "pdip_sukarno_memorial",
+      "text": "Sponsori rehabilitasi negara dan pembangunan monumen penghormatan bagi Bung Karno sebagai Proklamator",
+      "cost": 15,
+      "repeatable": false,
+      "maxTurn": 21,
+      "minTurn": 0,
+      "description": "Selama tiga dekade di bawah kekuasaan Soeharto, historiografi resmi mengecilkan peran Soekarno dalam mendirikan Republik, mensterilkan ajarannya tentang <i>Marhaenisme</i>, dan membayangi tahun-tahun terakhirnya dengan kecurigaan di bawah Ketetapan MPRS No. XXXIII/1967. Bagi Megawati dan para pengikutnya, pelecehan terhadap nama besar <i>Bung Karno</i> adalah luka yang sangat personal. Kerahkan kewibawaan penuh kepresidenan untuk menggelar program peringatan kenegaraan dan pembangunan monumen yang mengangkat kembali warisan sang Proklamator di Jakarta dan Blitar.",
+      "effects": {
+        "pdip": [7, 13],
+        "pop": [4, 8],
+        "golkar_akbar": [-4, -2],
+        "cendana": [-4, -2],
+        "ref": [2, 4],
+        "stab": [2, 4],
+        "utusan_golongan": 2
+      },
+      "alertMsg": "Upacara kenegaraan untuk menghormati Bung Karno menyedot kerumunan massa yang penuh haru di Jakarta dan di pusaranya di Blitar. Di lingkungan Kebagusan, tempat pengabdian seorang anak kepada sang bapak bangsa menjadi napas kehidupan politik, langkah tersebut menyentuh hati secara mendalam—meskipun para ideolog tua Orde Baru di dalam tubuh Golkar menggerutu sinis tentang kembalinya bayang-bayang Orde Lama."
+    },
+    {
+      "id": "pdip_final_appeal",
+      "text": "Ajukan permohonan audiensi empat mata di menit-menit terakhir dengan Megawati di Kebagusan menjelang pemungutan suara",
+      "cost": 0,
+      "repeatable": false,
+      "maxTurn": 22,
+      "minTurn": 20,
+      "description": "Waktu untuk mengirim utusan, memberi sinyal legislatif, dan menggelar jamuan makan malam tertutup bersama Taufik Kiemas telah habis. Saat Sidang Paripurna MPR bersiap memberikan suara atas <i>Pidato Pertanggungjawaban</i> Anda, datanglah secara pribadi ke kediaman Megawati di Kebagusan, duduklah berhadapan langsung dengan putri Bung Karno tersebut, dan tanyakan secara terbuka apa yang diperlukan agar 153 utusan <font color=\"#9E1F14\"><b>Fraksi PDI Perjuangan</b></font> menahan diri untuk tidak menjatuhkan pemerintahan Anda malam ini. Mencairkan setiap hutang budi politik dan iktikad baik yang telah Anda tabung bersama kubu Diponegoro.",
+      "effects": {
+        "pdip": [11, 19],
+        "stab": [2, 4]
+      },
+      "alertMsg": "Di ruang tamu rumahnya yang tenang di Kebagusan, dikelilingi oleh lukisan-lukisan Bung Karno, Megawati mendengarkan penjelasan Anda dalam keheningannya yang khas dan sulit ditebak sebelum memberikan anggukan terukur. Taufik Kiemas mengantar Anda hingga ke mobil di depan gerbang. Setiap tetes iktikad baik yang telah Anda bangun susah payah bersama kubu Banteng selama empat bulan terakhir kini akan ditimbang di lantai Sidang Paripurna."
+    }
+  ]
+}

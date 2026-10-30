@@ -1,10 +1,10 @@
-// mobile.js: mobile-only UI: collapsible status panel, sticky status bar, touch notes and scrolling.
-// Load order: before game.js.
+// SUMMARY: Mobile-only UI: collapsible left status panel, sticky top status bar with a metrics sheet,
+// touch tooltip notes and scroll-to-top that accounts for the sticky bar. Load order: before game.js.
 
-// Whether the left status panel is collapsed on mobile
+// Whether the left status panel is collapsed on mobile.
 window.mobileLeftPanelCollapsed = false;
 
-// MOBILE COLLAPSIBLE LEFT PANEL & TOUCH TOOLTIP HELPERS
+// Adds the collapse/expand toggle button at the top of the left panel (once).
 function setupMobileLeftPanelToggle() {
     const leftPanel = document.getElementById('left-panel');
     if (!leftPanel || document.getElementById('mobile-left-toggle')) return;
@@ -20,7 +20,7 @@ function setupMobileLeftPanelToggle() {
     updateMobileToggleLabel();
 }
 
-// Refresh the toggle button label and the collapsed state
+// Applies the collapsed state to the left panel and updates the toggle label (PC and government status when collapsed).
 function updateMobileToggleLabel() {
     const leftPanel = document.getElementById('left-panel');
     const btn = document.getElementById('mobile-left-toggle');
@@ -29,25 +29,17 @@ function updateMobileToggleLabel() {
     if (window.mobileLeftPanelCollapsed) {
         leftPanel.classList.add('mobile-collapsed');
         const govText = gameStarted ? getGovStabilityWord() : '-';
-        btn.innerHTML = `[+] Expand Presidential Status (PC: ${stats.PC} &bull; Gov: ${govText})`;
+        btn.innerHTML = LOC('mobile.expand', { PC: stats.PC, GOV: govText });
     } else {
         leftPanel.classList.remove('mobile-collapsed');
-        btn.innerHTML = `[&ndash;] Minimize Presidential Status Panel`;
+        btn.innerHTML = LOC('mobile.minimize');
     }
 }
 
-// Metric keys and labels listed in the mobile status sheet
-const MOBILE_STATUS_METRICS = [
-    ['pop', 'Popularity'],
-    ['mil', 'Military Support'],
-    ['ref', 'Reformasi Credibility'],
-    ['econ', 'Economic Health'],
-    ['intl', 'International Standing'],
-    ['stab', 'National Stability'],
-    ['cendana', 'Cendana Influence']
-];
+// Metrics listed in the mobile status sheet (labels come from effect_name.<key>).
+const MOBILE_STATUS_METRICS = ['pop', 'mil', 'ref', 'econ', 'intl', 'stab', 'cendana'];
 
-// Sticky top bar shown on small screens during a campaign (hidden by CSS on desktop)
+// Updates the sticky top bar (PC, government status, turn counter) and hides it outside a campaign.
 function updateMobileStatusBar() {
     const bar = document.getElementById('mobile-status-bar');
     if (!bar) return;
@@ -70,19 +62,20 @@ function updateMobileStatusBar() {
     if (bar.classList.contains('open')) renderMobileStatusSheet();
 }
 
-// Fill the status sheet with the current metric values
+// Fills the status sheet with the current metric values copied from the left panel.
 function renderMobileStatusSheet() {
     const sheet = document.getElementById('msb-sheet');
     if (!sheet) return;
     let html = '';
-    MOBILE_STATUS_METRICS.forEach(([key, label]) => {
+    MOBILE_STATUS_METRICS.forEach(key => {
+        const label = LOC('effect_name.' + key);
         const valEl = document.getElementById('val-' + key);
         html += `<div class="msb-row"><span>${label}</span><span>${valEl ? valEl.innerHTML : ''}</span></div>`;
     });
     sheet.innerHTML = html;
 }
 
-// Open or close the status sheet and update its accessibility state
+// Opens or closes the status sheet and updates the caret and aria-expanded state.
 function setMobileStatusSheetOpen(open) {
     const bar = document.getElementById('mobile-status-bar');
     if (!bar) return;
@@ -94,13 +87,13 @@ function setMobileStatusSheetOpen(open) {
     if (open) renderMobileStatusSheet();
 }
 
-// Toggle the status sheet open or closed
+// Toggles the status sheet.
 window.toggleMobileStatusSheet = function() {
     const bar = document.getElementById('mobile-status-bar');
     if (bar) setMobileStatusSheetOpen(!bar.classList.contains('open'));
 };
 
-// Tapping anywhere outside the bar closes the metrics sheet
+// Closes the status sheet when tapping outside the bar.
 document.addEventListener('click', function(e) {
     const bar = document.getElementById('mobile-status-bar');
     if (bar && bar.classList.contains('open') && !bar.contains(e.target)) {
@@ -108,15 +101,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Show a tooltip note in the mobile note box
-window.showMobileTooltipNote = function(text) {
-    const box = document.getElementById('mobile-status-tooltip-box');
-    if (!box || !text) return;
-    box.innerHTML = `<b>&#9432; Note:</b> ${text}`;
-    box.classList.add('active');
-};
-
-// Scroll the main panel to the top, offset for the sticky status bar on mobile
+// Scrolls to the top of the main panel (offset for the sticky bar on small screens, plain top of page otherwise).
 function scrollMainPanelToTop() {
     if (window.innerWidth <= 820) {
         const mainPanel = document.getElementById('main-panel');
