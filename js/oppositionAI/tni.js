@@ -69,20 +69,22 @@
     function flareRunning() { return st.timorFlare > 0 || st.acehFlare > 0; }
 
     // Share (0 to 1) by which other factions' gains from your deals, decrees, actions and events, and your PC income, are cut.
+    // Returns 0 once ABRI is banned/dissolved.
     function getMilitaryResistance() {
-        if (!live() && !U.state().abriAbolished) return 0;
+        if (!live() || U.state().abriAbolished) return 0;
         return Math.max(0, Math.min(0.95, num('ceiling', 'milCeiling') * angerFrac()));
     }
     // Multiplier on positive ABRI loyalty gains: an angry army is very slow to warm to you again.
     function getMilitaryGainMult() {
+        if (!live() || U.state().abriAbolished) return 1;
         return Math.max(0, 1 - num('stubborn', 'milStubborn') * angerFrac());
     }
 
-    // Military hostility from 0 to 3, from ABRI's loyalty and the meter.
+    // Military hostility from 0 to 3, from ABRI's loyalty and the meter. Returns 0 once ABRI is banned/dissolved.
     function milHostility() {
         if (typeof factions === 'undefined' || !factions['abri']) return 0;
         const s = U.state();
-        if (s.abriAbolished || bannedFactions['abri']) return 3;
+        if (!live() || s.abriAbolished || bannedFactions['abri']) return 0;
         const aff = factions['abri'].affinity;
         let lvl = 0;
         if (aff < 20) lvl = 3; else if (aff < 30) lvl = 2; else if (aff < 45) lvl = 1;
@@ -99,7 +101,7 @@
         return st.phase === 'anger' || factions['abri'].affinity < 30;
     }
 
-    // Turns the meter to anger at once (used when ABRI's seats are abolished).
+    // Turns the meter to anger at once.
     function igniteAnger(minValue) {
         if (st.phase !== 'anger') { st.phase = 'anger'; st.value = 0; }
         st.value = Math.min(100, Math.max(st.value, minValue || 0));
@@ -141,7 +143,7 @@
     }
     // End-of-turn step: patience falls, or anger climbs, unless the military was dealt with this turn.
     function stepMeter() {
-        if (!live()) { st.touched = false; return; }
+        if (!live() || U.state().abriAbolished) { st.touched = false; return; }
         const lvl = milHostility();
         const aff = factions['abri'] ? factions['abri'].affinity : 0;
         if (st.phase === 'anger') {
@@ -187,7 +189,7 @@
     // The bar shown on the Military's faction screen (light gray patience, red anger; same chunky progress style as the loading bar).
     function getMilitaryMeterHTML() {
         const m = getMilitaryMeter();
-        if (!m.live && !U.state().abriAbolished) return '';
+        if (!m.live || U.state().abriAbolished) return '';
         const anger = m.phase === 'anger';
         const chunk = anger ? 'var(--tone-bad,#CC0000)' : '#C6C6C6';
         const fill = 'repeating-linear-gradient(90deg,' + chunk + ' 0px,' + chunk + ' 10px,transparent 10px,transparent 12px)';
@@ -225,6 +227,7 @@
     }
     // Runs the end-of-turn incident roll: continues flares or fires a random weighted incident.
     function runIncidents() {
+        if (!live() || U.state().abriAbolished) return false;
         if (!U.quietTurn()) return false;
         if (st.timorFlare > 0) { fireIncident(INCIDENTS.find(i => i.id === 'timor_militia')); st.timorFlare--; return true; }
         if (st.acehFlare > 0) { fireIncident(INCIDENTS.find(i => i.id === 'aceh_flare')); st.acehFlare--; return true; }
@@ -299,7 +302,13 @@
             }
         },
         onEventChoice, onDecreeEnacted, onEndOfTurn,
-        onAbriAbolished() { igniteAnger(100); },
+        onAbriAbolished() {
+            st.phase = 'patience';
+            st.value = 0;
+            st.touched = false;
+            st.timorFlare = 0;
+            st.acehFlare = 0;
+        },
         debug: {
             list: () => INCIDENTS.map(i => i.id),
             fire: id => { const i = INCIDENTS.find(x => x.id === id); if (i) fireIncident(i); }
